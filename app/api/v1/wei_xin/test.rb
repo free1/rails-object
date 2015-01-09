@@ -1,10 +1,11 @@
 module V1
   module WeiXin
     class Test < Grape::API
-      version 'v1'
+      version 'v1', using: :path
 
-      get "/articles/:id/events" do
+      get "/test" do
         p "----"
+        p get_request_ip
       end
     end
   end

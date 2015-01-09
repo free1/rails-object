@@ -6,7 +6,6 @@ class API < Grape::API
 
   format :json
 
-  # API Version: 1.0
-  mount V1::WeiXin::Test
+  mount V1::Base
 
 end
