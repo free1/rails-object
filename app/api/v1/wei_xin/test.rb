@@ -6,6 +6,7 @@ module V1
       get "/test" do
         p "----"
         p get_request_ip
+        present current_user, with: APIv2::Entities::Test
       end
     end
   end
