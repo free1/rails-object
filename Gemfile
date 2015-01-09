@@ -6,6 +6,10 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'will_paginate-bootstrap'
 gem 'autoprefixer-rails'
 
+# api
+gem 'grape'
+gem 'grape-entity'
+
 group :assets do
   gem 'sass-rails', '~> 4.0.3'
   gem 'uglifier', '>= 1.3.0'
