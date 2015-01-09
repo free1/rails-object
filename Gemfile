@@ -9,6 +9,9 @@ gem 'autoprefixer-rails'
 # api
 gem 'grape'
 gem 'grape-entity'
+gem 'grape-swagger'
+# 允跨域请求
+gem 'rack-cors'
 
 group :assets do
   gem 'sass-rails', '~> 4.0.3'
