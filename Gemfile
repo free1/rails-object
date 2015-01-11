@@ -13,6 +13,9 @@ gem 'grape-swagger'
 # 允跨域请求
 gem 'rack-cors'
 
+# 数据库
+gem "mongoid", "~> 4.0.0"
+
 group :assets do
   gem 'sass-rails', '~> 4.0.3'
   gem 'uglifier', '>= 1.3.0'
