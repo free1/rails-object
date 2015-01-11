@@ -12,6 +12,16 @@ module WeixinTest
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    # api文档资源
+    config.assets.precompile += %w(api_swagger_ui/reset.css api_swagger_ui/screen.css)
+    config.assets.precompile += %w(api_swagger_ui/backbone-min.js api_swagger_ui/handlebars-1.js
+                                    api_swagger_ui/highlight.js api_swagger_ui/jquery-1.js
+                                    api_swagger_ui/jquery.js api_swagger_ui/jquery_002.js
+                                    api_swagger_ui/jquery_003.js api_swagger_ui/shred.js
+                                    api_swagger_ui/swagger-client.js api_swagger_ui/swagger-oauth.js
+                                    api_swagger_ui/swagger-ui.js api_swagger_ui/swagger.js
+                                    api_swagger_ui/underscore-min.js)
+
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
