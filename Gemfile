@@ -27,7 +27,7 @@ end
 # 表单
 gem 'simple_form'
 
-gem 'rails', '4.2.0'
+gem 'rails', '4.1.6'
 gem 'sqlite3'
 gem 'jquery-rails'
 gem 'turbolinks'
