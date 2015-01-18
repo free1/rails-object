@@ -114,6 +114,8 @@ GEM
     net-ssh (2.9.1)
     optionable (0.2.0)
     origin (2.1.1)
+    quiet_assets (1.0.3)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-accept (0.4.5)
       rack (>= 0.4)
@@ -202,6 +204,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mongoid (~> 4.0.0)
+  quiet_assets (~> 1.0.2)
   rack-cors
   rails (= 4.1.6)
   sass-rails (~> 4.0.3)

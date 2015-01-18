@@ -1,7 +1,7 @@
 # source 'https://rubygems.org'
 source 'https://ruby.taobao.org'
 
-ruby '2.1.1'
+ruby '2.1.2'
 
 # 样式
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -22,6 +22,11 @@ group :assets do
   gem 'sass-rails', '~> 4.0.3'
   gem 'uglifier', '>= 1.3.0'
   gem 'coffee-rails', '~> 4.0.0'
+end
+
+group :development do
+  # 隐藏asset的log
+  gem "quiet_assets", "~> 1.0.2"
 end
 
 # 表单
