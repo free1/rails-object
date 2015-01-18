@@ -1,7 +1,7 @@
 # source 'https://rubygems.org'
 source 'https://ruby.taobao.org'
 
-ruby '2.1.2'
+# ruby '2.1.2'
 
 # 样式
 gem 'bootstrap-sass', '~> 3.2.0'
