@@ -1,6 +1,8 @@
 # source 'https://rubygems.org'
 source 'https://ruby.taobao.org'
 
+ruby '2.1.1'
+
 # 样式
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'will_paginate-bootstrap'
@@ -25,7 +27,7 @@ end
 # 表单
 gem 'simple_form'
 
-gem 'rails', '4.1.6'
+gem 'rails', '4.2.0'
 gem 'sqlite3'
 gem 'jquery-rails'
 gem 'turbolinks'
