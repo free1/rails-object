@@ -50,6 +50,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
+gem 'capistrano-passenger', :group => :development
 
 gem 'capistrano', '~> 3.3.0'
 
