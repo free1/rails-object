@@ -27,7 +27,16 @@ end
 group :development do
   # 隐藏asset的log
   gem "quiet_assets", "~> 1.0.2"
+
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  # Add this if you're using rvm
+  # gem 'capistrano-rvm'
+
 end
+
 
 # 表单
 gem 'simple_form'
@@ -49,10 +58,10 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
-gem 'capistrano-passenger', :group => :development
+# gem 'capistrano-rails', group: :development
+# gem 'capistrano-passenger', :group => :development
 
-gem 'capistrano', '~> 3.3.0'
+# gem 'capistrano', '~> 3.3.0'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
