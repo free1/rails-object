@@ -10,6 +10,8 @@ gem 'autoprefixer-rails'
 
 gem 'net-ssh'
 
+gem 'unicorn'
+
 # api
 gem 'grape'
 gem 'grape-entity'
