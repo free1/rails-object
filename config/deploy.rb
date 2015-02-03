@@ -55,6 +55,9 @@ namespace :deploy do
   task :setup_config, roles: :app do
     run "#{try_sudo} ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
     run "#{try_sudo} ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
-    run "mkdir -p #{}"
+    run "mkdir -p #{shared_path}/config"
+    put File.read("config/database.yml"), "#{shared_path}/config/database"
+    put "修改文件 #{shared_path}."
   end
+  after "deploy:setup", "deploy:setup_config"
 end
