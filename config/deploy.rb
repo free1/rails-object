@@ -1,19 +1,25 @@
 # config valid only for current version of Capistrano
 lock '3.3.5'
 
-set :ssh_options, {
-  keys: %w(/home/deploy/.ssh/id_rsa),
-  forward_agent: true,
-  auth_methods: %w(password)
-}
+# set :ssh_options, {
+#   keys: %w(~/.ssh/id_rsa.pub),
+#   forward_agent: true,
+#   auth_methods: %w(password)
+# }
 
 set :stages, ["production"]
 
 set :application, 'weixin_test'
-set :repo_url, 'git@gitcafe.com:free1/weixin_test.git'
+set :repo_url, 'https://gitcafe.com/free1/weixin_test.git'
+
+set :user, "deploy"
+
+set :rvm_type, :system                     # Defaults to: :auto
+# set :rvm_ruby_version, '2.0.0-p247'      # Defaults to: 'default'
+# set :rvm_custom_path, '~/.myveryownrvm'
 
 # Default branch is :master
-ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
+ask :branch, "master"
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/var/www/weixin_test'
@@ -45,12 +51,10 @@ set :keep_releases, 5
 
 namespace :deploy do
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
+  desc "之后执行"
+  task :setup_config, roles: :app do
+    run "#{try_sudo} ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
+    run "#{try_sudo} ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
+    run "mkdir -p #{}"
   end
 end

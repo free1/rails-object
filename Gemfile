@@ -10,8 +10,6 @@ gem 'autoprefixer-rails'
 
 gem 'net-ssh'
 
-gem 'unicorn'
-
 # api
 gem 'grape'
 gem 'grape-entity'
@@ -20,7 +18,8 @@ gem 'grape-swagger'
 gem 'rack-cors'
 
 # 数据库
-gem "mongoid", "~> 4.0.0"
+gem 'mysql2', '0.3.15'
+# gem "mongoid", "~> 4.0.0"
 
 group :assets do
   gem 'sass-rails', '~> 4.0.3'
@@ -31,16 +30,15 @@ end
 group :development do
   # 隐藏asset的log
   gem "quiet_assets", "~> 1.0.2"
-
-  gem 'capistrano'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano-rbenv'
-  # Add this if you're using rvm
-  # gem 'capistrano-rvm'
-
 end
 
+# 部署
+gem 'capistrano'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
+# gem 'capistrano-rbenv'
+gem 'capistrano-rvm'
+gem 'unicorn'
 
 # 表单
 gem 'simple_form'
