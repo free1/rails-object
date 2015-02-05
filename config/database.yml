@@ -14,7 +14,7 @@ development:
   encoding: utf8mb4
   collation: utf8mb4_unicode_ci 
   reconnect: false
-  database: wedding
+  database: weixin_test
   pool: 5
   timeout: 5000
   username: root

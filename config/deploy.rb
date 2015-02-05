@@ -13,10 +13,13 @@ set :application, 'weixin_test'
 set :repo_url, 'https://gitcafe.com/free1/weixin_test.git'
 
 set :user, "deploy"
+set :use_sudo, true
 
-set :rvm_type, :system                     # Defaults to: :auto
+# set :rvm_type, :system                     # Defaults to: :auto
 # set :rvm_ruby_version, '2.0.0-p247'      # Defaults to: 'default'
 # set :rvm_custom_path, '~/.myveryownrvm'
+set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_ruby, '2.1.2'
 
 # Default branch is :master
 ask :branch, "master"
@@ -52,12 +55,14 @@ set :keep_releases, 5
 namespace :deploy do
 
   desc "之后执行"
-  task :setup_config, roles: :app do
-    run "#{try_sudo} ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
-    run "#{try_sudo} ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
-    run "mkdir -p #{shared_path}/config"
-    put File.read("config/database.yml"), "#{shared_path}/config/database"
-    put "修改文件 #{shared_path}."
+  task :setup_config do
+    on roles(:all) do |host|
+      run "#{try_sudo} ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
+      run "#{try_sudo} ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
+      run "mkdir -p #{shared_path}/config"
+      put File.read("config/database.yml"), "#{shared_path}/config/database"
+      put "修改文件 #{shared_path}."
+    end
   end
   after "deploy:setup", "deploy:setup_config"
 end
