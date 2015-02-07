@@ -46,26 +46,29 @@
 	        <button type="submit" class="btn btn-default">搜索</button>
 	      </form>
 	      <ul class="nav navbar-nav navbar-right">
-	        <!-- <li><a href="#">Link</a></li>
-	        <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Free<span class="caret"></span></a>
-	          <ul class="dropdown-menu" role="menu">
-	            <li><a href="#">Action</a></li>
-	            <li><a href="#">Another action</a></li>
-	            <li><a href="#">Something else here</a></li>
-	            <li class="divider"></li>
-	            <li><a href="#">退出</a></li>
-	          </ul>
-	        </li> -->
-	        <li class="dropdown">
-	        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	        		登录<span class="caret"></span>
-	        	</a>
-	        	<ul class="dropdown-menu" role="menu">
-	        		<li><%= link_to "登录", new_session_path %></li>
-	        		<li><%= link_to "注册", new_user_path %></li>
-	        	</ul>
-	        </li>
+	      	<% if signed_in? %>
+		        <li><a href="#">Link</a></li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Free<span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li><a href="#">Action</a></li>
+		            <li><a href="#">Another action</a></li>
+		            <li><a href="#">Something else here</a></li>
+		            <li class="divider"></li>
+		            <li><%= link_to "退出", logout_path, method: :delete %></li>
+		          </ul>
+		        </li>
+		    <% else %>
+		        <li class="dropdown">
+		        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		        		登录<span class="caret"></span>
+		        	</a>
+		        	<ul class="dropdown-menu" role="menu">
+		        		<li><%= link_to "Email登录", login_path %></li>
+		        		<li><%= link_to "注册", new_user_path %></li>
+		        	</ul>
+		        </li>
+		    <% end %>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get 'home/api_swagger_ui'
+
+  get 'login' => 'sessions#new'
+  delete 'logout' => 'sessions#destroy'
   resources :sessions, only: [:new, :create]
   resources :users
 

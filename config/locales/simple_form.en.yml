@@ -12,8 +12,8 @@ en:
       default_message: "Please review the problems below:"
     # Labels and hints examples
     labels:
-      defaults:
-        password: 'Password'
+      # defaults:
+      #   password: 'Password'
       user:
         new:
           name: '昵称'
@@ -21,6 +21,10 @@ en:
           password: '密码'
         edit:
           email: 'E-mail.'
+      session: 
+        new: 
+          email: '注册邮箱'
+          password: '密码'
     # hints:
     #   defaults:
     #     username: 'User name to sign in.'
