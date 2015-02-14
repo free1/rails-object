@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  describe: MyText
+  cover_path: MyString
+  name: MyString
+
+two:
+  describe: MyText
+  cover_path: MyString
+  name: MyString

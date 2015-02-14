@@ -1,0 +1,8 @@
+<h1>结婚攻略详情</h1>
+
+<h3>ID: <small><%= @product.id %></small></h3>
+<h3>名称: <small><%= @product.title %></small></h3>
+<h3>描述: <small><%= @product.describe %></small></h3>
+<h3>封面图: <small><%= image_tag @product.cover_path, size: "100x100" %></small></h3>
+
+<%= link_to "返回列表", "#", class: "btn btn-info" %>

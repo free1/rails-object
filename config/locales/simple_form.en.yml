@@ -25,6 +25,11 @@ en:
         new: 
           email: '注册邮箱'
           password: '密码'
+      product:
+        new:
+          title: '商品名称'
+          cover_path: '封面图'
+          describe: '商品描述'
     # hints:
     #   defaults:
     #     username: 'User name to sign in.'
