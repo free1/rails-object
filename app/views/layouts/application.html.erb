@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Free</title>
+  <title>微店</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<!-- header -->
-	<nav class="navbar navbar-default" role="navigation">
+	<nav class="navbar navbar-inverse" role="navigation">
 		<div class="container-fluid">
 		    <div class="navbar-header center-block">
-		      <%= link_to "Free", root_path, class: "navbar-brand" %>
+		      <%= link_to "微店", root_path, class: "navbar-brand" %>
 		    </div>
+
+		    <ul class="nav navbar-nav">
+				<li class="active"><a href="#">热门</a></li>
+				<li><a href="#">精选</a></li>
+				<li><a href="#">商店</a></li>
+				<li><a href="#">讨论</a></li>
+				<li class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">产品 <span class="caret"></span></a>
+				  <ul class="dropdown-menu" role="menu">
+				    <li><a href="#">生活</a></li>
+				    <li><a href="#">配饰</a></li>
+				    <li><a href="#">饮食</a></li>
+				    <li class="divider"></li>
+				    <li><a href="#">科技</a></li>
+				    <li class="divider"></li>
+				    <li><a href="#">游戏</a></li>
+				  </ul>
+				</li>
+			</ul>
 
 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group">
@@ -22,15 +41,18 @@
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				<% if signed_in? %>
-				    <li><a href="#">Link</a></li>
+				    <li><a href="#">分享产品</a></li>
 				    <li class="dropdown">
-				      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Free<span class="caret"></span></a>
+				      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				      	<%= current_user.name %>
+				      	<span class="caret"></span>
+				      </a>
 				      <ul class="dropdown-menu" role="menu">
-				        <li><a href="#">Action</a></li>
-				        <li><a href="#">Another action</a></li>
-				        <li><a href="#">Something else here</a></li>
+				        <li><a href="#">个人主页</a></li>
+				        <li><a href="#">我的产品</a></li>
+				        <li><a href="#">我的草稿</a></li>
 				        <li class="divider"></li>
-				        <li><%= link_to "退出", logout_path, method: :delete %></li>
+				        <li><%= link_to "安全退出", logout_path, method: :delete %></li>
 				      </ul>
 				    </li>
 				<% else %>
