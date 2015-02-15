@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
 	def create
 		@product = current_user.products.build(product_params)
 
-		if @product.save!
+		if @product.save
 			flash[:success] = "发布成功"
       		redirect_to product_path(@product)
 		else

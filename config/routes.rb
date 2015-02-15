@@ -8,7 +8,13 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   delete 'logout' => 'sessions#destroy'
   resources :sessions, only: [:new, :create]
-  resources :users
+
+  resources :users do
+    collection do
+      get 'verify_email'
+    end
+  end
+
   resources :products
   # 七牛上传文件
   namespace :upload do
