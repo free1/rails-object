@@ -4,9 +4,33 @@
 
     <%= f.input :describe, as: :text, input_html: { maxlength: 500 } %>
 
-    <%= f.input :cover_path %>
+    <%= f.input :cover_path, id: "cover_path", disabled: "disabled" %>
+    <a class="btn btn-default btn-lg" id="pickfiles">增加图片</a>
+    <br/>
+    <img src="<%= @product.cover_path %>" id="show_cover_path" width="100" height="100"/>
 
     </br></br></br>
     <%= f.button :submit, "发布商品", class: 'btn-lg btn-block' %>
   </div>
 <% end %>
+
+
+<%= javascript_include_tag 'upload/qiniu_options' %>
+<script>
+    $(function () {
+
+      // 封面图
+      var coverUploader = new QiniuUploader();
+      coverUploader.upload({
+          browse_button: 'pickfiles',
+          uptoken_url: '/upload/qiniu/image_up_token'
+      }, {
+          'FileUploaded': function (up, file, info) {
+              var cover_path = 'http://7vznrs.com1.z0.glb.clouddn.com/' + $.parseJSON(info).image_path;
+              $('#cover_path').val(cover_path);
+              $('#show_cover_path').attr('src', cover_path);
+          }
+      });
+       
+    });
+</script>

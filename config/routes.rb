@@ -10,6 +10,14 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create]
   resources :users
   resources :products
+  # 七牛上传文件
+  namespace :upload do
+    resources :qiniu, only: [] do
+      collection do
+        get 'image_up_token'
+      end
+    end
+  end
 
 
 

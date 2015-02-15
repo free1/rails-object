@@ -2,6 +2,7 @@
 source 'https://ruby.taobao.org'
 
 # ruby '2.1.2'
+gem 'rails', '4.1.6'
 
 # 样式
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -17,9 +18,16 @@ gem 'grape-swagger'
 # 允跨域请求
 gem 'rack-cors'
 
+# 资源存储
+gem 'qiniu', '~> 6.2.1'
+gem "mime-types", '~> 1.19'
+
 # 数据库
 gem 'mysql2', '0.3.15'
 # gem "mongoid", "~> 4.0.0"
+
+# 表单
+gem 'simple_form'
 
 group :assets do
   gem 'sass-rails', '~> 4.0.3'
@@ -40,11 +48,7 @@ gem 'capistrano-rbenv'
 # gem 'capistrano-rvm'
 gem 'unicorn'
 
-# 表单
-gem 'simple_form'
-
-gem 'rails', '4.1.6'
-gem 'sqlite3'
+# gem 'sqlite3'
 gem 'jquery-rails'
 gem 'turbolinks'
 
