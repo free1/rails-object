@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   def signed_in_user
     unless signed_in?
       store_location
-      redirect_to signin_url, notice: "Please sign in."
+      redirect_to login_path, flash: { info: "登录后才可以发布商品哦" }
     end
   end
 
@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
   end
 
   def store_location
-    session[:return_to] = request.fullpath if request.get?
+    session[:return_to] = "/#{request.fullpath}" if request.get?
   end
 
 end
