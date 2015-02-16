@@ -1,1 +1,18 @@
 <% provide(:title, @user.name) %>
+
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h3>
+        <%= user_avatar(@user.avatar_path, '100x100') %>
+        <%= @user.name %>
+      </h3>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+  <!-- <div class="span8">
+  	
+  </div> -->
+</div>

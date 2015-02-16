@@ -20,7 +20,8 @@ en:
           email: '邮箱'
           password: '密码'
         edit:
-          email: 'E-mail.'
+          name: '昵称'
+          avatar_path: '头像'
       session: 
         new: 
           email: '注册邮箱'

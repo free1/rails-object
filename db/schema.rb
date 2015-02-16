@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150215084224) do
+ActiveRecord::Schema.define(version: 20150216063418) do
 
   create_table "products", force: true do |t|
     t.text     "describe"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20150215084224) do
     t.string   "remember_token"
     t.string   "verify_token"
     t.boolean  "is_verify_email", default: false
+    t.string   "avatar_path"
   end
 
 end
