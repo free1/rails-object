@@ -16,23 +16,12 @@
   </div>
 <% end %>
 
-
-<%= javascript_include_tag 'upload/qiniu_options' %>
+<%= javascript_include_tag 'upload/image_upload' %>
 <script>
     $(function () {
 
       // 封面图
-      var coverUploader = new QiniuUploader();
-      coverUploader.upload({
-          browse_button: 'pickfiles',
-          uptoken_url: '/upload/qiniu/image_up_token'
-      }, {
-          'FileUploaded': function (up, file, info) {
-              var cover_path = 'http://7vznrs.com1.z0.glb.clouddn.com/' + $.parseJSON(info).image_path;
-              $('#cover_path').val(cover_path);
-              $('#show_cover_path').attr('src', cover_path);
-          }
-      });
+      imageUpload.coverUploader('pickfiles', $('#show_cover_path'), $('#cover_path'));
        
     });
 </script>

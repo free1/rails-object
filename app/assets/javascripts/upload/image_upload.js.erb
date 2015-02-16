@@ -1,0 +1,25 @@
+/*
+	单张图片上传
+	imageUpload.coverUploader('上传按钮id', $('显示图片的元素'), $('插入url的input'));
+*/
+
+//= require upload/qiniu_options
+
+var imageUpload = function() {
+	return {
+		// 单张图片上传
+		coverUploader: function(browse_button, show_element, input_url) {
+			var coverUploader = new QiniuUploader();
+			coverUploader.upload({
+				browse_button: browse_button,
+				uptoken_url: '<%= QiniuUptokenUrl %>'
+			}, {
+				'FileUploaded': function (up, file, info) {
+					var cover_path = '<%= QiniuUploadUrl %>' + $.parseJSON(info).image_path;
+					input_url.val(cover_path);
+					show_element.attr('src', cover_path);
+				}
+			});
+		}
+	}
+}();
