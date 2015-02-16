@@ -5,80 +5,23 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
 </head>
 <body>
 	<!-- header -->
-	<nav class="navbar navbar-inverse" role="navigation">
-		<div class="container-fluid">
-		    <div class="navbar-header center-block">
-		      <%= link_to "微店", root_path, class: "navbar-brand" %>
-		    </div>
-
-		    <ul class="nav navbar-nav">
-				<li class="active"><a href="#">热门</a></li>
-				<li><a href="#">精选</a></li>
-				<li><a href="#">商店</a></li>
-				<li><a href="#">讨论</a></li>
-				<li class="dropdown">
-				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">产品 <span class="caret"></span></a>
-				  <ul class="dropdown-menu" role="menu">
-				    <li><a href="#">生活</a></li>
-				    <li><a href="#">配饰</a></li>
-				    <li><a href="#">饮食</a></li>
-				    <li class="divider"></li>
-				    <li><a href="#">科技</a></li>
-				    <li class="divider"></li>
-				    <li><a href="#">游戏</a></li>
-				  </ul>
-				</li>
-			</ul>
-
-			<form class="navbar-form navbar-left" role="search">
-				<div class="form-group">
-				  <input type="text" class="form-control" placeholder="Search">
-				</div>
-				<button type="submit" class="btn btn-default">搜索</button>
-			</form>
-			<ul class="nav navbar-nav navbar-right">
-				<% if signed_in? %>
-				    <li><%= link_to "发布商品", new_product_path %></li>
-				    <li class="dropdown">
-				      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				      	<%= current_user.name %>
-				      	<span class="caret"></span>
-				      </a>
-				      <ul class="dropdown-menu" role="menu">
-				        <li><a href="#">个人主页</a></li>
-				        <li><a href="#">我的商品</a></li>
-				        <li><a href="#">我的草稿</a></li>
-				        <li class="divider"></li>
-				        <li><%= link_to "安全退出", logout_path, method: :delete %></li>
-				      </ul>
-				    </li>
-				<% else %>
-				    <li class="dropdown">
-				    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				    		登录<span class="caret"></span>
-				    	</a>
-				    	<ul class="dropdown-menu" role="menu">
-				    		<li><%= link_to "Email登录", login_path %></li>
-				    		<li><%= link_to "注册", new_user_path %></li>
-				    	</ul>
-				    </li>
-				<% end %>
-			</ul>
-    	</div><!-- /.navbar-collapse -->
-	</nav>
+	<%= render 'layouts/header' %>
 	
 	<div class="container">
 		<!-- 顶部提示 -->
-		<% if flash.present? %>
-			<% flash_type = flash.keys.first %>
-			<%= content_tag :div, flash[flash_type], class: "alert alert-#{flash_type}" %>
+		<% flash.each do |key, value| %>
+			<%= content_tag(:div, value, class: "alert alert-#{key}") %>
+			<!-- <div class="alert alert-<%= key %>"><%= value %></div> -->
 		<% end %>
+
 		<%= yield %>
 	</div>
-
 	<!-- footer -->
+	<%= render 'layouts/footer' %>
+	
 </body>
 </html>
