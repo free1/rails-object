@@ -16,6 +16,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// 手动调整
 .container-fluid {
 	width: 900px;
 }
@@ -25,12 +26,21 @@
 }
 
 
+$lightGray: #999;
+$grayMediumLight: #eaeaea;
+@mixin box_sizing {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
 /* universal */
 html {
 	over-flow-y: scroll;
 }
 body {
-	padding-top: 60px;
+	// padding-top: 60px;
 }
 section {
 	overflow: auto;
@@ -66,3 +76,4 @@ p {
 	font-size: 1.1em;
 	line-height: 1.7em;
 }
+
