@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [ :show, :edit ]
 
   def show
-    @user = User.find(params[:id])
   end
 
   def new
@@ -22,6 +22,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    
+  end
+
   def verify_email
     if params[:token].present? && (user = User.find_by_verify_token(params[:token]))
       if user.is_verify_email?
@@ -39,6 +46,10 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password)
+    end
+
+    def find_user
+      @user = User.find(params[:id])
     end
 
 end
