@@ -1,1 +1,29 @@
 <% provide(:title, '个人信息') %>
+
+<ol class="breadcrumb">
+  <li class="active">个人信息</li>
+  <li><a href="#">账户信息</a></li>
+  <li><a href="#">密码重置</a></li>
+  <li><a href="#">通知设置</a></li>
+</ol>
+<h1>个人信息</h1>
+<%= simple_form_for @user, html: { class: "form-horizontal"} do |f| %>
+  <div class="col-sm-8 col-sm-offset-2">
+    <%= f.input :name, input_html: { maxlength: 20 } %>	    
+
+    <br/>
+    <%= user_avatar(@user.avatar_path, '100x100', 'show_cover_path') %>
+	<%= f.input :avatar_path, input_html: { id: "avatar_path", readonly: true } %>
+    <a class="btn btn-info" id="pickfiles">更换头像</a>	    
+
+	</br></br></br>
+    <%= f.button :submit, "保存", class: 'btn-lg btn-block' %>
+  </div>
+<% end %>
+
+<%= javascript_include_tag 'upload/image_upload' %>
+<script>
+	$(function (){
+		imageUpload.coverUploader('pickfiles', $('#show_cover_path'), $('#avatar_path'));
+	});
+</script>

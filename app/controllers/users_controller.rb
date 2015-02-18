@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [ :show, :edit ]
+  before_action :find_user, only: [ :show, :edit, :update ]
+  before_action :signed_in_user, only: [ :edit, :update ]
 
   def show
   end
@@ -26,7 +27,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    
+    if @user.update!(user_params)
+      flash[:success] = '修改成功~'
+      redirect_to :back
+    else
+      flash.now[:danger] = '修改失败!'
+      render 'edit'
+    end
   end
 
   def verify_email
@@ -45,7 +52,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password)
+      params.require(:user).permit(:name, :email, :password, :avatar_path)
     end
 
     def find_user
