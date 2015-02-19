@@ -17,7 +17,8 @@
     <a class="btn btn-info" id="pickfiles">更换头像</a>
 
     <%= f.simple_fields_for :info do |build| %>
-    	<%= build.input :gender %>
+    	<%= build.input :gender, as: :radio_buttons, collection: [['boy', '男'], ['girl', '女'], ['secrecy', '保密']], 
+    					label_method: :last, value_method: :first %>
     	<%= build.input :website %>
     	<%= build.input :resume %>
     <% end %>

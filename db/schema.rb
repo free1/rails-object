@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150218020047) do
+ActiveRecord::Schema.define(version: 20150219090539) do
 
   create_table "products", force: true do |t|
     t.text     "describe"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20150218020047) do
 
   create_table "user_infos", force: true do |t|
     t.integer  "user_id"
-    t.string   "gender"
+    t.string   "gender",     default: "secrecy"
     t.text     "resume"
     t.string   "website"
     t.datetime "created_at"
