@@ -1,4 +1,22 @@
 en:
+  # model
+  activerecord:
+    attributes:
+      user: 
+        name: '昵称'
+        avatar_path: '头像'
+        email: '邮箱'
+        password: '密码'
+      user_info:
+        gender: '性别'
+        resume: '自我介绍'
+        website: '个人网站'
+      product:
+        title: '商品名称'
+        cover_path: '封面图'
+        describe: '商品描述'
+
+  # controller
   simple_form:
     "yes": 'Yes'
     "no": 'No'
@@ -14,23 +32,18 @@ en:
     labels:
       # defaults:
       #   password: 'Password'
-      user:
-        new:
-          name: '昵称'
-          email: '邮箱'
-          password: '密码'
-        edit:
-          name: '昵称'
-          avatar_path: '头像'
+      # user:
+      #   new:
+      #     name: '昵称'
+      #     email: '邮箱'
+      #     password: '密码'
+      #   edit:
+          # name: '昵称'
+          # avatar_path: '头像'
       session: 
         new: 
           email: '注册邮箱'
           password: '密码'
-      product:
-        new:
-          title: '商品名称'
-          cover_path: '封面图'
-          describe: '商品描述'
     # hints:
     #   defaults:
     #     username: 'User name to sign in.'
