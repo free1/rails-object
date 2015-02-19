@@ -14,7 +14,13 @@
     <br/>
     <%= user_avatar(@user.avatar_path, '100x100', 'show_cover_path') %>
 	<%= f.input :avatar_path, input_html: { id: "avatar_path", readonly: true } %>
-    <a class="btn btn-info" id="pickfiles">更换头像</a>	    
+    <a class="btn btn-info" id="pickfiles">更换头像</a>
+
+    <%= f.simple_fields_for :info do |build| %>
+    	<%= build.input :gender %>
+    	<%= build.input :website %>
+    	<%= build.input :resume %>
+    <% end %>
 
 	</br></br></br>
     <%= f.button :submit, "保存", class: 'btn-lg btn-block' %>

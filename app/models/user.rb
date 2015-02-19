@@ -12,6 +12,11 @@ class User < ActiveRecord::Base
 
   # 关联
   has_many :products, dependent: :destroy
+  has_one :info, dependent: :destroy, class_name: 'UserInfo'
+  accepts_nested_attributes_for :info
+
+  # 回调
+  after_create { self.create_info }
 
   # 邮箱验证
   def send_verify_email
