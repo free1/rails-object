@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   resource :settings do
     collection do
       get :account
-      post :update_account
     end
   end
 

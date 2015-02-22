@@ -11,36 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150219090539) do
+ActiveRecord::Schema.define(version: 20150222062347) do
 
-  create_table "products", force: true do |t|
-    t.text     "describe"
-    t.string   "cover_path"
-    t.string   "title"
+  create_table "products", force: :cascade do |t|
+    t.text     "describe",   limit: 65535
+    t.string   "cover_path", limit: 255
+    t.string   "title",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+    t.integer  "user_id",    limit: 4
   end
 
-  create_table "user_infos", force: true do |t|
-    t.integer  "user_id"
-    t.string   "gender",     default: "secrecy"
-    t.text     "resume"
-    t.string   "website"
+  create_table "user_infos", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "gender",     limit: 255,   default: "secrecy"
+    t.text     "resume",     limit: 65535
+    t.string   "website",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
+  create_table "users", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.string   "email",           limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest"
-    t.string   "remember_token"
-    t.string   "verify_token"
-    t.boolean  "is_verify_email", default: false
-    t.string   "avatar_path"
+    t.string   "password_digest", limit: 255
+    t.string   "remember_token",  limit: 255
+    t.string   "verify_token",    limit: 255
+    t.boolean  "is_verify_email", limit: 1,   default: false
+    t.string   "avatar_path",     limit: 255
+    t.boolean  "is_email_push",   limit: 1,   default: true
   end
 
 end

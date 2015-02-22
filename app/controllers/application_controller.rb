@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
   end
 
   def store_location
-    session[:return_to] = "/#{request.fullpath}" if request.get?
+    session[:return_to] = request.fullpath if request.get?
   end
 
 end

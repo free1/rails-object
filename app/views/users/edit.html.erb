@@ -1,12 +1,8 @@
 <% provide(:title, '个人信息') %>
 
-<ol class="breadcrumb">
-  <li class="active">个人信息</li>
-  <li><a href="#">账户信息</a></li>
-  <li><a href="#">密码重置</a></li>
-  <li><a href="#">通知设置</a></li>
-</ol>
-<h1>个人信息</h1>
+<%= render 'shared/setting_nav' %>
+
+<h2>个人信息</h2>
 <%= simple_form_for @user, html: { class: "form-horizontal"} do |f| %>
   <div class="col-sm-8 col-sm-offset-2">
     <%= f.input :name, input_html: { maxlength: 20 } %>	    

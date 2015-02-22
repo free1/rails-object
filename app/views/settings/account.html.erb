@@ -1,0 +1,18 @@
+<% provide(:title, '账户信息') %>
+
+<%= render 'shared/setting_nav' %>
+
+<h2>账户信息</h2>
+
+<h4>设置邮箱</h4>
+
+<%= simple_form_for @user, html: { class: "form-horizontal"} do |f| %>
+	<div class="col-sm-8 col-sm-offset-2">
+		<%= f.input :email, input_html: { disabled: true } %>
+		<%= f.input :is_email_push, as: :radio_buttons, collection: [['true', '是'], ['false', '否']],
+					label_method: :last, value_method: :first %>
+
+		<br/>
+		<%= f.button :submit, "更新" %>
+	</div>
+<% end %>

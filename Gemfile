@@ -40,6 +40,10 @@ group :development do
   gem "quiet_assets", "~> 1.0.2"
   # model注释
   gem 'annotate', '~> 2.6.5'
+  # 预加载器
+  gem 'spring'
+  # Use pry debugger
+  # gem 'debugger'
 end
 
 # 部署
@@ -50,18 +54,12 @@ gem 'capistrano-rbenv'
 # gem 'capistrano-rvm'
 gem 'unicorn'
 
-# gem 'sqlite3'
 gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'jbuilder', '~> 2.0'
 # gem 'sdoc', '~> 0.4.0',          group: :doc
 
-gem 'spring',        group: :development
-
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
 
