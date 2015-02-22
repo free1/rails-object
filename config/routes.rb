@@ -14,6 +14,12 @@ Rails.application.routes.draw do
       get 'verify_email'
     end
   end
+  resource :settings do
+    collection do
+      get :account
+      post :update_account
+    end
+  end
 
   resources :products
   # 七牛上传文件

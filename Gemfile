@@ -38,6 +38,8 @@ end
 group :development do
   # 隐藏asset的log
   gem "quiet_assets", "~> 1.0.2"
+  # model注释
+  gem 'annotate', '~> 2.6.5'
 end
 
 # 部署
@@ -53,21 +55,12 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
+# gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-# gem 'capistrano-passenger', :group => :development
-
-# gem 'capistrano', '~> 3.3.0'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
