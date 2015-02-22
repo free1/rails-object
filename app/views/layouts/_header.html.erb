@@ -5,10 +5,11 @@
 	    </div>
 
 	    <ul class="nav navbar-nav">
-			<li class="active"><a href="#">热门</a></li>
-			<li><a href="#">精选</a></li>
-			<li><a href="#">商店</a></li>
-			<li><a href="#">讨论</a></li>
+	    	<%= nav_link '首页', root_path, 'active', true %>
+	    	<%= nav_link '热门', edit_user_path(current_user), 'active', true %>
+	    	<%= nav_link '精选', "#", 'active', true %>
+	    	<%= nav_link '商店', "#", 'active', true %>
+	    	<%= nav_link '讨论', "#", 'active', true %>
 			<li class="dropdown">
 			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">产品 <span class="caret"></span></a>
 			  <ul class="dropdown-menu" role="menu">

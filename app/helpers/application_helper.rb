@@ -10,11 +10,15 @@ module ApplicationHelper
 	end
 
 	# bootstrap导航链接组
-	def nav_link(link_text, link_path, class_name)
+	def nav_link(link_text, link_path, class_name, has_link=false)
 	  class_name = current_page?(link_path) ? class_name : ''
 
 	  content_tag(:li, :class => class_name) do
-	  	link_to_unless_current link_text, link_path
+	  	if has_link
+			link_to link_text, link_path
+		else
+			link_to_unless_current link_text, link_path	  		
+	  	end
 	  end
 	end
 
