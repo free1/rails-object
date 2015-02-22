@@ -29,6 +29,9 @@ gem 'mysql2', '0.3.15'
 # 表单
 gem 'simple_form'
 
+# 分页
+gem 'will_paginate', '~> 3.0.6'
+
 group :assets do
   gem 'sass-rails', '~> 4.0.3'
   gem 'uglifier', '>= 1.3.0'

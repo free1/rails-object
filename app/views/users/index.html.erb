@@ -1,0 +1,17 @@
+<div class="row">
+  <% @users.each do |user| %>
+      <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+          <%= user_avatar user.avatar_path, size: '80x80' %>
+          <div class="caption">
+            <h3><%= user.name %></h3>
+            <p><%= user.info.resume %></p>
+            <p>
+              <a href="#" class="btn btn-primary" role="button">Button</a> 
+              <a href="#" class="btn btn-default" role="button">Button</a>
+            </p>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
