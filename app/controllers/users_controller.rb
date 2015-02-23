@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [ :show, :edit, :update ]
-  before_action :signed_in_user, only: [ :edit, :update ]
+  before_action :find_user, only: [ :show, :edit, :update, :following, :followers ]
+  before_action :signed_in_user, except: [ :show, :index, :new, :create ]
 
   def show
   end
@@ -51,6 +51,18 @@ class UsersController < ApplicationController
     else
       redirect_to new_user_path, flash: { danger: '请先注册账号再进行此操作!' }
     end
+  end
+
+  def following
+    @title = '关注'
+    @users = @user.followed_users.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = '关注者'
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
   end
 
   private

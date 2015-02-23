@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     collection do
       get 'verify_email'
     end
+    member do
+      get :following, :followers
+    end
   end
   resource :settings do
     collection do
