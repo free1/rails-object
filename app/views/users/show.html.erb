@@ -6,6 +6,7 @@
       <h3>
         <%= user_avatar(@user.avatar_path, '100x100') %>
         <%= @user.name %>
+        <%= render 'follow_form' if signed_in? %>
       </h3>
     </section>
     <section>

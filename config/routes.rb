@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'home/api_swagger_ui'
 
+  # 用户相关
   get 'login' => 'sessions#new'
   delete 'logout' => 'sessions#destroy'
   resources :sessions, only: [:new, :create]
@@ -19,8 +20,11 @@ Rails.application.routes.draw do
       get :account
     end
   end
+  resources :relationships, only: [:create, :destroy]
 
+  # 商品相关
   resources :products
+
   # 七牛上传文件
   namespace :upload do
     resources :qiniu, only: [] do

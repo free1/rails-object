@@ -10,10 +10,16 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 3 }, on: :create
 
-  # 关联
+  # 商品
   has_many :products, dependent: :destroy
+  # 用户详细信息
   has_one :info, dependent: :destroy, class_name: 'UserInfo'
   accepts_nested_attributes_for :info
+  # 粉丝
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :followed_users, through: :relationships, source: :followed
+  has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
+  has_many :followers, through: :reverse_relationships, source: :follower
 
   # 回调
   after_create { self.create_info }
@@ -23,6 +29,17 @@ class User < ActiveRecord::Base
     verify_email_token = generate_simple_token(:verify_token)
     save!
     User.send_mail(self.email, "邮箱验证", User.verify_email_template(self.name, verify_email_token))
+  end
+
+  # 关注
+  def following?(other_user)
+    relationships.find_by(followed_id: other_user.id)
+  end
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+  def unfollow!(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy
   end
 
   class << self
