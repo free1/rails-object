@@ -1,0 +1,13 @@
+<div class="row">
+  <% @products.each do |product| %>
+      <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+          <%= link_to image_tag(product.cover_path), product %>
+          <div class="caption">
+            <h3><%= link_to product.title, product, class: 'link_class1' %></h3>
+            <p><%= truncate(product.describe, length: 30) %></p>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>

@@ -7,4 +7,4 @@
 <h3>描述: <small><%= @product.describe %></small></h3>
 <h3>封面图: <small><%= image_tag @product.cover_path, size: "100x100" %></small></h3>
 
-<%= link_to "返回商品列表", "#", class: "btn btn-info" %>
+<%= link_to "返回商品列表", products_path, class: "btn btn-info" %>
