@@ -7,8 +7,7 @@
             <h3><%= link_to user.name, user, class: 'link_class1' %></h3>
             <p><%= truncate(user.info.resume, length: 30) %></p>
             <p>
-              <a href="#" class="btn btn-primary" role="button">Button</a> 
-              <a href="#" class="btn btn-default" role="button">Button</a>
+              <%= render partial: 'follow_form', locals: { user: user } if signed_in? %>
             </p>
           </div>
         </div>
