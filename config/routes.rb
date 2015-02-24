@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'home/api_swagger_ui'
 
+  %w(404 422 500).each do |code|
+    get code, to: "errors#show", code: code
+  end
+
+
   # 用户相关
   get 'login' => 'sessions#new'
   delete 'logout' => 'sessions#destroy'
@@ -32,8 +37,10 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
 
+
   # 商品相关
   resources :products
+
 
   # 七牛上传文件
   namespace :upload do
@@ -43,6 +50,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
 
   # 管理员
   draw :admin

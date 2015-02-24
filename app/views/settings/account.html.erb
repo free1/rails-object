@@ -13,7 +13,7 @@
 					label_method: :last, value_method: :first %>
 
 		<br/>
-		<%= f.button :submit, "更新" %>
+		<%= f.button :submit, "更新", data: { disable_with: '更新中...' } %>
 	</div>
 <% end %>
 

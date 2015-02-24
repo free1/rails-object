@@ -11,6 +11,6 @@
     <%= f.input :password, input_html: { maxlength: 30 } %>
     <p class="help-block">填一个别人猜不到的密码吧</p>
 
-    <%= f.button :submit, "注册", class: 'btn-lg btn-block' %>
+    <%= f.button :submit, "注册", class: 'btn-lg btn-block', data: { disable_with: '资料保存中...' } %>
   </div>
 <% end %>
