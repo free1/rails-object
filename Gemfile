@@ -18,6 +18,18 @@ gem 'grape-swagger'
 # 允跨域请求
 gem 'rack-cors'
 
+# redis
+gem "redis", "~> 3.0.1"
+gem "hiredis", "~> 0.4.5", :platforms => :ruby
+gem 'redis-objects'
+
+# 定时任务
+gem 'whenever', :require => false
+
+# 缓存
+# gem 'dalli'
+gem 'super_cache'
+
 # 资源存储
 gem 'qiniu', '~> 6.2.1'
 gem "mime-types", '~> 1.19'
