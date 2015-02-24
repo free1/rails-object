@@ -42,6 +42,11 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id).destroy
   end
 
+  # 权限
+  def admin?
+    @is_admin ||= self.class.admins.include?(self.email)
+  end
+
   class << self
 
     # 密码加密
@@ -50,6 +55,10 @@ class User < ActiveRecord::Base
     end
     def encrypt(token)
       Digest::SHA1.hexdigest(token.to_s)
+    end
+
+    def admins
+      Figaro.env.admin.split(',')
     end
   end
 

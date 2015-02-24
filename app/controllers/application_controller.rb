@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   # view中可用的方法
-  helper_method :current_user, :signed_in?, :current_user?
+  helper_method :current_user, :signed_in?, :current_user?, :is_admin?
 
   def sign_in(user)
     remember_token = User.new_remember_token
@@ -48,6 +48,14 @@ class ApplicationController < ActionController::Base
 
   def store_location
     session[:return_to] = request.fullpath if request.get?
+  end
+
+  def auth_admin!
+    redirect_to main_app.root_path unless is_admin?
+  end
+
+  def is_admin?
+    current_user && current_user.admin?
   end
 
 end

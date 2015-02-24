@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>后台管理</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
+</head>
+<body>
+	<!-- header -->
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <%= link_to "微生活", root_path, class: "navbar-brand" %>
+	    </div>
+
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	      	<%= nav_link 'Link', "#", 'active', true %>
+	      	<%= nav_link 'Link', "#", 'active', true %>
+	      	<%= nav_link 'Link', "#", 'active', true %>
+	      	<%= nav_link 'Link', "#", 'active', true %>
+	      	<%= nav_link 'Link', "#", 'active', true %>
+	      	<%= nav_link 'Link', "#", 'active', true %>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="#"><%= current_user.email %></a></li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+
+	<div class="container">
+		<!-- 顶部提示 -->
+		<% flash.each do |key, value| %>
+			<%= content_tag(:div, value, class: "alert alert-#{key}") %>
+		<% end %>
+
+		<%= yield %>
+	</div>
+	<!-- footer -->
+	<%= render 'layouts/footer' %>
+</body>
+</html>

@@ -62,6 +62,7 @@ group :development do
   gem 'spring'
   # Use pry debugger
   # gem 'debugger'
+  # gem 'byebug'
 end
 
 # 部署

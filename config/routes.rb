@@ -1,3 +1,10 @@
+
+class ActionDispatch::Routing::Mapper
+  def draw(routes_name)
+    instance_eval(File.read(Rails.root.join("config/routes/#{routes_name}.rb")))
+  end
+end
+
 Rails.application.routes.draw do
 
   mount API => "/"
@@ -36,6 +43,9 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  # 管理员
+  draw :admin
 
 
 
