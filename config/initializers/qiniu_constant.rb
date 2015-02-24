@@ -1,5 +1,5 @@
 # 全大写
-QiniuScope = 'free'
+QiniuScope = ENV["qiniu_scope"]
 QiniuExpiresIn = 12*60*60
-QiniuUptokenUrl = '/upload/qiniu/image_up_token'
-QiniuUploadUrl = 'http://7vznrs.com1.z0.glb.clouddn.com/'
+QiniuUptokenUrl = ENV["qiniu_uptoken_url"]
+QiniuUploadUrl = ENV["qiniu_upload_url"]

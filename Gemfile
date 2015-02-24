@@ -29,6 +29,9 @@ gem 'mysql2', '0.3.15'
 # 表单
 gem 'simple_form'
 
+# Simple Rails app configuration
+gem "figaro"
+
 # 分页
 gem 'will_paginate', '~> 3.0.6'
 
