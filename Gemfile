@@ -41,6 +41,9 @@ gem 'mysql2', '0.3.15'
 # 表单
 gem 'simple_form'
 
+# 权限
+gem 'cancancan', '~> 1.10'
+
 # Simple Rails app configuration
 gem "figaro"
 
