@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
 
   # 商品
   has_many :products, dependent: :destroy
+  # 收藏
+  has_many :user_collect_products, dependent: :destroy
+  has_many :collect_products, through: :user_collect_products, source: :product
   # 用户详细信息
   has_one :info, dependent: :destroy, class_name: 'UserInfo'
   accepts_nested_attributes_for :info
@@ -40,6 +43,20 @@ class User < ActiveRecord::Base
   end
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  # 收藏
+  def collecting?(collect_id, collect_type)
+    type = ActiveSupport::Inflector.pluralize(collect_type)
+    self.send("user_collect_#{type}").find_by("#{collect_type}_id" => collect_id)
+  end
+  def collect!(collect_id, collect_type)
+    type = ActiveSupport::Inflector.pluralize(collect_type)
+    self.send("user_collect_#{type}").create!("#{collect_type}_id" => collect_id)
+  end
+  def cancel_collect!(collect_id, collect_type)
+    type = ActiveSupport::Inflector.pluralize(collect_type)
+    self.send("user_collect_#{type}").find_by("#{collect_type}_id" => collect_id).destroy
   end
 
   # 权限

@@ -21,11 +21,17 @@ module ApplicationHelper
 
 	  content_tag(:li, class: class_name) do
 	  	if has_link
-			link_to link_text, link_path
-		else
-			link_to_unless_current link_text, link_path	  		
+				link_to link_text, link_path
+			else
+				link_to_unless_current link_text, link_path	  		
 	  	end
 	  end
+	end
+
+	# 两种class切换(比如收藏)
+	def switch_link(link_path, class_name, link_method, title=nil, link_text='')
+		
+		link_to link_text, link_path, class: class_name, method: link_method, remote: true
 	end
 
 end
