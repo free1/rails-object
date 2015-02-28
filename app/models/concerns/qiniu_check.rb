@@ -28,6 +28,7 @@ module QiniuCheck
 			    # key,            # 最终资源名，可省略，缺省为上传策略 scope 字段中指定的Key值
 			    # x_var           # 用户自定义变量，可省略，需要指定为一个 Hash 对象
 			)
+			QiniuUploadUrl + result['image_path']
 		end
 	
 	end
