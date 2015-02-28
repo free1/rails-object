@@ -38,6 +38,9 @@ gem "mime-types", '~> 1.19'
 gem 'mysql2', '0.3.15'
 # gem "mongoid", "~> 4.0.0"
 
+# 生成二维码
+gem 'rqrcode_png'
+
 # 表单
 gem 'simple_form'
 
