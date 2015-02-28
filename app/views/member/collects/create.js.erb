@@ -1,1 +1,1 @@
-$(".collect").html(j())
+$("#collect_<%= @collect_type.id %>").html("<%= j(render(partial: 'member/collects/cancel_collect', locals: {product: @collect_type})) %>")
