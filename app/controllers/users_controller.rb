@@ -69,7 +69,8 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :avatar_path, :is_email_push,
-                                    info_attributes: [:gender, :resume, :website, :user_id, :id])
+                                    info_attributes: [:gender, :resume, :website, :user_id, :id],
+                                    wechat_info_attributes: [:public_name, :number, :qr_code, :keyword, :user_id])
     end
 
     def find_user

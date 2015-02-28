@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   # 用户详细信息
   has_one :info, dependent: :destroy, class_name: 'UserInfo'
   accepts_nested_attributes_for :info
+  has_one :wechat_info, dependent: :destroy
+  accepts_nested_attributes_for :wechat_info
   # 粉丝
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
@@ -26,6 +28,7 @@ class User < ActiveRecord::Base
 
   # 回调
   after_create { self.create_info }
+  after_create { self.create_wechat_info }
 
   # 邮箱验证
   def send_verify_email

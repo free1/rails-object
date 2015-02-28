@@ -4,17 +4,34 @@
 
 <h2>账户信息</h2>
 
-<h4>设置邮箱</h4>
+<div class="col-sm-12">
+	<h4>设置邮箱</h4>
 
-<%= simple_form_for @user, html: { class: "form-horizontal"} do |f| %>
-	<div class="col-sm-8 col-sm-offset-2">
-		<%= f.input :email, input_html: { disabled: true } %>
-		<%= f.input :is_email_push, as: :radio_buttons, collection: [['true', '是'], ['false', '否']],
-					label_method: :last, value_method: :first %>
+	<%= simple_form_for @user, html: { class: "form-horizontal" } do |f| %>
+		<div class="col-sm-8 col-sm-offset-2">
+			<%= f.input :email, input_html: { disabled: true } %>
+			<%= f.input :is_email_push, as: :radio_buttons, collection: [['true', '是'], ['false', '否']],
+						label_method: :last, value_method: :first %>
 
-		<br/>
-		<%= f.button :submit, "更新", data: { disable_with: '更新中...' } %>
-	</div>
-<% end %>
+			<br/>
+			<%= f.button :submit, "更新", data: { disable_with: '更新中...' } %>
+		</div>
+	<% end %>
+</div>
 
-<h4>第三方登录</h4>
+<div class="col-sm-12">
+	<h4>微信信息</h4>
+
+	<%= simple_form_for @user, html: { class: "form-horizontal" } do |f| %>
+		<div class="col-sm-8 col-sm-offset-2">
+			<%= f.simple_fields_for :wechat_info do |build| %>
+				<%= build.input :public_name %>
+				<%= build.input :number %>
+				<%= build.input :qr_code %>
+				<%= build.input :keyword %>
+				<br/>
+				<%= f.button :submit, "更新", data: { disable_with: '更新中...' } %>
+			<% end %>
+		</div>
+	<% end %>
+</div>

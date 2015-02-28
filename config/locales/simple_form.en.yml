@@ -16,6 +16,11 @@ en:
         title: '商品名称'
         cover_path: '封面图'
         describe: '商品描述'
+      wechat_info:
+        public_name: '微信公众号名称'
+        number: '微信号'
+        qr_code: '微信二维码'
+        keyword: '关键词'
 
   # controller
   simple_form:
