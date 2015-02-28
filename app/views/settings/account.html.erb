@@ -27,7 +27,11 @@
 			<%= f.simple_fields_for :wechat_info do |build| %>
 				<%= build.input :public_name %>
 				<%= build.input :number %>
-				<%= build.input :qr_code %>
+
+				<%= build.input :qr_code, as: :hidden, input_html: { id: 'qr_code_path' } %>
+				<%= user_avatar(@user.wechat_info.qr_code, '100x100', 'show_cover_path') %>
+				<a class="btn btn-info" id="pickfiles">上传微信二维码</a>
+
 				<%= build.input :keyword %>
 				<br/>
 				<%= f.button :submit, "更新", data: { disable_with: '更新中...' } %>
@@ -35,3 +39,10 @@
 		</div>
 	<% end %>
 </div>
+
+<%= javascript_include_tag 'upload/image_upload' %>
+<script>
+	$(function (){
+		imageUpload.coverUploader('pickfiles', $('#show_cover_path'), $('#qr_code_path'));
+	});
+</script>
