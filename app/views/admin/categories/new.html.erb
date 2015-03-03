@@ -1,0 +1,8 @@
+<%= simple_form_for [:admin, @category], html: { class: "form-horizontal"} do |f| %>
+  <div class="col-sm-8 col-sm-offset-2">
+    <%= f.input :name, autofocus: true %>
+
+    </br></br></br>
+    <%= f.button :submit, "创建新标签", class: 'btn-block', data: { disable_with: '创建中...' } %>
+  </div>
+<% end %>

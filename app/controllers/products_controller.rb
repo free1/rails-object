@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
 
 		if @product.save
 			flash[:success] = "发布成功"
-      		redirect_to product_path(@product)
+      redirect_to product_path(@product)
 		else
 			flash.now[:danger] = "发布失败"
 			render 'new'

@@ -1,0 +1,27 @@
+<h1>标签管理</h1>
+
+<%= link_to '添加新标签', new_admin_category_path, class: 'btn btn-info' %>
+
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>名称</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.id %></td>
+        <td><%= category.name %></td>
+        <td>
+        	<%= link_to '显示', [:admin, category] %>
+        	<%= link_to '编辑', edit_admin_category_path(category) %>
+        	<%= link_to '删除', [:admin, category], method: :delete, data: { confirm: '确定要删除?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -35,6 +35,12 @@ a:hover {
 	line-height: 1.5;
 }
 
+.active_dropdown_menu {
+	text-decoration: none;
+	color: #262626;
+	background-color: whitesmoke;
+}
+
 
 $lightGray: #999;
 $grayMediumLight: #eaeaea;
