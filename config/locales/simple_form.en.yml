@@ -21,6 +21,36 @@ en:
         number: '微信号'
         qr_code: '微信二维码'
         keyword: '关键词'
+      category:
+        name: '标签名'
+
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: '必须是可被接受的'
+      blank: '不能为空'
+      present: '必须存在'
+      confirmation: '与确认值不匹配'
+      equal_to: "必须等于 %{count}"
+      greater_than: "必须大于 %{count}"
+      greater_than_or_equal_to: "必须大于或等于 %{count}"
+      inclusion: '不包含于列表中'
+      invalid: '是无效的'
+      less_than: "必须小于 %{count}"
+      less_than_or_equal_to: "必须小于或等于 %{count}"
+      not_a_number: '不是数字'
+      not_an_integer: '必须是整数'
+      taken: '已经被使用'
+      too_long:
+        one: "过长（最长为一个字符）"
+        other: " 过长（最长为 %{count} 个字符）"
+      too_short:
+        one: '过短（最短为一个字符）'
+        other: "过短（最短为 %{count} 个字符）"
+      wrong_length:
+        one: '长度非法（必须为一个字符）'
+        other: "长度非法（必须为 %{count} 个字符）"
+      other_than: "长度非法（不可为 %{count} 个字符"
 
   # controller
   simple_form:
