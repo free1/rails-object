@@ -3,7 +3,7 @@ module Admin
 		before_action :find_category, only: [ :destroy, :change_weight ]
 
 		def index
-			@categories = Category.paginate(page: params[:page], per_page: 20)	
+			@categories = Category.created_time.paginate(page: params[:page], per_page: 20)	
 		end
 
 		def new

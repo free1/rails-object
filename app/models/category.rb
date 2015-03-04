@@ -5,4 +5,6 @@ class Category < ActiveRecord::Base
 
 	validates :name, presence: true
 
+	scope :created_time, -> { order(id: :desc) }
+
 end
