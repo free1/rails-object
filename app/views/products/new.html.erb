@@ -11,6 +11,8 @@
     <br/>
     <img src="<%= @product.cover_path %>" id="show_cover_path" width="100" height="100"/>
 
+    <%= f.association :categories, as: :check_boxes %>
+
     </br></br></br>
     <%= f.button :submit, "发布商品", class: 'btn-lg btn-block', data: { disable_with: '发布中...' } %>
   </div>

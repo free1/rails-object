@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
 	private
 
 		def product_params
-			params.require(:product).permit(:title, :describe, :cover_path)
+			params.require(:product).permit(:title, :describe, :cover_path, category_ids: [])
 		end
 
 end
