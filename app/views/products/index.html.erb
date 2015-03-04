@@ -1,20 +1,38 @@
-<div class="row">
+<div class="content-side">
+  <p class="section-name">选择分类</p>
+  <ul class="section-value">
+    <% @categories.each do |category| %>
+      <%= nav_link category.name, "#", "", true %>
+    <% end %>
+  </ul>
+</div>
+
+<div class="content-main">
   <% @products.each do |product| %>
+    <article class="trip-g">
+      <%= link_to image_tag(product.cover_path_with_size), product, class: "cover" %>
+      <div class="trip-c">
+        <h1><%= product.title %></h1>
+        <div class="trip-desc"><%= truncate(product.describe, length: 30) %></div>
+      </div>
+
+      <div id="collect_<%= product.id %>" class="trip-collect">
+        <% if current_user && current_user.collecting?(product, "product") %>
+          <%= render partial: 'member/collects/cancel_collect', locals: {product: product} %>
+        <% else %>
+          <%= render partial: 'member/collects/collect', locals: {product: product} %>
+        <% end %>
+      </div>
+    </article>
+  <% end %>
+</div>
+
+<!--   
       <div class="col-sm-6 col-md-3">
-        <div class="thumbnail">
-          <%= link_to image_tag(product.cover_path), product %>
-          <div class="caption">
-            <h3><%= link_to product.title, product, class: 'link_class1' %></h3>
-            <p><%= truncate(product.describe, length: 30) %></p>
-            <div id="collect_<%= product.id %>">
-              <% if current_user && current_user.collecting?(product, "product") %>
-                <%= render partial: 'member/collects/cancel_collect', locals: {product: product} %>
-              <% else %>
-                <%= render partial: 'member/collects/collect', locals: {product: product} %>
-              <% end %>
-            </div>
+        
+
+            
           </div>
         </div>
       </div>
-  <% end %>
-</div>
+ -->

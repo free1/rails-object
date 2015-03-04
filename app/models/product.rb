@@ -11,5 +11,10 @@ class Product < ActiveRecord::Base
 	validates_presence_of :user, :cover_path
 	validates :title, presence: true, length: { maximum: 30 }
 	validates :describe, presence: true, length: { maximum: 500 }
+
+
+	def cover_path_with_size
+		"#{self.cover_path}?imageView2/1/w/330/h/200"
+	end
 	
 end

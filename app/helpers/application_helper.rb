@@ -20,6 +20,7 @@ module ApplicationHelper
 	  class_name = current_page?(link_path) ? class_name : ''
 
 	  content_tag(:li, class: class_name) do
+	  	# 当前选中的链接是否是a标签
 	  	if has_link
 				link_to link_text, link_path
 			else

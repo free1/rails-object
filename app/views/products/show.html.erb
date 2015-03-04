@@ -6,6 +6,7 @@
 <h3>名称: <small><%= @product.title %></small></h3>
 <h3>描述: <small><%= @product.describe %></small></h3>
 <h3>封面图: <small><%= image_tag @product.cover_path, size: "100x100" %></small></h3>
+<h3>所属标签: <small><%= @product.categories.map(&:name) %></small></h3>
 
 <br/>
 <%= link_to "返回商品列表", products_path, class: "btn btn-info" %>
