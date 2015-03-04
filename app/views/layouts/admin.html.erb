@@ -12,7 +12,7 @@
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	      <%= link_to "微生活", root_path, class: "navbar-brand" %>
+	      <%= link_to "微生活", admin_dashboard_path, class: "navbar-brand" %>
 	    </div>
 
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -29,6 +29,7 @@
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
 	        <li><a href="#"><%= current_user.email %></a></li>
+	        <li><%= link_to "主页", root_path %></li>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
@@ -44,5 +45,13 @@
 	</div>
 	<!-- footer -->
 	<%= render 'layouts/footer' %>
+	<script>
+		$.ajaxSetup({
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+	</script>
+	<%= yield :script %>
 </body>
 </html>

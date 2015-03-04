@@ -7,6 +7,7 @@
     <tr>
       <th>ID</th>
       <th>名称</th>
+      <th>权重</th>
       <th>操作</th>
     </tr>
   </thead>
@@ -16,6 +17,10 @@
       <tr>
         <td><%= category.id %></td>
         <td><%= category.name %></td>
+        <td id="category-<%= category.id %>" data-category-id="<%= category.id %>">
+        	<%= text_field_tag 'weight', category.weight, class: "category-weight" %>
+        	<%#= category.weight %>
+        </td>
         <td>
         	<%= link_to '显示', [:admin, category] %>
         	<%= link_to '编辑', edit_admin_category_path(category) %>
@@ -25,3 +30,29 @@
     <% end %>
   </tbody>
 </table>
+
+<% content_for :script do %>
+	<script>
+		$(function() {
+
+			$('.category-weight').on('focus', function(){
+				_this = $(this);	
+
+				_this.on('blur', function(){
+					categoryId = _this.parent().data("categoryId");
+					categoryWeight = _this.val();
+					$.ajax({
+						url: "/admin/categories/" + categoryId + "/change_weight",
+						type: "post",
+						data: {weight: categoryWeight}
+					}).done(function(){
+						alert("succ");
+					}).fail(function(){
+						alert("fail");
+					});
+				})
+			});
+			
+		});
+	</script>
+<% end %>
