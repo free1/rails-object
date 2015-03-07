@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
   has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
 
+  # 代理
+  delegate :public_name, :number, :qr_code, :keyword, to: :wechat_info, allow_nil: true
+  delegate :gender, :resume, :website, to: :info, allow_nil: true
+
   # 回调
   after_create { self.create_info }
   after_create { self.create_wechat_info }
