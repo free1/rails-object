@@ -13,7 +13,7 @@ set :application, 'weixin_test'
 set :repo_url, 'https://gitcafe.com/free1/weixin_test.git'
 
 set :user, "deploy"
-set :use_sudo, true
+# set :use_sudo, true
 
 # set :rvm_type, :system                     # Defaults to: :auto
 # set :rvm_ruby_version, '2.0.0-p247'      # Defaults to: 'default'
@@ -21,11 +21,24 @@ set :use_sudo, true
 set :rbenv_type, :user # or :system, depends on your rbenv setup
 set :rbenv_ruby, '2.1.2'
 
+
+
+# set :rbenv_type, :user # or :system, depends on your rbenv setup
+# set :rbenv_ruby, '2.0.0-p247'
+# # in case you want to set ruby version from the file:
+# # set :rbenv_ruby, File.read('.ruby-version').strip
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+# set :rbenv_roles, :all # default value
+
+
+
+
 # Default branch is :master
-ask :branch, "master"
+set :branch, "master"
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/var/www/weixin_test'
+set :deploy_to, "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 
 # set :default_stage, "production"
 # Default value for :scm is :git
@@ -41,10 +54,10 @@ set :scm, :git
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, fetch(:linked_files, []).push('config/database.yml')
+# set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 
 # Default value for linked_dirs is []
-set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+# set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -64,5 +77,5 @@ namespace :deploy do
       put "修改文件 #{shared_path}."
     end
   end
-  after "deploy:setup", "deploy:setup_config"
+  # after "deploy:setup", "deploy:setup_config"
 end

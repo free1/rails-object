@@ -69,21 +69,20 @@ group :development do
   # Use pry debugger
   # gem 'debugger'
   # gem 'byebug'
+  # 部署
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  # gem 'capistrano-rvm'
 end
 
-# 部署
-gem 'capistrano'
-gem 'capistrano-bundler'
-gem 'capistrano-rails'
-gem 'capistrano-rbenv'
-# gem 'capistrano-rvm'
 gem 'unicorn'
 
 gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'jbuilder', '~> 2.0'
-# gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

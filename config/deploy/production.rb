@@ -4,9 +4,9 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{deploy@121.42.153.234}
-role :web, %w{deploy@121.42.153.234}
-role :db,  %w{deploy@121.42.153.234}
+role :app, %w{deploy@121.42.161.252}
+role :web, %w{deploy@121.42.161.252}
+role :db,  %w{deploy@121.42.161.252}
 
 # server '2sheying.cn', user: 'deploy', roles: %w{web app db}
 
