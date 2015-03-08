@@ -13,7 +13,7 @@ set :application, 'weixin_test'
 set :repo_url, 'https://gitcafe.com/free1/weixin_test.git'
 
 set :user, "deploy"
-set :use_sudo, true
+set :use_sudo, false
 
 # set :rvm_type, :system                     # Defaults to: :auto
 # set :rvm_ruby_version, '2.0.0-p247'      # Defaults to: 'default'
@@ -73,10 +73,10 @@ namespace :deploy do
   desc "after setup"
   task :setup_config do
     on roles(:all) do
-      execute "#{fetch(:try_sudo)} ln -nfs #{fetch(:current_path)}/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
-      execute "#{fetch(:try_sudo)} ln -nfs #{fetch(:current_path)}/config/unicorn_init.sh /etc/init.d/unicorn_#{fetch(:application)}"
-      execute "mkdir -p #{fetch(:shared_path)}/config"
-      p File.read("config/database.yml"), "#{fetch(:shared_path)}/config/database"
+      execute "#{fetch(:sudo)} ln -nfs #{fetch(:current_path)}/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
+      execute "#{fetch(:sudo)} ln -nfs #{fetch(:current_path)}/config/unicorn_init.sh /etc/init.d/unicorn_#{fetch(:application)}"
+      execute "#{fetch(:sudo)} mkdir -p #{fetch(:shared_path)}/config"
+      p File.read("config/database.yml"), "#{fetch(:shared_path)}/config/database.yml"
       p "modify file #{fetch(:shared_path)}."
     end
   end
