@@ -13,7 +13,7 @@ set :application, 'weixin_test'
 set :repo_url, 'https://gitcafe.com/free1/weixin_test.git'
 
 set :user, "deploy"
-# set :use_sudo, true
+set :use_sudo, true
 
 # set :rvm_type, :system                     # Defaults to: :auto
 # set :rvm_ruby_version, '2.0.0-p247'      # Defaults to: 'default'
@@ -29,10 +29,13 @@ set :rbenv_ruby, '2.1.2'
 # # set :rbenv_ruby, File.read('.ruby-version').strip
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
-# set :rbenv_roles, :all # default value
+set :rbenv_roles, :all # default value
 
 
-
+server 'deploy@121.42.161.252', roles: [:all]
+# role :app, %w{deploy@121.42.161.252}
+# role :web, %w{deploy@121.42.161.252}
+# role :db,  %w{deploy@121.42.161.252}
 
 # Default branch is :master
 set :branch, "master"
@@ -67,15 +70,15 @@ set :keep_releases, 5
 
 namespace :deploy do
 
-  desc "之后执行"
+  desc "after setup"
   task :setup_config do
-    on roles(:all) do |host|
-      run "#{try_sudo} ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
-      run "#{try_sudo} ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
-      run "mkdir -p #{shared_path}/config"
-      put File.read("config/database.yml"), "#{shared_path}/config/database"
-      put "修改文件 #{shared_path}."
+    on roles(:all) do
+      execute "#{fetch(:try_sudo)} ln -nfs #{fetch(:current_path)}/config/nginx.conf /etc/nginx/sites-enabled/#{fetch(:application)}"
+      execute "#{fetch(:try_sudo)} ln -nfs #{fetch(:current_path)}/config/unicorn_init.sh /etc/init.d/unicorn_#{fetch(:application)}"
+      execute "mkdir -p #{fetch(:shared_path)}/config"
+      p File.read("config/database.yml"), "#{fetch(:shared_path)}/config/database"
+      p "modify file #{fetch(:shared_path)}."
     end
   end
-  # after "deploy:setup", "deploy:setup_config"
+  after :started, :setup_config
 end

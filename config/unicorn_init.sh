@@ -1,4 +1,4 @@
-root = "/home/deploy/weixin_test/current/"
+root = "/home/deploy/apps/weixin_test/current/"
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
 stderr_path "#{root}/log/unicorn.log"
