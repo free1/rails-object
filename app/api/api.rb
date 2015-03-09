@@ -5,7 +5,7 @@ class API < Grape::API
   helpers APIHelpers
   # helpers ErrorsHelper
 
-  mount V1::Base
+  mount ::V1::Base
 
   # 生成文档
   base_path = Rails.env.production? ? "#{ENV['URL_SCHEMA']}://#{ENV['URL_HOST']}" : nil
