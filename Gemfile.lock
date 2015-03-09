@@ -246,8 +246,8 @@ DEPENDENCIES
   cancancan (~> 1.10)
   capistrano
   capistrano-bundler
-  capistrano-rails
-  capistrano-rbenv
+  capistrano-rails (~> 1.1.0)
+  capistrano-rbenv (~> 2.0)
   coffee-rails (~> 4.0.0)
   figaro
   grape

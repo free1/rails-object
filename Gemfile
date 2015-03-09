@@ -72,9 +72,8 @@ group :development do
   # 部署
   gem 'capistrano'
   gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano-rbenv'
-  # gem 'capistrano-rvm'
+  gem 'capistrano-rails', '~> 1.1.0'
+  gem 'capistrano-rbenv', "~> 2.0"   
 end
 
 gem 'unicorn'
