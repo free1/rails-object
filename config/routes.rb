@@ -7,7 +7,7 @@ end
 
 Rails.application.routes.draw do
 
-  mount API => "/"
+  mount API::API => "/"
 
   root 'home#index'
   get 'home/api_swagger_ui'
