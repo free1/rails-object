@@ -1,4 +1,5 @@
 <% provide(:title, '个人信息') %>
+<%= stylesheet_link_tag 'doc/' %>
 
 <%= render 'shared/setting_nav' %>
 
@@ -11,6 +12,8 @@
     <%= user_avatar(@user.avatar_path, '100x100', 'show_cover_path') %>
 	<%= f.input :avatar_path, input_html: { id: "avatar_path", readonly: true } %>
     <a class="btn btn-info" id="pickfiles">更换头像</a>
+
+    <%= f.input :tag_tokens %>
 
     <%= f.simple_fields_for :info do |build| %>
     	<%= build.input :gender, as: :radio_buttons, collection: [['boy', '男'], ['girl', '女'], ['secrecy', '保密']], 
@@ -25,8 +28,11 @@
 <% end %>
 
 <%= javascript_include_tag 'upload/image_upload' %>
+<%= javascript_include_tag 'doc/jquery.tokeninput' %>
 <script>
 	$(function (){
 		imageUpload.coverUploader('pickfiles', $('#show_cover_path'), $('#avatar_path'));
+
+        $("#user_tag_tokens").tokenInput("/tags");
 	});
 </script>

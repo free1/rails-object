@@ -25,6 +25,9 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
+  # 所属tag标签
+  has_many :user_tag_ships, dependent: :destroy
+  has_many :tags, through: :user_tag_ships
 
   # 代理
   delegate :public_name, :number, :qr_code, :keyword, to: :wechat_info, allow_nil: true
@@ -64,6 +67,14 @@ class User < ActiveRecord::Base
   def cancel_collect!(collect_id, collect_type)
     type = ActiveSupport::Inflector.pluralize(collect_type)
     self.send("user_collect_#{type}").find_by("#{collect_type}_id" => collect_id).destroy
+  end
+
+  # 标签
+  def tag_tokens=(tokens)
+    self.tag_ids = Tag.ids_from_tokens(tokens)
+  end
+  def tag_tokens
+    self.tags
   end
 
   # 权限
