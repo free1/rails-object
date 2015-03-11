@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   # todo 可以把user的功能都放到module下
   scope module: :member do
     resources :collects, only: [:create, :destroy]
+    resources :tags, only: [:index]
   end
 
 
