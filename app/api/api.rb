@@ -1,5 +1,4 @@
-module API
-  class API < Grape::API
+class API < Grape::API
     prefix 'api'
     format :json
 
@@ -14,6 +13,4 @@ module API
     #   mount_path: '/doc/swagger', api_version: 'v1',
     #   hide_documentation_path: true
     add_swagger_documentation api_version: 'v1'
-
-  end
 end
