@@ -22,5 +22,13 @@
 	</div>
 	<!-- footer -->
 	<%= render 'layouts/footer' %>
+	<script>
+		$.ajaxSetup({
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+	</script>
+	<%= yield :script %>
 </body>
 </html>
