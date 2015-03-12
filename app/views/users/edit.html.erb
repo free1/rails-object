@@ -13,7 +13,7 @@
 	<%= f.input :avatar_path, input_html: { id: "avatar_path", readonly: true } %>
     <a class="btn btn-info" id="pickfiles">更换头像</a>
 
-    <%= f.input :tag_tokens %>
+    <%= f.input :tag_tokens, input_html: { data: {load: @user.tags} } %>
 
     <%= f.simple_fields_for :info do |build| %>
     	<%= build.input :gender, as: :radio_buttons, collection: [['boy', '男'], ['girl', '女'], ['secrecy', '保密']], 
@@ -33,6 +33,9 @@
 	$(function (){
 		imageUpload.coverUploader('pickfiles', $('#show_cover_path'), $('#avatar_path'));
 
-        $("#user_tag_tokens").tokenInput("/tags");
+        $("#user_tag_tokens").tokenInput("/tags", {
+            theme: 'facebook',
+            prePopulate: $("#user_tag_tokens").data('load')
+        });
 	});
 </script>
