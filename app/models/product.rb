@@ -7,11 +7,12 @@ class Product < ActiveRecord::Base
 	# 分类
 	has_many :product_category_ships, dependent: :destroy
 	has_many :categories, through: :product_category_ships
-
+	# 验证
 	validates_presence_of :user, :cover_path
 	validates :title, presence: true, length: { maximum: 30 }
 	validates :describe, presence: true, length: { maximum: 5000 }
-
+	# 排序
+	scope :category_for, ->(category_name) { joins(:categories).where("categories.name = ?", category_name)}
 
 	def cover_path_with_size
 		"#{self.cover_path}?imageView2/1/w/330/h/200"

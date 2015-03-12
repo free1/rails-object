@@ -2,7 +2,7 @@
   <p class="section-name">选择分类</p>
   <ul class="section-value">
     <% @categories.each do |category| %>
-      <%= nav_link category.name, "#", "", true %>
+      <%= nav_link category.name, products_path(category: category.name), "", true %>
     <% end %>
   </ul>
 </div>
@@ -13,7 +13,7 @@
       <%= link_to image_tag(product.cover_path_with_size), product, class: "cover" %>
       <div class="trip-c">
         <h1><%= product.title %></h1>
-        <div class="trip-desc"><%= truncate(product.describe, length: 30) %></div>
+        <div class="trip-desc"><%= truncate(strip_tags(product.describe), length: 30) %></div>
       </div>
 
       <div id="collect_<%= product.id %>" class="trip-collect">
