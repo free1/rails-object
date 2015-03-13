@@ -9,6 +9,9 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'will_paginate-bootstrap'
 gem 'autoprefixer-rails'
 
+gem 'jquery-rails'
+gem 'turbolinks'
+
 gem 'net-ssh'
 
 # api
@@ -53,6 +56,13 @@ gem "figaro"
 # 分页
 gem 'will_paginate', '~> 3.0.6'
 
+# web server
+gem 'unicorn'
+
+gem 'jbuilder', '~> 2.0'
+# Use ActiveModel has_secure_password
+gem 'bcrypt', '~> 3.1.7'
+
 group :assets do
   gem 'sass-rails', '~> 4.0.3'
   gem 'uglifier', '>= 1.3.0'
@@ -66,23 +76,13 @@ group :development do
   gem 'annotate', '~> 2.6.5'
   # 预加载器
   gem 'spring'
-  # Use pry debugger
-  # gem 'debugger'
-  # gem 'byebug'
   # 部署
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rails', '~> 1.1.0'
-  gem 'capistrano-rbenv', "~> 2.0"   
+  gem 'capistrano-rbenv', "~> 2.0"
+  # 调试
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'pry-rails'
 end
-
-gem 'unicorn'
-
-gem 'jquery-rails'
-gem 'turbolinks'
-
-gem 'jbuilder', '~> 2.0'
-
-# Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
-
