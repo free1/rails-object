@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314085623) do
+ActiveRecord::Schema.define(version: 20150314101624) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150314085623) do
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", length: {"commentable_id"=>nil, "commentable_type"=>100}, using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "product_category_ships", force: :cascade do |t|
     t.integer  "product_id",  limit: 4
@@ -37,6 +38,10 @@ ActiveRecord::Schema.define(version: 20150314085623) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
+
+  add_index "product_category_ships", ["category_id"], name: "index_product_category_ships_on_category_id", using: :btree
+  add_index "product_category_ships", ["product_id", "category_id"], name: "index_product_category_ships_on_product_id_and_category_id", unique: true, using: :btree
+  add_index "product_category_ships", ["product_id"], name: "index_product_category_ships_on_product_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.text     "describe",   limit: 65535
@@ -46,6 +51,8 @@ ActiveRecord::Schema.define(version: 20150314085623) do
     t.datetime "updated_at"
     t.integer  "user_id",    limit: 4
   end
+
+  add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id", limit: 4
@@ -84,12 +91,18 @@ ActiveRecord::Schema.define(version: 20150314085623) do
     t.datetime "updated_at"
   end
 
+  add_index "user_infos", ["user_id"], name: "index_user_infos_on_user_id", using: :btree
+
   create_table "user_tag_ships", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
     t.integer  "tag_id",     limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
+
+  add_index "user_tag_ships", ["tag_id"], name: "index_user_tag_ships_on_tag_id", using: :btree
+  add_index "user_tag_ships", ["user_id", "tag_id"], name: "index_user_tag_ships_on_user_id_and_tag_id", unique: true, using: :btree
+  add_index "user_tag_ships", ["user_id"], name: "index_user_tag_ships_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",            limit: 255
@@ -113,5 +126,7 @@ ActiveRecord::Schema.define(version: 20150314085623) do
     t.datetime "updated_at",              null: false
     t.integer  "user_id",     limit: 4
   end
+
+  add_index "wechat_infos", ["user_id"], name: "index_wechat_infos_on_user_id", using: :btree
 
 end
