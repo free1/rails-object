@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   delegate :gender, :resume, :website, to: :info, allow_nil: true
 
   # 回调
-  
+
 
   # 邮箱验证
   def send_verify_email

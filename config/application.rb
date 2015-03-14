@@ -27,10 +27,12 @@ module WeixinTest
     # Observer configuration
     config.active_record.observers = :user_observer
 
+    # 生成器设置
     config.generators do |g|
       g.orm             :active_record
-      g.template_engine :erb
       g.stylesheets     false
+      g.helper          false
+      g.test_framework  nil
     end
 
     # api文档资源

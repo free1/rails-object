@@ -1,5 +1,5 @@
 namespace :api do
-  desc "API Routes"
+  desc "显示API 路由"
   task :routes => :environment do
     API.routes.each do |api|
       method = api.route_method.ljust(10)
