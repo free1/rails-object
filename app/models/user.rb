@@ -34,8 +34,7 @@ class User < ActiveRecord::Base
   delegate :gender, :resume, :website, to: :info, allow_nil: true
 
   # 回调
-  after_create { self.create_info }
-  after_create { self.create_wechat_info }
+  
 
   # 邮箱验证
   def send_verify_email

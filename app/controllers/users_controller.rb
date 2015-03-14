@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 12)
+    @users = User.includes(:info).paginate(page: params[:page], per_page: 12)
   end
 
   def new

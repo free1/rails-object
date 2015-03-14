@@ -60,6 +60,7 @@ gem 'will_paginate', '~> 3.0.6'
 gem 'unicorn'
 
 gem 'jbuilder', '~> 2.0'
+gem 'rails-observers'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
