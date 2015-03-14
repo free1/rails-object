@@ -18,10 +18,20 @@ module WeixinTest
     # -- all .rb files in that directory are automatically loaded.
     # config.active_record.default_timezone = :local
     config.time_zone = 'Beijing'
-
+    # api
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
+
     config.autoload_paths += Dir["#{config.root}/app/controllers/concerns", "#{config.root}/app/models/concerns"]
+
+    # Observer configuration
+    config.active_record.observers = :user_observer
+
+    config.generators do |g|
+      g.orm             :active_record
+      g.template_engine :erb
+      g.stylesheets     false
+    end
 
     # api文档资源
     # config.assets.precompile += %w(api_swagger_ui/reset.css api_swagger_ui/screen.css)
