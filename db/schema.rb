@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314033954) do
+ActiveRecord::Schema.define(version: 20150314085623) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -23,9 +23,10 @@ ActiveRecord::Schema.define(version: 20150314033954) do
   create_table "comments", force: :cascade do |t|
     t.text     "content",          limit: 65535
     t.integer  "commentable_id",   limit: 4
-    t.string   "commentable_type", limit: 191
+    t.string   "commentable_type", limit: 255
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.integer  "user_id",          limit: 4
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", length: {"commentable_id"=>nil, "commentable_type"=>100}, using: :btree
@@ -76,7 +77,7 @@ ActiveRecord::Schema.define(version: 20150314033954) do
 
   create_table "user_infos", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
-    t.string   "gender",     limit: 255
+    t.string   "gender",     limit: 255,   default: "secrecy"
     t.text     "resume",     limit: 65535
     t.string   "website",    limit: 255
     t.datetime "created_at"

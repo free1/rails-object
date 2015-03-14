@@ -44,7 +44,9 @@ Rails.application.routes.draw do
 
 
   # 商品相关
-  resources :products
+  resources :products do
+    resources :comments, only: [:create, :destroy]
+  end
 
 
   # 七牛上传文件

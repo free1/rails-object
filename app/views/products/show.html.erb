@@ -1,5 +1,6 @@
 <% provide(:title, '商品详情') %>
 
+<%= link_to "返回商品列表", products_path, class: "btn btn-info" %>
 <h1>商品详情</h1>
 
 <h3>ID: <small><%= @product.id %></small></h3>
@@ -9,5 +10,17 @@
 <h3>所属标签: <small><%= @product.categories.map(&:name) %></small></h3>
 <h3>创建时间: <small><%= time_ago_in_words @product.created_at %></small></h3>
 
-<br/>
-<%= link_to "返回商品列表", products_path, class: "btn btn-info" %>
+<% if @comments.any? %>
+	<% @comments.each do |comment| %>
+		<%= comment.user.name %>
+		<%= comment.content %>
+		</br>
+	<% end %>
+<% end %>
+
+<%= simple_form_for [@product, @comment] do |f| %>
+	
+	<%= f.input :content, as: :text %>
+	<%= f.button :submit, "保存" %>
+
+<% end %>

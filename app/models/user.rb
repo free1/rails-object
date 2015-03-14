@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
   # 所属tag标签
   has_many :user_tag_ships, dependent: :destroy
   has_many :tags, through: :user_tag_ships
+  # 评论
+  has_many :comments, dependent: :destroy
 
   # 代理
   delegate :public_name, :number, :qr_code, :keyword, to: :wechat_info, allow_nil: true
