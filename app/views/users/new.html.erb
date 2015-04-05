@@ -1,15 +1,17 @@
 <% provide(:title, "注册") %>
 
-<%= simple_form_for @user, html: { class: "form-horizontal"} do |f| %>
+<%= simple_form_for @user, validate: true, html: { class: "form-horizontal"} do |f| %>
   <div class="col-sm-8 col-sm-offset-2">
     <%= f.input :name, input_html: { maxlength: 20 }, autofocus: true %>
-    <p class="help-block">昵称必须是3-20之间的字符</p>
+    <!-- <p class="help-block">昵称必须是3-20之间的字符</p> -->
 
     <%= f.input :email, input_html: { maxlength: 50 } %>
-    <p class="help-block">请填写真实的邮箱</p>
+    <!-- <p class="help-block">请填写真实的邮箱</p> -->
 
     <%= f.input :password, input_html: { maxlength: 30 } %>
-    <p class="help-block">填一个别人猜不到的密码吧</p>
+    <!-- <p class="help-block">填一个别人猜不到的密码吧</p> -->
+
+    <%= f.input :password_confirmation, input_html: { maxlength: 30 } %>
 
     <%= f.button :submit, "注册", class: 'btn-lg btn-block', data: { disable_with: '资料保存中...' } %>
   </div>

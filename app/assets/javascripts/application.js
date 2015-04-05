@@ -15,3 +15,5 @@
 //= require turbolinks
 //= require doc/jquery-2.1.1.min.js
 //= require doc/bootstrap.min.js
+//= require doc/form_validate/rails.validations
+//= require doc/form_validate/rails.validations.simple_form
