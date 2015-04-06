@@ -1,3 +1,4 @@
+# 七牛上传资源
 module QiniuCheck
 	extend ActiveSupport::Concern
 

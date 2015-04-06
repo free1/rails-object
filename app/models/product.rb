@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+	include Obfuscate
 
 	# 发布人
 	belongs_to :user
@@ -22,5 +23,9 @@ class Product < ActiveRecord::Base
 	def cover_path_with_size
 		"#{self.cover_path}?imageView2/1/w/330/h/200"
 	end
+
+	def to_param
+    encrypt id
+  end
 	
 end

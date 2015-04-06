@@ -1,3 +1,4 @@
+# send_colud发邮件
 require 'rest_client'
 
 module SendEmail
