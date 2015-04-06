@@ -10,7 +10,7 @@ lock '3.3.5'
 set :stages, ["production"]
 
 set :application, 'weixin_test'
-set :repo_url, 'https://gitcafe.com/free1/weixin_test.git'
+set :repo_url, 'git@gitlab.com:freeloverails/weixin_test.git'
 
 set :deploy_user, "deploy"
 set :use_sudo, false
