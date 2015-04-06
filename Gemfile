@@ -58,6 +58,9 @@ gem "figaro"
 # 分页
 gem 'will_paginate', '~> 3.0.6'
 
+# 加密链接id
+gem "obfuscate_id"
+
 # web server
 gem 'unicorn'
 
