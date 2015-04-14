@@ -92,3 +92,7 @@ group :development do
   gem 'pry-byebug'
   gem 'pry-rails'
 end
+
+# 爬虫
+gem 'free_spider'
+
