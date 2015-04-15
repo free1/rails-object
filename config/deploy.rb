@@ -148,7 +148,7 @@ namespace :deploy do
 
   # Restart monit so it will pick up any monit configurations
   # we've added
-  after 'deploy:setup_config', 'monit:restart'
+  # after 'deploy:setup_config', 'monit:restart'
 
   # As of Capistrano 3.1, the `deploy:restart` task is not called
   # automatically.
