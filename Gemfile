@@ -94,5 +94,5 @@ group :development do
 end
 
 # 爬虫
-gem 'free_spider'
+# gem 'free_spider'
 

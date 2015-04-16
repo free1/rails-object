@@ -137,6 +137,14 @@ namespace :deploy do
   # after 'deploy:symlink:shared', 'deploy:compile_assets_locally'
   after :finishing, 'deploy:cleanup'
 
+  before :finishing, 'deploy:restart_unicorn'
+  desc "restart unicorn"
+  task :restart_unicorn do
+  	on roles(:all) do
+  		execute "bundle exec unicorn -D -c #{fetch(:current_path)}/config/unicorn.rb -E production"
+  	end
+  end
+
   # remove the default nginx configuration as it will tend
   # to conflict with our configs.
   # before 'deploy:setup_config', 'nginx:remove_default_vhost'
