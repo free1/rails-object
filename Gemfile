@@ -83,7 +83,7 @@ group :development do
   # 预加载器
   gem 'spring'
   # 部署
-  gem 'capistrano', '~> 3.1.0'
+  gem 'capistrano', '~> 3.3.5'
   gem 'capistrano-bundler'
   gem 'capistrano-rails', '~> 1.1.0'
   gem 'capistrano-rbenv', "~> 2.0"

@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.1.0'
+lock '3.3.5'
 
 # set :ssh_options, {
 #   keys: %w(~/.ssh/id_rsa.pub),
