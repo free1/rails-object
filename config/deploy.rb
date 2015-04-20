@@ -143,7 +143,7 @@ namespace :deploy do
   task :restart_unicorn do
   	on roles(:all) do
       p "----------------------"
-  		execute "cd #{current_path} && rake assets:precompile RAILS_ENV=production && /etc/init.d/unicorn_weixin_test restart && rake db:migrate RAILS_ENV=production"
+  		execute "cd #{current_path} && bundle exec rake assets:precompile RAILS_ENV=production && /etc/init.d/unicorn_weixin_test restart && bundle exec rake db:migrate RAILS_ENV=production"
   	end
   end
 
