@@ -142,7 +142,7 @@ namespace :deploy do
   desc "restart unicorn"
   task :restart_unicorn do
   	on roles(:web) do
-  		execute "cd #{current_path} ; bundle exec rake assets:precompile RAILS_ENV=production ; /etc/init.d/unicorn_weixin_test restart"
+  		execute "cd #{current_path} && bundle exec rake assets:precompile RAILS_ENV=production && /etc/init.d/unicorn_weixin_test restart"
   	end
   end
 
