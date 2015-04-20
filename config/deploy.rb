@@ -122,6 +122,13 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
+after 'deploy:publishing', 'unicorn:restart'
+# namespace :deploy do
+#   task :restart do
+#     invoke 'unicorn:restart'
+#   end
+# end
+
 # namespace :deploy do
 
 #   desc "after setup"
@@ -136,12 +143,6 @@ set :keep_releases, 5
 #   end
 #   after :started, :setup_config
 # end
-after 'deploy:publishing', 'deploy:restart'
-namespace :deploy do
-  task :restart do
-    invoke 'unicorn:restart'
-  end
-end
 
 # namespace :deploy do
 #   # make sure we're deploying what we think we're deploying
