@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-	include Obfuscate
+	# include Obfuscate
 
 	# 发布人
 	belongs_to :user
@@ -24,8 +24,8 @@ class Product < ActiveRecord::Base
 		"#{self.cover_path}?imageView2/1/w/330/h/200"
 	end
 
-	def to_param
-    encrypt id
-  end
+	# def to_param
+ #    encrypt id
+ #  end
 	
 end
