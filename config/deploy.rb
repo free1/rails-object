@@ -24,6 +24,10 @@ set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rben
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all # default value
 
+# Capistrano::Rails
+set :migration_role, 'all'
+set :assets_roles, [:all]
+
 # set :rails_env, :production
 
 # set :stage, :production
@@ -128,38 +132,44 @@ set :keep_releases, 5
 #   after :started, :setup_config
 # end
 
-
 namespace :deploy do
-  # make sure we're deploying what we think we're deploying
-  # before :deploy, "deploy:check_revision"
-  # only allow a deploy with passing tests to deployed
-  # before :deploy, "deploy:run_tests"
-  # compile assets locally then rsync
-  # after 'deploy:symlink:shared', 'deploy:compile_assets_locally'
-  after :finishing, 'deploy:cleanup'
-
-  before :finishing, 'deploy:restart_unicorn'
-  desc "restart unicorn"
-  task :restart_unicorn do
-  	on roles(:all) do
-      p "----------------------"
-  		execute "cd #{current_path} && bundle exec rake assets:precompile RAILS_ENV=production && /etc/init.d/unicorn_weixin_test restart && bundle exec rake db:migrate RAILS_ENV=production"
-  	end
+  task :restart do
+    invoke 'unicorn:legacy_restart'
   end
-
-  # remove the default nginx configuration as it will tend
-  # to conflict with our configs.
-  # before 'deploy:setup_config', 'nginx:remove_default_vhost'
-
-  # reload nginx to it will pick up any modified vhosts from
-  # setup_config
-  # after 'deploy:setup_config', 'nginx:reload'
-
-  # Restart monit so it will pick up any monit configurations
-  # we've added
-  # after 'deploy:setup_config', 'monit:restart'
-
-  # As of Capistrano 3.1, the `deploy:restart` task is not called
-  # automatically.
-  after 'deploy:publishing', 'deploy:restart'
 end
+
+# namespace :deploy do
+#   # make sure we're deploying what we think we're deploying
+#   # before :deploy, "deploy:check_revision"
+#   # only allow a deploy with passing tests to deployed
+#   # before :deploy, "deploy:run_tests"
+#   # compile assets locally then rsync
+#   # after 'deploy:symlink:shared', 'deploy:compile_assets_locally'
+#   after :finishing, 'deploy:cleanup'
+
+#   before :finishing, 'deploy:restart_unicorn'
+#   desc "restart unicorn"
+#   task :restart_unicorn do
+#   	on roles(:all) do
+#       p "----------------------"
+#       execute "ruby -v"
+#   		execute "cd #{release_path} && bundle exec rake assets:precompile RAILS_ENV=production && /etc/init.d/unicorn_weixin_test restart && bundle exec rake db:migrate RAILS_ENV=production"
+#   	end
+#   end
+
+#   # remove the default nginx configuration as it will tend
+#   # to conflict with our configs.
+#   # before 'deploy:setup_config', 'nginx:remove_default_vhost'
+
+#   # reload nginx to it will pick up any modified vhosts from
+#   # setup_config
+#   # after 'deploy:setup_config', 'nginx:reload'
+
+#   # Restart monit so it will pick up any monit configurations
+#   # we've added
+#   # after 'deploy:setup_config', 'monit:restart'
+
+#   # As of Capistrano 3.1, the `deploy:restart` task is not called
+#   # automatically.
+#   after 'deploy:publishing', 'deploy:restart'
+# end

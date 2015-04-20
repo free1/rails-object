@@ -87,6 +87,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rails', '~> 1.1.0'
   gem 'capistrano-rbenv', "~> 2.0"
+  gem 'capistrano3-unicorn'
   # 调试
   gem 'pry'
   gem 'pry-byebug'
