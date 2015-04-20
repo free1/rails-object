@@ -142,7 +142,7 @@ namespace :deploy do
   desc "restart unicorn"
   task :restart_unicorn do
   	on roles(:all) do
-  		execute "bundle exec unicorn -D -c #{fetch(:current_path)}/config/unicorn.rb -E production"
+  		execute "cd #{current_path} && bundle exec unicorn -D -c #{fetch(:current_path)}/config/unicorn.rb -E production"
   	end
   end
 
