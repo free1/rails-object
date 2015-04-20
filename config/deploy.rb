@@ -14,6 +14,7 @@ set :repo_url, 'git@gitlab.com:freeloverails/weixin_test.git'
 
 set :deploy_user, "deploy"
 set :use_sudo, false
+# set :user, "deploy"
 
 # rbenv
 set :rbenv_type, :user # or :system, depends on your rbenv setup
