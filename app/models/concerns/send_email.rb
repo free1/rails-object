@@ -10,6 +10,7 @@ module SendEmail
       :api_user => SendCloudApiUser,
       :api_key => SendCloudApiKey,
       :from => SendCloudFormEmail,
+      # :mail_from => MailFrom,
       :fromname => SendCloudFormName,
       :to => to_email,
       :subject => subject,
