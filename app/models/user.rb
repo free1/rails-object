@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   include SendEmail
 
   has_secure_password
-  obfuscate_id
+  # obfuscate_id
 
   # 验证
   validates :name, presence: true, length: { in: 3..20 }
