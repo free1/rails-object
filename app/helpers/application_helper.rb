@@ -2,7 +2,7 @@
 module ApplicationHelper
 
 	def full_title(page_title)
-		base_title = "创客之家"
+		base_title = "创客家族"
 		if page_title.empty?
 			base_title
 		else
