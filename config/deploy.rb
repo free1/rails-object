@@ -122,7 +122,8 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
-after 'deploy:publishing', 'unicorn:restart'
+after 'deploy:publishing', 'unicorn:stop'
+after 'unicorn:stop', 'unicorn:start'
 # namespace :deploy do
 #   task :restart do
 #     invoke 'unicorn:restart'
