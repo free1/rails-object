@@ -136,7 +136,7 @@ set :keep_releases, 5
 #   end
 #   after :started, :setup_config
 # end
-
+after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
