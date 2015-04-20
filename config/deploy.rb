@@ -14,7 +14,7 @@ set :repo_url, 'git@gitlab.com:freeloverails/weixin_test.git'
 
 set :deploy_user, "deploy"
 set :use_sudo, false
-# set :user, "deploy"
+set :user, "deploy"
 
 # rbenv
 set :rbenv_type, :user # or :system, depends on your rbenv setup
@@ -25,9 +25,13 @@ set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rben
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all # default value
 
-# Capistrano::Rails
+# asset migrate
 set :migration_role, 'all'
 set :assets_roles, [:all]
+
+# unicorn
+set :unicorn_config_path, "config/unicorn.rb"
+set :unicorn_roles, [:all]
 
 # set :rails_env, :production
 
@@ -135,7 +139,7 @@ set :keep_releases, 5
 
 namespace :deploy do
   task :restart do
-    invoke 'unicorn:legacy_restart'
+    invoke 'unicorn:restart'
   end
 end
 
