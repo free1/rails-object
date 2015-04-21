@@ -36,15 +36,16 @@ module WeixinTest
     end
 
     # api文档资源
-    config.assets.precompile += %w(api_swagger_ui/reset.css api_swagger_ui/screen.css)
-    config.assets.precompile += %w(api_swagger_ui/backbone-min.js api_swagger_ui/handlebars-1.js
-                                    api_swagger_ui/highlight.js api_swagger_ui/jquery-1.js
-                                    api_swagger_ui/jquery.js api_swagger_ui/jquery_002.js
-                                    api_swagger_ui/jquery_003.js api_swagger_ui/shred.js
-                                    api_swagger_ui/swagger-client.js api_swagger_ui/swagger-oauth.js
-                                    api_swagger_ui/swagger-ui.js api_swagger_ui/swagger.js
-                                    api_swagger_ui/underscore-min.js)
-    config.assets.precompile += %w(doc/index.css upload/image_upload.js)
+    # config.assets.precompile += %w(api_swagger_ui/reset.css api_swagger_ui/screen.css)
+    # config.assets.precompile += %w(api_swagger_ui/backbone-min.js api_swagger_ui/handlebars-1.js
+    #                                 api_swagger_ui/highlight.js api_swagger_ui/jquery-1.js
+    #                                 api_swagger_ui/jquery.js api_swagger_ui/jquery_002.js
+    #                                 api_swagger_ui/jquery_003.js api_swagger_ui/shred.js
+    #                                 api_swagger_ui/swagger-client.js api_swagger_ui/swagger-oauth.js
+    #                                 api_swagger_ui/swagger-ui.js api_swagger_ui/swagger.js
+    #                                 api_swagger_ui/underscore-min.js)
+    config.assets.precompile += %w(doc/*.css api_swagger_ui/*.css)
+    config.assets.precompile += %w(upload/*.js doc/*.js api_swagger_ui/*.js)
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
