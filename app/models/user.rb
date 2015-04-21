@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 3 }, on: :create
 
+  # 第三方账户
+  has_many :authentications, dependent: :destroy
   # 商品
   has_many :products, dependent: :destroy
   # 收藏
