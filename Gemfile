@@ -8,6 +8,7 @@ gem 'rails', '4.2.0'
 gem 'omniauth', '~> 1.2.1'
 gem 'omniauth-weibo-oauth2', '~> 0.4.0'
 gem 'omniauth-qq-connect'
+gem 'omniauth-github'
 
 # 样式
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -51,8 +52,8 @@ gem 'rqrcode_png'
 
 # 表单
 gem 'simple_form'
-# gem 'client_side_validations', :git => 'git@github.com:DavyJonesLocker/client_side_validations.git', :branch => '4-2-stable'
-# gem 'client_side_validations-simple_form', :git => 'git@github.com:DavyJonesLocker/client_side_validations-simple_form', :branch => '3-1-stable'
+gem 'client_side_validations', :git => 'git@github.com:DavyJonesLocker/client_side_validations.git', :branch => '4-2-stable'
+gem 'client_side_validations-simple_form', :git => 'git@github.com:DavyJonesLocker/client_side_validations-simple_form', :branch => '3-1-stable'
 
 # 权限
 gem 'cancancan', '~> 1.10'

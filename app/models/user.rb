@@ -106,8 +106,23 @@ class User < ActiveRecord::Base
     def admins
       Figaro.env.admin.split(',')
     end
+
+    # 类私有方法
+    private
+      def locate_auth(auth_hash)
+        Authentication.locate(auth_hash).try(:user)
+      end
+      def create_from_auth(auth_hash)
+        password = User.new_remember_token
+        user = create(email: auth_hash['info']['email'], name: auth_hash['info']['nickname'],
+                        avatar_path: auth_hash['info']['image'], password: password)
+        user.send :add_auth, auth_hash, user.id
+        user.send :create_remember_token
+        user
+      end
   end
 
+  # 实例私有方法
   private
 
     def create_remember_token
@@ -122,16 +137,8 @@ class User < ActiveRecord::Base
       self[column]
     end
 
-    def locate_auth(auth_hash)
-      Authentication.locate(auth_hash).try(:member)
-    end
-    def create_from_auth(auth_hash)
-      member = create(email: auth_hash['info']['email'], nickname: auth_hash['info']['nickname'],
-                      phone_number: format_phone_number(auth_hash['info']['phone_number'], auth_hash['info']['country']))
-
-      member.add_auth(auth_hash)
-      member.send_activation if auth_hash['provider'] == 'identity' && member.email
-      member
+    def add_auth(auth_hash, user_id)
+      authentications.build_auth(auth_hash, user_id).save
     end
 
 end
