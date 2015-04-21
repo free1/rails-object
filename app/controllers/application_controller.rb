@@ -12,6 +12,12 @@ class ApplicationController < ActionController::Base
     self.current_user = user
   end
 
+  # 外部帐号登录
+  def sign_in_without(user)
+    cookies.permanent[:remember_token] = user.remember_token
+    self.current_user = user
+  end
+
   def current_user=(user)
     @current_user = user
   end

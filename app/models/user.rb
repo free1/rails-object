@@ -98,7 +98,11 @@ class User < ActiveRecord::Base
     def encrypt(token)
       Digest::SHA1.hexdigest(token.to_s)
     end
-
+    # 第三方登录
+    def from_auth(auth_hash)
+      locate_auth(auth_hash) || create_from_auth(auth_hash)
+    end
+    # 固定admin
     def admins
       Figaro.env.admin.split(',')
     end
@@ -116,6 +120,18 @@ class User < ActiveRecord::Base
         self[column] = SecureRandom.urlsafe_base64
       end while User.exists?(column => self[column])
       self[column]
+    end
+
+    def locate_auth(auth_hash)
+      Authentication.locate(auth_hash).try(:member)
+    end
+    def create_from_auth(auth_hash)
+      member = create(email: auth_hash['info']['email'], nickname: auth_hash['info']['nickname'],
+                      phone_number: format_phone_number(auth_hash['info']['phone_number'], auth_hash['info']['country']))
+
+      member.add_auth(auth_hash)
+      member.send_activation if auth_hash['provider'] == 'identity' && member.email
+      member
     end
 
 end
