@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   resources :sessions, only: [:new, :create]
   # 第三方登录
-  match "/auth/:provider/callback", :to => 'omniauths#create'
+  match "/auth/:provider/callback", :to => 'omniauths#create', via: [:get, :post]
 
   resources :users do
     collection do
