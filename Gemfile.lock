@@ -327,6 +327,7 @@ DEPENDENCIES
   mime-types (~> 1.19)
   mysql2 (= 0.3.15)
   net-ssh
+  nokogiri
   omniauth (~> 1.2.1)
   omniauth-github
   omniauth-qq-connect

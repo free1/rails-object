@@ -102,4 +102,5 @@ end
 
 # 爬虫
 # gem 'free_spider'
+gem 'nokogiri'
 
