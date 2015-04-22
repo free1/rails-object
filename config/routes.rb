@@ -1,4 +1,3 @@
-
 class ActionDispatch::Routing::Mapper
   def draw(routes_name)
     instance_eval(File.read(Rails.root.join("config/routes/#{routes_name}.rb")))
@@ -49,6 +48,9 @@ Rails.application.routes.draw do
   resources :products do
     resources :comments, only: [:create, :destroy]
   end
+
+  # 抓取内容news
+  resources :posts
 
 
   # 七牛上传文件
