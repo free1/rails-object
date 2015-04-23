@@ -9,6 +9,7 @@ gem 'omniauth', '~> 1.2.1'
 gem 'omniauth-weibo-oauth2', '~> 0.4.0'
 gem 'omniauth-qq-connect'
 gem 'omniauth-github'
+gem 'omniauth-douban-oauth2'
 
 # 样式
 gem 'bootstrap-sass', '~> 3.2.0'

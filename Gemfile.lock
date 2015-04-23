@@ -173,6 +173,9 @@ GEM
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
+    omniauth-douban-oauth2 (0.0.7)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.1)
     omniauth-github (1.1.2)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.1)
@@ -329,6 +332,7 @@ DEPENDENCIES
   net-ssh
   nokogiri
   omniauth (~> 1.2.1)
+  omniauth-douban-oauth2
   omniauth-github
   omniauth-qq-connect
   omniauth-weibo-oauth2 (~> 0.4.0)
