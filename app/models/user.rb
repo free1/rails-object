@@ -114,11 +114,19 @@ class User < ActiveRecord::Base
       end
       def create_from_auth(auth_hash)
         password = User.new_remember_token
-        user = create(email: auth_hash['info']['email'], name: auth_hash['info']['nickname'],
-                        avatar_path: auth_hash['info']['image'], password: password)
-        user.send :add_auth, auth_hash, user.id
-        user.send :create_remember_token
-        user
+
+        begin
+          User.transaction do
+            user = create(email: auth_hash['info']['email'], name: auth_hash['info']['nickname'],
+                          avatar_path: auth_hash['info']['image'], password: password)
+            user.send :add_auth, auth_hash, user.id
+            user.send :create_remember_token
+            user
+          end
+        rescue Exception => ex
+          puts "-------创建失败--------"
+          puts "-------#{ex.message}--------"
+        end
       end
   end
 
