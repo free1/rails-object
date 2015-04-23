@@ -89,6 +89,11 @@ class User < ActiveRecord::Base
     @is_admin ||= self.class.admins.include?(self.email)
   end
 
+  # 存储第三方信息
+  def add_auth(auth_hash, user_id)
+    authentications.build_auth(auth_hash, user_id).save
+  end
+
   class << self
 
     # 密码加密
@@ -120,7 +125,7 @@ class User < ActiveRecord::Base
             user = create(email: auth_hash['info']['email'], name: auth_hash['info']['nickname'],
                           avatar_path: auth_hash['info']['image'], password: password)
             user.send :add_auth, auth_hash, user.id
-            user.send :create_remember_token
+            # user.send :create_remember_token
             user
           end
         rescue Exception => ex
@@ -143,10 +148,6 @@ class User < ActiveRecord::Base
         self[column] = SecureRandom.urlsafe_base64
       end while User.exists?(column => self[column])
       self[column]
-    end
-
-    def add_auth(auth_hash, user_id)
-      authentications.build_auth(auth_hash, user_id).save
     end
 
 end
