@@ -123,8 +123,15 @@ set :bundle_binstubs, nil
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
-after 'deploy:publishing', 'unicorn:stop'
-after 'unicorn:stop', 'unicorn:start'
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+  task :restart do
+    invoke 'unicorn:restart'
+  end
+end
+
+# after 'deploy:publishing', 'unicorn:stop'
+# after 'unicorn:stop', 'unicorn:start'
 
 # namespace :deploy do
 #   task :restart do
