@@ -10,20 +10,35 @@
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 
-# 管理员
 
 # 七牛
-qiniu_access_key: 'NpVxdN7zm-hoatMifRwaa2CdLs1GGCiUmLIKdGa-'
-qiniu_secret_key: '_qPG5XozUdN3WU7k-4Lc--VShmdk7dm22BODqu6N'
-qiniu_scope: "free"
-qiniu_expires_in: 12*60*60
+qiniu_access_key: 'qiniu_access_key'
+qiniu_secret_key: 'qiniu_secret_key'
+qiniu_scope: "qiniu_scope"
+qiniu_expires_in: qiniu_expires_in
 qiniu_uptoken_url: "/upload/qiniu/image_up_token"
-qiniu_upload_url: "http://7vznrs.com1.z0.glb.clouddn.com/"
+qiniu_upload_url: "qiniu_upload_url"
 
 # 发邮件sendcloud
 address: "http://sendcloud.sohu.com/webapi/mail.send.json"
-api_user: "freelove_test_CeBBln"
-api_key: "wTgFHBP9X54fGgfh"
+api_user: "api_user"
+api_key: "api_key"
 from_email: "747549945@qq.com"
 from_name: 'free'
 # domain_from_email: 
+
+# 管理员
+admin: "xxx"
+
+# 第三方登录
+GITHUB_KEY: GITHUB_KEY
+GITHUB_SECRET: GITHUB_SECRET
+
+QQ_CONNECT_APP_KEY: QQ_CONNECT_APP_KEY
+QQ_CONNECT_APP_SECRET: QQ_CONNECT_APP_SECRET
+
+WEIBO_KEY: WEIBO_KEY
+WEIBO_SECRET: WEIBO_SECRET
+
+DOUBAN_KEY: DOUBAN_KEY
+DOUBAN_SECRET: DOUBAN_SECRET
