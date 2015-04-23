@@ -37,18 +37,13 @@ set :unicorn_roles, [:all]
 
 # set :stage, :production
 
-server 'deploy@121.42.161.252', roles: [:all]
-# role :app, %w{deploy@121.42.161.252}
-# role :web, %w{deploy@121.42.161.252}
-# role :db,  %w{deploy@121.42.161.252}
-
 # Default branch is :master
 set :branch, "master"
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:application)}"
 
-# set :default_stage, "production"
+set :default_stage, "production"
 # Default value for :scm is :git
 set :scm, :git
 

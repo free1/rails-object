@@ -14,7 +14,10 @@
 # used to set extended properties on the server.
 
 # server 'http://121.42.153.234/', user: 'deploy', roles: %w{web app}, my_property: :my_value
-
+server 'deploy@121.42.161.252', roles: [:all]
+# role :app, %w{deploy@121.42.161.252}
+# role :web, %w{deploy@121.42.161.252}
+# role :db,  %w{deploy@121.42.161.252}
 
 # Custom SSH Options
 # ==================
