@@ -1,16 +1,40 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<body style="background: url(<%= asset_path 'cover_home.jpg' %>) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; text-align: center;">
-			<div class="cover_login">
-				<li><%= link_to "Email登录", login_path %></li>
-    		<li><%= link_to "注册", new_user_path %></li>
-    		<li><%= link_to "微博登录", "/auth/weibo" %></li>
-    		<li><%= link_to "qq登录", "/auth/qq_connect" %></li>
-    		<li><%= link_to "github登录", "/auth/github" %></li>
+		<style type="text/css">
+		body {
+			background: url(<%= asset_path 'cover_home.jpg' %>) no-repeat center center fixed; 
+			-webkit-background-size: cover; 
+			-moz-background-size: cover; 
+			-o-background-size: cover;
+			background-size: cover; 
+		}
+		.cover-login {
+			background-color: white;
+			width: 360px;
+			text-align: center;
+			line-height: 50px;
+			border: 5px solid #dedede;
+    	-moz-border-radius: 15px;      /* Gecko browsers */
+    	-webkit-border-radius: 15px;   /* Webkit browsers */
+    	border-radius:15px;            /* W3C syntax */
+		}
+		.login-way {
+			list-style: none;
+		}
+		</style>
+	</head>
 
-    		<li><%= link_to "随便看看", posts_path %></li>
+		<body>
+			<div class="cover-login">
+				<ul class="login-way">
+					<li><%= link_to "Email登录", login_path %></li>
+	    		<li><%= link_to "注册", new_user_path %></li>
+	    		<li><%= link_to "微博登录", "/auth/weibo" %></li>
+	    		<li><%= link_to "qq登录", "/auth/qq_connect" %></li>
+	    		<li><%= link_to "github登录", "/auth/github" %></li>
+	    		<li><%= link_to "随便看看", posts_path %></li>
+    		</ul>
 			</div>
 		</body>
-	</head>
 </html>
