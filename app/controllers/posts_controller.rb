@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find(params[:id])	
+		Post.add_watch_count(params[:id])
 	end
 
 end
