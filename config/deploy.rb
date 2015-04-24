@@ -36,7 +36,7 @@ set :unicorn_rack_env, "production"
 
 # set :rails_env, :production
 
-# set :stage, :production
+set :stage, :production
 
 # Default branch is :master
 set :branch, "master"
