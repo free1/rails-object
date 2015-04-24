@@ -32,6 +32,7 @@ set :assets_roles, [:all]
 # unicorn
 set :unicorn_config_path, "config/unicorn.rb"
 set :unicorn_roles, [:all]
+set :unicorn_rack_env, "production"
 
 # set :rails_env, :production
 
@@ -120,7 +121,7 @@ set :keep_releases, 5
 
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
-before 'deploy:finishing', 'deploy:restart'
+before 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'

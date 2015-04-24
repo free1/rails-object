@@ -19,10 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 
-# every 1.day, :at => '4:30 am' do
-# 	runner "Post.crawl_post"
-# end
-
-every :minute do
+every 1.day, :at => '4:30 am' do
 	runner "Post.crawl_post"
 end
