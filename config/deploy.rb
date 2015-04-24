@@ -18,7 +18,7 @@ set :user, "deploy"
 
 # rbenv
 set :rbenv_type, :user # or :system, depends on your rbenv setup
-set :rbenv_ruby, '2.1.2p95'
+set :rbenv_ruby, '2.1.2'
 # # in case you want to set ruby version from the file:
 # # set :rbenv_ruby, File.read('.ruby-version').strip
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
