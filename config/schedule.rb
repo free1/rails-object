@@ -18,6 +18,7 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+set :output, "/var/log/cron_log.log"
 
 every 1.day, :at => '4:30 am' do
 	runner "Post.crawl_post"
