@@ -30,6 +30,11 @@ from_name: 'free'
 # 管理员
 admin: "xxx"
 
+# redis配置
+redis_host: localhost
+redis_port: 6379
+redis_password: aa
+
 # 第三方登录
 GITHUB_KEY: GITHUB_KEY
 GITHUB_SECRET: GITHUB_SECRET
