@@ -24,5 +24,5 @@ every 1.day, :at => '4:30 am' do
 end
 
 every 1.minute do
-	runner "Post.sum_watch_count!"
+	runner "Post.sum_watch_count"
 end
