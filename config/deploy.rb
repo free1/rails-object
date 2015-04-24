@@ -120,7 +120,7 @@ set :keep_releases, 5
 
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
-after 'deploy:publishing', 'deploy:restart'
+before 'deploy:finishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
