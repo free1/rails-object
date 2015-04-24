@@ -20,7 +20,8 @@
 # Learn more: http://github.com/javan/whenever
 env :PATH, ENV['PATH']
 
-set :output, "/var/log/cron_log.log"
+# set :output, "/var/log/cron_log.log"
+set :output, "log/cron.log"
 
 every 1.day, :at => '4:30 am' do
 	runner "Post.crawl_post"
