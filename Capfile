@@ -11,6 +11,7 @@ require 'capistrano/rbenv'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 require 'capistrano3/unicorn'
+require "whenever/capistrano"
 
 
 # Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }

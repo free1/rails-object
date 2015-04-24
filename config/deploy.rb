@@ -118,6 +118,8 @@ set :bundle_binstubs, nil
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
