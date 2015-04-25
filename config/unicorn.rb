@@ -1,8 +1,10 @@
-root = "/home/deploy/apps/weixin_test/current/"
-working_directory root
-pid "#{root}/tmp/pids/unicorn.pid"
-stderr_path "#{root}/log/unicorn.log"
-stdout_path "#{root}/log/unicorn.log"
+# paths
+app_path = "/home/deploy/apps/weixin_test"
+working_directory "#{app_path}/current"
+pid               "#{app_path}/current/tmp/pids/unicorn.pid"
+
+stderr_path "#{app_path}/current/log/unicorn.log"
+stdout_path "#{app_path}/current/log/unicorn.log"
 
 listen "/tmp/unicorn.weixin_test.sock"
 worker_processes 3
@@ -10,7 +12,7 @@ timeout 30
 
 # use correct Gemfile on restarts
 before_exec do |server|
-  ENV['BUNDLE_GEMFILE'] = "#{root}/Gemfile"
+  ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
 end
 
 # preload
