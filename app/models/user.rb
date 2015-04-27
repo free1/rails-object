@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   # obfuscate_id
 
   # 验证
-  validates :name, presence: true, length: { in: 3..20 }
+  validates :name, presence: true, length: { in: 3..20 }, uniqueness: true
   # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   # validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     # uniqueness: { case_sensitive: false }
@@ -125,7 +125,7 @@ class User < ActiveRecord::Base
           User.transaction do
             user = create(email: auth_hash['info']['email'], name: auth_hash['info']['nickname'],
                           avatar_path: auth_hash['info']['image'], password: password)
-            user.send :add_auth, auth_hash, user.id
+            user.add_auth(auth_hash, user.id)
             # user.send :create_remember_token
             user
           end

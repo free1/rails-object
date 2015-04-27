@@ -2,7 +2,7 @@
 
 <%= simple_form_for :session, url: sessions_path, html: { class: "form-horizontal"} do |f| %>
   <div class="col-sm-8 col-sm-offset-2">
-    <%= f.input :email, input_html: { maxlength: 50 }, autofocus: true %>
+    <%= f.input :name, input_html: { maxlength: 50 }, autofocus: true %>
 
     <%= f.input :password, input_html: { maxlength: 30 } %>
 
