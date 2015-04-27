@@ -1,7 +1,8 @@
 module V1
   module Entities
     class Users < Grape::Entity
-      expose :name, :email, :avatar_path
+    	root 'users', 'user'
+      expose :id, :name, :email, :avatar_path, :remember_token
     end
   end
 end

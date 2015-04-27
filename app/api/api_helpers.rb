@@ -10,10 +10,7 @@ module APIHelpers
     @current_user ||= User.find_by(remember_token: remember_token)
   end
 
-  def sign_in(user)
-    remember_token = User.new_remember_token
-    user.update_attribute(:remember_token, User.encrypt(remember_token))
-    user
-  end
+  # def sign_in(user)
+  # end
 
 end

@@ -22,11 +22,12 @@ module ThirdParty
 		# 创建微博用户
 		def create_from_weibo(user_info)
 			password = User.new_remember_token
+			remember_token = User.new_remember_token
 
       begin
         User.transaction do
           user = create(name: user_info['name'], avatar_path: user_info['profile_image_url'], 
-          							password: password)
+          							password: password, remember_token: remember_token)
           user.authentications.create(uid: user_info[:uid], provider: 'weibo', user_id: user.id)
           user
         end
