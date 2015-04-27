@@ -11,6 +11,8 @@ lock '3.3.5'
 
 set :application, 'weixin_test'
 set :repo_url, 'git@gitlab.com:freeloverails/weixin_test.git'
+# set :git_https_username, 'username'
+# set :git_https_password, 'password'
 
 set :deploy_user, "deploy"
 set :use_sudo, false
