@@ -7,7 +7,7 @@ class API < Grape::API
 
     mount ::V1::Base
 
-    # 生成文档
+    # 生成文档 /home/api_swagger_ui
     base_path = Rails.env.production? ? "#{ENV['URL_SCHEMA']}://#{ENV['URL_HOST']}" : nil
     # add_swagger_documentation base_path: base_path,
     #   mount_path: '/doc/swagger', api_version: 'v1',
