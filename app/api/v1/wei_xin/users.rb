@@ -20,6 +20,20 @@ module V1
         end
       end
 
+      desc '用户名登录'
+      params do
+        requires :name, type: String
+        requires :password, type: String
+      end
+      post '/login' do
+        user = User.find_by(name: params[:name])
+        if user && user.authenticate(params[:password])
+          present user, with: V1::Entities::Users
+        else
+          p "----无效的用户名/密码!----"
+        end
+      end
+
       desc '新浪weibo登录请求user信息'
       params do
         requires :access_token, type: String
