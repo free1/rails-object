@@ -1,338 +1,96 @@
 <!DOCTYPE html>
-<html><head>
-<meta http-equiv="content-type" content="text/html; charset=gbk">
+<html>
+<head>
   <title>Swagger UI</title>
-  <%= stylesheet_link_tag 'api_swagger_ui/reset' %>
-  <%= stylesheet_link_tag 'api_swagger_ui/screen' %>
-  <%= javascript_include_tag 'api_swagger_ui/backbone-min' %>
-  <%= javascript_include_tag 'api_swagger_ui/handlebars-1' %>
-  <%= javascript_include_tag 'api_swagger_ui/highlight' %>
-  <%= javascript_include_tag 'api_swagger_ui/jquery-1' %>
-  <%= javascript_include_tag 'api_swagger_ui/jquery' %>
-  <%= javascript_include_tag 'api_swagger_ui/jquery_002' %>
-  <%= javascript_include_tag 'api_swagger_ui/jquery_003' %>
-  <%= javascript_include_tag 'api_swagger_ui/shred' %>
-  <%= javascript_include_tag 'api_swagger_ui/swagger-client' %>
-  <%= javascript_include_tag 'api_swagger_ui/swagger-oauth' %>
-  <%= javascript_include_tag 'api_swagger_ui/swagger-ui' %>
-  <%= javascript_include_tag 'api_swagger_ui/swagger' %>
-  <%= javascript_include_tag 'api_swagger_ui/underscore-min' %>
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+  <link href='css/typography.css' media='screen' rel='stylesheet' type='text/css'/>
+  <link href='css/reset.css' media='screen' rel='stylesheet' type='text/css'/>
+  <link href='css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
+  <link href='css/reset.css' media='print' rel='stylesheet' type='text/css'/>
+  <link href='css/print.css' media='print' rel='stylesheet' type='text/css'/>
+  <script src='lib/jquery-1.8.0.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.slideto.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.wiggle.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.ba-bbq.min.js' type='text/javascript'></script>
+  <script src='lib/handlebars-2.0.0.js' type='text/javascript'></script>
+  <script src='lib/underscore-min.js' type='text/javascript'></script>
+  <script src='lib/backbone-min.js' type='text/javascript'></script>
+  <script src='swagger-ui.js' type='text/javascript'></script>
+  <script src='lib/highlight.7.3.pack.js' type='text/javascript'></script>
+  <script src='lib/marked.js' type='text/javascript'></script>
 
   <script type="text/javascript">
     $(function () {
-      window.swaggerUi = new SwaggerUi({
-      url: "http://localhost:3000/api/swagger_doc",
-      dom_id: "swagger-ui-container",
-      supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
-      onComplete: function(swaggerApi, swaggerUi){
-        log("Loaded SwaggerUI");
-
-        if(typeof initOAuth == "function") {
-          initOAuth({
-            clientId: "your-client-id",
-            realm: "your-realms",
-            appName: "your-app-name"
-          });
-        }
-        $('pre code').each(function(i, e) {
-          hljs.highlightBlock(e)
-        });
-      },
-      onFailure: function(data) {
-        log("Unable to Load SwaggerUI");
-      },
-      docExpansion: "none",
-      sorter : "alpha"
-    });
-
-    $('#input_apiKey').change(function() {
-      var key = $('#input_apiKey')[0].value;
-      log("key: " + key);
-      if(key && key.trim() != "") {
-        log("added key " + key);
-        window.authorizations.add("key", new ApiKeyAuthorization("api_key", key, "query"));
+      var url = window.location.search.match(/url=([^&]+)/);
+      if (url && url.length > 1) {
+        url = decodeURIComponent(url[1]);
+      } else {
+        url = "http://petstore.swagger.io/v2/swagger.json";
       }
-    })
-    window.swaggerUi.load();
+      window.swaggerUi = new SwaggerUi({
+        url: url,
+        dom_id: "swagger-ui-container",
+        supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
+        onComplete: function(swaggerApi, swaggerUi){
+          if(typeof initOAuth == "function") {
+            /*
+            initOAuth({
+              clientId: "your-client-id",
+              realm: "your-realms",
+              appName: "your-app-name"
+            });
+            */
+          }
+          $('pre code').each(function(i, e) {
+            hljs.highlightBlock(e)
+          });
+          addApiKeyAuthorization();
+        },
+        onFailure: function(data) {
+          log("Unable to Load SwaggerUI");
+        },
+        docExpansion: "none",
+        sorter : "alpha"
+      });
+      function addApiKeyAuthorization(){
+        var key = encodeURIComponent($('#input_apiKey')[0].value);
+        if(key && key.trim() != "") {
+            var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization("api_key", key, "query");
+            window.swaggerUi.api.clientAuthorizations.add("api_key", apiKeyAuth);
+            log("added key " + key);
+        }
+      }
+      $('#input_apiKey').change(addApiKeyAuthorization);
+      // if you have an apiKey you would like to pre-populate on the page for demonstration purposes...
+      /*
+        var apiKey = "myApiKeyXXXX123456789";
+        $('#input_apiKey').val(apiKey);
+        addApiKeyAuthorization();
+      */
+      window.swaggerUi.load();
+      function log() {
+        if ('console' in window) {
+          console.log.apply(console, arguments);
+        }
+      }
   });
   </script>
 </head>
 
 <body class="swagger-section">
-<div id="header">
+<div id='header'>
   <div class="swagger-ui-wrap">
-    <a id="logo" href="http://swagger.wordnik.com/">swagger</a>
-    <form id="api_selector">
-      <div class="input icon-btn">
-        <%= image_tag 'api_swagger_ui/pet_store_api.png', id: "show-pet-store-icon", title: "Show Swagger Petstore Example Apis" %>
-      </div>
-      <div class="input icon-btn">
-        <%= image_tag 'api_swagger_ui/wordnik_api.png', id: "show-wordnik-dev-icon", title: "Show Wordnik Developer Apis" %>
-      </div>
-      <div class="input"><input value="http://localhost:3000/api/swagger_doc" placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"></div>
-      <div class="input"><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"></div>
-      <div class="input"><a id="explore" href="#">Explore</a></div>
+    <a id="logo" href="http://swagger.io">swagger</a>
+    <form id='api_selector'>
+      <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/></div>
+      <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
+      <div class='input'><a id="explore" href="#">Explore</a></div>
     </form>
   </div>
 </div>
 
-<div id="message-bar" class="swagger-ui-wrap message-success"></div>
-<div id="swagger-ui-container" class="swagger-ui-wrap"><div class="info" id="api_info">
-  
-    <div class="info_title"></div>
-    <div class="info_description"></div>
-    
-    
-    
-  
-</div>
-<div class="container" id="resources_container">
-    <ul id="resources">
-    <li class="resource" id="resource_swagger_doc"><div class="heading">
-  <h2>
-    <a href="#%21/swagger_doc" onclick="Docs.toggleEndpointListForResource('swagger_doc');">/swagger_doc</a>  : Operations about swagger_docs
-  </h2>
-  <ul class="options">
-    <li>
-      <a href="#%21/swagger_doc" id="endpointListTogger_swagger_doc" onclick="Docs.toggleEndpointListForResource('swagger_doc');">Show/Hide</a>
-    </li>
-    <li>
-      <a href="#" onclick="Docs.collapseOperationsForResource('swagger_doc'); return false;">
-        List Operations
-      </a>
-    </li>
-    <li>
-      <a href="#" onclick="Docs.expandOperationsForResource('swagger_doc'); return false;">
-        Expand Operations
-      </a>
-    </li>
-    <li>
-      <a href="http://localhost:3000/api/swagger_doc/swagger_doc.json">Raw</a>
-    </li>
-  </ul>
-</div>
-<ul class="endpoints" id="swagger_doc_endpoint_list" style="display:none">
-
-<li class="endpoint">
-  <ul class="operations">
-    <li class="get operation" id="swagger_doc_GET_api_swagger_doc_format">
-      <div class="heading">
-        <h3>
-          <span class="http_method">
-          <a href="#%21/swagger_doc/GET_api_swagger_doc_format" class="toggleOperation">get</a>
-          </span>
-          <span class="path">
-          <a href="#%21/swagger_doc/GET_api_swagger_doc_format" class="toggleOperation">/api/swagger_doc.json</a>
-          </span>
-        </h3>
-        <ul class="options">
-          <li>
-          <a href="#%21/swagger_doc/GET_api_swagger_doc_format" class="toggleOperation">Swagger compatible API description</a>
-          </li>
-        </ul>
-      </div>
-      <div class="content" id="swagger_doc_GET_api_swagger_doc_format_content" style="display:none">
-        
-        
-        
-        
-        
-        
-        <form accept-charset="UTF-8" class="sandbox">
-          <div style="margin:0;padding:0;display:inline"></div>
-          
-          
-          
-          <div class="sandbox_header">
-            <input class="submit" name="commit" value="Try it out!" type="button">
-            <a href="#" class="response_hider" style="display:none">Hide Response</a>
-            <span class="response_throbber" style="display:none"></span>
-          </div>
-          
-        </form>
-        <div class="response" style="display:none">
-          <h4>Request URL</h4>
-          <div class="block request_url"></div>
-          <h4>Response Body</h4>
-          <div class="block response_body"></div>
-          <h4>Response Code</h4>
-          <div class="block response_code"></div>
-          <h4>Response Headers</h4>
-          <div class="block response_headers"></div>
-        </div>
-      </div>
-    </li>
-  </ul>
-</li><li class="endpoint">
-  <ul class="operations">
-    <li class="get operation" id="swagger_doc_GET_api_swagger_doc_name_format">
-      <div class="heading">
-        <h3>
-          <span class="http_method">
-          <a href="#%21/swagger_doc/GET_api_swagger_doc_name_format" class="toggleOperation">get</a>
-          </span>
-          <span class="path">
-          <a href="#%21/swagger_doc/GET_api_swagger_doc_name_format" class="toggleOperation">/api/swagger_doc/{name}.json</a>
-          </span>
-        </h3>
-        <ul class="options">
-          <li>
-          <a href="#%21/swagger_doc/GET_api_swagger_doc_name_format" class="toggleOperation">Swagger compatible API description for specific API</a>
-          </li>
-        </ul>
-      </div>
-      <div class="content" id="swagger_doc_GET_api_swagger_doc_name_format_content" style="display:none">
-        
-        
-        
-        
-        
-        
-        <form accept-charset="UTF-8" class="sandbox">
-          <div style="margin:0;padding:0;display:inline"></div>
-          
-          <h4>Parameters</h4>
-          <table class="fullwidth">
-          <thead>
-            <tr>
-            <th style="width: 100px; max-width: 100px">Parameter</th>
-            <th style="width: 310px; max-width: 310px">Value</th>
-            <th style="width: 200px; max-width: 200px">Description</th>
-            <th style="width: 100px; max-width: 100px">Parameter Type</th>
-            <th style="width: 220px; max-width: 230px">Data Type</th>
-            </tr>
-          </thead>
-          <tbody class="operation-params">
-
-          <tr><td class="code required">name</td>
-<td>
-	
-		
-			
-				<input class="parameter required" minlength="1" name="name" placeholder="(required)" type="text">
-			
-		
-	
-</td>
-<td>
-	<strong>Resource name of mounted API</strong>
-</td>
-<td>path</td>
-<td><span class="model-signature">string</span></td>
-</tr></tbody>
-          </table>
-          
-          
-          
-          <div class="sandbox_header">
-            <input class="submit" name="commit" value="Try it out!" type="button">
-            <a href="#" class="response_hider" style="display:none">Hide Response</a>
-            <span class="response_throbber" style="display:none"></span>
-          </div>
-          
-        </form>
-        <div class="response" style="display:none">
-          <h4>Request URL</h4>
-          <div class="block request_url"></div>
-          <h4>Response Body</h4>
-          <div class="block response_body"></div>
-          <h4>Response Code</h4>
-          <div class="block response_code"></div>
-          <h4>Response Headers</h4>
-          <div class="block response_headers"></div>
-        </div>
-      </div>
-    </li>
-  </ul>
-</li></ul>
-</li><li class="resource" id="resource_test"><div class="heading">
-  <h2>
-    <a href="#%21/test" onclick="Docs.toggleEndpointListForResource('test');">/test</a>  : Operations about tests
-  </h2>
-  <ul class="options">
-    <li>
-      <a href="#%21/test" id="endpointListTogger_test" onclick="Docs.toggleEndpointListForResource('test');">Show/Hide</a>
-    </li>
-    <li>
-      <a href="#" onclick="Docs.collapseOperationsForResource('test'); return false;">
-        List Operations
-      </a>
-    </li>
-    <li>
-      <a href="#" onclick="Docs.expandOperationsForResource('test'); return false;">
-        Expand Operations
-      </a>
-    </li>
-    <li>
-      <a href="http://localhost:3000/api/swagger_doc/test.json">Raw</a>
-    </li>
-  </ul>
-</div>
-<ul class="endpoints" id="test_endpoint_list" style="display:none">
-
-<li class="endpoint">
-  <ul class="operations">
-    <li class="get operation" id="test_GET_api_version_test_format">
-      <div class="heading">
-        <h3>
-          <span class="http_method">
-          <a href="#%21/test/GET_api_version_test_format" class="toggleOperation">get</a>
-          </span>
-          <span class="path">
-          <a href="#%21/test/GET_api_version_test_format" class="toggleOperation">/api/v1/test.json</a>
-          </span>
-        </h3>
-        <ul class="options">
-          <li>
-          <a href="#%21/test/GET_api_version_test_format" class="toggleOperation"></a>
-          </li>
-        </ul>
-      </div>
-      <div class="content" id="test_GET_api_version_test_format_content" style="display:none">
-        
-        
-        
-        
-        
-        
-        <form accept-charset="UTF-8" class="sandbox">
-          <div style="margin:0;padding:0;display:inline"></div>
-          
-          
-          
-          <div class="sandbox_header">
-            <input class="submit" name="commit" value="Try it out!" type="button">
-            <a href="#" class="response_hider" style="display:none">Hide Response</a>
-            <span class="response_throbber" style="display:none"></span>
-          </div>
-          
-        </form>
-        <div class="response" style="display:none">
-          <h4>Request URL</h4>
-          <div class="block request_url"></div>
-          <h4>Response Body</h4>
-          <div class="block response_body"></div>
-          <h4>Response Code</h4>
-          <div class="block response_code"></div>
-          <h4>Response Headers</h4>
-          <div class="block response_headers"></div>
-        </div>
-      </div>
-    </li>
-  </ul>
-</li></ul>
-</li></ul>
-
-    <div class="footer">
-        <br>
-        <br>
-        <h4 style="color: #999">[ <span style="font-variant: small-caps">base url</span>: http://localhost:3000/api/swagger_doc
-        
-        , <span style="font-variant: small-caps">api version</span>: v1
-        ]</h4>
-    </div>
-</div>
-</div>
-
-
-<div id="xunlei_com_thunder_helper_plugin_d462f475-c18e-46be-bd10-327458d045bd"></div></body></html>
+<div id="message-bar" class="swagger-ui-wrap">&nbsp;</div>
+<div id="swagger-ui-container" class="swagger-ui-wrap"></div>
+</body>
+</html>

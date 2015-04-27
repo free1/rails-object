@@ -26,6 +26,7 @@ gem 'net-ssh'
 gem 'grape'
 gem 'grape-entity'
 gem 'grape-swagger'
+gem 'swagger-ui_rails'
 # 允跨域请求
 gem 'rack-cors'
 

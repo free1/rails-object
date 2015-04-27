@@ -44,8 +44,8 @@ module WeixinTest
     #                                 api_swagger_ui/swagger-client.js api_swagger_ui/swagger-oauth.js
     #                                 api_swagger_ui/swagger-ui.js api_swagger_ui/swagger.js
     #                                 api_swagger_ui/underscore-min.js)
-    config.assets.precompile += %w(doc/*.css api_swagger_ui/*.css)
-    config.assets.precompile += %w(upload/*.js doc/*.js api_swagger_ui/*.js)
+    config.assets.precompile += %w(doc/*.css)
+    config.assets.precompile += %w(upload/*.js doc/*.js)
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
