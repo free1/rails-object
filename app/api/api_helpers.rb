@@ -10,4 +10,9 @@ module APIHelpers
     @current_user ||= User.find_by(remember_token: remember_token)
   end
 
+  def sign_in(user)
+    remember_token = User.new_remember_token
+    { cookies: remember_token }
+  end
+
 end

@@ -1,15 +1,16 @@
 # encoding=utf-8
 class User < ActiveRecord::Base
   include SendEmail
+  include ThirdParty
 
   has_secure_password
   # obfuscate_id
 
   # 验证
   validates :name, presence: true, length: { in: 3..20 }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
+  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  # validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
+                    # uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 3 }, on: :create
 
   # 第三方账户

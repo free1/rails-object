@@ -10,6 +10,7 @@ gem 'omniauth-weibo-oauth2', '~> 0.4.0'
 gem 'omniauth-qq-connect'
 gem 'omniauth-github'
 gem 'omniauth-douban-oauth2'
+# gem 'weibo_2' #api
 
 # 样式
 gem 'bootstrap-sass', '~> 3.2.0'
