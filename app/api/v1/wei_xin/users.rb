@@ -34,18 +34,19 @@ module V1
         end
       end
 
-      desc '新浪weibo登录请求user信息'
+      desc '第三方登录'
       params do
         requires :access_token, type: String
         requires :uid, type: String
+        requires :provider, type: String, default: 'weibo'
       end
-      get '/weibo_login' do
-        user = User.get_weibo_user(params[:uid])
+      get '/third_party_login' do
+        user = User.get_user(params[:uid], params[:provider])
         unless user
-          user_info = User.get_weibo_user_info(params[:access_token], params[:uid])
-          weibo_info = {uid: params[:uid], privider: 'weibo'}
+          user_info = User.get_user_info(params[:access_token], params[:uid], params[:provider])
+          weibo_info = {uid: params[:uid], provider: params[:provider]}
           user_info.merge! weibo_info
-          user = User.create_from_weibo(user_info)
+          user = User.create_from_user(user_info, params[:provider])
         end
         present user, with: V1::Entities::Users
       end
