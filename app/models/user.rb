@@ -35,8 +35,10 @@ class User < ActiveRecord::Base
   has_many :tags, through: :user_tag_ships
   # 评论
   has_many :comments, dependent: :destroy
-  # 文章
+  # 抓取硬件文章
   has_many :posts, dependent: :destroy
+  # 日知文章
+  has_many :articles, dependent: :destroy
 
   # 代理
   delegate :public_name, :number, :qr_code, :keyword, to: :wechat_info, allow_nil: true

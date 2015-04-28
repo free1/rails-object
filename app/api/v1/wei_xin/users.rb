@@ -16,7 +16,7 @@ module V1
         get do
           users = User.order(id: :desc).paginate(page: params[:page], per_page: params[:per_page])
 
-          present users, with: V1::Entities::Users
+          present users, with: V1::Entities::User::Users
         end
       end
 
@@ -28,7 +28,7 @@ module V1
       post '/login' do
         user = User.find_by(name: params[:name])
         if user && user.authenticate(params[:password])
-          present user, with: V1::Entities::Users
+          present user, with: V1::Entities::User::Users
         else
           p "----无效的用户名/密码!----"
         end
@@ -48,7 +48,7 @@ module V1
           user_info.merge! weibo_info
           user = User.create_from_user(user_info, params[:provider])
         end
-        present user, with: V1::Entities::Users
+        present user, with: V1::Entities::User::Users
       end
 
     end

@@ -29,7 +29,7 @@ module ThirdParty
       result
 		end
 
-		# 创建微博用户
+		# 创建用户
 		def create_from_user(user_info, provider)
 			password = User.new_remember_token
 			remember_token = User.new_remember_token
