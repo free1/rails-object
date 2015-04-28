@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_many :authentications, dependent: :destroy
   # 商品
   has_many :products, dependent: :destroy
-  # 收藏
+  # 商品收藏
   has_many :user_collect_products, dependent: :destroy
   has_many :collect_products, through: :user_collect_products, source: :product
   # 用户详细信息
@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   # 日知文章
   has_many :articles, dependent: :destroy
+  # 日知关注(使用多态)
+  has_many :user_collects, dependent: :destroy
+  has_many :collect_articles, through: :user_collects, source: :listable, source_type: "Article"
+
 
   # 代理
   delegate :public_name, :number, :qr_code, :keyword, to: :wechat_info, allow_nil: true
