@@ -17,6 +17,12 @@ class Post < ActiveRecord::Base
 			  site 'http://oszine.com/'
 			end
 			spider.crawl
+
+			spider1 = FreeSpider::Begin.new
+			spider1.plan do
+			  site 'http://www.mr-wu.cn/'
+			end
+			spider1.crawl
 		end
 		# 删除不必要内容
 		def check_content
