@@ -12,17 +12,17 @@ class Post < ActiveRecord::Base
 	class << self
 		# 抓取内容
 		def crawl_post
-			spider = FreeSpider::Begin.new
-			spider.plan do
-			  site 'http://oszine.com/'
-			end
-			spider.crawl
-
 			spider1 = FreeSpider::Begin.new
 			spider1.plan do
 			  site 'http://www.mr-wu.cn/'
 			end
 			spider1.crawl
+			
+			spider = FreeSpider::Begin.new
+			spider.plan do
+			  site 'http://oszine.com/'
+			end
+			spider.crawl
 		end
 		# 删除不必要内容
 		def check_content
