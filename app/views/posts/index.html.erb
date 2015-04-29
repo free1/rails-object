@@ -2,7 +2,7 @@
   <% @posts.each do |post| %>
       <div class="col-sm-6 col-md-3">
         <%= link_to post do %>
-        <div class="thumbnail min-height-130">
+        <div class="thumbnail post-title">
           <div class="caption">
             <h3 class='link_class1'><%= post.title %></h3>
             <p><%#= truncate(post.content, length: 30) %></p>
