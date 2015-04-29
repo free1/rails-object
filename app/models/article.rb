@@ -5,7 +5,7 @@ class Article < ActiveRecord::Base
 	has_many :collected_user, through: :user_collects, source: :listable, source_type: 'Article'
 
 	# 状态
-	enum status: {updating: 0, publish: 1, finished: 2}
+	enum status: {updating: 0, finished: 1}
 
 	# 验证
 	validates_presence_of :user

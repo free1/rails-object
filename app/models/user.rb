@@ -83,6 +83,17 @@ class User < ActiveRecord::Base
     self.send("user_collect_#{type}").find_by("#{collect_type}_id" => collect_id).destroy
   end
 
+  # 优化后关注(收藏)
+  def likeing?(listable_id, listable_type)
+    user_collects.find_by(listable_id: listable_id, listable_type: listable_type)
+  end
+  def like!(listable_id, listable_type)
+    user_collects.create!(listable_id: listable_id, listable_type: listable_type)
+  end
+  def cancel_like!(listable_id, listable_type)
+    user_collects.find_by(listable_id: listable_id, listable_type: listable_type).destroy
+  end
+
   # 标签
   def tag_tokens=(tokens)
     self.tag_ids = Tag.ids_from_tokens(tokens)

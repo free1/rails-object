@@ -25,6 +25,18 @@ module V1
             article = Article.find(params[:id])
             present article, with: V1::Entities::Article::ArticleDetails
           end
+
+          desc '日知文章关注'
+          post '/collect' do
+            current_user.like!(params[:id], 'Article')
+            present :result, true
+          end
+
+          desc '日知文章取消关注'
+          delete '/cancel_collect' do
+            current_user.cancel_like!(params[:id], 'Article')
+            present :result, true
+          end
         end
       end
 
