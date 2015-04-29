@@ -11,11 +11,15 @@ module V1
 	    	root 'article'
 	    	expose :title, :content, :status
 	    	expose :is_collect do |article, options|
-	    		options[:user].likeing?(article.id, 'Article')
+	    		if options[:user]
+	    			options[:user].likeing?(article.id, 'Article')
+	    		else
+	    			false
+	    		end
 	    	end
 	    	expose :user, using: V1::Entities::User::Users
 	    end
-
-	  end
+	    
+		end
   end
 end
