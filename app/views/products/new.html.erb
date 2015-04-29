@@ -21,19 +21,60 @@
   </div>
 <% end %>
 
+<!-- qiniu -->
 <%= javascript_include_tag 'upload/image_upload' %>
+<!-- simditor -->
 <%= javascript_include_tag 'doc/simditor/module.min.js' %>
 <%= javascript_include_tag 'doc/simditor/hotkeys.min.js' %>
+<%= javascript_include_tag 'doc/simditor/uploader.min.js' %>
 <%= javascript_include_tag 'doc/simditor/simditor.min.js' %>
 <%= javascript_include_tag 'doc/simditor/autosave.js' %>
-<%#= javascript_include_tag 'doc/simditor/uploader.min.js' %>
 <script>
     $(function () {
 
       // 编辑器
-      var editor = new Simditor({
-        textarea: $('#editor'),
-        autosave: 'editor-content'
+      // 获取上传token(可能出现token过期)
+      $.getJSON("/upload/qiniu/image_up_token", function(data) {
+        var uptoken = data.uptoken;
+        // 初始化编辑器
+        var editor = new Simditor({
+          textarea: $('#editor'),
+          placeholder: '给文章来点描述吧',
+          imageButton: ['upload', 'external'],
+          upload: {
+            url: 'http://up.qiniu.com/',
+            fileKey: 'file',
+            params: {
+              token: uptoken
+            },
+            connectionCount: 3,
+            leaveConfirm: '正在上传文件，如果离开上传会自动取消'
+          },
+          // toolbar: [
+          //   'title'          # 标题文字
+          //   'bold'           # 加粗文字
+          //   'italic'         # 斜体文字
+          //   'underline'      # 下划线文字
+          //   'strikethrough'  # 删除线文字
+          //   'color'          # 修改文字颜色
+          //   'ol'             # 有序列表
+          //   'ul'             # 无序列表
+          //   'blockquote'     # 引用
+          //   'code'           # 代码
+          //   'table'          # 表格
+          //   'link'           # 插入链接
+          //   'image'          # 插入图片
+          //   'hr'             # 分割线
+          //   'indent'         # 向右缩进
+          //   'outdent'        # 向左缩进
+          //   'source'         # HTML源代码
+          // ],
+          autosave: 'editor-content'
+        });
+        editor.uploader.on('uploadsuccess', function(e, file, result) {
+          console.log($(this))
+          console.log(result)
+        });
       });
 
       // 封面图
