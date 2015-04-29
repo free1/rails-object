@@ -16,4 +16,3 @@
 //= require doc/bootstrap.min.js
 //= require doc/form_validate/rails.validations
 //= require doc/form_validate/rails.validations.simple_form
-//= require swagger-ui

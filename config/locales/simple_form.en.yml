@@ -58,9 +58,9 @@ en:
         resume: '自我介绍'
         website: '个人网站'
       product:
-        title: '商品名称'
+        title: '题目'
         cover_path: '封面图'
-        describe: '商品描述'
+        describe: '描述'
       wechat_info:
         public_name: '微信公众号名称'
         number: '微信号'

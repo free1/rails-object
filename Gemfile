@@ -26,7 +26,7 @@ gem 'net-ssh'
 gem 'grape'
 gem 'grape-entity'
 gem 'grape-swagger'
-gem 'swagger-ui_rails'
+# gem 'swagger-ui_rails'  # 使用的jquery-1.8.0版本老
 # 允跨域请求
 gem 'rack-cors'
 
