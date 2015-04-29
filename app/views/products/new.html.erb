@@ -25,13 +25,15 @@
 <%= javascript_include_tag 'doc/simditor/module.min.js' %>
 <%= javascript_include_tag 'doc/simditor/hotkeys.min.js' %>
 <%= javascript_include_tag 'doc/simditor/simditor.min.js' %>
+<%= javascript_include_tag 'doc/simditor/autosave.js' %>
 <%#= javascript_include_tag 'doc/simditor/uploader.min.js' %>
 <script>
     $(function () {
 
       // 编辑器
       var editor = new Simditor({
-        textarea: $('#editor')
+        textarea: $('#editor'),
+        autosave: 'editor-content'
       });
 
       // 封面图
