@@ -10,6 +10,9 @@ module V1
 	    class ArticleDetails < Grape::Entity
 	    	root 'article'
 	    	expose :title, :content, :status
+	    	expose :is_collect do |article, options|
+	    		options[:user].likeing?(article.id, 'Article')
+	    	end
 	    	expose :user, using: V1::Entities::User::Users
 	    end
 

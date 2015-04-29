@@ -23,7 +23,7 @@ module V1
           end
           get do
             article = Article.find(params[:id])
-            present article, with: V1::Entities::Article::ArticleDetails
+            present article, with: V1::Entities::Article::ArticleDetails, user: current_user
           end
 
           desc '日知文章关注'

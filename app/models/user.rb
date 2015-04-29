@@ -85,7 +85,12 @@ class User < ActiveRecord::Base
 
   # 优化后关注(收藏)
   def likeing?(listable_id, listable_type)
-    user_collects.find_by(listable_id: listable_id, listable_type: listable_type)
+    is_like = user_collects.find_by(listable_id: listable_id, listable_type: listable_type)
+    if is_like
+      true
+    else
+      false
+    end
   end
   def like!(listable_id, listable_type)
     user_collects.create!(listable_id: listable_id, listable_type: listable_type)
