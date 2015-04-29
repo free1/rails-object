@@ -14,7 +14,7 @@ timeout 30
 before_exec do |server|
   p "-----------------"
   p app_path
-  ENV['BUNDLE_GEMFILE'] = "#{app_path}/Gemfile"
+  ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
 end
 
 # preload
