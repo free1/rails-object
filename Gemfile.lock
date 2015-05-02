@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:DavyJonesLocker/client_side_validations-simple_form
+  remote: git://github.com/free1/client_side_validations-simple_form.git
   revision: 63d846015053ffe557a449a2cf5f3389f91d2054
   branch: 3-1-stable
   specs:
@@ -8,7 +8,7 @@ GIT
       simple_form (~> 3.1)
 
 GIT
-  remote: git@github.com:DavyJonesLocker/client_side_validations.git
+  remote: git://github.com/free1/client_side_validations.git
   revision: 86b5c93df07b3f04743c86d024fce178bfb073e3
   branch: 4-2-stable
   specs:
