@@ -50,7 +50,11 @@ Rails.application.routes.draw do
   end
 
   # 抓取内容news
-  resources :posts
+  resources :posts do
+    collection do
+      get :search
+    end
+  end
 
 
   # 七牛上传文件

@@ -9,4 +9,9 @@ class PostsController < ApplicationController
 		Post.add_watch_count(params[:id])
 	end
 
+	def search
+		@posts = Post.search Riddle::Query.escape(params[:query])
+		render 'index'
+	end
+
 end

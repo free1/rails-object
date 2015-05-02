@@ -50,6 +50,11 @@ gem "mime-types", '~> 1.19'
 gem 'mysql2', '0.3.15'
 # gem "mongoid", "~> 4.0.0"
 
+# 搜索
+# gem 'mysql2',          '~> 0.3.13', :platform => :ruby
+gem 'jdbc-mysql',      '~> 5.1.28', :platform => :jruby
+gem 'thinking-sphinx', '~> 3.1.0'
+
 # 生成二维码
 gem 'rqrcode_png'
 
