@@ -1,0 +1,5 @@
+production:
+  pid_file: /home/deploy/apps/weixin_test/shared/tmp/searchd.pid
+  indices_location: /home/deploy/apps/weixin_test/shared/db/sphinx
+  configuration_file: /home/deploy/apps/weixin_test/shared/production.sphinx.conf
+  binlog_path: /home/deploy/apps/weixin_test/shared/binlog
