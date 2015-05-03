@@ -125,6 +125,10 @@ set :keep_releases, 5
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 set :whenever_roles,        ->{ :all }
 
+# thinking_sphinx
+set :thinking_sphinx_roles, :all
+set :thinking_sphinx_rails_env, -> { fetch(:rails_env) || fetch(:stage) }
+
 before 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do

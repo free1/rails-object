@@ -23,10 +23,21 @@ env :PATH, ENV['PATH']
 # set :output, "/var/log/cron_log.log"
 set :output, "log/cron.log"
 
+# 抓取任务
 every 1.day, :at => '4:30 am' do
 	runner "Post.crawl_post"
 end
 
+every 1.day, :at => '4:50 am' do
+	runner "Post.check_content"
+end
+
+# 转存任务
 every 1.minutes do
 	runner "Post.sum_watch_count"
+end
+
+# 搜索更新
+every 60.minutes do
+  rake "ts:index"
 end
