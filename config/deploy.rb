@@ -18,6 +18,9 @@ set :deploy_user, "deploy"
 set :use_sudo, false
 set :user, "deploy"
 
+# role
+set :filter, :roles => %w{app web db}
+
 # rbenv
 set :rbenv_type, :user # or :system, depends on your rbenv setup
 set :rbenv_ruby, '2.1.2'
@@ -28,12 +31,12 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all # default value
 
 # asset migrate
-set :migration_role, 'all'
-set :assets_roles, [:all]
+set :migration_role, 'db'
+set :assets_roles, [:web, :app]
 
 # unicorn
 set :unicorn_config_path, "config/unicorn.rb"
-set :unicorn_roles, [:all]
+set :unicorn_roles, [:web, :app]
 set :unicorn_rack_env, "production"
 
 # set :rails_env, :production
@@ -123,10 +126,10 @@ set :keep_releases, 5
 
 # whenever
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
-set :whenever_roles,        ->{ :all }
+set :whenever_roles,        ->{ :db }
 
 # thinking_sphinx
-set :thinking_sphinx_roles, :all
+set :thinking_sphinx_roles, :db
 set :thinking_sphinx_rails_env, -> { fetch(:rails_env) || fetch(:stage) }
 
 before 'deploy:publishing', 'deploy:restart'
