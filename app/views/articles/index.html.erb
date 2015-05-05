@@ -7,6 +7,7 @@
             <h3 class='link_class1'><%= article.title %></h3>
             <p><%= truncate(article.content, length: 30) %></p>
           </div>
+          <%= link_to "创建文章期刊",  article_article_lists_path(article), class: "btn btn-info" %>
         </div>
       </div>
   <% end %>

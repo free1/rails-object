@@ -57,7 +57,9 @@ Rails.application.routes.draw do
   end
 
   # 日知文章
-  resources :articles
+  resources :articles do
+    resources :article_lists
+  end
 
 
   # 七牛上传文件

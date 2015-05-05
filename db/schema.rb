@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505074322) do
+ActiveRecord::Schema.define(version: 20150505112458) do
+
+  create_table "article_lists", force: :cascade do |t|
+    t.integer  "article_id", limit: 4
+    t.text     "content",    limit: 65535
+    t.text     "translate",  limit: 65535
+    t.text     "remark_on",  limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",      limit: 255

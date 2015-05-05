@@ -1,0 +1,40 @@
+<h2><%= @article.title %></h2>
+
+<%= link_to "创建新期刊", new_article_article_list_path, class: "btn btn-info" %>
+
+<table class="table table-bordered table-striped table-condensed">
+    <tr>
+    <th>ID</th>
+    <th>原文</th>
+    <th>翻译</th>
+    <th>点评</th>
+    <th></th>
+    <th></th>
+    </tr>
+
+    <% @article_lists.each do |article_list| %>
+    <tr>
+    <td>
+      <%= article_list.id %>
+    </td>
+    <td>
+      <%= article_list.content %>
+    </td>
+    <td>
+      <%= article_list.translate %>
+    </td>
+    <td>
+      <%= article_list.remark_on %>
+    </td>
+    <td>
+        <%= link_to "修改", edit_article_article_list_path(@article, article_list) %>
+    </td>
+    <td>
+        <%= link_to "删除", article_article_list_path(@article, article_list), method: :delete, data: { confirm: "确定要删除吗?" } %>
+    </td>
+    </tr>
+    <% end %>
+
+</table>
+
+<%= will_paginate @article_lists %>

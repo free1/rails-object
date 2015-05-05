@@ -79,6 +79,10 @@ en:
         content: '栏目介绍'
         cover_path: '封面图'
         status: '更新状态'
+      article_list:
+        content: '原文'
+        translate: '翻译'
+        remark_on: '点评'
   # 错误提示
   errors:
     format: "%{attribute} %{message}"
