@@ -18,12 +18,16 @@
 
 <!-- qiniu -->
 <%= javascript_include_tag 'upload/image_upload' %>
+<%= javascript_include_tag 'doc/form_text_check/autogrow' %>
 
 <script>
     $(function () {
 
       // 封面图
       imageUpload.coverUploader('pickfiles', $('#show_cover_path'), $('#cover_path'));
+
+      // text自动增加列
+      $('#article_content').autogrow();
 
     });
 </script>
