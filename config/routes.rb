@@ -56,6 +56,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # 日知文章
+  resources :articles
+
 
   # 七牛上传文件
   namespace :upload do

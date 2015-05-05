@@ -1,0 +1,14 @@
+<div class="row">
+  <% @articles.each do |article| %>
+      <div class="col-sm-6 col-md-3">
+        <%= image_tag article.cover_path, size: '80x80' %>
+        <div class="thumbnail post-title">
+          <div class="caption">
+            <h3 class='link_class1'><%= article.title %></h3>
+            <p><%= truncate(article.content, length: 30) %></p>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
+<%= will_paginate @articles, renderer: BootstrapPagination::Rails %>

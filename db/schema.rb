@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428072654) do
+ActiveRecord::Schema.define(version: 20150505074322) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150428072654) do
     t.text     "content",    limit: 65535
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.string   "cover_path", limit: 255
   end
 
   create_table "authentications", force: :cascade do |t|

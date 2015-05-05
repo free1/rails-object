@@ -123,6 +123,7 @@ class User < ActiveRecord::Base
     def new_remember_token
       SecureRandom.urlsafe_base64
     end
+    # 加密
     def encrypt(token)
       Digest::SHA1.hexdigest(token.to_s)
     end

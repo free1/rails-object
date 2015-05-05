@@ -4,7 +4,7 @@ module V1
 
 	    class Articles < Grape::Entity
 	    	root 'articles'
-	      expose :title
+	      expose :title, :content, :cover_path
 	    end
 
 	    class ArticleDetails < Grape::Entity

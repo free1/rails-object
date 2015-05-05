@@ -74,7 +74,12 @@ en:
         keyword: '关键词'
       category:
         name: '标签名'
-
+      article:
+        title: '栏目名称'
+        content: '栏目介绍'
+        cover_path: '封面图'
+        status: '更新状态'
+  # 错误提示
   errors:
     format: "%{attribute} %{message}"
     messages:
