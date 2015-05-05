@@ -6,11 +6,15 @@ module APIHelpers
   end
 
   def current_user
-    remember_token = User.encrypt(cookies[:remember_token])
+  	token = headers["Http-Access-Token"]
+    return super unless token
+    # remember_token = User.encrypt(token)
     @current_user ||= User.find_by(remember_token: remember_token)
   end
 
-  # def sign_in(user)
-  # end
+  # 是否登录
+  def authenticate!
+    error!('401 Unauthorized', 401) unless current_user
+  end
 
 end
