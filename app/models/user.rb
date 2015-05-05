@@ -142,10 +142,7 @@ class User < ActiveRecord::Base
       end
       def create_from_auth(auth_hash)
         password = User.new_remember_token
-          p "------"
-          p auth_hash
         begin
-
           User.transaction do
             user = create(email: auth_hash['info']['email'], name: auth_hash['info']['nickname'],
                           avatar_path: auth_hash['info']['image'], password: password)
