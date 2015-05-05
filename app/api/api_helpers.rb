@@ -9,7 +9,7 @@ module APIHelpers
   	token = headers["Http-Access-Token"]
     return super unless token
     # remember_token = User.encrypt(token)
-    @current_user ||= User.find_by(remember_token: remember_token)
+    @current_user ||= User.find_by(remember_token: token)
   end
 
   # 是否登录
