@@ -246,6 +246,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.4.2)
+    rb-readline (0.5.2)
     redis (3.0.7)
     redis-objects (1.1.0)
       redis (>= 3.0.2)
@@ -357,6 +358,7 @@ DEPENDENCIES
   rack-cors
   rails (= 4.2.0)
   rails-observers
+  rb-readline
   redis (~> 3.0.1)
   redis-objects
   rqrcode_png

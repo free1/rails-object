@@ -4,6 +4,8 @@ source 'https://ruby.taobao.org'
 # ruby '2.1.2'
 gem 'rails', '4.2.0'
 
+gem 'rb-readline'
+
 # 登录
 gem 'omniauth', '~> 1.2.1'
 gem 'omniauth-weibo-oauth2', '~> 0.4.0'
