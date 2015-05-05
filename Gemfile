@@ -3,7 +3,7 @@ source 'https://ruby.taobao.org'
 
 # ruby '2.1.2'
 gem 'rails', '4.2.0'
-
+# 解决服务器没有安装readline问题
 gem 'rb-readline'
 
 # 登录

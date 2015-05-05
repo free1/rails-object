@@ -21,7 +21,7 @@ module ThirdParty
 			when 'qq'
 				uri = URI.parse(QQ_URL)
 	      # params = { :access_token => access_token, :uid => uid, :oauth_consumer_key => ENV['QQ_CONNECT_APP_KEY'] }
-	      params = { :access_token => access_token, :uid => uid, :oauth_consumer_key => 1104504051 }
+	      params = { :access_token => access_token, :openid => uid, :oauth_consumer_key => 1104504051 }
 			end
       uri.query = URI.encode_www_form(params)
       res = Net::HTTP.get_response(uri).body
