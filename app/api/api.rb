@@ -75,5 +75,5 @@ class API < Grape::API
     # add_swagger_documentation base_path: base_path,
     #   mount_path: '/doc/swagger', api_version: 'v1',
     #   hide_documentation_path: true, hide_format: true
-    add_swagger_documentation base_path: nil, class_name: 'base', api_version: 'v1', hide_format: true, hide_documentation_path: true
+    add_swagger_documentation mount_path: '/doc', api_version: 'v1', hide_format: true, hide_documentation_path: true
 end

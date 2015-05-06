@@ -12,7 +12,7 @@ module V1
           optional :per_page, type: Integer, default: 10
         end
         get do
-          posts = current_user.posts.order(id: :desc).paginate(page: params[:page], per_page: params[:per_page])
+          posts = Post.order(id: :desc).paginate(page: params[:page], per_page: params[:per_page])
 
           present posts, with: V1::Entities::Posts
         end

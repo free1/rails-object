@@ -284,6 +284,7 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     super_cache (0.0.2)
+    swagger-ui_rails (0.1.7)
     thinking-sphinx (3.1.3)
       activerecord (>= 3.1.0)
       builder (>= 2.1.2)
@@ -366,6 +367,7 @@ DEPENDENCIES
   simple_form
   spring
   super_cache
+  swagger-ui_rails
   thinking-sphinx (~> 3.1.0)
   turbolinks
   uglifier (>= 1.3.0)
