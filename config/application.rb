@@ -44,7 +44,7 @@ module WeixinTest
     #                                 api_swagger_ui/swagger-client.js api_swagger_ui/swagger-oauth.js
     #                                 api_swagger_ui/swagger-ui.js api_swagger_ui/swagger.js
     #                                 api_swagger_ui/underscore-min.js)
-    config.assets.precompile += %w(doc/*.css)
+    config.assets.precompile += %w(doc/*.css api_swagger_ui/swagger-ui_rails.*)
     config.assets.precompile += %w(upload/*.js doc/*.js)
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
