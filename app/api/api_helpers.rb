@@ -6,8 +6,11 @@ module APIHelpers
   end
 
   def current_user
-  	token = headers["Http-Access-Token"]
-    return super unless token
+    if headers["Http-Access-Token"]
+      token = headers["Http-Access-Token"]
+    elsif (cookies[:remember_token])
+      token = User.encrypt(cookies[:remember_token])
+    end
     # remember_token = User.encrypt(token)
     @current_user ||= User.find_by(remember_token: token)
   end
