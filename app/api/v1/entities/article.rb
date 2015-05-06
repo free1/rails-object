@@ -4,12 +4,12 @@ module V1
 
 	    class Articles < Grape::Entity
 	    	root 'articles'
-	      expose :title, :content, :cover_path
+	      expose :id, :title, :content, :cover_path
 	    end
 
 	    class ArticleDetails < Grape::Entity
 	    	root 'article'
-	    	expose :title, :content, :status
+	    	expose :id, :title, :content, :status
 	    	expose :is_collect do |article, options|
 	    		if options[:user]
 	    			options[:user].likeing?(article.id, 'Article')
@@ -22,14 +22,14 @@ module V1
 
 	    class ArticleLists < Grape::Entity
 	    	root 'lists'
-	    	expose :content
+	    	expose :id, :content
         with_options(format_with: :iso_timestamp) do
           expose :created_at
         end
 	    end
 
 	    class ArticleListDetails < Grape::Entity
-	    	expose :content, :translate, :remark_on
+	    	expose :id, :content, :translate, :remark_on
 	    	with_options(format_with: :iso_timestamp) do
 	    		expose :created_at
 	    	end
