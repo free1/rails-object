@@ -7,5 +7,6 @@ module V1
     mount V1::WeiXin::Posts
     mount V1::WeiXin::Users
     mount V1::WeiXin::Articles
+    mount V1::WeiXin::ArticleLists
   end
 end

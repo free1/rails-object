@@ -19,6 +19,21 @@ module V1
 	    	end
 	    	expose :user, using: V1::Entities::User::Users
 	    end
+
+	    class ArticleLists < Grape::Entity
+	    	root 'lists'
+	    	expose :content
+        with_options(format_with: :iso_timestamp) do
+          expose :created_at
+        end
+	    end
+
+	    class ArticleListDetails < Grape::Entity
+	    	expose :content, :translate, :remark_on
+	    	with_options(format_with: :iso_timestamp) do
+	    		expose :created_at
+	    	end
+	    end
 	    
 		end
   end
