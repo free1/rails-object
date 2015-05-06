@@ -6,7 +6,7 @@ module V1
     class Users < Grape::API
       version 'v1', using: :path
 
-      resource :users do
+      resource :users, desc: '用户系统' do
         
         desc '用户列表'
         params do

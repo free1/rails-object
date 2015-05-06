@@ -3,7 +3,8 @@ module V1
     class Test < Grape::API
       version 'v1', using: :path
 
-      get "/test" do
+      desc '测试api'
+      get "/test"  do
         # p "----"
         # p get_request_ip
         # present current_user, with: APIv2::Entities::Test

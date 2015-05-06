@@ -4,12 +4,12 @@ module V1
     class Articles < Grape::API
       version 'v1', using: :path
 
-      resource :articles do
+      resource :articles, desc: '日知栏目' do
         
-        desc '日知文章列表'
+        desc '日知栏目列表'
         params do
-          optional :page, type: Integer, default: 1
-          optional :per_page, type: Integer, default: 10
+          optional :page, type: Integer, default: 1, desc: '第几页'
+          optional :per_page, type: Integer, default: 10, desc: '分几页'
         end
         get do
           articles = Article.order(id: :desc).paginate(page: params[:page], per_page: params[:per_page])
@@ -18,7 +18,7 @@ module V1
         end
 
         route_param :id do
-          desc '日知文章详情'
+          desc '日知栏目详情'
           params do
           end
           get do
@@ -26,13 +26,13 @@ module V1
             present article, with: V1::Entities::Article::ArticleDetails, user: current_user
           end
 
-          desc '日知文章关注'
+          desc '日知栏目关注'
           post '/collect' do
             current_user.like!(params[:id], 'Article')
             present :result, true
           end
 
-          desc '日知文章取消关注'
+          desc '日知栏目取消关注'
           delete '/cancel_collect' do
             current_user.cancel_like!(params[:id], 'Article')
             present :result, true

@@ -4,7 +4,7 @@ module V1
     class Posts < Grape::API
       version 'v1', using: :path
 
-      resource :posts do
+      resource :posts, desc: '爬取文章' do
         
         desc '文章列表'
         params do
