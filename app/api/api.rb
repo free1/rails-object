@@ -1,6 +1,13 @@
 # encoding:utf-8
 require 'grape-swagger'
 
+module Grape
+  class Entity
+    format_with(:iso_timestamp) { |dt| dt.utc.iso8601 if dt }
+    format_with(:iso_date) { |d| d.utc.to_date if d }
+  end
+end
+
 class API < Grape::API
     format :json
     default_format :json

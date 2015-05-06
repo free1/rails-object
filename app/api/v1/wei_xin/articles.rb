@@ -4,12 +4,18 @@ module V1
     class Articles < Grape::API
       version 'v1', using: :path
 
+      helpers do
+        params :pagination do
+          optional :page, type: Integer, default: 1, desc: '第几页'
+          optional :per_page, type: Integer, default: 10, desc: '分几页'
+        end
+      end
+
       resource :articles, desc: '日知栏目' do
         
         desc '日知栏目列表'
         params do
-          optional :page, type: Integer, default: 1, desc: '第几页'
-          optional :per_page, type: Integer, default: 10, desc: '分几页'
+          use :pagination
         end
         get do
           articles = Article.order(id: :desc).paginate(page: params[:page], per_page: params[:per_page])
@@ -19,8 +25,6 @@ module V1
 
         route_param :id do
           desc '日知栏目详情'
-          params do
-          end
           get do
             article = Article.find(params[:id])
             present article, with: V1::Entities::Article::ArticleDetails, user: current_user
