@@ -34,7 +34,7 @@ module V1
 	    			false
 	    		end
 	    	end
-	    	expose :user, using: V1::Entities::User::Users
+	    	expose :user, using: V1::Entities::User::UserWithoutToken
 	    end
 
 	    class ArticleLists < Grape::Entity
