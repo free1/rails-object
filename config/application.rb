@@ -23,6 +23,8 @@ module WeixinTest
     config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
 
     config.autoload_paths += Dir["#{config.root}/app/controllers/concerns", "#{config.root}/app/models/concerns"]
+    # emoji
+    config.assets.paths << Emoji.images_path
 
     # Observer configuration
     config.active_record.observers = :user_observer
@@ -46,6 +48,7 @@ module WeixinTest
     #                                 api_swagger_ui/underscore-min.js)
     config.assets.precompile += %w(doc/*.css api_swagger_ui/swagger-ui_rails.*)
     config.assets.precompile += %w(upload/*.js doc/*.js)
+    config.assets.precompile << "emoji/**/*.png"
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

@@ -24,6 +24,10 @@ gem 'turbolinks'
 
 gem 'net-ssh'
 
+# html文本处理
+gem 'html-pipeline'
+gem 'gemoji'
+
 # api
 gem 'grape'
 gem 'grape-entity'

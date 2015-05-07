@@ -3,4 +3,7 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+# 加载emoji任务生成图片
+load 'tasks/emoji.rake'
+
 Rails.application.load_tasks
