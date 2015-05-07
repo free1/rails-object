@@ -5,6 +5,11 @@ module V1
 	    	root 'users', 'user'
 	      expose :id, :name, :email, :avatar_path, :remember_token, :resume
 	    end
+
+	    class UserDetails < Grape::Entity
+	    	root 'user'
+	    	expose :id, :name
+	    end
 	  end
   end
 end
