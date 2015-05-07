@@ -4,13 +4,29 @@ module V1
 
 	    class Articles < Grape::Entity
 	    	root 'articles'
-	      expose :id, :title, :content, :cover_path, :status
+	      expose :id, :title, :content, :cover_path
+	      expose :status do |article|
+	      	case article.status
+	      	when 'updating'
+	      		'更新中'
+	      	when 'finished'
+	      		'完结'
+	      	end
+	      end
 	      expose :user, using: V1::Entities::User::UserDetails
 	    end
 
 	    class ArticleDetails < Grape::Entity
 	    	root 'article'
-	    	expose :id, :title, :content, :status, :author
+	    	expose :id, :title, :content, :author
+	    	expose :status do |article|
+	      	case article.status
+	      	when 'updating'
+	      		'更新中'
+	      	when 'finished'
+	      		'完结'
+	      	end
+	      end
 	    	expose :is_collect do |article, options|
 	    		if options[:user]
 	    			options[:user].likeing?(article.id, 'Article')
