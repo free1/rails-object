@@ -2,7 +2,9 @@
 
 <%= simple_form_for @article, validate: true, html: { class: "form-horizontal"} do |f| %>
   <div class="col-sm-8 col-sm-offset-2">
-    <%= f.input :title, input_html: { maxlength: 30 }, autofocus: true %>
+    <%= f.input :author, autofocus: true %>
+
+    <%= f.input :title, input_html: { maxlength: 30 } %>
 
     <%= f.input :cover_path, input_html: { id: "cover_path", readonly: true } %>
     <a class="btn btn-default btn-lg" id="pickfiles">增加图片</a>

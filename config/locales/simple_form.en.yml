@@ -79,6 +79,7 @@ en:
         content: '栏目介绍'
         cover_path: '封面图'
         status: '更新状态'
+        author: '作者'
       article_list:
         content: '原文'
         translate: '翻译'
