@@ -42,14 +42,20 @@ module V1
             present :result, true
           end
 
-          # desc '创建评论'
-          # params do
-          #   requires :content, type: String
-          # end
-          # post '/comments' do
-          #   article = Article.find(params[:id])
-            
-          # end
+          desc '创建评论'
+          params do
+            requires :content, type: String
+          end
+          post '/comment' do
+            article = Article.find(params[:id])
+            comment = article.comments.build(content: params[:content], user_id: current_user.id)
+            if comment.save
+              present comment, with: V1::Entities::Comment::Comments
+              # present :result, true
+            else
+              present :result, false              
+            end
+          end
 
           desc '评论列表'
           params do
