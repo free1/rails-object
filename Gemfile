@@ -25,8 +25,9 @@ gem 'turbolinks'
 gem 'net-ssh'
 
 # html文本处理
-gem 'html-pipeline'
+gem 'html-pipeline', "~> 1.11.0" # 之前版本有bug
 gem 'gemoji'
+gem "rinku", "~> 1.7",   :require => false
 
 # api
 gem 'grape'

@@ -2,9 +2,15 @@
 module TextCheck
 	extend ActiveSupport::Concern
 
-	module ClassMethods
-
+	def content=(content)
+		p "=========="
+		pipeline = HTML::Pipeline.new [HTML::Pipeline::MentionFilter], {base_url: '/users'}
+    result = pipeline.call content
+    self[:content] = content
+    self[:content_html] = result[:output].to_html
+	end
 		
+	module ClassMethods
 	end
 
 end

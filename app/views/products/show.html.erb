@@ -13,7 +13,7 @@
 <% if @comments.any? %>
 	<% @comments.each do |comment| %>
 		<%= comment.user.name %>
-		<%= emojify comment.content %>
+		<%= emojify(sanitize(comment.content_html)) %>
 		</br>
 	<% end %>
 <% end %>
