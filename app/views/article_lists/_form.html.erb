@@ -2,9 +2,10 @@
 
 <%= simple_form_for [@article, @article_list], validate: true, html: { class: "form-horizontal"} do |f| %>
   <div class="col-sm-8 col-sm-offset-2">
-    <%= f.input :content, as: :text, autofocus: true, input_html: {rows: 5} %>
-    <%= f.input :translate, as: :text, input_html: {rows: 15} %>    
-    <%= f.input :remark_on, as: :text, input_html: {rows: 20} %>    
+    <%= f.input :periods, autofocus: true %>
+    <%= f.input :content, as: :text, input_html: {rows: 5} %>
+    <%= f.input :translate, as: :text, input_html: {rows: 15} %>
+    <%= f.input :remark_on, as: :text, input_html: {rows: 20} %>
 
     </br></br></br>
     <%= f.button :submit, "发布期刊", class: 'btn-lg btn-block', data: { disable_with: '发布中...' } %>

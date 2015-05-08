@@ -53,6 +53,6 @@ class ArticleListsController < ApplicationController
 		end
 
 		def article_list_params
-			params.require(:article_list).permit(:content, :translate, :remark_on)
+			params.require(:article_list).permit(:content, :translate, :remark_on, :periods)
 		end
 end
