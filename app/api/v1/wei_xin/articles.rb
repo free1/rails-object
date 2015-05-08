@@ -30,6 +30,12 @@ module V1
             present article, with: V1::Entities::Article::ArticleDetails, user: current_user
           end
 
+          desc '栏目下最新文章'
+          get '/newest' do
+            newest_article_list = Article.find(params[:id]).article_lists.last
+            present newest_article_list, with: V1::Entities::Article::ArticleListDetails
+          end
+
           desc '日知栏目关注'
           post '/collect' do
             authenticate!
@@ -62,8 +68,7 @@ module V1
 
           desc '评论列表'
           params do
-            optional :page, type: Integer, default: 1
-            optional :per_page, type: Integer, default: 10
+            use :pagination
           end
           get '/comments' do
             article = Article.find(params[:id])
