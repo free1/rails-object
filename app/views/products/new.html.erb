@@ -75,14 +75,15 @@
           //   'outdent'        # 向左缩进
           //   'source'         # HTML源代码
           // ],
+          pasteImage: true,
           autosave: 'editor-content'
         });
+        // 上传成功后
         editor.uploader.on('uploadsuccess', function(e, file, result) {
           console.log($(this))
           console.log(result)
         });
       });
-
       // 封面图
       imageUpload.coverUploader('pickfiles', $('#show_cover_path'), $('#cover_path'));
 
