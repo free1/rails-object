@@ -1,1 +1,36 @@
 <%= link_to "创建新推荐滚动信息",  new_admin_roll_nav_info_path, class: "btn btn-info" %>
+
+<h2>滚动信息列表</h2>
+
+<table class="table table-bordered table-striped table-condensed">
+    <tr>
+    <th>ID</th>
+    <th>图片</th>
+    <th>权重</th>
+    <th></th>
+    </tr>
+
+    <% @roll_nav_infos.each do |roll_nav_info| %>
+    <tr>
+    <td>
+      <%= roll_nav_info.id %>
+    </td>
+    <td>
+      <%= image_tag roll_nav_info.cover_path, size: '100x100' %>
+    </td>
+    <td>
+    	<%= roll_nav_info.weight %>
+    	<%= form_tag admin_roll_nav_info_change_weight_path(roll_nav_info) do %>
+				<%= text_field_tag :weight %>
+				<%= submit_tag '更新', class: 'btn btn-info' %>
+    	<% end %>
+    </td>
+    <td>
+        <%= link_to "删除", admin_roll_nav_info_path(roll_nav_info), method: :delete, data: { confirm: "确定要删除吗?" } %>
+    </td>
+    </tr>
+    <% end %>
+
+</table>
+
+<%= will_paginate @article_lists %>

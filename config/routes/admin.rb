@@ -5,5 +5,7 @@ namespace :admin do
   		post :change_weight
   	end
   end
-  resources :roll_nav_infos
-end	
+  resources :roll_nav_infos do
+  	post :change_weight
+  end
+end
