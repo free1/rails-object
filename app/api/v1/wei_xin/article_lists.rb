@@ -19,7 +19,7 @@ module V1
           use :pagination
         end
         get do
-          article_lists = Article.find(params[:article_id]).article_lists.order(id: :desc)
+          article_lists = Article.find(params[:article_id]).article_lists.order(id: :desc).paginate(page: params[:page], per_page: params[:per_page])
           present article_lists, with: V1::Entities::Article::ArticleLists
         end
 
