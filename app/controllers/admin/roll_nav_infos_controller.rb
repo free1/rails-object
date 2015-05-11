@@ -3,7 +3,7 @@ module Admin
 		before_action :find_roll_nav_info, only: [:destroy]
 
 		def index
-			@roll_nav_infos = RollNavInfo.paginate(page: params[:page], per_page: 30)
+			@roll_nav_infos = RollNavInfo.order(id: :desc).paginate(page: params[:page], per_page: 30)
 		end
 
 		def new

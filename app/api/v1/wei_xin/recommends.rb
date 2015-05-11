@@ -9,7 +9,7 @@ module V1
       	optional :num, type: Integer, desc: '需要几个图片'
       end
       get '/roll_nav_infos' do
-      	roll_nav_infos = RollNavInfo.order(id: :desc).first(params[:num])
+      	roll_nav_infos = RollNavInfo.order(:weight).last(params[:num])
       	present roll_nav_infos, with: V1::Entities::Recommend
       end
     end
