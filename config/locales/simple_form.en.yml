@@ -85,6 +85,8 @@ en:
         translate: '翻译'
         remark_on: '点评'
         periods: '期数'
+      roll_nav_info: 
+        image_path: '图片'
   # 错误提示
   errors:
     format: "%{attribute} %{message}"

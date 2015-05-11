@@ -1,0 +1,9 @@
+<%= simple_form_for [:admin, @roll_nav_info], html: { class: "form-horizontal"} do |f| %>
+	<div class="col-sm-8 col-sm-offset-2">
+
+		<%= render partial: 'commons/uploader_image_input', locals: {f: f, obj: @roll_nav_info} %>
+
+		</br></br>
+    <%= f.button :submit, "创建", class: 'btn-block', data: { disable_with: '创建中...' } %>
+	</div>
+<% end %>

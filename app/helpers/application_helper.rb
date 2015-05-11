@@ -1,6 +1,7 @@
 # encoding=utf-8
 module ApplicationHelper
 
+	# 浏览器顶部标题
 	def full_title(page_title)
 		base_title = "创客家族"
 		if page_title.empty?

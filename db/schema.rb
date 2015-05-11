@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508032708) do
+ActiveRecord::Schema.define(version: 20150511033732) do
 
   create_table "article_lists", force: :cascade do |t|
     t.integer  "article_id", limit: 4
@@ -107,6 +107,13 @@ ActiveRecord::Schema.define(version: 20150508032708) do
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
+
+  create_table "roll_nav_infos", force: :cascade do |t|
+    t.string   "cover_path", limit: 255
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "weight",     limit: 4,   default: 0
+  end
 
   create_table "tags", force: :cascade do |t|
     t.string   "name",       limit: 255
