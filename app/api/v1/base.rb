@@ -8,5 +8,6 @@ module V1
     mount V1::WeiXin::Users
     mount V1::WeiXin::Articles
     mount V1::WeiXin::ArticleLists
+    mount V1::WeiXin::Recommends
   end
 end
