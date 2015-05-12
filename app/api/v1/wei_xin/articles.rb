@@ -49,33 +49,7 @@ module V1
             current_user.cancel_like!(params[:id], 'Article')
             present :result, true
           end
-
-          desc '创建评论'
-          params do
-            requires :content, type: String
-          end
-          post '/comment' do
-            authenticate!
-            article = Article.find(params[:id])
-            comment = article.comments.build(content: params[:content], user_id: current_user.id)
-            if comment.save
-              present comment, with: V1::Entities::Comment::Comments
-              # present :result, true
-            else
-              present :result, false              
-            end
-          end
-
-          desc '评论列表'
-          params do
-            use :pagination
-          end
-          get '/comments' do
-            article = Article.find(params[:id])
-            comments = article.comments.paginate(page: params[:page], per_page: params[:per_page])
-            present comments, with: V1::Entities::Comment::Comments
-          end
-
+          
         end
       end
 

@@ -29,6 +29,32 @@ module V1
           	article_list = ArticleList.find(params[:id])
           	present article_list, with: V1::Entities::Article::ArticleListDetails
           end
+
+          desc '创建评论'
+          params do
+            requires :content, type: String
+          end
+          post '/comment' do
+            authenticate!
+            article_list = ArticleList.find(params[:id])
+            comment = article_list.comments.build(content: params[:content], user_id: current_user.id)
+            if comment.save
+              present comment, with: V1::Entities::Comment::Comments
+              # present :result, true
+            else
+              present :result, false              
+            end
+          end
+
+          desc '评论列表'
+          params do
+            use :pagination
+          end
+          get '/comments' do
+            article_list = ArticleList.find(params[:id])
+            comments = article_list.comments.paginate(page: params[:page], per_page: params[:per_page])
+            present comments, with: V1::Entities::Comment::Comments
+          end
         end
 
       end

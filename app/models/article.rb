@@ -3,8 +3,6 @@ class Article < ActiveRecord::Base
 	# 关注
 	has_many :user_collects, as: :listable, dependent: :destroy
 	has_many :collected_user, through: :user_collects, source: :listable, source_type: 'Article'
-	# 评论
-	has_many :comments, as: :commentable
 	# 文章期刊
 	has_many :article_lists, dependent: :destroy
 
