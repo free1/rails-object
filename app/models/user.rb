@@ -42,6 +42,8 @@ class User < ActiveRecord::Base
   # 日知关注(使用多态)
   has_many :user_collects, dependent: :destroy
   has_many :collect_articles, through: :user_collects, source: :listable, source_type: "Article"
+  # 日知讲座
+  has_many :chairs, dependent: :destroy
 
 
   # 代理

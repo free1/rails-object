@@ -1,0 +1,36 @@
+<h2>讲座列表</h2>
+
+<%= link_to "创建新讲座", new_chair_path, class: "btn btn-info" %>
+
+<table class="table table-bordered table-striped table-condensed">
+    <tr>
+    <th>ID</th>
+    <th>题目</th>
+    <th>内容</th>
+    <th></th>
+    <th></th>
+    </tr>
+
+    <% @chairs.each do |chair| %>
+    <tr>
+    <td>
+      <%= chair.id %>
+    </td>
+    <td>
+      <%= chair.title %>
+    </td>
+    <td>
+      <%= chair.content %>
+    </td>
+    <td>
+        <%= link_to "修改", edit_chair_path(chair) %>
+    </td>
+    <td>
+        <%= link_to "删除", chair_path(chair), method: :delete, data: { confirm: "确定要删除吗?" } %>
+    </td>
+    </tr>
+    <% end %>
+
+</table>
+
+<%= will_paginate @article_lists %>

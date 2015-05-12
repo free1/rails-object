@@ -87,6 +87,9 @@ en:
         periods: '期数'
       roll_nav_info: 
         image_path: '图片'
+      chair: 
+        title: '题目'
+        content: '内容'
   # 错误提示
   errors:
     format: "%{attribute} %{message}"

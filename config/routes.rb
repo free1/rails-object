@@ -61,6 +61,9 @@ Rails.application.routes.draw do
     resources :article_lists
   end
 
+  # 日知讲座
+  resources :chairs
+
 
   # 七牛上传文件
   namespace :upload do
