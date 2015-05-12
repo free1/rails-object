@@ -28,6 +28,8 @@
 					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">日知管理 <span class="caret"></span></a>
 					  <ul class="dropdown-menu" role="menu">
 					  	<%= nav_link '首页推荐滚动信息', admin_roll_nav_infos_path, 'active_dropdown_menu', true %>
+					  	<li><%= nav_link "日知分享", new_article_path, 'active_dropdown_menu', true %></li>
+			    		<li><%= nav_link "日知讲座", chairs_path, 'active_dropdown_menu', true %></li>
 					  </ul>
 					</li>
 	      	<%= nav_link 'Link', "#", 'active', true %>
