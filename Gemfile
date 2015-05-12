@@ -87,10 +87,14 @@ gem 'will_paginate', '~> 3.0.6'
 # 加密链接id
 # gem "obfuscate_id"
 
+# 监控
+gem 'god'
+
 # web server
 gem 'unicorn'
 
 gem 'jbuilder', '~> 2.0'
+# 观察者
 gem 'rails-observers'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

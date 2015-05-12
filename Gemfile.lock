@@ -119,6 +119,7 @@ GEM
     gemoji (2.1.0)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
+    god (0.13.6)
     grape (0.10.1)
       activesupport
       builder
@@ -355,6 +356,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   figaro
   gemoji
+  god
   grape
   grape-entity
   grape-swagger
