@@ -89,6 +89,8 @@ GEM
     capistrano-stats (1.1.1)
     capistrano3-unicorn (0.2.1)
       capistrano (~> 3.1, >= 3.1.0)
+    celluloid (0.16.0)
+      timers (~> 4.0.0)
     chronic (0.10.2)
     chunky_png (1.3.4)
     coderay (1.1.0)
@@ -103,6 +105,7 @@ GEM
     coffee-script-source (1.9.1)
     colorize (0.7.7)
     columnize (0.9.0)
+    connection_pool (2.2.0)
     debugger-linecache (1.2.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
@@ -135,6 +138,7 @@ GEM
     hashie (3.4.0)
     hike (1.2.3)
     hiredis (0.4.5)
+    hitimes (1.2.2)
     html-pipeline (1.11.0)
       activesupport (>= 2)
       nokogiri (~> 1.4)
@@ -252,6 +256,8 @@ GEM
     rake (10.4.2)
     rb-readline (0.5.2)
     redis (3.0.7)
+    redis-namespace (1.5.2)
+      redis (~> 3.0, >= 3.0.4)
     redis-objects (1.1.0)
       redis (>= 3.0.2)
     rest-client (1.7.3)
@@ -270,6 +276,12 @@ GEM
       sass (~> 3.2.2)
       sprockets (~> 2.8, < 3.0)
       sprockets-rails (~> 2.0)
+    sidekiq (3.3.0)
+      celluloid (>= 0.16.0)
+      connection_pool (>= 2.0.0)
+      json
+      redis (>= 3.0.6)
+      redis-namespace (>= 1.3.1)
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -300,6 +312,8 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
+    timers (4.0.1)
+      hitimes
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -372,6 +386,7 @@ DEPENDENCIES
   rinku (~> 1.7)
   rqrcode_png
   sass-rails (~> 4.0.3)
+  sidekiq
   simple_form
   spring
   super_cache

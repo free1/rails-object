@@ -30,7 +30,8 @@ module V1
         if user && user.authenticate(params[:password])
           present user, with: V1::Entities::User::Users
         else
-          p "----无效的用户名/密码!----"
+          present :result, false
+          # p "----无效的用户名/密码!----"
         end
       end
 
