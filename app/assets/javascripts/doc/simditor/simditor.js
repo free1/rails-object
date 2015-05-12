@@ -3,6 +3,7 @@
 * http://simditor.tower.im/
 * 2015-07-03
 */
+// 判断外部js组件加载情况，定义命名空间
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module unless amdModuleId is set
@@ -18,7 +19,7 @@
     root['Simditor'] = factory(jQuery,SimpleModule,simple.hotkeys,simple.uploader);
   }
 }(this, function ($, SimpleModule, simpleHotkeys, simpleUploader) {
-
+// 
 var BlockquoteButton, BoldButton, Button, CodeButton, CodePopover, ColorButton, Formatter, HrButton, ImageButton, ImagePopover, IndentButton, InputManager, ItalicButton, Keystroke, LinkButton, LinkPopover, ListButton, OrderListButton, OutdentButton, Popover, Selection, Simditor, SourceButton, StrikethroughButton, TableButton, TitleButton, Toolbar, UnderlineButton, UndoManager, UnorderListButton, Util,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty,
@@ -355,7 +356,7 @@ Formatter = (function(superClass) {
     this.editor.trigger('undecorate', [$el]);
     return $.trim($el.html());
   };
-
+  // 自动更改链接
   Formatter.prototype.autolink = function($el) {
     var $node, findLinkNode, j, lastIndex, len, linkNodes, match, re, replaceEls, text, uri;
     if ($el == null) {
