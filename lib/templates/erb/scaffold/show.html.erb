@@ -1,0 +1,11 @@
+<div>
+	<% attributes.reject(&:password_digest?).each do |attribute| -%>
+	<p>
+	  <h3><%= attribute.human_name %>:</h3>
+	  <small><%%= @<%= singular_table_name %>.<%= attribute.name %> %></small>
+	</p>
+</div>
+
+<% end -%>
+<%%= link_to '修改', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-primary" %> |
+<%%= link_to '返回', <%= index_helper %>_path, class: "btn btn-primary" %>
