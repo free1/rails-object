@@ -146,8 +146,9 @@ namespace :god do
   end
  
   # Must be executed within SSHKit context
+  # 暂时只监控unicorn，nginx由monit监控
   def config_file
-    "#{release_path}/config/god/god.rb"
+    "#{release_path}/config/god/unicorn.god"
   end
  
   # Must be executed within SSHKit context
