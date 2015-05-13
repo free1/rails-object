@@ -93,6 +93,9 @@ gem 'god'
 # web server
 gem 'unicorn'
 
+# 备份
+gem 'backup'
+
 gem 'jbuilder', '~> 2.0'
 # 观察者
 gem 'rails-observers'
