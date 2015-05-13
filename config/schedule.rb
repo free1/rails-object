@@ -32,6 +32,10 @@ every 1.day, :at => '4:50 am' do
 	runner "Post.check_content"
 end
 
+every 1.minutes do
+	command 'bundle exec backup perform -t my_backup --config-file /home/deploy/apps/weixin_test/current/config/backup/config.rb'
+end
+
 # 转存任务
 every 1.minutes do
 	runner "Post.sum_watch_count"
