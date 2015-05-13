@@ -1,6 +1,6 @@
 God.watch do |w|
   w.name = "nginx"
-  w.interval = 3.seconds
+  w.interval = 30.seconds
   w.start = "/etc/init.d/nginx start"
   w.stop = "/etc/init.d/nginx stop"
   w.restart = "/etc/init.d/nginx restart"

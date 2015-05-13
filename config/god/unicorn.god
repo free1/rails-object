@@ -3,7 +3,7 @@ rails_root = ENV['RAILS_ROOT'] || "/home/deploy/apps/weixin_test/current"
 
 God.watch do |w|
   w.name = "unicorn"
-  w.interval = 3.seconds # default
+  w.interval = 30.seconds # default
 
   # unicorn needs to be run from the rails root
   w.start = "cd #{rails_root} && bundle exec unicorn -c #{rails_root}/config/unicorn.rb -E #{rails_env} -D"
