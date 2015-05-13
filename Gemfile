@@ -95,6 +95,8 @@ gem 'unicorn'
 
 # 备份(直接上传阿里云oos)
 gem 'backup'
+# gem 'rest-client'
+# gem 'carrierwave-aliyun'
 
 gem 'jbuilder', '~> 2.0'
 # 观察者
