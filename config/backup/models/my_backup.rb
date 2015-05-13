@@ -41,7 +41,7 @@ Backup::Model.new(:my_backup, '备份整站数据') do
   # compress_with Gzip
 
   store_with Local do |local|
-    local.path = "/tmp/test"
+    local.path = "/home/deploy/Backup/mysql_data"
   end
 
 end

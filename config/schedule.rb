@@ -32,7 +32,7 @@ every 1.day, :at => '4:50 am' do
 	runner "Post.check_content"
 end
 
-every 1.minutes do
+every :sunday, :at => '5:50 am' do
 	command 'cd /home/deploy/apps/weixin_test/current/ && bundle exec backup perform -t my_backup --config-file config/backup/config.rb'
 end
 
