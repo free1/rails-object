@@ -1,4 +1,1 @@
-# loop do
-#   puts 'Hello'
-#   sleep 1
-# end
+God.load "/config/god/*.god"

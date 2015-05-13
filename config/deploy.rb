@@ -147,7 +147,7 @@ namespace :god do
  
   # Must be executed within SSHKit context
   def config_file
-    "#{release_path}/config/god/nginx.rb"
+    "#{release_path}/config/god/god.rb"
   end
  
   # Must be executed within SSHKit context

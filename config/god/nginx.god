@@ -20,6 +20,9 @@ God.watch do |w|
  
     start.condition(:process_exits)
   end
+
+  w.uid = 'root'
+  w.gid = 'sudo'
   
   # Conditions under which to restart the process
   w.restart_if do |restart|
