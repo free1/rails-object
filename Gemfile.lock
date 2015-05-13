@@ -154,6 +154,7 @@ GEM
       multi_json (~> 1.2)
     joiner (0.3.4)
       activerecord (>= 4.1.0)
+    jquery-atwho-rails (1.1.0)
     jquery-rails (4.0.3)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -369,6 +370,7 @@ DEPENDENCIES
   html-pipeline (~> 1.11.0)
   jbuilder (~> 2.0)
   jdbc-mysql (~> 5.1.28)
+  jquery-atwho-rails (~> 1.1.0)
   jquery-rails
   mime-types (~> 1.19)
   mysql2 (= 0.3.15)

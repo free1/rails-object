@@ -10,13 +10,15 @@
 <h3>所属标签: <small><%= @product.categories.map(&:name) %></small></h3>
 <h3>创建时间: <small><%= time_ago_in_words @product.created_at %></small></h3>
 
-<% if @comments.any? %>
-	<% @comments.each do |comment| %>
-		<%= comment.user.name %>
-		<%= emojify(sanitize(comment.content_html)) %>
-		</br>
+<div class="comment-body" data-users="<%= @comments.map {|c| c.user.name}.uniq %>">
+	<% if @comments.any? %>
+		<% @comments.each do |comment| %>
+				<%= comment.user.name %>
+				<%= emojify(sanitize(comment.content_html)) %>
+			</br>
+		<% end %>
 	<% end %>
-<% end %>
+</div>
 
 <%= simple_form_for [@product, @comment] do |f| %>
 	
@@ -24,3 +26,10 @@
 	<%= f.button :submit, "保存" %>
 
 <% end %>
+
+<script>
+	$(function(){
+    data = $(".comment-body").data("users");
+    $('textarea').atwho({at:"@", 'data':data});
+	});
+</script>

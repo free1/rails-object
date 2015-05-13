@@ -29,6 +29,9 @@ gem 'html-pipeline', "~> 1.11.0" # 之前版本有bug
 gem 'gemoji'
 gem "rinku", "~> 1.7",   :require => false
 
+# @功能
+gem 'jquery-atwho-rails', "~> 1.1.0"
+
 # api
 gem 'grape'
 gem 'grape-entity'
