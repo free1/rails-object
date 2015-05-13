@@ -93,7 +93,7 @@ gem 'god'
 # web server
 gem 'unicorn'
 
-# 备份
+# 备份(直接上传阿里云oos)
 gem 'backup'
 
 gem 'jbuilder', '~> 2.0'
