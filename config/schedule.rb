@@ -27,11 +27,11 @@ set :output, "log/cron.log"
 every 1.day, :at => '4:30 am' do
 	runner "Post.crawl_post"
 end
-
 every 1.day, :at => '4:50 am' do
 	runner "Post.check_content"
 end
 
+# 定时备份数据
 every :sunday, :at => '5:50 am' do
 	command 'cd /home/deploy/apps/weixin_test/current/ && bundle exec backup perform -t my_backup --config-file config/backup/config.rb'
 end
