@@ -14,7 +14,7 @@ God.watch do |w|
   # USR2 causes the master to re-create itself and spawn a new worker pool
   w.restart = "kill -USR2 `cat #{rails_root}/tmp/pids/unicorn.pid`"
 
-  w.log = '#{rails_root}'
+  #w.log = '#{rails_root}/log/god_unicorn.log'
 
   w.start_grace = 10.seconds
   w.restart_grace = 10.seconds

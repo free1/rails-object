@@ -21,6 +21,8 @@ God.watch do |w|
     start.condition(:process_exits)
   end
 
+  w.dir = '/root'
+
   w.uid = 'root'
   w.gid = 'sudo'
   
