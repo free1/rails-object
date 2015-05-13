@@ -33,7 +33,7 @@ every 1.day, :at => '4:50 am' do
 end
 
 every 1.minutes do
-	command 'bundle exec backup perform -t my_backup --config-file /home/deploy/apps/weixin_test/current/config/backup/config.rb'
+	command 'cd /home/deploy/apps/weixin_test/current/ && bundle exec backup perform -t my_backup --config-file config/backup/config.rb'
 end
 
 # 转存任务
