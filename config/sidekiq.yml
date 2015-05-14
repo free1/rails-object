@@ -1,0 +1,9 @@
+---
+:concurrency: 3
+production:
+  :daemon: true
+  :logfile: log/sidekiq.log
+  :pidfile: ./tmp/pids/sidekiq.pid
+:queues:
+  - default
+  - [send_email, 6]

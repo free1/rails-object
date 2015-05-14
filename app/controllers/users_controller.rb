@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in @user
-      @user.send_verify_email
+      @user.delay.send_verify_email
       flash[:success] = '账号注册成功，验证邮箱可以体验更多功能哦~'
       redirect_to root_path
     else
