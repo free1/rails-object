@@ -55,6 +55,21 @@ module V1
             comments = article_list.comments.paginate(page: params[:page], per_page: params[:per_page])
             present comments, with: V1::Entities::Comment::Comments
           end
+
+          desc '赞'
+          post '/collect' do
+            authenticate!
+            current_user.like!(params[:id], 'ArticleList')
+            present :result, true
+          end 
+
+          desc '取消赞'
+          delete '/cancel_collect' do
+            authenticate!
+            current_user.cancel_like!(params[:id], 'ArticleList')
+            present :result, true
+          end
+
         end
 
       end
