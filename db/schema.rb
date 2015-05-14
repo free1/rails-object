@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150512040216) do
+ActiveRecord::Schema.define(version: 20150514063747) do
 
   create_table "article_lists", force: :cascade do |t|
     t.integer  "article_id", limit: 4
@@ -70,6 +70,22 @@ ActiveRecord::Schema.define(version: 20150512040216) do
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", length: {"commentable_id"=>nil, "commentable_type"=>100}, using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "sender_id",       limit: 4,     default: 0
+    t.integer  "receiver_id",     limit: 4
+    t.integer  "notifiable_id",   limit: 4
+    t.string   "notifiable_type", limit: 255
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.integer  "status",          limit: 4,     default: 0
+    t.text     "content",         limit: 65535
+  end
+
+  add_index "notifications", ["notifiable_id", "notifiable_type"], name: "index_notifications_on_notifiable_id_and_notifiable_type", length: {"notifiable_id"=>nil, "notifiable_type"=>100}, using: :btree
+  add_index "notifications", ["notifiable_id"], name: "index_notifications_on_notifiable_id", using: :btree
+  add_index "notifications", ["receiver_id"], name: "index_notifications_on_receiver_id", using: :btree
+  add_index "notifications", ["sender_id"], name: "index_notifications_on_sender_id", using: :btree
+
   create_table "posts", force: :cascade do |t|
     t.string   "title",       limit: 255
     t.text     "content",     limit: 65535
@@ -125,6 +141,12 @@ ActiveRecord::Schema.define(version: 20150512040216) do
 
   create_table "tags", force: :cascade do |t|
     t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.string   "con",        limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

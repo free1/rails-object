@@ -1,3 +1,4 @@
+# 日知文章
 class ArticleList < ActiveRecord::Base
 
 	belongs_to :article

@@ -52,8 +52,6 @@ class User < ActiveRecord::Base
   delegate :public_name, :number, :qr_code, :keyword, to: :wechat_info, allow_nil: true
   delegate :gender, :resume, :website, to: :info, allow_nil: true
 
-  # 回调
-
 
   # 邮箱验证
   def send_verify_email

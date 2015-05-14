@@ -1,3 +1,4 @@
+# 日知栏目
 class Article < ActiveRecord::Base
 	belongs_to :user
 	# 关注
