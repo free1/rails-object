@@ -37,6 +37,9 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   # 抓取硬件文章
   has_many :posts, dependent: :destroy
+  # 消息通知(系统，用户)
+  has_many :notifications, foreign_key: 'receiver_id', dependent: :destroy
+
   # 日知文章
   has_many :articles, dependent: :destroy
   # 日知讲座
