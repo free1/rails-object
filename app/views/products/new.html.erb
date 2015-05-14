@@ -1,7 +1,8 @@
 <% provide(:title, '创建商品') %>
-<%= stylesheet_link_tag 'doc/simditor/editor' %>
-<%= stylesheet_link_tag 'doc/simditor/fonticon' %>
+<%#= stylesheet_link_tag 'doc/simditor/editor' %>
+<%#= stylesheet_link_tag 'doc/simditor/fonticon' %>
 <%= stylesheet_link_tag 'doc/simditor/simditor' %>
+<%= stylesheet_link_tag 'doc/simditor/simditor-mention.css' %>
 
 <%= simple_form_for @product, html: { class: "form-horizontal"} do |f| %>
   <div class="col-sm-8 col-sm-offset-2">
@@ -32,6 +33,7 @@
 <%= javascript_include_tag 'doc/simditor/mark.js' %>
 <%= javascript_include_tag 'doc/simditor/autosave.js' %>
 <%= javascript_include_tag 'doc/simditor/simditor-dropzone.js' %>
+<%= javascript_include_tag 'doc/simditor/simditor-mention.js' %>
 
 
 <script>
@@ -76,7 +78,26 @@
           //   'source'         # HTML源代码
           // ],
           pasteImage: true,
-          autosave: 'editor-content'
+          autosave: 'editor-content',
+          // @参数
+          mention:{
+            items:[
+            {
+              id:1,
+              name:"创客家族",
+              pinyin:"chuangkejiazu",
+              abbr:"ck",
+              url:"http://www.example.com"
+            }
+            ], //item数组
+            // url:"", //获取item数组的url,与items选项二选一
+            // nameKey:"", //(可选,默认为name),item中用来提供名称的键
+            // pinyinKey:"", //(可选,默认为pinyin),item中用来提供拼音的键
+            // abbrKey:"", //(可选,默认为abbr),item中用来提供缩写的键
+            //名称,拼音以及缩写将会用来匹配
+            // itemRenderer:null, //(可选),对弹出框的item进行自定义,例如添加img元素
+            // linkRender:null //(可选),对生成的a链接进行自定义
+          }
         });
         // 上传成功后
         editor.uploader.on('uploadsuccess', function(e, file, result) {
