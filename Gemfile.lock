@@ -14,6 +14,14 @@ GIT
   specs:
     client_side_validations (4.2.0)
 
+GIT
+  remote: git://github.com/seuros/capistrano-sidekiq.git
+  revision: e21647ceaaac5703acb2b668ac574ff71181dd23
+  specs:
+    capistrano-sidekiq (0.5.3)
+      capistrano
+      sidekiq
+
 GEM
   remote: https://ruby.taobao.org/
   specs:
@@ -356,6 +364,7 @@ DEPENDENCIES
   capistrano-bundler
   capistrano-rails (~> 1.1.0)
   capistrano-rbenv (~> 2.0)
+  capistrano-sidekiq!
   capistrano3-unicorn
   client_side_validations!
   client_side_validations-simple_form!

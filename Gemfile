@@ -126,6 +126,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.1.0'
   gem 'capistrano-rbenv', "~> 2.0"
   gem 'capistrano3-unicorn'
+  gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq'
   # 调试
   gem 'pry'
   gem 'pry-byebug'
