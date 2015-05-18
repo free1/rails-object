@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514063747) do
+ActiveRecord::Schema.define(version: 20150518085631) do
 
   create_table "article_lists", force: :cascade do |t|
     t.integer  "article_id", limit: 4
@@ -111,12 +111,13 @@ ActiveRecord::Schema.define(version: 20150514063747) do
   add_index "product_category_ships", ["product_id"], name: "index_product_category_ships_on_product_id", using: :btree
 
   create_table "products", force: :cascade do |t|
-    t.text     "describe",   limit: 65535
-    t.string   "cover_path", limit: 255
-    t.string   "title",      limit: 255
+    t.text     "describe",                    limit: 65535
+    t.string   "cover_path",                  limit: 255
+    t.string   "title",                       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id",    limit: 4
+    t.integer  "user_id",                     limit: 4
+    t.integer  "user_collect_products_count", limit: 4,     default: 0
   end
 
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree

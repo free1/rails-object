@@ -19,9 +19,9 @@
 
       <div id="collect_<%= product.id %>" class="trip-collect">
         <% if current_user && current_user.collecting?(product, "product") %>
-          <%= render partial: 'member/collects/cancel_collect', locals: {product: product} %>
+          <%= render partial: 'member/collects/cancel_collect', locals: {product: product, class_name: "glyphicon glyphicon-star"} %>
         <% else %>
-          <%= render partial: 'member/collects/collect', locals: {product: product} %>
+          <%= render partial: 'member/collects/collect', locals: {product: product, class_name: "glyphicon glyphicon-star-empty"} %>
         <% end %>
       </div>
     </article>

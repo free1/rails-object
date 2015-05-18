@@ -12,7 +12,7 @@
 			<%= image_tag @product.cover_path_with_size("640", "300") %>
 			<%= sanitize @product.describe %>
 		</article>
-		<%= render partial: 'shared/function_tips', locals: {type: "collect"} %>
+		<%= render partial: 'shared/function_tips', locals: {type: "collect", product: @product} %>
 		<%= render partial: 'shared/function_tips', locals: {type: "info", product: @product} %>
 		<%= render partial: 'shared/function_tips', locals: {type: "category", product: @product} %>
 	</div>

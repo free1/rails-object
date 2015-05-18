@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 	before_action :signed_in_user, only: [ :new, :create ]
 
 	def index
-		@products = Product
+		@products = Product.order(id: :desc)
 		@products = @products.category_for(params[:category]) if params[:category]
 		@products = @products.paginate(page: params[:page], per_page: 12)
 		@categories = Category.all
