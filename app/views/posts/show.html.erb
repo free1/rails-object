@@ -1,6 +1,12 @@
-<h3>题目: <small><%= @post.title %></small></h3>
+<div class="post-entry col-md-12">
+	<div class="col-md-8 col-md-offset-3 post-title">
+		<%= @post.title %>
+	</div>
 
-<div>
-	<h6>查看数量: <small><%= @post.watch_count %></small></h6>
-	<h3>内容: <small><%= sanitize @post.content %></small></h3>	
+	<div class="row">
+		<article class="col-sm-12 col-md-7 col-md-offset-1 post-content">
+			<%= sanitize @post.content %>
+		</article>
+		<%= render partial: 'shared/function_tips', locals: {type: "watch", watch_count: @post.watch_count} %>
+	</div>
 </div>

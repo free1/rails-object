@@ -1,0 +1,11 @@
+/*show*/
+.post-content {
+	background-color: #fff;
+	padding: 10px 3px;
+	border-radius: 10px;
+}
+
+.post-title {
+	font-size: 30px;
+	/*padding: 1em 2em;*/
+}

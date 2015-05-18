@@ -1,0 +1,10 @@
+<div class="tips col-sm-0 col-md-2 col-md-offset-1">
+	<% case type %>
+	<% when "collect" %>
+		<p><%= link_to "收藏", "#", class: "btn btn-info btn-block" %></p>
+		<div class="line"></div>
+		<div class="tips_content">3 人收藏了此文章</div>
+	<% when "watch" %>
+		<div class="tips_content"><%= watch_count %> 人查看了此文章</div>
+	<% end %>
+</div>

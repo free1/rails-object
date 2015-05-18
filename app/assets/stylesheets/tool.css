@@ -1,0 +1,17 @@
+/* 小贴士 */
+.tips {
+	background-color: white;
+	padding: 10px;
+	/*width: 225px;
+	height: 120px;*/
+	border-radius: 6px;
+	float: right;
+}
+.tips p {
+	padding-top: 8px;
+	text-align: center;
+}
+.tips .tips_content {
+	text-align: center;
+	/*padding: 8px;*/
+}
