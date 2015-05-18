@@ -54,6 +54,10 @@
 	display: block;
 }
 
+.trip-g .cover img {
+	min-width: 100%;
+}
+
 .content-main .trip-g .trip-c {
 	position: absolute;
 	left: 10px;
