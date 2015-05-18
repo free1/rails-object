@@ -14,7 +14,7 @@ module ApplicationHelper
 	# 用户头像
 	def user_avatar(avatar, size, id=nil)
 		path = avatar || 'avatars/1.jpg'
-		image_tag(path, size: size, id: id)
+		image_tag(path, size: size, id: id, class: "avatar-image")
 	end
 
 	# bootstrap导航链接组

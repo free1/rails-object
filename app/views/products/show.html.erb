@@ -1,14 +1,22 @@
-<% provide(:title, '商品详情') %>
+<% provide(:title, '创意详情') %>
 
-<%= link_to "返回商品列表", products_path, class: "btn btn-info" %>
-<h1>商品详情</h1>
+<%= link_to "返回列表", products_path, class: "btn btn-info" %>
 
-<h3>ID: <small><%= @product.id %></small></h3>
-<h3>名称: <small><%= @product.title %></small></h3>
-<h3>描述: <small><%= sanitize @product.describe %></small></h3>
-<h3>封面图: <small><%= image_tag @product.cover_path, size: "100x100" %></small></h3>
-<h3>所属标签: <small><%= @product.categories.map(&:name) %></small></h3>
-<h3>创建时间: <small><%= time_ago_in_words @product.created_at %></small></h3>
+<div class="post-entry col-md-12">
+	<div class="post-title">
+		<%= @product.title %>
+	</div>
+
+	<div class="row">
+		<article class="col-sm-12 col-md-7 col-md-offset-1 post-content">
+			<%= image_tag @product.cover_path_with_size("640", "300") %>
+			<%= sanitize @product.describe %>
+		</article>
+		<%= render partial: 'shared/function_tips', locals: {type: "collect"} %>
+		<%= render partial: 'shared/function_tips', locals: {type: "info", product: @product} %>
+		<%= render partial: 'shared/function_tips', locals: {type: "category", product: @product} %>
+	</div>
+</div>
 
 <div class="comment-body" data-users="<%= @comments.map {|c| c.user.name}.uniq %>">
 	<% if @comments.any? %>

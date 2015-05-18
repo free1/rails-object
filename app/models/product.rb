@@ -20,8 +20,8 @@ class Product < ActiveRecord::Base
 	# 排序
 	scope :category_for, ->(category_name) { joins(:categories).where("categories.name = ?", category_name)}
 
-	def cover_path_with_size
-		"#{self.cover_path}?imageView2/1/w/330/h/200"
+	def cover_path_with_size(width, height)
+		"#{self.cover_path}?imageView2/1/w/#{width}/h/#{height}"
 	end
 
 	# def to_param

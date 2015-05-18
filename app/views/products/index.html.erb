@@ -11,7 +11,7 @@
   <% @products.each do |product| %>
     <div class="col-sm-6 col-md-4">
     <article class="trip-g">
-      <%= link_to image_tag(product.cover_path_with_size), product, class: "cover" %>
+      <%= link_to image_tag(product.cover_path_with_size("330", "200")), product, class: "cover" %>
       <div class="trip-c">
         <h1><%= product.title %></h1>
         <div class="trip-desc"><%= truncate(strip_tags(product.describe), length: 30) %></div>
