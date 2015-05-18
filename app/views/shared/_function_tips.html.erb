@@ -1,18 +1,27 @@
 <div class="tips col-sm-0 col-md-2 col-md-offset-1">
 	<% case type %>
 	<% when "collect" %>
-		<p><%= link_to "收藏", "#", class: "btn btn-info btn-block" %></p>
+		<div id="collect_<%= product.id %>" class="trip-collect">
+			<% if current_user && current_user.collecting?(product, "product") %>
+	      <%= render partial: 'member/collects/cancel_collect', locals: {product: product} %>
+	    <% else %>
+	      <%= render partial: 'member/collects/collect', locals: {product: product} %>
+	    <% end %>
+	  </div>
 		<div class="line"></div>
-		<div class="tips_content">3 人收藏了此文章</div>
+		<div class="tips_content"><%= product.user_collect_products_count %> 人收藏了此文章</div>
+	
 	<% when "info" %>
 		<div class="tips_content">文章信息</div>
 		<%= user_avatar(product.user.avatar_path, '40x40') %>
 		<%= link_to product.user.name, product.user %>
 		发布于
 		<%= time_ago_in_words product.created_at %>
+	
 	<% when "category" %>
 		<div class="tips_content">所属标签</div>
 		<%= product.categories.map(&:name) %>
+	
 	<% when "watch" %>
 		<p><%= link_to "返回文章列表", posts_path, class: "btn btn-info btn-block" %></p>
 		<div class="tips_content"><%= watch_count %> 人查看了此文章</div>

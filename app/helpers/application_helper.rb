@@ -32,7 +32,7 @@ module ApplicationHelper
 	end
 
 	# 两种class切换(比如收藏)
-	def switch_link(link_path, class_name, link_method, title=nil, link_text='')
+	def switch_link(link_path, class_name, link_method, link_text='')
 		
 		link_to link_text, link_path, class: class_name, method: link_method, remote: true
 	end
