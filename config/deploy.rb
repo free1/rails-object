@@ -132,7 +132,7 @@ set :whenever_roles,        ->{ :db }
 set :thinking_sphinx_roles, :db
 set :thinking_sphinx_rails_env, -> { fetch(:rails_env) || fetch(:stage) }
 
-# sidekip
+# sidekiq
 set :sidekiq_pid, "./tmp/pids/sidekiq.pid"
 set :sidekiq_log, "log/sidekiq.log"
 

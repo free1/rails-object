@@ -6,4 +6,4 @@ production:
   :pidfile: ./tmp/pids/sidekiq.pid
 :queues:
   - default
-  - [send_email, 6]
+  - [notification_work, 2]
