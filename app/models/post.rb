@@ -10,7 +10,7 @@ class Post < ActiveRecord::Base
 	validates :content, presence: true
 
 	class << self
-		# 抓取内容
+		# 抓取内容todo 传入css合并
 		def crawl_post
 			spider1 = FreeSpider::Begin.new
 			spider1.plan do
@@ -30,6 +30,14 @@ class Post < ActiveRecord::Base
 				content = post.content.split("<div class=\"loc_link\">\n<ul>\r\n")[0]
 				post.update_column(:content, content)
 			end
+		end
+		# 抓取内容
+		def crawl_ingchuang_post
+			spider = FreeSpider::Begin.new
+			spider.plan do
+				site 'http://www.ingchuang.com/'
+			end
+			spider.crawl
 		end
 
 		# 计算查看数量

@@ -30,6 +30,9 @@ end
 every 1.day, :at => '4:50 am' do
 	runner "Post.check_content"
 end
+every 1.day, :at => '5:10 am' do
+	runner "Post.crawl_ingchuang_post"
+end
 
 # 定时备份数据
 every :sunday, :at => '5:50 am' do

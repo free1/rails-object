@@ -60,7 +60,7 @@ module FreeSpider
           @todo << href
         end
 
-         # 抓取主要内容
+        # 抓取主要内容
         unless doc.at_css(".entry-content").nil?
           entry_title = doc.css(".entry-title").children.to_html
           unless @title_saved.include?(entry_title)
@@ -81,6 +81,18 @@ module FreeSpider
             # p "--------news_entry--------"
             # p news_teaching_content_tmp
             # @news_teaching_content = news_teaching_content_tmp
+          end
+        end
+
+        unless doc.at_css(".content").nil? && doc.at_css(".markitup-box").nil?
+          p "-----------进来了--------------"
+          entry_title = doc.css(".mod-head").at_css("h1").children.to_html unless doc.css(".mod-head").at_css("h1").nil?
+          unless @title_saved.include?(entry_title)
+            @title_saved << entry_title
+            content = doc.css(".content").children.to_html
+            p "-------------内容-------------------"
+            p content
+            @news_teaching_content = {title: entry_title, content: content}
           end
         end
 

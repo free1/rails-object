@@ -119,7 +119,7 @@ group :development do
   # model注释
   gem 'annotate', '~> 2.6.5'
   # 预加载器
-  gem 'spring'
+  gem 'spring', '~> 1.3.6'
   # 部署
   gem 'capistrano', '~> 3.3.5'
   gem 'capistrano-bundler'
