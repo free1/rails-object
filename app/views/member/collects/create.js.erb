@@ -1,1 +1,2 @@
-$("#collect_<%= @collect_type.id %>").html("<%= j(render(partial: 'member/collects/cancel_collect', locals: {product: @collect_type})) %>")
+$("#collect_<%= @collect_type.id %>").html("<%= j(render(partial: 'member/collects/cancel_collect', locals: {product: @collect_type})) %>");
+$("#collect_count").text("<%= @collect_type.user_collect_products_count + 1 %>" + " " + "人收藏了此文章");
