@@ -24,14 +24,17 @@ env :PATH, ENV['PATH']
 set :output, "log/cron.log"
 
 # 抓取任务
+every 1.day, :at => '3:30 am' do
+	runner "Post.crawl_mrwu_post"
+end
+every 1.day, :at => '4:00 am' do
+	runner "Post.crawl_oszine_post"
+end
 every 1.day, :at => '4:30 am' do
-	runner "Post.crawl_post"
-end
-every 1.day, :at => '4:50 am' do
-	runner "Post.check_content"
-end
-every 1.day, :at => '5:10 am' do
 	runner "Post.crawl_ingchuang_post"
+end
+every 1.day, :at => '6:10 am' do
+	runner "Post.check_content"
 end
 
 # 定时备份数据

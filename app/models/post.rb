@@ -10,17 +10,25 @@ class Post < ActiveRecord::Base
 	validates :content, presence: true
 
 	class << self
-		# 抓取内容todo 传入css合并
-		def crawl_post
-			spider1 = FreeSpider::Begin.new
-			spider1.plan do
-			  site 'http://www.mr-wu.cn/'
-			end
-			spider1.crawl
-			
+		# 抓取内容todo 传入class合并
+		def crawl_mrwu_post
 			spider = FreeSpider::Begin.new
 			spider.plan do
-			  site 'http://oszine.com/'
+			  site 'http://www.mr-wu.cn/'
+			end
+			spider.crawl
+		end
+		def crawl_oszine_post
+			spider = FreeSpider::Begin.new
+			spider.plan do
+				site 'http://www.oszine.com/'
+			end
+			spider.crawl
+		end
+		def crawl_ingchuang_post
+			spider = FreeSpider::Begin.new
+			spider.plan do
+				site 'http://www.ingchuang.com/'
 			end
 			spider.crawl
 		end
@@ -31,14 +39,7 @@ class Post < ActiveRecord::Base
 				post.update_column(:content, content)
 			end
 		end
-		# 抓取内容
-		def crawl_ingchuang_post
-			spider = FreeSpider::Begin.new
-			spider.plan do
-				site 'http://www.ingchuang.com/'
-			end
-			spider.crawl
-		end
+		
 
 		# 计算查看数量
 		def add_watch_count(id)
