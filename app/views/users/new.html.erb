@@ -12,7 +12,11 @@
     <!-- <p class="help-block">填一个别人猜不到的密码吧</p> -->
 
     <%= f.input :password_confirmation, input_html: { maxlength: 30 } %>
-
+    
+    <%#= invisible_captcha %>
+    <%= f.invisible_captcha :subtitle %>
+    
+    <br/>
     <%= f.button :submit, "注册", class: 'btn-lg btn-block', data: { disable_with: '资料保存中...' } %>
   </div>
 <% end %>

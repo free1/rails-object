@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
   has_secure_password
   # obfuscate_id
 
+  # invisible_captcha验证码
+  attr_accessor :subtitle # define a virtual attribute, the honeypot
+  validates :subtitle, :invisible_captcha => true
+
   # 验证
   validates :name, presence: true, length: { in: 3..20 }, uniqueness: true
   # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

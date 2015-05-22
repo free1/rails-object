@@ -71,6 +71,11 @@ gem 'thinking-sphinx', '~> 3.1.0'
 # 生成二维码
 gem 'rqrcode_png'
 
+# 验证码
+# gem 'negative_captcha'   #不需要手动输入验证码就可以防止机器注册，但不支持simple-form
+# gem 'humanizer', '~> 2.6.2'
+gem 'invisible_captcha', '~> 0.8.0'
+
 # 表单
 gem 'simple_form'
 gem 'client_side_validations', :github => 'free1/client_side_validations', :branch => '4-2-stable'

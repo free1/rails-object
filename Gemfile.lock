@@ -157,6 +157,8 @@ GEM
     i18n (0.7.0)
     ice_nine (0.11.1)
     innertube (1.1.0)
+    invisible_captcha (0.8.0)
+      rails
     jbuilder (2.2.7)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -377,6 +379,7 @@ DEPENDENCIES
   grape-swagger
   hiredis (~> 0.4.5)
   html-pipeline (~> 1.11.0)
+  invisible_captcha (~> 0.8.0)
   jbuilder (~> 2.0)
   jdbc-mysql (~> 5.1.28)
   jquery-atwho-rails (~> 1.1.0)
