@@ -3,7 +3,11 @@
 	<head>
 		<style type="text/css">
 		body {
-			background: url(<%= asset_path 'cover_home.jpg' %>) no-repeat center center fixed; 
+			display: table;
+	    position: relative;
+	    width: 100%;
+	    height: 100%;
+			background: url(<%= asset_path "bg#{rand(1..2)}.jpg" %>) no-repeat center center fixed; 
 			-webkit-background-size: cover; 
 			-moz-background-size: cover; 
 			-o-background-size: cover;
@@ -21,14 +25,20 @@
     	-webkit-border-radius: 15px;   /* Webkit browsers */
     	border-radius:15px;            /* W3C syntax */
 		}
-		.login-way {
+		ul {
 			list-style: none;
 		}
 		ul li {
-			color: black;
 			font-size: 25px;
 			font-weight: bold;
-			font-style:italic;
+			/*font-style: italic;*/
+		}
+		ul li a {
+			text-decoration: none;
+			color: black;
+		}
+		ul li a:hover {
+			text-decoration: underline;
 		}
 		</style>
 	</head>
