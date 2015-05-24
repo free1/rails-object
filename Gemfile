@@ -18,6 +18,8 @@ gem 'omniauth-douban-oauth2'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'will_paginate-bootstrap'
 gem 'autoprefixer-rails'
+# gem 'foundation-rails', "~> 5.5.2.1"
+# gem 'foundation-icons-sass-rails'
 
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -113,7 +115,7 @@ gem 'rails-observers'
 gem 'bcrypt', '~> 3.1.7'
 
 group :assets do
-  gem 'sass-rails', '~> 4.0.3'
+  gem 'sass-rails', '~> 5.0'
   gem 'uglifier', '>= 1.3.0'
   gem 'coffee-rails', '~> 4.0.0'
 end
