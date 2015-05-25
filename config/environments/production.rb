@@ -10,6 +10,20 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = false
 
+  # api文档资源
+  # config.assets.precompile += %w(api_swagger_ui/reset.css api_swagger_ui/screen.css)
+  # config.assets.precompile += %w(api_swagger_ui/backbone-min.js api_swagger_ui/handlebars-1.js
+  #                                 api_swagger_ui/highlight.js api_swagger_ui/jquery-1.js
+  #                                 api_swagger_ui/jquery.js api_swagger_ui/jquery_002.js
+  #                                 api_swagger_ui/jquery_003.js api_swagger_ui/shred.js
+  #                                 api_swagger_ui/swagger-client.js api_swagger_ui/swagger-oauth.js
+  #                                 api_swagger_ui/swagger-ui.js api_swagger_ui/swagger.js
+  #                                 api_swagger_ui/underscore-min.js)
+  config.assets.precompile += %w(doc/*.css api_swagger_ui/swagger-ui_rails.*)
+  config.assets.precompile += %w(upload/*.js doc/*.js)
+  config.assets.precompile += %w(tools/*.js)
+  config.assets.precompile << "emoji/**/*.png"
+
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
