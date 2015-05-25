@@ -1,3 +1,5 @@
+@import "scss_mixin_tools";
+
 /* 小贴士 */
 .tips {
 	background-color: white;
@@ -18,4 +20,16 @@
 .tips .tips_content {
 	text-align: center;
 	/*padding: 8px;*/
+}
+
+/*无限下拉分页*/
+.endless_paginate {
+	@include border-radius(5px);
+	border: 1px solid $border-color;
+	padding: 10px;
+	text-align: center;
+	width: 20%;
+	margin-left: 40%;
+	background-color: white;
+	color: #2475D1;
 }

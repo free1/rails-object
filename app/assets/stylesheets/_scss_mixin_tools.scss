@@ -1,0 +1,12 @@
+// @include border-radius(10px);
+// 圆角
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+$border-color: #BBB;
+$font-color: #777;
+$line-color: #ddd;

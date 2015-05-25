@@ -3,6 +3,6 @@
     <%= render @posts %>
   </div>
 </div>
-<%= will_paginate @posts %>
+<%= will_paginate @posts, class: "endless_paginate" %>
 
 <%= javascript_include_tag 'tools/endless_page' %>
