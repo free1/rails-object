@@ -47,7 +47,7 @@ module WeixinTest
     #                                 api_swagger_ui/swagger-ui.js api_swagger_ui/swagger.js
     #                                 api_swagger_ui/underscore-min.js)
     config.assets.precompile += %w(doc/*.css api_swagger_ui/swagger-ui_rails.*)
-    config.assets.precompile += %w(upload/*.js doc/*.js)
+    config.assets.precompile += %w(upload/*.js doc/*.js tools/*.js)
     config.assets.precompile << "emoji/**/*.png"
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
