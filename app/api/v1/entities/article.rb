@@ -29,7 +29,7 @@ module V1
 	      end
 	    	expose :is_collect do |article, options|
 	    		if options[:user]
-	    			options[:user].likeing?(article.id, 'Article')
+	    			options[:user].likeing?(article.id, 'Article', 'favorite')
 	    		else
 	    			false
 	    		end

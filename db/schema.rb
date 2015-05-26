@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518085631) do
+ActiveRecord::Schema.define(version: 20150526031900) do
 
   create_table "article_lists", force: :cascade do |t|
     t.integer  "article_id", limit: 4
@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(version: 20150518085631) do
     t.string   "listable_type", limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "kind",          limit: 4
   end
 
   add_index "user_collects", ["listable_id", "listable_type"], name: "index_user_collects_on_listable_id_and_listable_type", length: {"listable_id"=>nil, "listable_type"=>100}, using: :btree

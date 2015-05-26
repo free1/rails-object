@@ -32,14 +32,14 @@ module V1
           desc '讲座收藏'
           post '/collect' do
             authenticate!
-            current_user.like!(params[:id], 'Chair')
+            current_user.like!(params[:id], 'Chair', 'favorite')
             present :result, true
           end
 
           desc '讲座取消收藏'
           delete '/cancel_collect' do
             authenticate!
-            current_user.cancel_like!(params[:id], 'Chair')
+            current_user.cancel_like!(params[:id], 'Chair', 'favorite')
             present :result, true
           end
 

@@ -93,19 +93,19 @@ class User < ActiveRecord::Base
   end
 
   # 优化后关注(收藏)
-  def likeing?(listable_id, listable_type)
-    is_like = user_collects.find_by(listable_id: listable_id, listable_type: listable_type)
+  def likeing?(listable_id, listable_type, kind)
+    is_like = user_collects.find_by(listable_id: listable_id, listable_type: listable_type, kind: kind)
     if is_like
       true
     else
       false
     end
   end
-  def like!(listable_id, listable_type)
-    user_collects.create!(listable_id: listable_id, listable_type: listable_type)
+  def like!(listable_id, listable_type, kind)
+    user_collects.create!(listable_id: listable_id, listable_type: listable_type, kind: kind)
   end
-  def cancel_like!(listable_id, listable_type)
-    user_collects.find_by(listable_id: listable_id, listable_type: listable_type).destroy
+  def cancel_like!(listable_id, listable_type, kind)
+    user_collects.find_by(listable_id: listable_id, listable_type: listable_type, kind: kind).destroy
   end
 
   # 标签
