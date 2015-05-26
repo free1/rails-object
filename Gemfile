@@ -34,6 +34,12 @@ gem "rinku", "~> 1.7",   :require => false
 # @功能
 gem 'jquery-atwho-rails', "~> 1.1.0"
 
+# 动态消息feed
+gem 'public_activity', '~> 1.4.2'
+
+# 跟踪obj状态
+gem 'paper_trail', '~> 3.0.6'
+
 # api
 gem 'grape'
 gem 'grape-entity'

@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
 	include TextCheck
+	include PublicActivity::Common
 	
 	belongs_to :user
 	belongs_to :commentable, polymorphic: true
