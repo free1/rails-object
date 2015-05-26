@@ -29,18 +29,43 @@ module V1
             present chair, with: V1::Entities::Chair::Chairs
           end
 
-          desc '讲座关注'
+          desc '讲座收藏'
           post '/collect' do
             authenticate!
             current_user.like!(params[:id], 'Chair')
             present :result, true
           end
 
-          desc '讲座取消关注'
+          desc '讲座取消收藏'
           delete '/cancel_collect' do
             authenticate!
             current_user.cancel_like!(params[:id], 'Chair')
             present :result, true
+          end
+
+          desc '创建评论'
+          params do
+            requires :content, type: String
+          end
+          post '/comments' do
+            authenticate!
+            chair = Chair.find(params[:id])
+            comment = chair.comments.build(content: params[:content], user_id: current_user.id)
+            if comment.save
+              present comment, with: V1::Entities::Comment::Comments
+            else
+              present :result, false
+            end
+          end
+
+          desc '评论列表'
+          params do
+            use :pagination
+          end
+          get '/comments' do
+            chair = Chair.find(params[:id])
+            comments = chair.comments.paginate(page: params[:page], per_page: params[:per_page])
+            present comments, with: V1::Entities::Comment::Comments
           end
 
         end

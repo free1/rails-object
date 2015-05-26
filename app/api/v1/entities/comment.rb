@@ -5,7 +5,7 @@ module V1
 	    class Comments < Grape::Entity
 	    	root 'comments'
 	      expose :id, :content
-	      expose :user, using: V1::Entities::User::Users
+	      expose :user, using: V1::Entities::User::UserWithoutToken
 	    end
 	    
 		end
