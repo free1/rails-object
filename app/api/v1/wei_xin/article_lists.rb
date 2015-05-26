@@ -42,7 +42,7 @@ module V1
               present comment, with: V1::Entities::Comment::Comments
               # present :result, true
             else
-              present :result, false              
+              present :result, false
             end
           end
 
@@ -59,14 +59,14 @@ module V1
           desc '收藏'
           post '/collect' do
             authenticate!
-            current_user.like!(params[:id], 'ArticleList', 'favorite')
+            current_user.like!(params[:id], 'ArticleList', UserCollect.kinds["favorite"])
             present :result, true
           end 
 
           desc '取消收藏'
           delete '/cancel_collect' do
             authenticate!
-            current_user.cancel_like!(params[:id], 'ArticleList', 'favorite')
+            current_user.cancel_like!(params[:id], 'ArticleList', UserCollect.kinds["favorite"])
             present :result, true
           end
 

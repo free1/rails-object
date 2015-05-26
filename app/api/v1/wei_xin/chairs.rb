@@ -29,17 +29,17 @@ module V1
             present chair, with: V1::Entities::Chair::Chairs
           end
 
-          desc '讲座收藏'
+          desc '收藏'
           post '/collect' do
             authenticate!
-            current_user.like!(params[:id], 'Chair', 'favorite')
+            current_user.like!(params[:id], 'Chair', UserCollect.kinds["favorite"])
             present :result, true
           end
 
-          desc '讲座取消收藏'
+          desc '取消收藏'
           delete '/cancel_collect' do
             authenticate!
-            current_user.cancel_like!(params[:id], 'Chair', 'favorite')
+            current_user.cancel_like!(params[:id], 'Chair', UserCollect.kinds["favorite"])
             present :result, true
           end
 
@@ -66,6 +66,20 @@ module V1
             chair = Chair.find(params[:id])
             comments = chair.comments.paginate(page: params[:page], per_page: params[:per_page])
             present comments, with: V1::Entities::Comment::Comments
+          end
+
+          desc '赞'
+          post '/zan' do
+            authenticate!
+            current_user.like!(params[:id], 'Chair', UserCollect.kinds["zan"])
+            present :result, true
+          end
+
+          desc '取消赞'
+          delete '/cancel_zan' do
+            authenticate!
+            current_user.cancel_like!(params[:id], 'Chair', UserCollect.kinds["zan"])
+            present :result, true
           end
 
         end
