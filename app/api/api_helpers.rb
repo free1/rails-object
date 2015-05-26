@@ -20,4 +20,9 @@ module APIHelpers
     error!('401 Unauthorized', 401) unless current_user
   end
 
+  # 记录是否存在
+  def obj_present!(class_name, id)
+    class_name.constantize.find(id)
+  end
+
 end

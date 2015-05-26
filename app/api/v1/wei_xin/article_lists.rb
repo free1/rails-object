@@ -59,6 +59,7 @@ module V1
           desc '收藏'
           post '/collect' do
             authenticate!
+            obj_present!('ArticleList', params[:id])
             current_user.like!(params[:id], 'ArticleList', UserCollect.kinds["favorite"])
             present :result, true
           end 
@@ -66,6 +67,7 @@ module V1
           desc '取消收藏'
           delete '/cancel_collect' do
             authenticate!
+            obj_present!('ArticleList', params[:id])
             current_user.cancel_like!(params[:id], 'ArticleList', UserCollect.kinds["favorite"])
             present :result, true
           end

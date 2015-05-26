@@ -39,6 +39,7 @@ module V1
           desc '日知栏目关注'
           post '/collect' do
             authenticate!
+            obj_present!('Article', params[:id])
             current_user.like!(params[:id], 'Article', UserCollect.kinds["favorite"])
             present :result, true
           end
@@ -46,6 +47,7 @@ module V1
           desc '日知栏目取消关注'
           delete '/cancel_collect' do
             authenticate!
+            obj_present!('Article', params[:id])
             current_user.cancel_like!(params[:id], 'Article', UserCollect.kinds["favorite"])
             present :result, true
           end

@@ -5,7 +5,7 @@ class Product < ActiveRecord::Base
 	belongs_to :user
 	# 收藏
 	has_many :user_collect_products, dependent: :destroy
-	has_many :collected_user, through: :user_collect_products, source: :user
+	# has_many :collected_user, through: :user_collect_products, source: :user
 	# 分类
 	has_many :product_category_ships, dependent: :destroy
 	has_many :categories, through: :product_category_ships

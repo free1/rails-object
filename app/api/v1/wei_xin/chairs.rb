@@ -32,6 +32,7 @@ module V1
           desc '收藏'
           post '/collect' do
             authenticate!
+            obj_present!('Chair', params[:id])
             current_user.like!(params[:id], 'Chair', UserCollect.kinds["favorite"])
             present :result, true
           end
@@ -39,6 +40,7 @@ module V1
           desc '取消收藏'
           delete '/cancel_collect' do
             authenticate!
+            obj_present!('Chair', params[:id])
             current_user.cancel_like!(params[:id], 'Chair', UserCollect.kinds["favorite"])
             present :result, true
           end
@@ -71,6 +73,7 @@ module V1
           desc '赞'
           post '/zan' do
             authenticate!
+            obj_present!('Chair', params[:id])
             current_user.like!(params[:id], 'Chair', UserCollect.kinds["zan"])
             present :result, true
           end
@@ -78,6 +81,7 @@ module V1
           desc '取消赞'
           delete '/cancel_zan' do
             authenticate!
+            obj_present!('Chair', params[:id])
             current_user.cancel_like!(params[:id], 'Chair', UserCollect.kinds["zan"])
             present :result, true
           end
