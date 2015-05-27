@@ -6,10 +6,6 @@ class CommentsController < ApplicationController
   	@comment = @commentable.comments.build(comment_params)
   	@comment.user_id = current_user.id
   	if @comment.save
-      # 发送通知
-      NotificationWork.perform_async(@commentable.user.id, current_user.id, @commentable.id, @commentable.model_name.name, 'comment')
-      # 创建动态
-      @comment.create_activity(:create, owner: current_user, recipient: @commentable)
   		redirect_to @commentable
   	else
   		redirect_to :back
