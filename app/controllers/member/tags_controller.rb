@@ -1,5 +1,6 @@
 module Member
 	class TagsController < ::ApplicationController
+		# before_action :signed_in_user
 
 		def index
 			@tags = Tag.all

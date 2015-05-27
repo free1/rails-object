@@ -41,8 +41,9 @@ Rails.application.routes.draw do
   scope module: :member do
     resources :collects, only: [:create, :destroy]
     resources :tags, only: [:index]
+    # 消息通知
+    resources :notifications, only: [:index, :destroy]
   end
-
 
   # 商品相关
   resources :products do

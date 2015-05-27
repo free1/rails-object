@@ -1,0 +1,9 @@
+<div class="">
+	<% @notifications.each do |notification| %>
+		<p>
+			<i><%= link_to notification.sender_user.name, notification.sender_user %></i>
+			<%= notification.select_content %>
+			<i><%= link_to notification.notifiable.title, notification.notifiable %></i>
+		</p>
+	<% end %>
+</div>

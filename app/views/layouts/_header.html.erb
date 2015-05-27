@@ -50,7 +50,7 @@
 			        <li><%= link_to '个人主页', user_path(current_user) %></li>
 			        <li><%= link_to '账户设置', edit_user_path(current_user) %></li>
 			        <li><%= link_to '好友动态', feeds_user_path(current_user) %></li>
-			        <li><%= link_to '消息列表', "#" %></li>
+			        <li><%= link_to '消息列表', notifications_path %></li>
 			        <li><%= link_to '我的创意', products_user_path(current_user) %></li>
 			        <li class="divider"></li>
 			        <li><%= link_to "安全退出", logout_path, method: :delete %></li>
