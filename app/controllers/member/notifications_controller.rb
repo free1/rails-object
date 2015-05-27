@@ -16,6 +16,10 @@ module Member
 		  end
 	  end
 
+	  def unread_count
+	  	@unread_count = current_user.notifications.unread.count
+	  end
+
 		private
 			def mark_read
 				current_user.notifications.update_all(status: Notification.statuses["readed"])

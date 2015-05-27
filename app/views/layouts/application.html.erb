@@ -34,6 +34,14 @@
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
       }
     });
+
+    <% if signed_in? %>
+    	$(function(){
+	      window.setInterval(function() {
+	        $.getScript("/notifications/unread_count.js");
+	      }, 2000);
+	    })
+    <% end %>
 	</script>
 	<%= yield :script %>
 </body>

@@ -6,6 +6,7 @@ class Notification < ActiveRecord::Base
 
 	default_scope { where.not(status: 2) }
 	scope :recent, -> { order(created_at: :desc) }
+	scope :unread, -> { where(status: 0) }
 
 	# 状态
 	enum status: {unread: 0, readed: 1, deleted: 2}
