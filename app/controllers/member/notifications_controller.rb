@@ -4,7 +4,7 @@ module Member
 		after_action :mark_read, only: :index
 
 		def index
-			@notifications = current_user.notifications.not_deleted.recent
+			@notifications = current_user.notifications.recent
 		end
 
 	  def destroy

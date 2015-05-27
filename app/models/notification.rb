@@ -4,7 +4,7 @@ class Notification < ActiveRecord::Base
 	belongs_to :receiver_user, foreign_key: 'receiver_id', class_name: 'User'
 	belongs_to :notifiable, polymorphic: true
 
-	scope :not_deleted, -> { where.not(status: 2) }
+	default_scope { where.not(status: 2) }
 	scope :recent, -> { order(created_at: :desc) }
 
 	# 状态
