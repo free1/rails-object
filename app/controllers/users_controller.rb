@@ -66,7 +66,7 @@ class UsersController < ApplicationController
   end
 
   def feeds
-    @feeds = current_user.all_feeds
+    @feeds = current_user.all_feeds.paginate(page: params[:page], per_page: 1)
   end
 
   private

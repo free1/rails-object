@@ -1,3 +1,5 @@
-<h2>好友动态</h2>
+<h2>关注人动态</h2>
 
 <%= render_activities(@feeds) %>
+
+<%= will_paginate @feeds, renderer: BootstrapPagination::Rails %>

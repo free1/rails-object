@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
 	def show
 		@product = Product.find(params[:id])
 		# @product = Product.find Product.decrypt(params[:id])
-		@comments = @product.comments
+		@comments = @product.comments.includes(:user)
 		@comment = Comment.new
 	end
 
