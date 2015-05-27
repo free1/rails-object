@@ -27,7 +27,7 @@ module WeixinTest
     config.assets.paths << Emoji.images_path
 
     # Observer configuration
-    config.active_record.observers = :user_observer
+    config.active_record.observers = [:user_observer, :comment_observer]
 
     # 生成器设置
     config.generators do |g|
