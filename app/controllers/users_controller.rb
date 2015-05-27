@@ -65,6 +65,10 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def feeds
+    @feeds = current_user.all_feeds
+  end
+
   private
 
     def user_params

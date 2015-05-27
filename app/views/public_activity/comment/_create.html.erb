@@ -1,0 +1,7 @@
+<div class="feed">
+	<%= user_avatar activity.owner.avatar_path, "100x100" %>
+	<i><%= link_to activity.owner.name, activity.owner %></i>
+	对<%= activity.recipient.class.model_name.human %> <i><%= link_to activity.recipient.title, activity.recipient %></i>
+	做出了评论:
+	<%= activity.trackable.content %>
+</div>

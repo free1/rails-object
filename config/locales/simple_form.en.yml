@@ -50,6 +50,12 @@ en:
     page_gap: "&hellip;"
   # model
   activerecord:
+    models:
+      product: '创意'
+      user: 用户
+      category: '标签'
+      article: '栏目'
+      post: '文章'
     attributes:
       user: 
         name: '昵称'

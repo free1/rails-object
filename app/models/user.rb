@@ -60,6 +60,11 @@ class User < ActiveRecord::Base
   delegate :gender, :resume, :website, to: :info, allow_nil: true
 
 
+  # 快捷查找
+  def all_feeds
+    PublicActivity::Activity.where(recipient_type: ["Post", "Product"], owner_id: self.followed_users.map(&:id))
+  end
+
   # 邮箱验证
   def send_verify_email
     verify_email_token = generate_simple_token(:verify_token)
