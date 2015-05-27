@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       get 'verify_email'
     end
     member do
-      get :following, :followers, :feeds
+      get :following, :followers, :feeds, :products
     end
   end
   resource :settings do

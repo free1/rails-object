@@ -1,11 +1,13 @@
-<div class="content-side">
-  <p class="section-name">选择分类</p>
-  <ul class="section-value">
-    <% @categories.each do |category| %>
-      <%= nav_link category.name, products_path(category: category.name), "", true %>
-    <% end %>
-  </ul>
-</div>
+<% if @categories.present? %>
+  <div class="content-side">
+    <p class="section-name">选择分类</p>
+    <ul class="section-value">
+      <% @categories.each do |category| %>
+        <%= nav_link category.name, products_path(category: category.name), "", true %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <div class="content-main">
   <% @products.each do |product| %>

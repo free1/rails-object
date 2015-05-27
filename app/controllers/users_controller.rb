@@ -66,7 +66,13 @@ class UsersController < ApplicationController
   end
 
   def feeds
-    @feeds = current_user.all_feeds.paginate(page: params[:page], per_page: 1)
+    @feeds = current_user.all_feeds.paginate(page: params[:page])
+  end
+
+  def products
+    user = User.find(params[:id])
+    @products = user.products.paginate(page: params[:page], per_page: 16)
+    render 'products/index'
   end
 
   private
