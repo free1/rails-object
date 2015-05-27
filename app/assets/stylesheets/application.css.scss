@@ -69,16 +69,24 @@ img {
 	border-radius: 4px;
 }
 
-.navbar-inverse .navbar-nav > li > a {
-	color: #eee;
-}
-.navbar-inverse .navbar-nav > li > a:hover {
-	color: #bbb;
-}
+// 顶部导航
+// .navbar-inverse .navbar-nav > li > a {
+// 	color: #eee;
+// }
+// .navbar-inverse .navbar-nav > li > a:hover {
+// 	color: #bbb;
+// }
 .navbar-inverse .navbar-brand {
 	font-size: 20px;
-	color: #06aaed;
+	font-family: 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans GB', 'Heiti SC', 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif;
+	color: #eee;
 }
+.navbar-inverse {
+	background-color: #303a40;
+}
+// .navbar-inverse .navbar-nav > .active > a, .navbar-nav>li>a:hover {
+// 	background-color: #cdbfe3;
+// }
 
 
 $lightGray: #999;
