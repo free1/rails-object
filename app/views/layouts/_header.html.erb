@@ -36,7 +36,11 @@
 
 		<ul class="nav navbar-nav navbar-right">
 			<% if signed_in? %>
-			    <li><%= link_to "分享", new_product_path %></li>
+			    <li> 
+			    	<%= link_to new_product_path do %>
+							<span class="glyphicon glyphicon-pencil"></span> 分享
+			    	<% end %>
+			    </li>
 			    <li class="dropdown">
 			      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			      	<%= current_user.name %>
@@ -48,7 +52,6 @@
 			        <li><%= link_to '好友动态', "#" %></li>
 			        <li><%= link_to '消息列表', "#" %></li>
 			        <li><a href="#">我的商品</a></li>
-			        <li><a href="#">我的草稿</a></li>
 			        <li class="divider"></li>
 			        <li><%= link_to "安全退出", logout_path, method: :delete %></li>
 			      </ul>

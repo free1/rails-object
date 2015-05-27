@@ -43,6 +43,10 @@ set :unicorn_rack_env, "production"
 
 set :stage, :production
 
+# ssh_options[:forward_agent] = true
+# ssh_options[:port] = 1000
+set :ssh_options, {:forward_agent => true}
+
 # Default branch is :master
 set :branch, "master"
 
@@ -107,7 +111,7 @@ set :scm, :git
 # set :log_level, :debug
 
 # Default value for :pty is false
-# set :pty, true
+set :pty, true
 
 # Default value for :linked_files is []
 set :linked_files, %w{config/database.yml config/application.yml config/thinking_sphinx.yml}
