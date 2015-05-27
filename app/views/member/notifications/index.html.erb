@@ -1,9 +1,10 @@
 <div class="">
 	<% @notifications.each do |notification| %>
-		<p>
+		<p class="notification-<%= notification.id %>">
 			<i><%= link_to notification.sender_user.name, notification.sender_user %></i>
 			<%= notification.select_content %>
 			<i><%= link_to notification.notifiable.title, notification.notifiable %></i>
+			<%= link_to "删除", notification_path(notification), method: :delete, remote: true %>
 		</p>
 	<% end %>
 </div>

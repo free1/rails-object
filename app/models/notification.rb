@@ -4,10 +4,11 @@ class Notification < ActiveRecord::Base
 	belongs_to :receiver_user, foreign_key: 'receiver_id', class_name: 'User'
 	belongs_to :notifiable, polymorphic: true
 
+	scope :not_deleted, -> { where.not(status: 2) }
 	scope :recent, -> { order(created_at: :desc) }
 
 	# 状态
-	enum status: {unread: 0, readed: 1}
+	enum status: {unread: 0, readed: 1, deleted: 2}
 
 	def select_content
 		case self.content
