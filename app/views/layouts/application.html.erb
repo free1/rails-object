@@ -35,7 +35,7 @@
       }
     });
 
-    <% if signed_in? %>
+    <% if signed_in? && !Rails.env.development? %>
     	$(function(){
 	      window.setInterval(function() {
 	        $.getScript("/notifications/unread_count.js");
