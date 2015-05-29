@@ -37,4 +37,9 @@ module ApplicationHelper
 		link_to link_text, link_path, class: class_name, method: link_method, remote: true
 	end
 
+	# 未读消息数量
+  def notification_unread_count
+    current_user.notifications.unread.count
+  end
+
 end
