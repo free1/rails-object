@@ -38,7 +38,7 @@ gem 'jquery-atwho-rails', "~> 1.1.0"
 gem 'public_activity', '~> 1.4.2'
 
 # 实时刷新消息数量
-gem 'message_bus', '~> 1.0.9'
+gem 'message_bus', '~> 1.0.9'  # faye不支持WEBrick
 
 # 跟踪obj状态
 gem 'paper_trail', '~> 3.0.6'

@@ -42,7 +42,7 @@
 	   //    }, 2000);
 	   //  })
     // <% end %>
-    <% if signed_in? %>
+    <% if signed_in? && !Rails.env.development? %>
 	    MessageBus.start();
 	    MessageBus.callbackInterval = 500;
 			MessageBus.subscribe("/channel/<%= current_user.id %>", function(msg){
