@@ -53,7 +53,7 @@
 			        <li><%= link_to '好友动态', feeds_user_path(current_user) %></li>
 			        <li>
 			        	<%= link_to notifications_path do %>
-									消息列表 <strong id="unread-count"></strong>
+									消息列表 <strong id="unread-count"><%= notification_unread_count %></strong>
 			        	<% end %>
 			        </li>
 			        <li class="divider"></li>

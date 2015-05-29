@@ -58,4 +58,8 @@ class ApplicationController < ActionController::Base
     current_user && current_user.admin?
   end
 
+  def notification_unread_count
+    current_user.notifications.unread.count
+  end
+
 end
