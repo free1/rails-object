@@ -17,3 +17,5 @@
 //= require doc/form_validate/rails.validations
 //= require doc/form_validate/rails.validations.simple_form
 //= require jquery.atwho
+// 即时通讯
+//= require message-bus

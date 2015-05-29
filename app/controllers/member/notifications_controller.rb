@@ -16,9 +16,9 @@ module Member
 		  end
 	  end
 
-	  def unread_count
-	  	@unread_count = current_user.notifications.unread.count
-	  end
+	  # def unread_count
+	  # 	@unread_count = current_user.notifications.unread.count
+	  # end
 
 		private
 			def mark_read

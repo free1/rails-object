@@ -43,9 +43,9 @@ Rails.application.routes.draw do
     resources :tags, only: [:index]
     # 消息通知
     resources :notifications, only: [:index, :destroy] do
-      collection do
-        get :unread_count
-      end
+      # collection do
+        # get :unread_count
+      # end
     end
   end
 

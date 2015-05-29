@@ -35,13 +35,20 @@
       }
     });
 
-    <% if signed_in? && !Rails.env.development? %>
-    	$(function(){
-	      window.setInterval(function() {
-	        $.getScript("/notifications/unread_count.js");
-	      }, 2000);
-	    })
-    <% end %>
+    // <% if signed_in? && !Rails.env.development? %>
+    // 	$(function(){
+	   //    window.setInterval(function() {
+	   //      $.getScript("/notifications/unread_count.js");
+	   //    }, 2000);
+	   //  })
+    // <% end %>
+    <% if signed_in? %>
+	    MessageBus.start();
+	    MessageBus.callbackInterval = 500;
+			MessageBus.subscribe("/channel/<%= current_user.id %>", function(msg){
+				$("#unread-count").text(msg.unread_count);
+			});
+		<% end %>
 	</script>
 	<%= yield :script %>
 </body>

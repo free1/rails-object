@@ -37,6 +37,9 @@ gem 'jquery-atwho-rails', "~> 1.1.0"
 # 动态消息feed
 gem 'public_activity', '~> 1.4.2'
 
+# 实时刷新消息数量
+gem 'message_bus', '~> 1.0.9'
+
 # 跟踪obj状态
 gem 'paper_trail', '~> 3.0.6'
 
