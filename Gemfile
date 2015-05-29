@@ -108,6 +108,7 @@ gem 'will_paginate', '~> 3.0.6'
 
 # 监控
 gem 'god'
+gem 'newrelic_rpm'
 
 # web server
 gem 'unicorn'

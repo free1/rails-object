@@ -6,6 +6,6 @@ production:
   database: weixin_test
   pool: 5
   timeout: 5000
-  username: root
-  password: free
+  username: username
+  password: password
   socket: /var/run/mysqld/mysqld.sock
