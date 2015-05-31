@@ -25,7 +25,8 @@ module V1
           requires :password, type: String
         end
         post '/signup' do
-          user = User.new(name: params[:name], password: params[:password])
+          remember_token = User.new_remember_token
+          user = User.new(name: params[:name], password: params[:password], remember_token: User.encrypt(remember_token))
           if user.save
             present user, with: V1::Entities::User::Users
           else

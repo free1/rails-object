@@ -39,14 +39,14 @@ module ThirdParty
       	when 'weibo'
       		User.transaction do
 	          user = create(name: user_info['name'], avatar_path: user_info['profile_image_url'], 
-	          							password: password, remember_token: remember_token)
+	          							password: password, remember_token: User.encrypt(remember_token))
 	          user.authentications.create(uid: user_info[:uid], provider: provider, user_id: user.id)
 	          user
 	        end
       	when 'qq'
       		User.transaction do
 	          user = create(name: user_info['nickname'], avatar_path: user_info['figureurl_2'], 
-	          							password: password, remember_token: remember_token)
+	          							password: password, remember_token: User.encrypt(remember_token))
 	          user.authentications.create(uid: user_info[:uid], provider: provider, user_id: user.id)
 	          user
 	        end
