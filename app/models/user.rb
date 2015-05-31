@@ -11,10 +11,11 @@ class User < ActiveRecord::Base
   validates :subtitle, :invisible_captcha => true
 
   # 验证
-  validates :name, presence: true, length: { in: 3..20 }, uniqueness: true
-  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  # validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
-                    # uniqueness: { case_sensitive: false }
+  validates :name, presence: true, length: { in: 3..20 }, uniqueness: true, :exclusion => { :in => %w(admin) }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, format: { with: VALID_EMAIL_REGEX },
+                    :allow_blank => true,
+                    uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 3 }, on: :create
 
   # 第三方账户
