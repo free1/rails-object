@@ -22,11 +22,12 @@
 * 邮件发送：sendcloud
 * 反向代理：Nginx
 * Web容器：unicorn
-* 搜索：sphinx(暂时不支持中文分词)
+* 搜索：sunspot
 
 ## 功能组件
 
 * 抓取文章，使用nokogiri每天定时抓取三个网站的文章。
+* 搜索系统，使用更强大的sunspot，支持中文分词和定位分析，sphinx(暂时不支持中文分词)停止使用。
 * 资源上传，使用[七牛服务](http://www.qiniu.com/)。
 * 发送邮件，使用[sendcloud服务](https://sendcloud.sohu.com/)。
 * 系统监控，使用[newrelic](https://rpm.newrelic.com)。

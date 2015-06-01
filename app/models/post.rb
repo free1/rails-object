@@ -9,6 +9,13 @@ class Post < ActiveRecord::Base
 	validates :title, presence: true, uniqueness: true
 	validates :content, presence: true
 
+	# 搜索
+	searchable do
+		text :title, :content
+
+		integer :id
+	end
+
 	class << self
 		# 抓取内容todo 传入class合并
 		def crawl_mrwu_post

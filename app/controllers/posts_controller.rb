@@ -11,7 +11,13 @@ class PostsController < ApplicationController
 	end
 
 	def search
-		@posts = Post.search Riddle::Query.escape(params[:query])
+		# sphinx
+		# @posts = Post.search Riddle::Query.escape(params[:query])
+		# sunspot
+		@posts = Post.search do
+			fulltext(params[:query])
+			order_by(:id, :desc)
+		end.results
 		render 'index'
 	end
 

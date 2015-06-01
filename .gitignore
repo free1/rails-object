@@ -12,10 +12,17 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
+/log
 /tmp
 config/database.yml
 # Ignore application configuration
 /config/application.yml
 /db/sphinx/development/*
 /log/*.pid
+
+solr/data
+solr/default/data
+solr/development
+solr/pids
+solr/test
+solr/production
