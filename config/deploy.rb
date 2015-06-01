@@ -164,8 +164,7 @@ namespace :solr do
     desc "#{command} solr"
     task command do
       on roles(:app) do
-        # solr_pid = "#{shared_path}/solr/pids/sunspot-solr.pid"
-        solr_pid = "#{current_path}/solr/pids/production/sunspot-solr-production.pid"
+        solr_pid = "#{shared_path}/solr/pids/sunspot-solr.pid"
         if command == "start" or (test "[ -f #{solr_pid} ]" and test "kill -0 $( cat #{solr_pid} )")
           within current_path do
             with rails_env: fetch(:rails_env, 'production') do
