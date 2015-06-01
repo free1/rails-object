@@ -79,6 +79,7 @@ gem 'mysql2', '0.3.15'
 # gem 'jdbc-mysql',      '~> 5.1.28', :platform => :jruby
 # gem 'thinking-sphinx', '~> 3.1.0'
 gem 'sunspot_rails'
+gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
 gem 'progress_bar'  # 解决sunspot的index时
 
 # 生成二维码
@@ -150,8 +151,6 @@ group :development do
   gem 'pry'
   gem 'pry-byebug'
   gem 'pry-rails'
-  # 搜索
-  gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
 end
 
 # 爬虫
