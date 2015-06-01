@@ -30,7 +30,7 @@ module V1
           if user.save
             present user, with: V1::Entities::User::Users
           else
-            present :result, false
+            error!('validates errors', 409)
           end
         end
 
@@ -41,9 +41,9 @@ module V1
         post '/verify_username' do
           user = User.where(name: params[:name])
           if user.present?
-            present :is_present, true
+            error!('validates errors', 409)
           else
-            present :is_present, false
+            present :result, true
           end
         end
 
