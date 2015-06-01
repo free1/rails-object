@@ -57,7 +57,8 @@ module V1
           if user && user.authenticate(params[:password])
             present user, with: V1::Entities::User::Users
           else
-            present :result, false
+            # present :result, false
+            error!('401 Unauthorized', 401)
             # p "----无效的用户名/密码!----"
           end
         end
