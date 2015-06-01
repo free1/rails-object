@@ -181,11 +181,14 @@ namespace :solr do
   	desc "#{command} sunspot"
   	task command do
   		on roles(:app) do
-  			within current_path do
-  				with rails_env: fetch(:rails_env, 'production') do
-  					execute :bundle, 'exec', :rake, "sunspot:solr:#{command}"
-  				end
-  			end
+  			solr_pid = "#{current_path}/solr/pids/production/sunspot-solr-production.pid"
+	      if command == "start" or (test "[ -f #{solr_pid} ]" and test "kill -0 $( cat #{solr_pid} )")
+	  			within current_path do
+	  				with rails_env: fetch(:rails_env, 'production') do
+	  					execute :bundle, 'exec', :rake, "sunspot:solr:#{command}"
+	  				end
+	  			end
+	  		end
   		end
   	end
   end
