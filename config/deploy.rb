@@ -158,6 +158,7 @@ end
 #   end
 # end
 
+
 namespace :solr do
   
   # %w[start stop].each do |command|
