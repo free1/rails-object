@@ -114,7 +114,7 @@ set :scm, :git
 set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml config/application.yml config/thinking_sphinx.yml config/sunspot.yml}
+set :linked_files, %w{config/database.yml config/application.yml config/sunspot.yml}
 # set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 
 # Default value for linked_dirs is []
@@ -133,8 +133,8 @@ set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 set :whenever_roles,        ->{ :db }
 
 # thinking_sphinx
-set :thinking_sphinx_roles, :db
-set :thinking_sphinx_rails_env, -> { fetch(:rails_env) || fetch(:stage) }
+# set :thinking_sphinx_roles, :db
+# set :thinking_sphinx_rails_env, -> { fetch(:rails_env) || fetch(:stage) }
 
 # sidekiq
 set :sidekiq_pid, "./tmp/pids/sidekiq.pid"
