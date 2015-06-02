@@ -169,7 +169,7 @@ namespace :solr do
         if command == "start" or (test "[ -f #{solr_pid} ]" and test "kill -0 $( cat #{solr_pid} )")
           within current_path do
             with rails_env: fetch(:rails_env, 'production') do
-              execute :bundle, 'exec', 'sunspot-solr', command, "--port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
+              execute :bundle, 'exec', 'sunspot-solr', command, "--port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids --solr-home=#{current_path}/solr"
             end
           end
         end
@@ -182,9 +182,7 @@ namespace :solr do
     invoke 'solr:stop'
     invoke 'solr:start'
   end
-
   
-  # reindex 路径有问题，暂时先进入服务器使用sunspot
   after 'deploy:finished', 'solr:restart'
   
   desc "reindex sunspot"
