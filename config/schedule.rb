@@ -49,5 +49,6 @@ end
 
 # 搜索更新
 every 60.minutes do
-  rake "ts:index"
+  # rake "ts:index"
+  rake "sunspot:solr:reindex"
 end
