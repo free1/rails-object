@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526084437) do
+ActiveRecord::Schema.define(version: 20150602065831) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -200,6 +200,8 @@ ActiveRecord::Schema.define(version: 20150526084437) do
     t.string   "website",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "longitude",  limit: 24,    default: 0.0
+    t.float    "latitude",   limit: 24,    default: 0.0
   end
 
   add_index "user_infos", ["user_id"], name: "index_user_infos_on_user_id", using: :btree

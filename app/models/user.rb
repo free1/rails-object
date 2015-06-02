@@ -58,8 +58,12 @@ class User < ActiveRecord::Base
 
   # 代理
   delegate :public_name, :number, :qr_code, :keyword, to: :wechat_info, allow_nil: true
-  delegate :gender, :resume, :website, to: :info, allow_nil: true
+  delegate :gender, :resume, :website, :longitude, :latitude, to: :info, allow_nil: true
 
+  # 搜索距离位置
+  searchable do
+    latlon(:location) { Sunspot::Util::Coordinates.new(latitude, longitude) }
+  end
 
   # 快捷查找
   def all_feeds
