@@ -80,7 +80,7 @@ gem 'mysql2', '0.3.15'
 # gem 'thinking-sphinx', '~> 3.1.0'
 gem 'sunspot_rails'
 gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
-gem 'progress_bar'  # 解决sunspot的index时
+gem 'progress_bar'  # 解决sunspot的index时 default: http://ip:8983/solr/#/
 
 # 生成二维码
 gem 'rqrcode_png'
