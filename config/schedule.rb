@@ -48,7 +48,7 @@ every 1.minutes do
 end
 
 # 搜索更新
-every 60.minutes do
+every 1.day, :at => '2:10 am' do
   # rake "ts:index"
   rake "sunspot:solr:reindex"
 end
