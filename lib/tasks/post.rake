@@ -37,6 +37,18 @@ namespace :post do
 		end
 	end
 
+	desc "之前抓取到的文章加上封面"
+	task :add_cover_path => :environment do
+		p '--------begin---------'
+		Post.find_each do |post|
+			doc = Nokogiri::HTML(post.content)
+			image_path = doc.css('img').first
+			if image_path.present?
+				post.update_column(:cover_path, image_path["src"])
+			end
+		end
+	end
+
 	desc "删除短文章"
 	task :delete_short_post => :environment do
 		p '--------begin---------'
