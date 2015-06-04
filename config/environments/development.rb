@@ -34,5 +34,15 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # https://github.com/flyerhzm/bullet
+  # https://github.com/flyerhzm/uniform_notifier
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.add_footer = true
+  end
 end
 APP_HOST = ''

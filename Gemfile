@@ -152,7 +152,9 @@ group :development do
   gem 'pry'
   gem 'pry-byebug'
   gem 'pry-rails'
-  
+  # 性能检测
+  gem "bullet"
+  gem "uniform_notifier", require: false
 end
 
 # 爬虫
