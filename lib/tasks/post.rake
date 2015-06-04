@@ -1,7 +1,7 @@
 # encoding=utf-8
 namespace :post do
-	desc "抓取内容"
-	task :crawl_post => :environment do
+	desc "抓取oszine内容"
+	task :crawl_oszine_post => :environment do
 		spider = FreeSpider::Begin.new
 		spider.plan do
 		  site 'http://oszine.com/'
@@ -9,13 +9,42 @@ namespace :post do
 		spider.crawl
 	end
 
+	desc "抓取ingchuang内容"
+	task :crawl_ingchuang_post => :environment do
+		spider = FreeSpider::Begin.new
+		spider.plan do
+		  site 'http://www.ingchuang.com/'
+		end
+		spider.crawl
+	end
+
+	desc "抓取mrwu内容"
+	task :crawl_mrwu_post => :environment do
+		spider = FreeSpider::Begin.new
+		spider.plan do
+		  site 'http://www.mr-wu.cn/'
+		end
+		spider.crawl
+	end
+
 	desc "删除不必要内容"
 	task :check_content => :environment do
+		p '--------begin---------'
 		Post.find_each do |post|
-			p '--------begin---------'
 			content = post.content.split("<div class=\"loc_link\">\n<ul>\r\n")[0]
 			post.update_column(:content, content)
 			p content
+		end
+	end
+
+	desc "删除短文章"
+	task :delete_short_post => :environment do
+		p '--------begin---------'
+		Post.find_each do |post|
+			if post.content.size < 100
+				post.delete
+				p '--------delete success---------'
+			end
 		end
 	end
 end

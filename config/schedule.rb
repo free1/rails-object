@@ -24,17 +24,26 @@ env :PATH, ENV['PATH']
 set :output, "log/cron.log"
 
 # 抓取任务
-every 1.day, :at => '3:30 am' do
-	runner "Post.crawl_mrwu_post"
+every 1.day, :at => '1:30 am' do
+	rake "post:crawl_mrwu_post"
+end
+every 1.day, :at => '2:00 am' do
+	rake "post:crawl_oszine_post"
+end
+every 1.day, :at => '2:30 am' do
+	rake "post:crawl_ingchuang_post"
+end
+every 1.day, :at => '3:00 am' do
+	rake "post:check_content"
 end
 every 1.day, :at => '4:00 am' do
-	runner "Post.crawl_oszine_post"
+	rake "post:delete_short_post"
 end
-every 1.day, :at => '4:30 am' do
-	runner "Post.crawl_ingchuang_post"
-end
-every 1.day, :at => '6:10 am' do
-	runner "Post.check_content"
+
+# 搜索更新
+every 1.day, :at => '7:10 am' do
+  # rake "ts:index"
+  rake "sunspot:solr:reindex"
 end
 
 # 定时备份数据
@@ -45,10 +54,4 @@ end
 # 转存任务
 every 1.minutes do
 	runner "Post.sum_watch_count"
-end
-
-# 搜索更新
-every 1.day, :at => '2:10 am' do
-  # rake "ts:index"
-  rake "sunspot:solr:reindex"
 end

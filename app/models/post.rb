@@ -17,36 +17,6 @@ class Post < ActiveRecord::Base
 	end
 
 	class << self
-		# 抓取内容todo 传入class合并
-		def crawl_mrwu_post
-			spider = FreeSpider::Begin.new
-			spider.plan do
-			  site 'http://www.mr-wu.cn/'
-			end
-			spider.crawl
-		end
-		def crawl_oszine_post
-			spider = FreeSpider::Begin.new
-			spider.plan do
-				site 'http://www.oszine.com/'
-			end
-			spider.crawl
-		end
-		def crawl_ingchuang_post
-			spider = FreeSpider::Begin.new
-			spider.plan do
-				site 'http://www.ingchuang.com/'
-			end
-			spider.crawl
-		end
-		# 删除不必要内容
-		def check_content
-			Post.find_each do |post|
-				content = post.content.split("<div class=\"loc_link\">\n<ul>\r\n")[0]
-				post.update_column(:content, content)
-			end
-		end
-		
 
 		# 计算查看数量
 		def add_watch_count(id)
