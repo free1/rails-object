@@ -3,4 +3,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :qq_connect, ENV['QQ_CONNECT_APP_KEY'], ENV['QQ_CONNECT_APP_SECRET'], scope: "get_user_info,add_share"
   provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']
   provider :douban, ENV['DOUBAN_KEY'], ENV['DOUBAN_SECRET']
+  provider :open_wechat, ENV['OPEN_WECHAT_KEY'], ENV['OPEN_WECHAT_SECRET'], :scope => 'snsapi_login'
 end

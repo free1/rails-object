@@ -31,8 +31,14 @@
 * 资源上传，使用[七牛服务](http://www.qiniu.com/)。
 * 发送邮件，使用[sendcloud服务](https://sendcloud.sohu.com/)。
 * 系统监控，使用[newrelic](https://rpm.newrelic.com)。
-* 用户系统，支持用户名邮箱登录，支持第三方(qq, weibo, github, douban)登录。
+* 用户系统，支持用户名邮箱登录，支持第三方(qq, weibo, github, douban, weixin)登录。
 * 基本的运维配置，monit监控进程（邮件报警），whenever+backup自动备份，god监控。
 * 基本的部署配置，capistrano自动一键部署。
 * 系统消息。
 * 各种文章基本操作，评论，赞，收藏等。
+* 性能监控。
+
+## NEXT
+
+* 微信登录
+* 加上性能检测gem

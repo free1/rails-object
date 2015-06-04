@@ -212,6 +212,9 @@ GEM
       multi_json (~> 1.3)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    omniauth-open_wechat (0.0.2)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (>= 1.1.1, < 2.0)
     omniauth-qq-connect (0.2.0)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
@@ -409,6 +412,7 @@ DEPENDENCIES
   omniauth (~> 1.2.1)
   omniauth-douban-oauth2
   omniauth-github
+  omniauth-open_wechat (~> 0.0.2)
   omniauth-qq-connect
   omniauth-weibo-oauth2 (~> 0.4.0)
   paper_trail (~> 3.0.6)

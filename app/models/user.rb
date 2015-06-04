@@ -163,9 +163,10 @@ class User < ActiveRecord::Base
       def create_from_auth(auth_hash)
         password = User.new_remember_token
         begin
+          avatar_path = auth_hash['info']['image'] || auth_hash['info']['headimgurl']
           User.transaction do
             user = create(email: auth_hash['info']['email'], name: auth_hash['info']['nickname'],
-                          avatar_path: auth_hash['info']['image'], password: password)
+                          avatar_path: avatar_path, password: password)
             user.add_auth(auth_hash, user.id)
             # user.send :create_remember_token
             user
