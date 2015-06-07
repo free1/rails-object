@@ -64,7 +64,7 @@ namespace :post do
 	task :check_title => :environment do
 		p '--------begin---------'
 		Post.find_each do |post|
-			post.title.delete "<!--", "-->"
+			post.update_column(:title, post.title.strip.delete("<! -- >"))
 			p "--------success---------"
 		end
 	end
