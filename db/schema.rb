@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604102130) do
+ActiveRecord::Schema.define(version: 20150607022019) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20150604102130) do
     t.integer  "status",      limit: 4,     default: 0
     t.integer  "watch_count", limit: 4,     default: 0
     t.string   "cover_path",  limit: 255
+    t.string   "source_site", limit: 255
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree

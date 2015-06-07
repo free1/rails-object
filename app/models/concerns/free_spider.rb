@@ -66,7 +66,7 @@ module FreeSpider
           unless @title_saved.include?(entry_title)
             @title_saved << entry_title
             content = doc.css(".entry-content").children.to_html
-            @news_teaching_content = {title: entry_title, content: content}
+            @news_teaching_content = {title: entry_title, content: content, source_site: @site}
 
             # # 文章题目
             # doc.css(".entry-title").each do |entry_title|
@@ -92,7 +92,7 @@ module FreeSpider
             content = doc.css(".content").children.to_html
             p "-------------内容-------------------"
             p content
-            @news_teaching_content = {title: entry_title, content: content}
+            @news_teaching_content = {title: entry_title, content: content, source_site: @site}
           end
         end
 
