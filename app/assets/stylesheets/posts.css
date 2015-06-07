@@ -11,6 +11,7 @@
 .post-title {
 	font-size: 30px;
 	text-align: center;
+	overflow: hidden;
 }
 
 .post-content img {
