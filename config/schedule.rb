@@ -36,6 +36,9 @@ end
 every 1.day, :at => '3:00 am' do
 	rake "post:check_content"
 end
+every 1.day, :at => '3:30 am' do
+	rake "post:check_title"
+end
 every 1.day, :at => '4:00 am' do
 	rake "post:delete_short_post"
 end

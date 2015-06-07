@@ -59,4 +59,14 @@ namespace :post do
 			end
 		end
 	end
+
+	desc "删除文章标题不必要内容"
+	task :check_title => :environment do
+		p '--------begin---------'
+		Post.find_each do |post|
+			post.title.delete "<!--", "-->"
+			p "--------success---------"
+		end
+	end
+
 end
