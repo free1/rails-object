@@ -35,8 +35,8 @@ module V1
         params do
           requires :name, type: String
           requires :password, type: String
-          optional :longitude, type: Float, desc: '经度'
-          optional :latitude, type: Float, desc: '纬度'
+          optional :longitude, type: String, desc: '经度'
+          optional :latitude, type: String, desc: '纬度'
         end
         post '/signup' do
           remember_token = User.new_remember_token
@@ -66,8 +66,8 @@ module V1
         params do
           requires :name, type: String
           requires :password, type: String
-          optional :longitude, type: Float, desc: '经度'
-          optional :latitude, type: Float, desc: '纬度'
+          optional :longitude, type: String, desc: '经度'
+          optional :latitude, type: String, desc: '纬度'
         end
         post '/login' do
           user = User.find_by(name: params[:name])
