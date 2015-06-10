@@ -65,6 +65,11 @@ class User < ActiveRecord::Base
     latlon(:location) { Sunspot::Util::Coordinates.new(latitude, longitude) }
   end
 
+  # 每次登录注册记录所在位置
+  def update_location(latitude, longitude)
+    self.info.update(latitude: latitude, longitude: longitude)
+  end
+
   # 快捷查找
   def all_feeds
     PublicActivity::Activity.where(recipient_type: ["Post", "Product"], owner_id: self.followed_users.map(&:id))

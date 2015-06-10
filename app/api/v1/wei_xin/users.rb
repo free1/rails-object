@@ -35,11 +35,14 @@ module V1
         params do
           requires :name, type: String
           requires :password, type: String
+          optional :longitude, type: Float, desc: '经度'
+          optional :latitude, type: Float, desc: '纬度'
         end
         post '/signup' do
           remember_token = User.new_remember_token
           user = User.new(name: params[:name], password: params[:password], remember_token: User.encrypt(remember_token))
           if user.save
+            user.update_location(params[:latitude], params[:longitude])
             present user, with: V1::Entities::User::Users
           else
             error!('validates errors', 409)
@@ -63,10 +66,13 @@ module V1
         params do
           requires :name, type: String
           requires :password, type: String
+          optional :longitude, type: Float, desc: '经度'
+          optional :latitude, type: Float, desc: '纬度'
         end
         post '/login' do
           user = User.find_by(name: params[:name])
           if user && user.authenticate(params[:password])
+            user.update_location(params[:latitude], params[:longitude])
             present user, with: V1::Entities::User::Users
           else
             # present :result, false
