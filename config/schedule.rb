@@ -44,9 +44,12 @@ every 1.day, :at => '4:00 am' do
 end
 
 # 搜索更新
-every 1.day, :at => '7:10 am' do
+every 1.day, :at => '5:10 am' do
   # rake "ts:index"
   rake "sunspot:solr:reindex"
+end
+every 1.minutes do
+	rake "sunspot:solr:reindex[100,User]"
 end
 
 # 定时备份数据
