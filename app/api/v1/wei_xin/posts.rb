@@ -13,8 +13,15 @@ module V1
         end
         get do
           posts = Post.order(id: :desc).paginate(page: params[:page], per_page: params[:per_page])
-
           present posts, with: V1::Entities::Posts
+        end
+
+        route_param :id do
+          desc '文章详情'
+          get do
+            post = Post.find(params[:id])
+            present post, with: V1::Entities::Post
+          end
         end
       end
 

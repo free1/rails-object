@@ -42,6 +42,9 @@ end
 every 1.day, :at => '4:00 am' do
 	rake "post:delete_short_post"
 end
+every 1.day, :at => '4:30 am' do
+	rake "post:add_cover_path"
+end
 
 # 搜索更新
 every 1.day, :at => '5:10 am' do
