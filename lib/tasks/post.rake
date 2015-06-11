@@ -53,7 +53,7 @@ namespace :post do
 	task :delete_short_post => :environment do
 		p '--------begin---------'
 		Post.find_each do |post|
-			if post.content.size < 100
+			if post.content.size < 600
 				post.delete
 				p '--------delete success---------'
 			end
