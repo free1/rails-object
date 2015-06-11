@@ -24,33 +24,33 @@ env :PATH, ENV['PATH']
 set :output, "log/cron.log"
 
 # 抓取任务
-every 1.day, :at => '1:30 am' do
-	rake "post:crawl_mrwu_post"
-end
-every 1.day, :at => '2:00 am' do
-	rake "post:crawl_oszine_post"
-end
-every 1.day, :at => '2:30 am' do
-	rake "post:crawl_ingchuang_post"
-end
-every 1.day, :at => '3:00 am' do
-	rake "post:check_content"
-end
-every 1.day, :at => '3:30 am' do
-	rake "post:check_title"
-end
-every 1.day, :at => '4:00 am' do
-	rake "post:delete_short_post"
-end
-every 1.day, :at => '4:30 am' do
-	rake "post:add_cover_path"
-end
+# every 1.day, :at => '1:30 am' do
+# 	rake "post:crawl_mrwu_post"
+# end
+# every 1.day, :at => '2:00 am' do
+# 	rake "post:crawl_oszine_post"
+# end
+# every 1.day, :at => '2:30 am' do
+# 	rake "post:crawl_ingchuang_post"
+# end
+# every 1.day, :at => '3:00 am' do
+# 	rake "post:check_content"
+# end
+# every 1.day, :at => '3:30 am' do
+# 	rake "post:check_title"
+# end
+# every 1.day, :at => '4:00 am' do
+# 	rake "post:delete_short_post"
+# end
+# every 1.day, :at => '4:30 am' do
+# 	rake "post:add_cover_path"
+# end
 
 # 搜索更新
-every 1.day, :at => '5:10 am' do
-  # rake "ts:index"
-  rake "sunspot:solr:reindex"
-end
+# every 1.day, :at => '5:10 am' do
+#   # rake "ts:index"
+#   rake "sunspot:solr:reindex"
+# end
 every 1.minutes do
 	rake "sunspot:solr:reindex[100,User]"
 end
