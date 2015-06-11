@@ -6,7 +6,7 @@
 <h2>个人信息</h2>
 <%= simple_form_for @user, html: { class: "form-horizontal"} do |f| %>
   <div class="col-sm-8 col-sm-offset-2">
-    <%= f.input :name, input_html: { maxlength: 20 }, autofocus: true %>	    
+    <%= f.input :email, input_html: { maxlength: 50 }, autofocus: true %>	    
 
     <br/>
     <%= user_avatar(@user.avatar_path, '100x100', 'show_cover_path') %>
