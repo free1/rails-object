@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   def signed_in_user
     unless signed_in?
       store_location
-      redirect_to login_path, flash: { info: "登录后才可以发布商品哦" }
+      redirect_to login_path, flash: { info: "登录后才可以发布哦" }
     end
   end
 
