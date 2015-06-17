@@ -115,7 +115,7 @@ gem 'god'
 gem 'newrelic_rpm'
 
 # web server
-gem 'unicorn'
+gem 'unicorn', '~> 4.8.3'
 
 # 备份(直接上传阿里云oos)
 gem 'backup'
