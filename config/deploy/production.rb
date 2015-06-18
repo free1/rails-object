@@ -16,7 +16,7 @@
 # server 'http://121.42.153.234/', user: 'deploy', roles: %w{web app}, my_property: :my_value
 
 server 'deploy@121.42.161.252', roles: %w{web app db}
-server 'deploy@120.24.48.251', roles: %w{web app db}
+server 'deploy@120.24.48.251', roles: %w{web app}
 
 # role :app, %w{deploy@121.42.161.252}
 # role :web, %w{deploy@121.42.161.252}
