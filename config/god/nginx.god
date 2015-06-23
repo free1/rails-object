@@ -1,3 +1,6 @@
+rails_env = ENV['RAILS_ENV'] || 'production'
+rails_root = ENV['RAILS_ROOT'] || "/home/deploy/apps/weixin_test/current"
+
 God.watch do |w|
   w.name = "nginx"
   w.interval = 30.seconds
@@ -7,6 +10,7 @@ God.watch do |w|
   w.start_grace = 10.seconds
   w.restart_grace = 10.seconds
   w.pid_file = "/var/run/nginx.pid"
+  w.log = File.join("#{rails_root}", 'log/god.log')
  
   # Cleanup the pid file (this is needed for processes running as a daemon).
   w.behavior(:clean_pid_file)
