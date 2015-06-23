@@ -1,6 +1,3 @@
-rails_env = ENV['RAILS_ENV'] || 'production'
-rails_root = ENV['RAILS_ROOT'] || "/home/deploy/apps/weixin_test/current"
-
 God.watch do |w|
   w.name = "nginx"
   w.interval = 30.seconds
