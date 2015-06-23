@@ -1,7 +1,7 @@
 God.watch do |w|
 	w.name = 'redis'
 	w.interval = 30.seconds
-	w.start = "redis-server #{rails_root}/config/templates/redis/redis.conf"
+	w.start = "redis-server #{APP_ROOT}/config/templates/redis/redis.conf"
 	w.stop = "kill -QUIT `cat /var/run/redis.pid`"
 	w.restart = "kill -USR2 `cat /var/run/redis.pid`"
 	w.pid_file = "/var/run/redis.pid"

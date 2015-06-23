@@ -7,7 +7,7 @@ God.watch do |w|
   w.start_grace = 10.seconds
   w.restart_grace = 10.seconds
   w.pid_file = "/var/run/nginx.pid"
-  w.log = "#{rails_root}/log/god_unicorn.log"
+  w.log = "#{APP_ROOT}/log/god_unicorn.log"
  
   # Cleanup the pid file (this is needed for processes running as a daemon).
   w.behavior(:clean_pid_file)
