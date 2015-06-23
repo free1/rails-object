@@ -114,7 +114,7 @@ set :scm, :git
 set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml config/application.yml config/sunspot.yml config/templates/redis/redis.conf}
+set :linked_files, %w{config/database.yml config/application.yml config/sunspot.yml}
 # set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 
 # Default value for linked_dirs is []
