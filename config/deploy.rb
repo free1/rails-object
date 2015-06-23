@@ -220,75 +220,65 @@ namespace :solr do
 
 end
 
-# # god
-# namespace :god do
-#   def god_is_running
-#     capture(:bundle, "exec god status > /dev/null 2>&1 || echo 'god not running'") != 'god not running'
-#   end
+# god
+namespace :god do
+  def god_is_running
+    capture(:bundle, "exec god status > /dev/null 2>&1 || echo 'god not running'") != 'god not running'
+  end
  
-#   # Must be executed within SSHKit context
-#   # 暂时只监控unicorn，nginx由monit监控
-#   def config_file
-#     "#{release_path}/config/god/unicorn.god"
-#   end
+  # Must be executed within SSHKit context
+  # 暂时只监控unicorn，nginx由monit监控
+  def config_file
+    "#{release_path}/config/god.rb"
+  end
  
-#   # Must be executed within SSHKit context
-#   def start_god
-#     execute :bundle, "exec god -c #{config_file}"
-#   end
+  # Must be executed within SSHKit context
+  def start_god
+    execute :bundle, "exec god -c #{config_file} --log-level debug"
+  end
  
-#   desc "Start god and his processes"
-#   task :start do
-#     on roles(:web) do
-#       within release_path do
-#         with RAILS_ENV: fetch(:rails_env) do
-#           start_god
-#         end
-#       end
-#     end
-#   end
+  desc "Start god and his processes"
+  task :start do
+    on roles(:web) do
+      within release_path do
+        with RAILS_ENV: fetch(:rails_env) do
+          start_god
+        end
+      end
+    end
+  end
  
-#   desc "Terminate god and his processes"
-#   task :stop do
-#     on roles(:web) do
-#       within release_path do
-#         if god_is_running
-#           execute :bundle, "exec god terminate"
-#         end
-#       end
-#     end
-#   end
+  desc "Terminate god and his processes"
+  task :stop do
+    on roles(:web) do
+      within release_path do
+        if god_is_running
+          execute :bundle, "exec god terminate"
+        end
+      end
+    end
+  end
  
-#   desc "Restart god's child processes"
-#   task :restart do
-#     on roles(:web) do
-#       within release_path do
-#         with RAILS_ENV: fetch(:rails_env) do
-#           if god_is_running
-#             execute :bundle, "exec god load #{config_file}"
-#             execute :bundle, "exec god restart"
-#           else
-#             start_god
-#           end
-#         end
-#       end
-#     end
-#   end
-# end
+  desc "Restart god's child processes"
+  task :restart do
+    on roles(:web) do
+      within release_path do
+        with RAILS_ENV: fetch(:rails_env) do
+          if god_is_running
+            execute :bundle, "exec god load #{config_file}"
+            execute :bundle, "exec god restart"
+          else
+            start_god
+          end
+        end
+      end
+    end
+  end
+end
 
-# after "deploy:updated", "god:restart"
-
-# after 'deploy:publishing', 'unicorn:stop'
-# after 'unicorn:stop', 'unicorn:start'
+after "deploy:updated", "god:restart"
 
 # namespace :deploy do
-#   task :restart do
-#     invoke 'unicorn:restart'
-#   end
-# end
-
-# namespace :deploy do
-
 #   desc "after setup"
 #   task :setup_config do
 #     on roles(:all) do
@@ -300,40 +290,4 @@ end
 #     end
 #   end
 #   after :started, :setup_config
-# end
-
-# namespace :deploy do
-#   # make sure we're deploying what we think we're deploying
-#   # before :deploy, "deploy:check_revision"
-#   # only allow a deploy with passing tests to deployed
-#   # before :deploy, "deploy:run_tests"
-#   # compile assets locally then rsync
-#   # after 'deploy:symlink:shared', 'deploy:compile_assets_locally'
-#   after :finishing, 'deploy:cleanup'
-
-#   before :finishing, 'deploy:restart_unicorn'
-#   desc "restart unicorn"
-#   task :restart_unicorn do
-#   	on roles(:all) do
-#       p "----------------------"
-#       execute "ruby -v"
-#   		execute "cd #{release_path} && bundle exec rake assets:precompile RAILS_ENV=production && /etc/init.d/unicorn_weixin_test restart && bundle exec rake db:migrate RAILS_ENV=production"
-#   	end
-#   end
-
-#   # remove the default nginx configuration as it will tend
-#   # to conflict with our configs.
-#   # before 'deploy:setup_config', 'nginx:remove_default_vhost'
-
-#   # reload nginx to it will pick up any modified vhosts from
-#   # setup_config
-#   # after 'deploy:setup_config', 'nginx:reload'
-
-#   # Restart monit so it will pick up any monit configurations
-#   # we've added
-#   # after 'deploy:setup_config', 'monit:restart'
-
-#   # As of Capistrano 3.1, the `deploy:restart` task is not called
-#   # automatically.
-#   after 'deploy:publishing', 'deploy:restart'
 # end
