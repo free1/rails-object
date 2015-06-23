@@ -56,7 +56,7 @@ gem 'rack-cors'
 gem "redis", "~> 3.0.1"
 gem "hiredis", "~> 0.4.5", :platforms => :ruby
 gem 'redis-objects'
-gem 'redis-stat'
+gem 'redis-stat'       # redis-stat --server 
 
 # 定时任务
 gem 'whenever', :require => false
