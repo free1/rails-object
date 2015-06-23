@@ -1,6 +1,6 @@
-rails_env = ENV['RAILS_ENV'] || 'production'
-rails_root = ENV['RAILS_ROOT'] || "/home/deploy/apps/weixin_test/current"
- 
+rails_env = 'production'
+rails_root = "/home/deploy/apps/weixin_test/current"
+
 $stderr.puts("*" * 80)
 $stderr.puts("Current environment is #{rails_env}")
 $stderr.puts("*" * 80)
