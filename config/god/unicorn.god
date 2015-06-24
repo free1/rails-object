@@ -13,7 +13,7 @@ God.watch do |w|
   w.pid_file = "#{APP_ROOT}/tmp/pids/unicorn.pid"
 
   # set user or group
-  #w.uid = 'deploy'	
+  w.uid = 'deploy'
   #w.gid = 'sudo'
 
   w.behavior(:clean_pid_file)
