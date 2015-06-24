@@ -1,3 +1,5 @@
+# bundle exec sudo  god -c init.god -D
+
 RAILS_ENV = 'production'
 APP_ROOT = "/home/deploy/apps/weixin_test/current"
 

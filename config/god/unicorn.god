@@ -1,18 +1,13 @@
 God.watch do |w|
   w.name = "unicorn"
   w.interval = 30.seconds # default
-
   # unicorn needs to be run from the rails root
   w.start = "cd #{APP_ROOT} && bundle exec unicorn -c #{APP_ROOT}/config/unicorn.rb -E #{RAILS_ENV} -D"
-
   # QUIT gracefully shuts down workers
   w.stop = "kill -QUIT `cat #{APP_ROOT}/tmp/pids/unicorn.pid`"
-
   # USR2 causes the master to re-create itself and spawn a new worker pool
   w.restart = "kill -USR2 `cat #{APP_ROOT}/tmp/pids/unicorn.pid`"
-
   w.log = "#{APP_ROOT}/log/god_unicorn.log"
-
   w.start_grace = 10.seconds
   w.restart_grace = 10.seconds
   w.pid_file = "#{APP_ROOT}/tmp/pids/unicorn.pid"
