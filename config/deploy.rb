@@ -175,14 +175,10 @@ namespace :god do
   def config_file
     "#{release_path}/config/god/init.god"
   end
-  def unicorn_config_file
-    "#{release_path}/config/god/unicorn.god"
-  end
  
   # Must be executed within SSHKit context
   def start_god
     execute :bundle, "exec sudo god -c #{config_file}"
-    execute :bundle, "exec god -c #{unicorn_config_file}"
   end
  
   desc "Start god and his processes"
