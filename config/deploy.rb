@@ -1,14 +1,6 @@
 # config valid only for current version of Capistrano
 lock '3.3.5'
 
-# set :ssh_options, {
-#   keys: %w(~/.ssh/id_rsa.pub),
-#   forward_agent: true,
-#   auth_methods: %w(password)
-# }
-
-# set :stages, ["production"]
-
 set :application, 'weixin_test'
 set :repo_url, 'git@gitlab.com:freeloverails/weixin_test.git'
 # set :git_https_username, 'username'
@@ -56,53 +48,6 @@ set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:application)}"
 set :default_stage, "production"
 # Default value for :scm is :git
 set :scm, :git
-
-# which config files should be copied by deploy:setup_config
-# see documentation in lib/capistrano/tasks/setup_config.cap
-# for details of operations
-# set(:config_files, %w(
-#   nginx.conf
-#   database.example.yml
-#   log_rotation
-#   monit
-#   unicorn.rb
-#   unicorn_init.sh
-# ))
-# set(:config_files, %w(
-#   nginx.conf
-#   database.example.yml
-#   unicorn.rb
-#   unicorn_init.sh
-# ))
-
-# which config files should be made executable after copying
-# by deploy:setup_config
-# set(:executable_config_files, %w(
-#   unicorn_init.sh
-# ))
-
-# files which need to be symlinked to other parts of the
-# filesystem. For example nginx virtualhosts, log rotation
-# init scripts etc.
-# set(:symlinks, [
-#   {
-#     source: "nginx.conf",
-#     link: "/etc/nginx/sites-enabled/#{fetch(:application)}"
-#   },
-#   {
-#     source: "unicorn_init.sh",
-#     link: "/etc/init.d/unicorn_#{fetch(:application)}"
-#   },
-#   # {
-#   #   source: "log_rotation",
-#   #  link: "/etc/logrotate.d/#{fetch(:application)}"
-#   # },
-#   {
-#     source: "monit",
-#     link: "/etc/monit/conf.d/#{fetch(:application)}.conf"
-#   }
-# ])
-
 
 # Default value for :format is :pretty
 # set :format, :pretty
@@ -227,14 +172,17 @@ namespace :god do
   end
  
   # Must be executed within SSHKit context
-  # 暂时只监控unicorn，nginx由monit监控
   def config_file
     "#{release_path}/config/god/init.god"
+  end
+  def unicorn_config_file
+    "#{release_path}/config/god/unicorn.god"
   end
  
   # Must be executed within SSHKit context
   def start_god
-    execute :bundle, "exec god -c #{config_file} --log-level debug"
+    execute :bundle, "exec sudo god -c #{config_file}"
+    execute :bundle, "exec god -c #{unicorn_config_file}"
   end
  
   desc "Start god and his processes"

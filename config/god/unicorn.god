@@ -10,7 +10,6 @@ God.watch do |w|
   w.log = "#{APP_ROOT}/log/god_unicorn.log"
   w.start_grace = 10.seconds
   w.restart_grace = 10.seconds
-  w.pid_file = "#{APP_ROOT}/tmp/pids/unicorn.pid"
 
   # set user or group
   w.uid = 'deploy'
