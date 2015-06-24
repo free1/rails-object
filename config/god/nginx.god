@@ -22,10 +22,10 @@ God.watch do |w|
     start.condition(:process_exits)
   end
 
-  w.dir = '/root'
+  # w.dir = '/root'
 
-  w.uid = 'root'
-  w.gid = 'sudo'
+  # w.uid = 'root'
+  # w.gid = 'sudo'
   
   # Conditions under which to restart the process
   w.restart_if do |restart|
