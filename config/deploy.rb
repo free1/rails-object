@@ -75,7 +75,7 @@ set :keep_releases, 5
 
 # whenever
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
-set :whenever_roles,        ->{ :db }
+set :whenever_roles, %w{app web db}
 
 # sidekiq
 set :sidekiq_pid, "./tmp/pids/sidekiq.pid"
