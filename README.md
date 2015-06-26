@@ -58,6 +58,7 @@
 
 ## next
 
+* 给mysql做主从
 * nginx两台服务器配置(负载均衡，页面缓存等)
 * cap链接nginx.conf
 
