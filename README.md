@@ -58,6 +58,8 @@
 
 ## next
 
+* 换成metal和jbuild作为新api方便升级rails 5
+* 设置i18n可以中英文切换
 * 给mysql做主从
 * nginx两台服务器配置(负载均衡，页面缓存等)
 * cap链接nginx.conf

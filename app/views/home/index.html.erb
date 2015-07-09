@@ -3,3 +3,7 @@
   <p>...</p>
   <p><a class="btn btn-primary btn-lg" href="/home/api_swagger_ui" role="button">API文档</a></p>
 </div>
+<h1><%= t(:hello) %></h1>
+
+<%= link_to "中文版", :controller => controller_name, :action => action_name, :locale => "zh-CN" %>
+<%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %>
