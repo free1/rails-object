@@ -68,9 +68,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    annotate (2.6.5)
-      activerecord (>= 2.3.0)
-      rake (>= 0.8.7)
+    annotate (2.6.10)
+      activerecord (>= 3.2, <= 4.3)
+      rake (~> 10.4)
     ansi256 (0.2.5)
     arel (6.0.0)
     autoprefixer-rails (5.1.7)
@@ -428,7 +428,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate (~> 2.6.5)
+  annotate (~> 2.6.6)
   autoprefixer-rails
   backup
   bcrypt (~> 3.1.7)
@@ -502,4 +502,4 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 BUNDLED WITH
-   1.10.4
+   1.10.5

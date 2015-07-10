@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id          :integer          not null, primary key
+#  title       :string(255)
+#  content     :text(65535)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :integer
+#  author      :string(255)
+#  status      :integer          default(0)
+#  watch_count :integer          default(0)
+#  cover_path  :string(255)
+#  source_site :string(255)
+#
+
 require 'free_spider'
 
 class Post < ActiveRecord::Base

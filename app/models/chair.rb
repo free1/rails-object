@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: chairs
+#
+#  id         :integer          not null, primary key
+#  content    :text(65535)
+#  title      :string(255)
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Chair < ActiveRecord::Base
 
 	belongs_to :user

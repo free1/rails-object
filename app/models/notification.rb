@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: notifications
+#
+#  id              :integer          not null, primary key
+#  sender_id       :integer          default(0)
+#  receiver_id     :integer
+#  notifiable_id   :integer
+#  notifiable_type :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  status          :integer          default(0)
+#  content         :text(65535)
+#
+
 class Notification < ActiveRecord::Base
 
 	belongs_to :sender_user, foreign_key: 'sender_id', class_name: 'User'

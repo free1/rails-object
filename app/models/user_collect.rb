@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: user_collects
+#
+#  id            :integer          not null, primary key
+#  user_id       :integer
+#  listable_id   :integer
+#  listable_type :string(255)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  kind          :integer
+#
+
 class UserCollect < ActiveRecord::Base
 
 	belongs_to :user

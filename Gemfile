@@ -129,6 +129,9 @@ gem 'rails-observers'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# 生成model注释
+gem 'annotate', '~> 2.6.6'
+
 group :assets do
   gem 'sass-rails', '~> 5.0'
   gem 'uglifier', '>= 1.3.0'
@@ -139,7 +142,7 @@ group :development do
   # 隐藏asset的log
   gem "quiet_assets", "~> 1.0.2"
   # model注释
-  gem 'annotate', '~> 2.6.5'
+  # gem 'annotate', '~> 2.6.5'
   # 预加载器
   gem 'spring', '~> 1.3.6'
   # 部署

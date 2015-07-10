@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  email           :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  password_digest :string(255)
+#  remember_token  :string(255)
+#  verify_token    :string(255)
+#  is_verify_email :boolean          default(FALSE)
+#  avatar_path     :string(255)
+#  is_email_push   :boolean          default(TRUE)
+#  user_id         :integer
+#  phone           :string(255)
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
