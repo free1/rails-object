@@ -3,6 +3,7 @@ lock '3.3.5'
 
 set :application, 'weixin_test'
 set :repo_url, 'git@gitlab.com:freeloverails/weixin_test.git'
+# set :repo_url, 'git@gitcafe.com:free1/weixin_test.git'
 # set :git_https_username, 'username'
 # set :git_https_password, 'password'
 
@@ -144,7 +145,7 @@ namespace :solr do
     invoke 'solr:start'
   end
   
-  after 'deploy:finished', 'solr:restart'
+  # after 'deploy:finished', 'solr:restart'
   
   desc "reindex sunspot"
   task :reindex do

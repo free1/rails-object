@@ -1,6 +1,8 @@
 echo "Install server packages"
 echo ""
 echo "------------------------------------------------------------------------"
+sudo apt-get install software-properties-common python-software-properties
+sudo apt-get update
 nginx=stable
 echo "deb http://ppa.launchpad.net/nginx/$nginx/ubuntu lucid main" > /etc/apt/sources.list.d/nginx-$nginx-lucid.list
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C300EE8C
