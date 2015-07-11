@@ -82,5 +82,7 @@ Rails.application.routes.draw do
 
   # 管理员
   draw :admin
+  # 新版api
+  draw :api
 
 end
