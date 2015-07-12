@@ -51,9 +51,9 @@ set :output, "log/cron.log"
 #   # rake "ts:index"
 #   rake "sunspot:solr:reindex"
 # end
-every 1.minutes do
-	rake "sunspot:solr:reindex[100,User]"
-end
+# every 1.minutes do
+# 	rake "sunspot:solr:reindex[100,User]"
+# end
 
 # 定时备份数据
 every :sunday, :at => '5:50 am' do
