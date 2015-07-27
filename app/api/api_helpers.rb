@@ -6,8 +6,8 @@ module APIHelpers
   end
 
   def current_user
-    if headers["Http-Access-Token"]
-      token = headers["Http-Access-Token"]
+    if request.headers["Http-Access-Token"]
+      token = request.headers["Http-Access-Token"]
     elsif (cookies[:remember_token])
       token = User.encrypt(cookies[:remember_token])
     end
