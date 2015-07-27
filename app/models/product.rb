@@ -19,6 +19,7 @@
 
 class Product < ActiveRecord::Base
 	# include Obfuscate
+	include Commentable
 
 	# 发布人
 	belongs_to :user
@@ -28,8 +29,6 @@ class Product < ActiveRecord::Base
 	# 分类
 	has_many :product_category_ships, dependent: :destroy
 	has_many :categories, through: :product_category_ships
-	# 评论
-	has_many :comments, as: :commentable
 
 	# 验证
 	validates_presence_of :user, :cover_path
