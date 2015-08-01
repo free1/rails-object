@@ -60,7 +60,6 @@
 
 ## next
 
-* 抽出重复(commentable, likeable)
 * rack层面加密api
 * 设置i18n可以中英文切换
 * 给mysql做主从

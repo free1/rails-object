@@ -456,6 +456,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-atwho-rails (~> 1.1.0)
   jquery-rails
+  jwt (~> 1.4.1)
   message_bus (~> 1.0.9)
   mime-types (~> 1.19)
   mysql2 (= 0.3.15)

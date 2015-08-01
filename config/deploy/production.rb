@@ -17,7 +17,7 @@
 
 # server 'deploy@121.42.161.252', roles: %w{web app db}
 # server 'deploy@120.24.48.251', roles: %w{web app db}
-server 'deploy@115.28.81.86', roles: %w{web app db}
+server 'deploy@42.62.73.171', roles: %w{web app db}
 
 # role :app, %w{deploy@121.42.161.252}
 # role :web, %w{deploy@121.42.161.252}

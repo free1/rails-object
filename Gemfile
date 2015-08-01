@@ -110,6 +110,8 @@ gem 'will_paginate', '~> 3.0.6'
 
 # 加密链接id
 # gem "obfuscate_id"
+# 加密api
+gem 'jwt', '~> 1.4.1'
 
 # 监控
 gem 'god'

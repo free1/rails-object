@@ -39,6 +39,7 @@ module WeixinTest
 
     # 中间件
     config.middleware.delete 'Rack::Lock'
+    # config.middleware.use Rack::ApiAuth
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
