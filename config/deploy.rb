@@ -145,7 +145,7 @@ namespace :solr do
     invoke 'solr:start'
   end
   
-  # after 'deploy:finished', 'solr:restart'
+  after 'deploy:finished', 'solr:restart'
   
   desc "reindex sunspot"
   task :reindex do
