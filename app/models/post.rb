@@ -48,6 +48,8 @@ class Post < ActiveRecord::Base
 				if post.save
 					score_post.delete(post_id)
 					post.show_count.decr
+				else
+					p post.errors
 				end
 			end
 		end
