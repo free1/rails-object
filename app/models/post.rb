@@ -44,10 +44,11 @@ class Post < ActiveRecord::Base
 		def sum_watch_count
 			score_post.each do |post_id|
 				post = Post.find(post_id)
-				post.watch_count = post.show_count
-				if post.save
+				# post.watch_count = post.show_count
+				if post.update(watch_count: post.watch_count + post.show_count)
 					score_post.delete(post_id)
-					post.show_count.decr
+					post.show_count.reset
+					# post.show_count.decr
 				else
 					p post.errors
 				end
