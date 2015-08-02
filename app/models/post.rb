@@ -23,7 +23,7 @@ class Post < ActiveRecord::Base
 	set :score_post, global: true
 
 	belongs_to :user
-	validates :title, presence: true, uniqueness: true
+	validates :title, presence: true, uniqueness: true, on: :create
 	validates :content, presence: true
 
 	# 搜索
