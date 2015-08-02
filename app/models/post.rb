@@ -45,7 +45,7 @@ class Post < ActiveRecord::Base
 			score_post.each do |post_id|
 				post = Post.find(post_id)
 				# post.watch_count = post.show_count
-				if post.update(watch_count: post.watch_count + post.show_count)
+				if post.update(watch_count: post.watch_count + post.show_count.to_i)
 					score_post.delete(post_id)
 					post.show_count.reset
 					# post.show_count.decr
