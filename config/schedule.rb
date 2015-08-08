@@ -46,7 +46,8 @@ set :output, "log/cron.log"
 # 	rake "post:add_cover_path"
 # end
 
-# 搜索更新
+# Sunspot.index(in the control)
+# 搜索更新(基本不需要,添加自动加入索引)
 # every 1.day, :at => '5:10 am' do
 #   # rake "ts:index"
 #   rake "sunspot:solr:reindex"

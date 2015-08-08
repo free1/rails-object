@@ -60,6 +60,8 @@
 
 ## next
 
+* cap production solr:reindex报错
+* 线上上传图片报错
 * rack层面加密api
 * 设置i18n可以中英文切换
 * 给mysql做主从
