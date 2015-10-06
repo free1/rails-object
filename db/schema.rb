@@ -165,12 +165,6 @@ ActiveRecord::Schema.define(version: 20150607022019) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "tests", force: :cascade do |t|
-    t.string   "con",        limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "user_collect_products", force: :cascade do |t|
     t.integer  "product_id", limit: 4
     t.integer  "user_id",    limit: 4
@@ -230,7 +224,6 @@ ActiveRecord::Schema.define(version: 20150607022019) do
     t.boolean  "is_verify_email", limit: 1,   default: false
     t.string   "avatar_path",     limit: 255
     t.boolean  "is_email_push",   limit: 1,   default: true
-    t.integer  "user_id",         limit: 4
   end
 
   create_table "wechat_infos", force: :cascade do |t|
