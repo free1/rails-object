@@ -17,16 +17,16 @@ module ThirdParty
 			case provider
 			when 'weibo'
 				uri = URI.parse(WEIBO_URL)
-      	params = { :access_token => access_token, :uid => uid }
+      			params = { :access_token => access_token, :uid => uid }
 			when 'qq'
 				uri = URI.parse(QQ_URL)
-	      # params = { :access_token => access_token, :uid => uid, :oauth_consumer_key => ENV['QQ_CONNECT_APP_KEY'] }
-	      params = { :access_token => access_token, :openid => uid, :oauth_consumer_key => 1104504051 }
+			      # params = { :access_token => access_token, :uid => uid, :oauth_consumer_key => ENV['QQ_CONNECT_APP_KEY'] }
+			      params = { :access_token => access_token, :openid => uid, :oauth_consumer_key => 1104504051 }
 			end
-      uri.query = URI.encode_www_form(params)
-      res = Net::HTTP.get_response(uri).body
-      result = JSON.parse res.force_encoding("UTF-8")
-      result
+		      uri.query = URI.encode_www_form(params)
+		      res = Net::HTTP.get_response(uri).body
+		      result = JSON.parse res.force_encoding("UTF-8")
+		      result
 		end
 
 		# 创建用户
