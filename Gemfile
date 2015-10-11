@@ -157,7 +157,7 @@ group :development do
   # 调试
   gem 'pry'
   gem 'pry-byebug'
-  gem 'pry-rails'
+  gem 'pry-rails'  # 中文有乱码问题
   # 性能检测
   gem "bullet"
   gem "uniform_notifier", require: false

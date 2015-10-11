@@ -261,7 +261,7 @@ GEM
     pry-byebug (3.0.1)
       byebug (~> 3.4)
       pry (~> 0.10)
-    pry-rails (0.3.3)
+    pry-rails (0.3.4)
       pry (>= 0.9.10)
     public_activity (1.4.2)
       actionpack (>= 3.0.0)
@@ -503,4 +503,4 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 BUNDLED WITH
-   1.10.5
+   1.10.6
