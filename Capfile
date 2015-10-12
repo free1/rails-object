@@ -15,7 +15,6 @@ require "whenever/capistrano"
 # require 'thinking_sphinx/capistrano'
 require 'capistrano/sidekiq'
 
-
 Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
 # Dir.glob('lib/capistrano/**/*.rb').each { |r| import r }
 
