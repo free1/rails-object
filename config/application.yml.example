@@ -33,7 +33,7 @@ admin: "xxx"
 # redis配置
 redis_host: localhost
 redis_port: 6379
-redis_password: aa
+redis_password: ''
 
 # 第三方登录
 GITHUB_KEY: GITHUB_KEY
