@@ -55,6 +55,7 @@ module FoodHeatSpider
           # 抓取主要内容(健康网站食物热量表)
           unless doc.at_css(".food-intr-wrap").nil?
             p "-----------进来了--------------"
+            food_name = doc.css(".food-intr").css("h1").text
             entry_img = doc.css(".illu").children.css("a").children.last.attributes["src"].value
             nutrition_info = doc.css(".nutr-tag").css("ul").css("li").css("span").map do |nutrition_info_tag|
               nutrition_info_tag.children.to_html
@@ -73,8 +74,9 @@ module FoodHeatSpider
               end
             end
             p "-------抓取结果------"
-            p entry_img, nutrition_info, nutrition_value, edible_effect, applicable_people
-            p "==============="
+            @news_teaching_content = {name: food_name, image_path: entry_img, nutrition_info: nutrition_info, nutrition_value: nutrition_value, edible_effect: edible_effect, applicable_people: applicable_people}
+            # p entry_img, nutrition_info, nutrition_value, edible_effect, applicable_people
+            # p "==============="
             # entry_title = doc.css(".mod-head").at_css("h1").children.to_html unless doc.css(".mod-head").at_css("h1").nil?
             # unless @title_saved.include?(entry_title)
             #   @title_saved << entry_title
@@ -83,15 +85,16 @@ module FoodHeatSpider
             #   p content
             #   @news_teaching_content = {title: entry_title, content: content, source_site: @site}
             # end
+            
+            # 打印信息, 写入文件or数据库
+            # puts "#{@visited}"
+            # p @titles.uniq.compact
+            write_results_to_database
+            # write_results_to_file('title_out')
           end
 
           # 去除重复链接
           # p @todo.uniq
-          # 打印信息, 写入文件or数据库
-          # puts "#{@visited}"
-          # p @titles.uniq.compact
-          # write_results_to_database
-          # write_results_to_file('title_out')
         rescue OpenURI::HTTPError
           puts "404"
         rescue RuntimeError
@@ -138,7 +141,7 @@ module FoodHeatSpider
 
       # 写入mysql
       def write_results_to_database
-        news_teaching = Post.new(@news_teaching_content)
+        news_teaching = FoodElement.new(@news_teaching_content)
         if news_teaching.save
           puts "--------save success!--------"
         else
