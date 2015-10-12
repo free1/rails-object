@@ -10,11 +10,6 @@
 #  updated_at                  :datetime
 #  user_id                     :integer
 #  user_collect_products_count :integer          default(0)
-#  location                    :string(255)
-#  show_time                   :datetime
-#  price                       :integer          default(1)
-#  watch_count                 :integer          default(0)
-#  real_price                  :integer          default(1)
 #
 
 class Product < ActiveRecord::Base

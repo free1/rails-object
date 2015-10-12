@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150607022019) do
+ActiveRecord::Schema.define(version: 20151012125336) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -86,6 +86,16 @@ ActiveRecord::Schema.define(version: 20150607022019) do
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", length: {"commentable_id"=>nil, "commentable_type"=>100}, using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "food_elements", force: :cascade do |t|
+    t.string   "image_path",        limit: 255
+    t.text     "nutrition_info",    limit: 65535
+    t.text     "nutrition_value",   limit: 65535
+    t.text     "edible_effect",     limit: 65535
+    t.text     "applicable_people", limit: 65535
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "sender_id",       limit: 4,     default: 0

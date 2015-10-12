@@ -13,8 +13,6 @@
 #  is_verify_email :boolean          default(FALSE)
 #  avatar_path     :string(255)
 #  is_email_push   :boolean          default(TRUE)
-#  user_id         :integer
-#  phone           :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

@@ -144,7 +144,7 @@ group :development do
   # 隐藏asset的log
   gem "quiet_assets", "~> 1.0.2"
   # model注释
-  # gem 'annotate', '~> 2.6.5'
+  gem 'annotate', '~> 2.6.6'
   # 预加载器
   gem 'spring', '~> 1.3.6'
   # 部署
