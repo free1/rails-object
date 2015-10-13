@@ -10,7 +10,7 @@ namespace :database do
 
     # Change all tables
     connection.tables.each do |table|
-      if ['comments'].include?(table)
+      # if ['comments'].include?(table)
       #if [].include?(table)
         connection.columns(table).each do |column|
           if column.sql_type == "varchar(255)"
@@ -24,7 +24,7 @@ namespace :database do
               end
             end
           end
-        end
+        # end
 
         puts "Converting #{table}..."
         connection.execute "ALTER TABLE #{table} CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
