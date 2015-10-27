@@ -3,15 +3,15 @@
 	<head>
 		<meta charset="utf-8">
 		<title>创客家族</title>
-	  <%= favicon_link_tag 'favicon.ico' %>
+		<%= favicon_link_tag 'favicon.ico' %>
 
 		<style type="text/css">
 		body {
 			display: table;
-	    position: relative;
-	    width: 100%;
-	    height: 100%;
-			background: url(<%= asset_path "bg#{rand(1..2)}.jpg" %>) no-repeat center center fixed; 
+			position: relative;
+			width: 100%;
+			height: 100%;
+			background: url(<%= asset_path "bg#{rand(1..3)}.jpg" %>) no-repeat center center fixed; 
 			-webkit-background-size: cover; 
 			-moz-background-size: cover; 
 			-o-background-size: cover;
@@ -25,9 +25,9 @@
 			text-align: center;
 			line-height: 50px;
 			border: 5px solid #dedede;
-    	-moz-border-radius: 15px;      /* Gecko browsers */
-    	-webkit-border-radius: 15px;   /* Webkit browsers */
-    	border-radius:15px;            /* W3C syntax */
+			-moz-border-radius: 15px;      /* Gecko browsers */
+			-webkit-border-radius: 15px;   /* Webkit browsers */
+			border-radius:15px;            /* W3C syntax */
 		}
 		ul {
 			list-style: none;
@@ -51,14 +51,14 @@
 			<div class="cover-login">
 				<ul class="login-way">
 					<li><%= link_to "登录", login_path %></li>
-	    		<li><%= link_to "注册", new_user_path %></li>
-	    		<li><%= link_to "weixin登录", "/auth/open_wechat" %></li>
-	    		<li><%= link_to "微博登录", "/auth/weibo" %></li>
-	    		<li><%= link_to "qq登录", "/auth/qq_connect" %></li>
-	    		<li><%= link_to "豆瓣登录", "/auth/douban" %></li>
-	    		<li><%= link_to "github登录", "/auth/github" %></li>
-	    		<li><%= link_to "随便看看", posts_path %></li>
-    		</ul>
+					<li><%= link_to "注册", new_user_path %></li>
+					<li><%= link_to "weixin登录", "/auth/open_wechat" %></li>
+					<li><%= link_to "微博登录", "/auth/weibo" %></li>
+					<li><%= link_to "qq登录", "/auth/qq_connect" %></li>
+					<li><%= link_to "豆瓣登录", "/auth/douban" %></li>
+					<li><%= link_to "github登录", "/auth/github" %></li>
+					<li><%= link_to "随便看看", posts_path %></li>
+    				</ul>
 			</div>
 		</body>
 </html>
