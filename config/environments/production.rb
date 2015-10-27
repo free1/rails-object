@@ -23,6 +23,7 @@ Rails.application.configure do
   config.assets.precompile += %w(upload/*.js doc/*.js)
   config.assets.precompile += %w(tools/*.js)
   config.assets.precompile << "emoji/**/*.png"
+  config.assets.precompile =  ['*.js', '*.css', '*.css.erb']
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false

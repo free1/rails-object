@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>创客家族 - 登录</title>
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag "cover_home_v2" %>
 </head>
 
@@ -27,7 +28,7 @@
                         <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势四</li>
                         <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势五</li>
                     </ul>
-                    <strong>还没有账号？ <a href="#">立即注册&raquo;</a></strong>
+                    <strong>还没有账号？ <a href="<%= new_user_path %>">立即注册&raquo;</a></strong>
                 </div>
             </div>
             <div class="col-sm-5">
