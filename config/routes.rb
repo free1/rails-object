@@ -47,6 +47,8 @@ Rails.application.routes.draw do
         # get :unread_count
       # end
     end
+    # 重置密码
+    resources :password_resets
   end
 
   # 商品相关

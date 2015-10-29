@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012130521) do
+ActiveRecord::Schema.define(version: 20151029030209) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -225,16 +225,18 @@ ActiveRecord::Schema.define(version: 20151012130521) do
   add_index "user_tag_ships", ["user_id"], name: "index_user_tag_ships_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",            limit: 255
-    t.string   "email",           limit: 255
+    t.string   "name",                   limit: 255
+    t.string   "email",                  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest", limit: 255
-    t.string   "remember_token",  limit: 255
-    t.string   "verify_token",    limit: 255
-    t.boolean  "is_verify_email", limit: 1,   default: false
-    t.string   "avatar_path",     limit: 255
-    t.boolean  "is_email_push",   limit: 1,   default: true
+    t.string   "password_digest",        limit: 255
+    t.string   "remember_token",         limit: 255
+    t.string   "verify_token",           limit: 255
+    t.boolean  "is_verify_email",        limit: 1,   default: false
+    t.string   "avatar_path",            limit: 255
+    t.boolean  "is_email_push",          limit: 1,   default: true
+    t.string   "password_reset_token",   limit: 255
+    t.datetime "password_reset_sent_at"
   end
 
   create_table "wechat_infos", force: :cascade do |t|

@@ -39,7 +39,7 @@
                     <p class="m-t-md">还不快登录?</p>
                     <%= f.input :name, input_html: { maxlength: 50, class: 'form-control uname', placeholder: "用户名" }, label: false, autofocus: true %>
                     <%= f.input :password, input_html: { maxlength: 30, class: 'form-control pword m-b', placeholder: "密码" }, label: false %>
-                    <a href="">忘记密码了？</a>
+                    <a href="/password_resets/new">忘记密码了？</a>
                     <%= f.button :submit, "登录", class: 'btn btn-success btn-block', data: { disable_with: '登录中...' } %>
                 <% end %>
             </div>

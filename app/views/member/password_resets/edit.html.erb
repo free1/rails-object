@@ -1,0 +1,12 @@
+<% provide(:title, '重置密码') %>
+
+<%= simple_form_for @user, url: password_reset_path(params[:id]), html: { class: "form-horizontal"} do |f| %>
+  <div class="col-sm-8 col-sm-offset-2">
+    <%= f.input :password, input_html: { maxlength: 50 }, autofocus: true %>
+    
+    <%= f.input :password_confirmation, input_html: { maxlength: 30 } %>
+
+    <br/><br/>
+    <%= f.button :submit, "重置密码", class: 'btn-lg btn-block', data: { disable_with: '重置中...' } %>
+  </div>
+<% end %>

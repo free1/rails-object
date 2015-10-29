@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
   # invisible_captcha验证码
   attr_accessor :subtitle # define a virtual attribute, the honeypot
   validates :subtitle, :invisible_captcha => true
-
   # 验证
   validates :name, presence: true, length: { in: 3..20 }, uniqueness: true, :exclusion => { :in => %w(admin) }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -34,6 +33,10 @@ class User < ActiveRecord::Base
                     :allow_blank => true,
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 3 }, on: :create
+
+  # save之前
+  before_save { |user| user.email = email.downcase }
+  before_save { |user| user.name = name.downcase }
 
   # 第三方账户
   has_many :authentications, dependent: :destroy
@@ -97,6 +100,15 @@ class User < ActiveRecord::Base
     verify_email_token = generate_simple_token(:verify_token)
     save!
     User.send_mail(self.email, "邮箱验证", User.verify_email_template(self.name, verify_email_token))
+  end
+
+  # 发送密码找回邮件
+  def send_password_reset
+    password_reset_token = generate_simple_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    # todo 发送邮件
+    # UserMailer.password_reset(self).deliver
   end
 
   # 关注
