@@ -17,6 +17,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/*清除浮动*/
+.clearfix:after {
+  content:"";
+  display:table;
+  clear:both;
+}
+
 // 手动调整
 .container-fluid {
 	width: 900px;

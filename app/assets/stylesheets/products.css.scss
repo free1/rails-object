@@ -2,6 +2,7 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+@import "scss_mixin_tools";
 
 .glyphicon-star, .glyphicon-star-empty {
 	color: #fff;
@@ -79,10 +80,31 @@
 	color: #fff;
 }
 
+/*评论*/
 .content-main .trip-g .trip-collect {
 	position: absolute;
 	top: 175px;
 	left: 80px;
 }
 
+.comment-body {
+	margin-top: 80px;
 
+	.comment-list {
+		background-color: #fff;
+		border-radius: 6px;
+		padding: 10px;
+
+		.comment {
+			height: 180px;
+			border-bottom: 1px solid $line-color;
+		}
+	}
+
+	.comment-form {
+		margin-top: 30px;
+		background-color: #fff;
+		border-radius: 6px;
+		padding: 10px;
+	}
+}

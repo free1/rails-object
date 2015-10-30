@@ -2,7 +2,7 @@
 
 <%= link_to "返回列表", products_path, class: "btn btn-info" %>
 
-<div class="post-entry col-md-12">
+<div class="post-entry col-md-12 col-lg-12">
 	<div class="post-title">
 		<%= @product.title %>
 	</div>
@@ -18,26 +18,29 @@
 	</div>
 </div>
 
-<div class="comment-body" data-users="<%= @comments.map {|c| c.user.name}.uniq %>">
-	<% if @comments.any? %>
-		<% @comments.each do |comment| %>
-				<%= comment.user.name %>
-				<%= emojify(sanitize(comment.content_html)) %>
-			</br>
+<div class="comment-body col-md-12 col-lg-10 col-md-offset-1">
+	<div class="comment-list" data-users="<%= @comments.map {|c| c.user.name}.uniq %>">
+		<% if @comments.any? %>
+			<% @comments.each do |comment| %>
+				<div class="comment">
+					<%= comment.user.name %>
+					<%= emojify(sanitize(comment.content_html)) %>
+				</div>
+			<% end %>
 		<% end %>
-	<% end %>
+	</div>
+
+	<div class="comment-form">
+		<%= simple_form_for [@product, @comment] do |f| %>
+			<%= f.input :content, as: :text, input_html: {rows: 8} %>
+			<%= f.button :submit, "保存" %>
+		<% end %>
+	</div>
 </div>
-
-<%= simple_form_for [@product, @comment] do |f| %>
-	
-	<%= f.input :content, as: :text %>
-	<%= f.button :submit, "保存" %>
-
-<% end %>
 
 <script>
 	$(function(){
-    data = $(".comment-body").data("users");
-    $('textarea').atwho({at:"@", 'data':data});
+		data = $(".comment-list").data("users");
+		$('textarea').atwho({at:"@", 'data':data});
 	});
 </script>
