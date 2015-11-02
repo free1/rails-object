@@ -14,12 +14,11 @@
 #  cover_path  :string(255)
 #  source_site :string(255)
 #
-
 require 'free_spider'
-
 class Post < ActiveRecord::Base
 	include Redis::Objects
 	include Commentable
+	include Searchable
 	counter :show_count
 	set :score_post, global: true
 
@@ -27,12 +26,15 @@ class Post < ActiveRecord::Base
 	validates :title, presence: true, uniqueness: true, on: :create
 	validates :content, presence: true
 
-	# 搜索
-	searchable do
-		text :title, :content
+	# 搜索sunspot
+	# searchable do
+	# 	text :title, :content
 
-		integer :id
-	end
+	# 	integer :id
+	# end
+	# 搜索es
+	# def as_indexed_json(options={})
+	# end
 
 	class << self
 

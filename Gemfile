@@ -80,9 +80,12 @@ gem 'mysql2', '0.3.15'
 # gem 'mysql2',          '~> 0.3.13', :platform => :ruby
 # gem 'jdbc-mysql',      '~> 5.1.28', :platform => :jruby
 # gem 'thinking-sphinx', '~> 3.1.0'
-gem 'sunspot_rails'  # bundle exec rake sunspot:solr:start
-gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
-gem 'progress_bar'  # 解决sunspot的index时 default: http://ip:8983/solr/#/
+# gem 'sunspot_rails'  # bundle exec rake sunspot:solr:start
+# gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
+# gem 'progress_bar'  # 解决sunspot的index时 default: http://ip:8983/solr/#/
+gem 'elasticsearch', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git'
+gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 
 # 生成二维码
 gem 'rqrcode_png'

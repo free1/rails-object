@@ -1,4 +1,27 @@
 GIT
+  remote: git://github.com/elasticsearch/elasticsearch-rails.git
+  revision: ddc472623ae7cc2e262007cdc04e79c3d075962b
+  specs:
+    elasticsearch-model (0.1.8)
+      activesupport (> 3)
+      elasticsearch (> 0.4)
+      hashie
+    elasticsearch-rails (0.1.8)
+
+GIT
+  remote: git://github.com/elasticsearch/elasticsearch-ruby.git
+  revision: fe4500d24b318ff8428808c9e6e00f71f219d13f
+  specs:
+    elasticsearch (1.0.14)
+      elasticsearch-api (= 1.0.14)
+      elasticsearch-transport (= 1.0.14)
+    elasticsearch-api (1.0.14)
+      multi_json
+    elasticsearch-transport (1.0.14)
+      faraday
+      multi_json
+
+GIT
   remote: git://github.com/free1/client_side_validations-simple_form.git
   revision: 63d846015053ffe557a449a2cf5f3389f91d2054
   branch: 3-1-stable
@@ -128,14 +151,6 @@ GEM
     debugger-linecache (1.2.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
-    elasticsearch (1.0.12)
-      elasticsearch-api (= 1.0.12)
-      elasticsearch-transport (= 1.0.12)
-    elasticsearch-api (1.0.12)
-      multi_json
-    elasticsearch-transport (1.0.12)
-      faraday
-      multi_json
     equalizer (0.0.9)
     erubis (2.7.0)
     eventmachine (1.0.7)
@@ -165,7 +180,6 @@ GEM
       grape (>= 0.8.0)
       grape-entity
     hashie (3.4.0)
-    highline (1.6.21)
     hike (1.2.3)
     hiredis (0.4.5)
     hitimes (1.2.2)
@@ -240,15 +254,10 @@ GEM
       omniauth-oauth2 (~> 1.0)
     open4 (1.3.4)
     option_initializer (1.5.1)
-    options (2.3.2)
     paper_trail (3.0.8)
       activerecord (>= 3.0, < 5.0)
       activesupport (>= 3.0, < 5.0)
     parallelize (0.4.1)
-    pr_geohash (1.0.0)
-    progress_bar (1.0.3)
-      highline (~> 1.6.1)
-      options (~> 2.3.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -335,8 +344,6 @@ GEM
     rqrcode_png (0.1.5)
       chunky_png
       rqrcode
-    rsolr (1.0.12)
-      builder (>= 2.1.2)
     ruby-hmac (0.4.0)
     sass (3.2.19)
     sass-rails (5.0.3)
@@ -374,14 +381,6 @@ GEM
       colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    sunspot (2.2.0)
-      pr_geohash (~> 1.0)
-      rsolr (~> 1.0.7)
-    sunspot_rails (2.2.0)
-      nokogiri
-      rails (>= 3)
-      sunspot (= 2.2.0)
-    sunspot_solr (2.2.0)
     super_cache (0.0.2)
     swagger-ui_rails (0.1.7)
     tabularize (0.2.9)
@@ -439,6 +438,9 @@ DEPENDENCIES
   client_side_validations!
   client_side_validations-simple_form!
   coffee-rails (~> 4.0.0)
+  elasticsearch!
+  elasticsearch-model!
+  elasticsearch-rails!
   figaro
   gemoji
   god
@@ -465,7 +467,6 @@ DEPENDENCIES
   omniauth-qq-connect
   omniauth-weibo-oauth2 (~> 0.4.0)
   paper_trail (~> 3.0.6)
-  progress_bar
   pry
   pry-byebug
   pry-rails
@@ -485,8 +486,6 @@ DEPENDENCIES
   sidekiq
   simple_form
   spring (~> 1.3.6)
-  sunspot_rails
-  sunspot_solr
   super_cache
   swagger-ui_rails
   turbolinks

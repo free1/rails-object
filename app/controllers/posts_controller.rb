@@ -16,10 +16,12 @@ class PostsController < ApplicationController
 		# sphinx
 		# @posts = Post.search Riddle::Query.escape(params[:query])
 		# sunspot
-		@posts = Post.search do
-			fulltext(params[:query])
-			order_by(:id, :desc)
-		end.results
+		# @posts = Post.search do
+		# 	fulltext(params[:query])
+		# 	order_by(:id, :desc)
+		# end.results
+		# elasticsearch
+		@posts = Post.simple_search(params[:query]).records.paginate(page: params[:page], per_page: 12)
 		render 'index'
 	end
 

@@ -61,6 +61,7 @@
 ## next
 
 * 搜索sunspot切换elasticsearch
+* 附近的人切换成es
 * cap production solr:reindex报错
 * 线上上传图片报错
 * rack层面加密api

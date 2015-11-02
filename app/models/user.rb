@@ -80,10 +80,10 @@ class User < ActiveRecord::Base
   delegate :public_name, :number, :qr_code, :keyword, to: :wechat_info, allow_nil: true
   delegate :gender, :resume, :website, :longitude, :latitude, to: :info, allow_nil: true
 
-  # 搜索距离位置
-  searchable do
-    latlon(:location) { Sunspot::Util::Coordinates.new(latitude, longitude) }
-  end
+  # 搜索距离位置(sunspot)
+  # searchable do
+  #   latlon(:location) { Sunspot::Util::Coordinates.new(latitude, longitude) }
+  # end
 
   # 每次登录注册记录所在位置
   def update_location(latitude, longitude)
