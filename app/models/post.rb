@@ -35,6 +35,13 @@ class Post < ActiveRecord::Base
 	# 搜索es
 	# def as_indexed_json(options={})
 	# end
+	settings index: { number_of_shards: 1, number_of_replicas: 0 }  do
+		mapping do
+			indexes :title,      analyzer: 'snowball'
+			indexes :id
+			indexes :content
+		end
+	end
 
 	class << self
 

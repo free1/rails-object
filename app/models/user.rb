@@ -19,6 +19,7 @@
 class User < ActiveRecord::Base
   include SendEmail
   include ThirdParty
+  include Searchable
 
   has_secure_password
   # obfuscate_id
@@ -84,6 +85,25 @@ class User < ActiveRecord::Base
   # searchable do
   #   latlon(:location) { Sunspot::Util::Coordinates.new(latitude, longitude) }
   # end
+  # 搜索es
+  def as_indexed_json(options={})
+    hash = self.as_json(
+      except: [:password_digest, :remember_token, :verify_token],
+      include: {
+        info: {
+          only: [:id, :gender, :resume, :website, :longitude, :latitude]
+        }
+      }).merge location: { lon: self.longitude, lat: self.latitude }
+    hash
+  end
+  settings index: { number_of_shards: 1, number_of_replicas: 0 }  do
+    mapping do
+      indexes :name,      analyzer: 'snowball'
+      indexes :id
+      indexes :email
+      indexes :location, type: 'geo_point'
+    end
+  end
 
   # 每次登录注册记录所在位置
   def update_location(latitude, longitude)

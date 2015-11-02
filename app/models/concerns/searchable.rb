@@ -5,14 +5,6 @@ module Searchable
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
 
-    settings index: { number_of_shards: 1, number_of_replicas: 0 }  do
-      mapping do
-        indexes :title,      analyzer: 'snowball'
-        indexes :id
-        indexes :content
-      end
-    end
-
     # todo 合并
     class << self
       def simple_search(q)
@@ -23,6 +15,20 @@ module Searchable
               query: q
             }
         })
+      end
+
+      def location_search(query)
+        search(
+          filter: {
+            geo_distance: {
+                distance: query[:radius], #半径
+                location: {
+                  lon: query[:longitude],
+                  lat: query[:latitude]
+                }
+            }
+          }
+        )
       end
     end
 
