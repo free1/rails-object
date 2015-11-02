@@ -1,26 +1,41 @@
 <div class="comment-body col-md-12 col-lg-10 col-md-offset-1">
   <div class="comment-list" data-users="<%= comments.map {|c| c.user.name}.uniq %>">
     <% if comments.any? %>
-      <% comments.each do |comment| %>
-        <div class="comment">
-          <%= comment.user.name %>
-          <%= emojify(sanitize(comment.content_html)) %>
-        </div>
-      <% end %>
+      <%= render comments %>
+      <%# comments.each do |comment| %>
+        <%#= render 'shared/comment', locals: {comment: comment} %>
+      <%# end %>
     <% end %>
   </div>
 
   <div class="comment-form">
-    <%= simple_form_for [product, comment] do |f| %>
+    <%= simple_form_for [product, comment], remote: true do |f| %>
       <%= f.input :content, as: :text, input_html: {rows: 8} %>
-      <%= f.button :submit, "保存" %>
+      <%= f.button :submit, "保存", id: "comment-submit" %>
     <% end %>
   </div>
 </div>
 
 <script>
   $(function(){
+    // @功能
     data = $(".comment-list").data("users");
     $('textarea').atwho({at:"@", 'data':data});
+
+    // 提交评论
+    // $("#comment-submit").on('click', function(e){
+    //   e.preventDefault();
+    //   $.ajax({
+    //     url: "/products/<%= product.id %>/comments",
+    //     type: "post",
+    //     data: {comment: {content: "sss"}}
+    //   }).done(function(){
+    //     $(".comment-list").append($(".comment"));
+    //   }).fail(function(){
+    //     console.log("fail");
+    //   });
+    // });
   });
 </script>
+
+

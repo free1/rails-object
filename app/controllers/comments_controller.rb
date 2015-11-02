@@ -6,7 +6,10 @@ class CommentsController < ApplicationController
   	@comment = @commentable.comments.build(comment_params)
   	@comment.user_id = current_user.id
   	if @comment.save
-  		redirect_to @commentable
+            respond_to do |format|
+              format.html { redirect_to @commentable }
+              format.js
+            end
   	else
   		redirect_to :back
   	end
