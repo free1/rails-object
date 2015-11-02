@@ -10,3 +10,5 @@
 		<%= render partial: 'shared/function_tips', locals: {type: "watch", watch_count: @post.watch_count} %>
 	</div>
 </div>
+
+<%= render partial: 'shared/comments', locals: {comments: @comments, comment: @comment, product: @post} %>

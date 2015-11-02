@@ -8,6 +8,8 @@ class PostsController < ApplicationController
 	def show
 		@post = Post.find(params[:id])	
 		Post.add_watch_count(params[:id])
+		@comments = @post.comments.includes(:user)
+		@comment = Comment.new
 	end
 
 	def search

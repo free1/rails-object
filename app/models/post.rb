@@ -19,6 +19,7 @@ require 'free_spider'
 
 class Post < ActiveRecord::Base
 	include Redis::Objects
+	include Commentable
 	counter :show_count
 	set :score_post, global: true
 

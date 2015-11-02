@@ -58,6 +58,7 @@ Rails.application.routes.draw do
 
   # 抓取内容news
   resources :posts do
+    resources :comments, only: [:create, :destroy]
     collection do
       get :search
     end
