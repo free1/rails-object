@@ -22,13 +22,17 @@ module V1
         params do
           requires :longitude, type: Float, default: 0.0, desc: '经度'
           requires :latitude, type: Float, default: 0.0, desc: '纬度'
+          requires :radius, type: Float, default: 100, desc: '半径'
         end
         get '/location' do
           # Searches users within 100 kilometers of (latitude, longitude)
-          users = User.search do
-            with(:location).in_radius(params[:latitude], params[:longitude], 100)
-          end.results
-          present users, with: V1::Entities::User::Users
+          # sunspot
+          # users = User.search do
+          #   with(:location).in_radius(params[:latitude], params[:longitude], 100)
+          # end.results
+          # elasticsearch
+          users = User.location_search({longitude: params[:longitude], latitude: params[:latitude], radius: params[:radius]}).results.map { |r| r._source }
+          present users, with: V1::Entities::User::UserWithSearch
         end
 
         desc '注册'

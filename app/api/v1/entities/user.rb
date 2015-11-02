@@ -11,6 +11,11 @@ module V1
 	      expose :id, :name, :email, :avatar_path, :resume
 	    end
 
+	    class UserWithSearch < Grape::Entity
+	    	root 'users', 'user'
+	      expose :id, :name, :email, :avatar_path
+	    end
+
 	    class UserDetails < Grape::Entity
 	    	root 'user'
 	    	expose :id, :name
