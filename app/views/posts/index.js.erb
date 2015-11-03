@@ -1,7 +1,8 @@
 $('#posts').append('<%= j render(@posts) %>');
 <% if @posts.next_page %>
   $('.endless_paginate').replaceWith('<%= j will_paginate(@posts, class: "endless_paginate") %>');
+  $(".footer").remove();
 <% else %>
   $('.endless_paginate').remove();
 <% end %>
-<% sleep 1 %>
+<% sleep 0.8 %>

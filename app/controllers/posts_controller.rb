@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
 	def index
-		@posts = Post.order(id: :desc).paginate(page: params[:page], per_page: 12)
+		@posts = Post.order(id: :desc).paginate(page: params[:page], per_page: 20)
 		# @posts = Post.paginate(page: params[:page], per_page: 12)
 	end
 
