@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 20151029030209) do
 
   add_index "notifications", ["notifiable_id", "notifiable_type"], name: "index_notifications_on_notifiable_id_and_notifiable_type", length: {"notifiable_id"=>nil, "notifiable_type"=>100}, using: :btree
   add_index "notifications", ["notifiable_id"], name: "index_notifications_on_notifiable_id", using: :btree
+  add_index "notifications", ["notifiable_type"], name: "index_notifications_on_notifiable_type", length: {"notifiable_type"=>191}, using: :btree
   add_index "notifications", ["receiver_id"], name: "index_notifications_on_receiver_id", using: :btree
   add_index "notifications", ["sender_id"], name: "index_notifications_on_sender_id", using: :btree
 
