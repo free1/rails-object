@@ -2,17 +2,20 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  name            :string(255)
-#  email           :string(255)
-#  created_at      :datetime
-#  updated_at      :datetime
-#  password_digest :string(255)
-#  remember_token  :string(255)
-#  verify_token    :string(255)
-#  is_verify_email :boolean          default(FALSE)
-#  avatar_path     :string(255)
-#  is_email_push   :boolean          default(TRUE)
+#  id                     :integer          not null, primary key
+#  name                   :string(255)
+#  email                  :string(255)
+#  created_at             :datetime
+#  updated_at             :datetime
+#  password_digest        :string(255)
+#  remember_token         :string(255)
+#  verify_token           :string(255)
+#  is_verify_email        :boolean          default(FALSE)
+#  avatar_path            :string(255)
+#  is_email_push          :boolean          default(TRUE)
+#  password_reset_token   :string(255)
+#  password_reset_sent_at :datetime
+#  phone                  :string(255)
 #
 
 # encoding=utf-8
@@ -34,6 +37,8 @@ class User < ActiveRecord::Base
                     :allow_blank => true,
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 3 }, on: :create
+  validates_uniqueness_of   :phone, :allow_nil => true
+  validates_format_of       :phone,    :with => /\A1\d{10}\z/, :allow_blank => true
 
   # save之前
   before_save { |user| user.email = email.downcase }

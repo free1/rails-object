@@ -20,12 +20,25 @@
 </div>
 
 <div class="col-sm-12">
+	<h4>绑定手机号</h4>
+
+	<%= simple_form_for @user, html: { class: "form-horizontal" } do |f| %>
+		<div class="col-sm-8 col-sm-offset-2">
+			<%= f.input :phone, autofocus: true %>
+
+			<br/>
+			<%= f.button :submit, "更新", data: { disable_with: '更新中...' } %>
+		</div>
+	<% end %>
+</div>
+
+<div class="col-sm-12">
 	<h4>微信信息</h4>
 
 	<%= simple_form_for @user, html: { class: "form-horizontal" } do |f| %>
 		<div class="col-sm-8 col-sm-offset-2">
 			<%= f.simple_fields_for :wechat_info do |build| %>
-				<%= build.input :public_name, autofocus: true %>
+				<%= build.input :public_name %>
 				<%= build.input :number %>
 
 				<%= build.input :qr_code, as: :hidden, input_html: { id: 'qr_code_path' } %>

@@ -78,7 +78,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar_path, 
+      params.require(:user).permit(:name, :email, :phone, :password, :password_confirmation, :avatar_path, 
                                     :is_email_push, :tag_tokens, :subtitle,
                                     info_attributes: [:gender, :resume, :website, :user_id, :id],
                                     wechat_info_attributes: [:public_name, :number, :qr_code, :keyword, :user_id])

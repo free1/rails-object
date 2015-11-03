@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029030209) do
+ActiveRecord::Schema.define(version: 20151103082321) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -238,6 +238,7 @@ ActiveRecord::Schema.define(version: 20151029030209) do
     t.boolean  "is_email_push",          limit: 1,   default: true
     t.string   "password_reset_token",   limit: 255
     t.datetime "password_reset_sent_at"
+    t.string   "phone",                  limit: 255
   end
 
   create_table "wechat_infos", force: :cascade do |t|
