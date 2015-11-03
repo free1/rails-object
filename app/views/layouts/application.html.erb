@@ -26,13 +26,15 @@
 
 		<%= yield %>
 	</div>
-	<!-- footer -->
-	<%= render 'layouts/footer' %>
+      
+      <!-- footer -->
+      <%= render 'layouts/footer' %>
+
 	<script>
 		$.ajaxSetup({
-      headers: {
-        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-      }
+              headers: {
+              'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            }
     });
 
     // <% if signed_in? && !Rails.env.development? %>

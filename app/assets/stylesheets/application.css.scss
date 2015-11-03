@@ -149,3 +149,39 @@ p {
 	line-height: 1.7em;
 }
 
+
+/* 主体尾部 */
+
+footer {
+  border-top: 1px solid #eaeaea;
+  color: #999;
+  width: 100%;
+
+  position: absolute;  
+  bottom: 0; /* 关键 */  
+  left:0; /* IE下一定要记得 */  
+  height: 60px; 
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+  margin-left: 20px;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-right: 20px;
+}
