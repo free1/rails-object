@@ -21,7 +21,7 @@ qiniu_upload_url: "http://7vznrs.com1.z0.glb.clouddn.com/"
 
 # 发邮件sendcloud
 address: "http://sendcloud.sohu.com/webapi/mail.send.json"
-api_user: "api_free"
+api_user: "chuangke"
 api_key: "DLrx7guT2BPMzbDg"
 from_email: "747549945@qq.com"
 from_name: 'free'

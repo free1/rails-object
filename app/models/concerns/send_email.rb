@@ -18,6 +18,19 @@ module SendEmail
       return response
     end
 
+    # send_mail_with_template(params[:email], template,  { "%code%" => [verify_code]})
+    def send_mail_with_template(to_email, template_invoke_name, sub)
+      vars = JSON.dump({"to" => [to_email], "sub" => sub})
+      response = RestClient.post SendCloudAddress,
+      :api_user => SendCloudApiUser, 
+      :api_key => SendCloudApiKey,
+      :from => SendCloudFormEmail, 
+      :fromname => SendCloudFormName,
+      :substitution_vars => vars,
+      :template_invoke_name => template_invoke_name
+      return response
+    end
+
     # 邮箱验证模版
     def verify_email_template(name, token)
       template = %Q{

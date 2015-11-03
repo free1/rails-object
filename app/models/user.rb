@@ -128,6 +128,7 @@ class User < ActiveRecord::Base
     self.password_reset_sent_at = Time.zone.now
     save!
     # todo 发送邮件
+    User.delay.send_mail_with_template(self.email, "35122_invoke_1",  { "%code%" => [password_reset_token]})
     # UserMailer.password_reset(self).deliver
   end
 
