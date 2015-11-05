@@ -58,7 +58,7 @@
 * `sudo ln -nfs /home/deploy/apps/weixin_test/current/config/nginx.conf /etc/nginx/sites-enabled/weixin_test`
 
 
-## next
+## 后端next
 
 * 手机号验证
 * 用户可以选择所在地(地级市)
@@ -68,6 +68,11 @@
 * 给mysql做主从
 * nginx两台服务器配置(负载均衡，页面缓存等)
 * cap链接nginx.conf
+
+## 前端next
+
+* 顶部提示能点掉
+* 评论列表显示
 
 
 ## 创客家族NEXT

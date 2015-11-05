@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create]
   # 第三方登录
   match "/auth/:provider/callback", :to => 'omniauths#create', via: [:get, :post]
+  # 工具相关
+  match "/send_verify_code", to: 'tools#send_verify_code', via: :post
 
   resources :users do
     collection do

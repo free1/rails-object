@@ -25,9 +25,13 @@
 	<%= simple_form_for @user, html: { class: "form-horizontal" } do |f| %>
 		<div class="col-sm-8 col-sm-offset-2">
 			<%= f.input :phone, autofocus: true %>
+			<br/>
+			
+			<input class="form-control" id="verfiy-code" name="user[verify_code]" disabled=true placeholder="验证码">
 
 			<br/>
-			<%= f.button :submit, "更新", data: { disable_with: '更新中...' } %>
+			<a class="btn btn-info" id="send-code">发送验证码</a>
+			<%= f.button :submit, "更新", style: "display: none;", id: 'update-phone', data: { disable_with: '更新中...' } %>
 		</div>
 	<% end %>
 </div>
@@ -57,5 +61,19 @@
 <script>
 	$(function (){
 		imageUpload.coverUploader('pickfiles', $('#show_cover_path'), $('#qr_code_path'));
+
+		$("#send-code").on('click', function(){
+			phone_no = $("#user_phone").val()
+			$.ajax({
+				url: "/send_verify_code",
+				type: 'post',
+				data: {phone_no: phone_no}
+			}).done(function(){
+				$("#verfiy-code").attr("disabled", false);
+				$("#update-phone").css("display", "inline");
+			}).fail(function(){
+				console.log("error");
+			});
+		});
 	});
 </script>
