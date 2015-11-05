@@ -26,6 +26,8 @@ module WeixinTest
     # emoji
     config.assets.paths << Emoji.images_path
 
+    config.autoload_paths += %W(#{config.root}/lib)
+
     # Observer configuration
     config.active_record.observers = [:user_observer, :comment_observer]
 

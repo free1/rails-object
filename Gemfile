@@ -137,6 +137,9 @@ gem 'bcrypt', '~> 3.1.7'
 # 生成model注释
 gem 'annotate', '~> 2.6.6'
 
+# 短信
+gem 'china_sms'
+
 group :assets do
   gem 'sass-rails', '~> 5.0'
   gem 'uglifier', '>= 1.3.0'
@@ -160,7 +163,7 @@ group :development do
   # 调试
   gem 'pry'
   gem 'pry-byebug'
-  gem 'pry-rails'  # 中文有乱码问题
+  # gem 'pry-rails'  # 中文有乱码问题
   # 性能检测
   gem "bullet"
   gem "uniform_notifier", require: false

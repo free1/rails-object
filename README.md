@@ -60,9 +60,8 @@
 
 ## next
 
-* 搜索sunspot切换elasticsearch
-* 附近的人切换成es
-* cap production solr:reindex报错
+* 手机号验证
+* 用户可以选择所在地(地级市)
 * 线上上传图片报错
 * rack层面加密api
 * 设置i18n可以中英文切换

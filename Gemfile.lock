@@ -132,6 +132,7 @@ GEM
       capistrano (~> 3.1, >= 3.1.0)
     celluloid (0.16.0)
       timers (~> 4.0.0)
+    china_sms (0.0.7)
     chronic (0.10.2)
     chunky_png (1.3.4)
     coderay (1.1.0)
@@ -265,8 +266,6 @@ GEM
     pry-byebug (3.0.1)
       byebug (~> 3.4)
       pry (~> 0.10)
-    pry-rails (0.3.4)
-      pry (>= 0.9.10)
     public_activity (1.4.2)
       actionpack (>= 3.0.0)
       activerecord (>= 3.0)
@@ -435,6 +434,7 @@ DEPENDENCIES
   capistrano-rbenv (~> 2.0)
   capistrano-sidekiq
   capistrano3-unicorn
+  china_sms
   client_side_validations!
   client_side_validations-simple_form!
   coffee-rails (~> 4.0.0)
@@ -469,7 +469,6 @@ DEPENDENCIES
   paper_trail (~> 3.0.6)
   pry
   pry-byebug
-  pry-rails
   public_activity (~> 1.4.2)
   qiniu (~> 6.2.1)
   quiet_assets (~> 1.0.2)
