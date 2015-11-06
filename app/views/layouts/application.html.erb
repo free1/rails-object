@@ -20,7 +20,12 @@
 	<div class="container top-margin">
 		<!-- 顶部提示 -->
 		<% flash.each do |key, value| %>
-			<%= content_tag(:div, value, class: "alert alert-#{key}") %>
+                  <%= content_tag(:div, class: "alert alert-#{key}") do -%>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong><%= value %></strong>
+                  <% end -%>
 			<!-- <div class="alert alert-<%= key %>"><%= value %></div> -->
 		<% end %>
 
