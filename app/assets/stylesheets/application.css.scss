@@ -160,7 +160,7 @@ footer {
   color: #999;
   width: 100%;
 
-  position: fixed;  
+  position: relative;  
   bottom: 0; /* 关键 */  
   left:0; /* IE下一定要记得 */  
   height: 60px; 
