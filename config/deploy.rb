@@ -20,7 +20,9 @@ set :rbenv_ruby, '2.1.2'
 # # in case you want to set ruby version from the file:
 # # set :rbenv_ruby, File.read('.ruby-version').strip
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+# set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+set :rbenv_map_bins, fetch(:rbenv_map_bins).to_a.concat(%w(sidekiq sidekiqctl))
 set :rbenv_roles, :all # default value
 
 # asset migrate
