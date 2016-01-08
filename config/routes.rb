@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   match "/auth/:provider/callback", :to => 'omniauths#create', via: [:get, :post]
   # 工具相关
   match "/send_verify_code", to: 'tools#send_verify_code', via: :post
+  # 微信测试删除好友页面
+  match "/wechat_deleted_friends", to: 'tools#wechat_deleted_friends', via: :get
 
   resources :users do
     collection do

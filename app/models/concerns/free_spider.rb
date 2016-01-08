@@ -14,7 +14,7 @@ require 'nokogiri'
 module FreeSpider
 	class Begin
 
-		def initialize
+    def initialize
       # 找到的链接
       @todo = []
       # 已经访问过的链接

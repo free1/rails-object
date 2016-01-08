@@ -11,4 +11,18 @@ class ToolsController < ApplicationController
     end
   end
 
+  def wechat_deleted_friends
+    url = "https://login.weixin.qq.com/jslogin"
+    params = {
+      appid: 'wx782c26e4c19acffb',
+      fun: 'new',
+      lang: 'zh_CN'
+    }
+    uri = URI.parse(url)
+    uri.query = URI.encode_www_form(params)
+    res = Net::HTTP.get_response(uri)
+    body = res.body
+    data = JSON.parse(body)
+  end
+
 end

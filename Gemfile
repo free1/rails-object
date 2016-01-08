@@ -2,7 +2,7 @@
 source 'https://ruby.taobao.org'
 
 # ruby '2.1.2'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.5'
 # 解决服务器没有安装readline问题
 gem 'rb-readline'
 
@@ -73,7 +73,8 @@ gem 'qiniu', '~> 6.2.1'
 gem "mime-types", '~> 1.19'
 
 # 数据库
-gem 'mysql2', '0.3.15'
+# gem 'mysql2', '0.3.15'
+gem 'mysql2', '>= 0.3.13', '< 0.5'
 # gem "mongoid", "~> 4.0.0"
 
 # 搜索
