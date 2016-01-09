@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105082017) do
+ActiveRecord::Schema.define(version: 20160108061816) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 20151105082017) do
   add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", length: {"owner_id"=>nil, "owner_type"=>100}, using: :btree
   add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", length: {"recipient_id"=>nil, "recipient_type"=>100}, using: :btree
   add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", length: {"trackable_id"=>nil, "trackable_type"=>100}, using: :btree
+
+  create_table "all_github_infos", force: :cascade do |t|
+    t.string   "organization_name",   limit: 255
+    t.text     "organization_member", limit: 65535
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
 
   create_table "article_lists", force: :cascade do |t|
     t.integer  "article_id", limit: 4
@@ -240,9 +247,9 @@ ActiveRecord::Schema.define(version: 20151105082017) do
     t.string   "password_digest",        limit: 255
     t.string   "remember_token",         limit: 255
     t.string   "verify_token",           limit: 255
-    t.boolean  "is_verify_email",        limit: 1,   default: false
+    t.boolean  "is_verify_email",                    default: false
     t.string   "avatar_path",            limit: 255
-    t.boolean  "is_email_push",          limit: 1,   default: true
+    t.boolean  "is_email_push",                      default: true
     t.string   "password_reset_token",   limit: 255
     t.datetime "password_reset_sent_at"
     t.string   "phone",                  limit: 255

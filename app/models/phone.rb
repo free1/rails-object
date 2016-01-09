@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: phones
+#
+#  id          :integer          not null, primary key
+#  phone_no    :string(255)
+#  verify_code :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 class Phone < ActiveRecord::Base
   # validates_format_of       :phone_no,    :with => /\A1\d{10}\z/
   validates_uniqueness_of   :phone_no
