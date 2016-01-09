@@ -76,6 +76,11 @@ set :bundle_binstubs, nil
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
+# Defaults to nil (no asset cleanup is performed)
+# If you use Rails 4+ and you'd like to clean up old assets after each deploy,
+# set this to the number of versions to keep
+set :keep_assets, 2
+
 # whenever
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 set :whenever_roles, %w{app web db}

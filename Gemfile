@@ -160,7 +160,7 @@ group :development do
   # 部署
   gem 'capistrano', '~> 3.3.5'
   gem 'capistrano-bundler'
-  gem 'capistrano-rails', '~> 1.1.0'
+  gem 'capistrano-rails', '~> 1.1.3'
   gem 'capistrano-rbenv', "~> 2.0"
   gem 'capistrano3-unicorn'
   gem 'capistrano-sidekiq'
