@@ -38,9 +38,9 @@ class AllGithubInfo < ActiveRecord::Base
     end
 
     def follow_user
-      AllGithubInfo.find_each(start: 75, batch_size: 200) do |all_github_info|
+      AllGithubInfo.find_each(start: 2757, batch_size: 200) do |all_github_info|
         p "------------AllGithubInfoID:  #{all_github_info.id}--------------------"
-        client = Octokit::Client.new(:login => 'free1', :password => 'chenlovedota1234')
+        client = Octokit::Client.new(:login => 'name', :password => 'pwd')
         all_github_info.organization_member.each do |member_name|
           if client.follow(member_name)
             p "follow #{member_name} success"
@@ -49,6 +49,25 @@ class AllGithubInfo < ActiveRecord::Base
           end
         end
       end
+    end
+
+    def select_member_on_organization
+      AllGithubInfo.find_each(start: 2758, batch_size: 200) do |all_github_info|
+        if all_github_info.organization_member.include?("theneva")
+          p all_github_info.id
+        end
+      end
+    end
+
+    def following_all_user
+      # Octokit.auto_paginate = true
+
+      Octokit.configure do |c|
+        c.login = 'name'
+        c.password = 'pwd'
+      end
+
+
     end
 
   end
