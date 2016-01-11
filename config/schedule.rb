@@ -65,3 +65,8 @@ end
 every 1.minutes do
 	runner "Post.sum_watch_count"
 end
+
+# 抓取github上所有用户
+every 1.hours do
+  runner "FollowingUser.execute_task"
+end
