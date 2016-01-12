@@ -12,8 +12,9 @@
 # github all user
 class FollowingUser < ActiveRecord::Base
   UsersApi = 'https://api.github.com/users'.freeze
+  AccessToken = 'ab6483f138fc31feea38d46cc8f78f260085ce4f'.freeze
   PerPage = 1000
-  TaskTime = 50
+  TaskTime = 1000
 
   validates_uniqueness_of :name
 
@@ -23,7 +24,8 @@ class FollowingUser < ActiveRecord::Base
 
     params = {
       since: since,
-      per_page: PerPage
+      per_page: PerPage,
+      access_token: AccessToken
     }
     uri = URI.parse(UsersApi)
     uri.query = URI.encode_www_form(params)
