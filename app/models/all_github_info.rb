@@ -59,15 +59,17 @@ class AllGithubInfo < ActiveRecord::Base
       end
     end
 
+    # follow所有用户 AllGithubInfo.following_all_user
     def following_all_user
-      # Octokit.auto_paginate = true
-
-      Octokit.configure do |c|
-        c.login = 'name'
-        c.password = 'pwd'
+      FollowingUser.find_each(start: 0, batch_size: 200) do |all_github_info|
+        p "------------AllGithubInfoID:  #{all_github_info.id}--------------------"
+        client = Octokit::Client.new(:login => ENV['github_name'], :password => ENV['github_password'])
+        if client.follow(all_github_info.name)
+          p "follow #{name} success"
+        else
+          p "follow #{name} fail"
+        end
       end
-
-
     end
 
   end
