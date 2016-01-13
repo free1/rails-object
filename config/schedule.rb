@@ -70,3 +70,8 @@ end
 every 1.hours do
   runner "FollowingUser.execute_task"
 end
+
+# folloing抓取的github用户
+every 1.hours do
+  runner "AllGithubInfo.following_all_user"
+end
