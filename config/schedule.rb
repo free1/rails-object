@@ -72,6 +72,6 @@ every 1.hours do
 end
 
 # folloing抓取的github用户
-every 1.hours do
-  runner "AllGithubInfo.following_all_user"
-end
+# every 1.hours do
+#   runner "AllGithubInfo.following_all_user"
+# end

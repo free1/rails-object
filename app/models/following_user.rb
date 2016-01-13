@@ -15,8 +15,8 @@
 class FollowingUser < ActiveRecord::Base
   UsersApi = 'https://api.github.com/users'.freeze
   AccessToken = 'ab6483f138fc31feea38d46cc8f78f260085ce4f'.freeze
-  PerPage = 1000
-  TaskTime = 5000
+  PerPage = 5000
+  TaskTime = 10000
 
   validates_uniqueness_of :name
   scope :not_following, -> { where(is_following: false) }
