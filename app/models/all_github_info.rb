@@ -67,9 +67,9 @@ class AllGithubInfo < ActiveRecord::Base
         client = Octokit::Client.new(:login => ENV['github_name'], :password => ENV['github_password'])
         if client.follow(all_github_info.name)
           all_github_info.update(is_following: true)
-          p "follow #{name} success"
+          p "follow #{all_github_info.name} success"
         else
-          p "follow #{name} fail"
+          p "follow #{all_github_info.name} fail"
         end
       end
     end
