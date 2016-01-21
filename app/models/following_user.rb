@@ -9,6 +9,7 @@
 #  github_user_id :integer
 #  avatar_url     :string(255)
 #  is_following   :boolean          default(FALSE)
+#  is_since       :boolean          default(FALSE)
 #
 
 # github all user
@@ -19,7 +20,7 @@ class FollowingUser < ActiveRecord::Base
   TaskTime = 10000
 
   validates_uniqueness_of :name
-  scope :not_following, -> { where(is_following: false) }
+  scope :not_since, -> { where(is_since: false) }
 
   def self.get_all_user
     last_user = FollowingUser.last

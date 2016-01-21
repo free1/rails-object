@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160113131920) do
+ActiveRecord::Schema.define(version: 20160121015221) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20160113131920) do
     t.integer  "github_user_id", limit: 4
     t.string   "avatar_url",     limit: 255
     t.boolean  "is_following",               default: false
+    t.boolean  "is_since",                   default: false
   end
 
   create_table "food_elements", force: :cascade do |t|
