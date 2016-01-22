@@ -3,15 +3,30 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   # view中可用的方法
-  helper_method :current_user, :signed_in?, :current_user?, :is_admin?
+  helper_method :current_user, :signed_in?, :current_user?, :is_admin?, :mobile_device?
   # 回调
   before_action :set_locale
+  before_action :prepare_for_mobile
 
+  # i18n
   def set_locale
     if params[:locale] && I18n.available_locales.include?(params[:locale].to_sym)
       session[:locale] = params[:locale]
     end
     I18n.locale = session[:locale] || I18n.default_locale
+  end
+
+  # mobile切换
+  def prepare_for_mobile
+    session[:mobile_param] = params[:mobile] if params[:mobile]
+    request.format = :mobile if mobile_device?
+  end
+  def mobile_device?
+    if session[:mobile_param]
+      session[:mobile_param] == "1"
+    else
+      request.user_agent =~ /Mobile|webOS/
+    end
   end
 
   def sign_in(user)

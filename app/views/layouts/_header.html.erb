@@ -21,6 +21,15 @@
 			    <li><a href="#">科技</a></li>
 			    <li class="divider"></li>
 			    <li><a href="#">想法</a></li>
+
+			    <li>
+			    	<% if mobile_device? %>
+				  <%= link_to "Web Site", :mobile => 0 %>
+				<% else %>
+				  <%= link_to "Mobile Site", :mobile => 1 %>
+				<% end %>
+			    </li>
+
 			  </ul>
 			</li>
 		</ul>
