@@ -9,5 +9,5 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( mobile_application.js )
 Rails.application.config.assets.precompile += %w( mobile_application.css )
 
-Rails.application.config.assets.paths << Rails.root.join('assets', 'mobile', 'fonts')
-Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
+# Rails.application.config.assets.paths << Rails.root.join('assets', 'mobile', 'fonts')
+# Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
