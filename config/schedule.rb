@@ -62,7 +62,7 @@ every :sunday, :at => '5:50 am' do
 end
 
 # 转存任务
-every 1.minutes do
+every 5.minutes do
 	runner "Post.sum_watch_count"
 end
 
