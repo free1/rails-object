@@ -52,6 +52,9 @@ module WeixinTest
     # config.i18n.default_locale = :de
     config.exceptions_app = self.routes
 
+    # 前端自动化
+    config.browserify_rails.commandline_options = "-t babelify --extension-\".es6\""
+
     # config.action_controller.include_all_helpers = false
   end
 end

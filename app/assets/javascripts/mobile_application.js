@@ -1,1 +1,2 @@
-//= require_tree ./mobile
+
+require('./mobile/main')

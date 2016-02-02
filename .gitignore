@@ -26,3 +26,6 @@ solr/development
 solr/pids
 solr/test
 solr/production
+
+.DS_Store
+node_modules
