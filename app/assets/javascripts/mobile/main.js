@@ -39,21 +39,21 @@ const App = React.createClass({
           <TabBar.Item
             component={Link}
             icon="home"
-            title="home"
+            title="首页"
             selected={!params.page}
             to="/"
           />
           <TabBar.Item
             component={Link}
             icon="gear"
-            title="find"
-            selected={params.page === 'about'}
-            to="/about"
+            title="发现"
+            selected={params.page === 'find'}
+            to="/find"
           />
           <TabBar.Item
             component={Link}
             icon="person"
-            title="my"
+            title="我的"
             badge="1"
             selected={params.page === 'mine'}
             to="/mine"
