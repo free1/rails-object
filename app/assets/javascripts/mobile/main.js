@@ -16,7 +16,7 @@ import {
 } from 'amazeui-touch';
 
 import Index from './pages/Index';
-import Page from './pages/Page';
+import Home from './pages/Home';
 
 const App = React.createClass({
   render() {
@@ -68,7 +68,7 @@ const routes = (
   <Router>
     <Route path="/" component={App}>
       <IndexRoute component={Index} />
-      <Route path=":page" component={Page} />
+      <Route path=":page" component={Home} />
     </Route>
   </Router>
 );

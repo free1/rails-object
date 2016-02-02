@@ -21,7 +21,7 @@ const sliderIntance = (
   </Slider>
 );
 
-const Page2 = React.createClass({
+const Mine = React.createClass({
   render() {
     return (
       <Container {...this.props}>
@@ -36,4 +36,4 @@ const Page2 = React.createClass({
   },
 });
 
-export default Page2;
+export default Mine;

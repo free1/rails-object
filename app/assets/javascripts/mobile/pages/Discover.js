@@ -6,7 +6,7 @@ import {
 
 import Tool from '../Tool'
 
-const Page1 = React.createClass({
+const Discover = React.createClass({
   loadingData: function () {
     $.ajax({
       method: 'get',
@@ -49,4 +49,4 @@ const Page1 = React.createClass({
   },
 });
 
-export default Page1;
+export default Discover;

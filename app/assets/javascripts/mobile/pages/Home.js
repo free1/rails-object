@@ -7,16 +7,16 @@ import {
   Link,
 } from 'react-router';
 
-import Page1 from './Page1';
-import Page2 from './Page2';
+import Discover from './Discover';
+import Mine from './Mine';
 import NotFound from './NotFound';
 
 const pages = {
-  Page1,
-  Page2,
+  Discover,
+  Mine,
 };
 
-const Page = React.createClass({
+const Home = React.createClass({
   render() {
     let page = this.props.params.page;
 
@@ -47,4 +47,4 @@ const Page = React.createClass({
   },
 });
 
-export default Page;
+export default Home;
