@@ -17,6 +17,8 @@ import {
 
 import Index from './pages/Index';
 import Home from './pages/Home';
+import Discover from './pages/Discover';
+import Mine from './pages/Mine';
 
 const App = React.createClass({
   render() {
@@ -40,15 +42,15 @@ const App = React.createClass({
             component={Link}
             icon="home"
             title="首页"
-            selected={!params.page}
+            selected={params.page === 'Index'}
             to="/"
           />
           <TabBar.Item
             component={Link}
             icon="gear"
             title="发现"
-            selected={params.page === 'find'}
-            to="/find"
+            selected={params.page === 'discover'}
+            to="/discover"
           />
           <TabBar.Item
             component={Link}
@@ -68,7 +70,8 @@ const routes = (
   <Router>
     <Route path="/" component={App}>
       <IndexRoute component={Index} />
-      <Route path=":page" component={Home} />
+      <Route path="/discover" component={Discover} />
+      <Route path="/mine" component={Mine} />
     </Route>
   </Router>
 );
