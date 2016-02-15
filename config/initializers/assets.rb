@@ -11,3 +11,9 @@ Rails.application.config.assets.precompile += %w( mobile_application.css )
 
 # Rails.application.config.assets.paths << Rails.root.join('assets', 'mobile', 'fonts')
 # Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
+
+Rails.application.config.assets.precompile += %w(doc/*.css api_swagger_ui/swagger-ui_rails.*)
+Rails.application.config.assets.precompile += %w(upload/*.js doc/*.js)
+Rails.application.config.assets.precompile += %w(tools/*.js)
+Rails.application.config.assets.precompile << "emoji/**/*.png"
+Rails.application.config.assets.precompile << %w(single/*.css)

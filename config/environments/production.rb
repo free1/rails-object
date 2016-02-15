@@ -19,11 +19,11 @@ Rails.application.configure do
   #                                 api_swagger_ui/swagger-client.js api_swagger_ui/swagger-oauth.js
   #                                 api_swagger_ui/swagger-ui.js api_swagger_ui/swagger.js
   #                                 api_swagger_ui/underscore-min.js)
-  config.assets.precompile += %w(doc/*.css api_swagger_ui/swagger-ui_rails.*)
-  config.assets.precompile += %w(upload/*.js doc/*.js)
-  config.assets.precompile += %w(tools/*.js)
-  config.assets.precompile << "emoji/**/*.png"
-  config.assets.precompile << %w(single/*.css)
+  # config.assets.precompile += %w(doc/*.css api_swagger_ui/swagger-ui_rails.*)
+  # config.assets.precompile += %w(upload/*.js doc/*.js)
+  # config.assets.precompile += %w(tools/*.js)
+  # config.assets.precompile << "emoji/**/*.png"
+  # config.assets.precompile << %w(single/*.css)
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
