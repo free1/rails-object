@@ -4,14 +4,15 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 export default {
   BaseUrl: "http://bilibili-service.daoapp.io",
 
-  // 加载组件
-  // LoadingElement: React.createClass({
-  //   render: function () {
-  //     return (
-
-  //     );
-  //   }
-  // }),
+  // 读条加载组件
+  LoadingElement: React.createClass({
+    render: function () {
+      return <div className='am-text-center loading-content'>
+        <i className='am-icon-refresh am-icon-spin am-icon-lg'/>
+        <p>读条中</p>
+      </div>;
+    }
+  }),
 
   // 启动界面
   StartElement: React.createClass({

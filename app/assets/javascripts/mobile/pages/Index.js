@@ -109,7 +109,7 @@ export default React.createClass({
   render() {
     if (!this.state.load) {
       this.loadingStartData();
-      return <Tool.StartElement />;
+      return <Tool.LoadingElement />;
     }
 
     if (this.state.error) {
