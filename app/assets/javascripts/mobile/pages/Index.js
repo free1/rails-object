@@ -12,9 +12,9 @@ import {
 import {
   Grid,
   Col,
-  AvgGrid,
   Titlebar,
   Panel,
+  Gallery,
 } from 'amazeui-react';
 
 const sliderIntance = (
@@ -34,19 +34,6 @@ const sliderIntance = (
   </Slider>
 );
 
-var avgGridInstance = (
-  <AvgGrid sm={2} md={3} lg={4} className="am-thumbnails">
-    <li><img className="am-thumbnail" src="http://s.amazeui.org/media/i/demos/bing-1.jpg" /></li>
-    <li><img className="am-thumbnail" src="http://s.amazeui.org/media/i/demos/bing-2.jpg" /></li>
-    <li><img className="am-thumbnail" src="http://s.amazeui.org/media/i/demos/bing-3.jpg" /></li>
-    <li><img className="am-thumbnail" src="http://s.amazeui.org/media/i/demos/bing-4.jpg" /></li>
-    <li><img className="am-thumbnail" src="http://s.amazeui.org/media/i/demos/bing-1.jpg" /></li>
-    <li><img className="am-thumbnail" src="http://s.amazeui.org/media/i/demos/bing-2.jpg" /></li>
-    <li><img className="am-thumbnail" src="http://s.amazeui.org/media/i/demos/bing-3.jpg" /></li>
-    <li><img className="am-thumbnail" src="http://s.amazeui.org/media/i/demos/bing-4.jpg" /></li>
-  </AvgGrid>
-);
-
 const Index = React.createClass({
   getDefaultProps() {
     return {
@@ -55,6 +42,15 @@ const Index = React.createClass({
   },
 
   render() {
+    var videosInsert = [];
+    for (var j = 0; j < 8; j++) {
+      videosInsert.push({
+        img: "http://s.amazeui.org/media/i/demos/bing-1.jpg",
+        link: '#',
+        title: 'test'
+      });
+    }
+
     return (
       <View>
         <NavBar
@@ -70,7 +66,7 @@ const Index = React.createClass({
               <div>
                 <Titlebar title="热门推荐" />
                 <Panel>
-                  {avgGridInstance}
+                  <Gallery theme='imgbordered' data={videosInsert} />
                 </Panel>
               </div>
             </Col>
