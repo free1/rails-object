@@ -1,7 +1,8 @@
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 export default {
-  BaseUrl: "",
+  BaseUrl: "http://bilibili-service.daoapp.io",
 
   // 加载组件
   // LoadingElement: React.createClass({
