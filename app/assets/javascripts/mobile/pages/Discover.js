@@ -69,7 +69,7 @@ const Discover = React.createClass({
     if (this.state.isError) {
       return <Tool.ErrorElement />
     }
-    return (this.state.isLoad) ? <div className='centre-body'> { this.state.list } </div> : <Tool.LoadingElement />;
+    return (this.state.isLoad) ? <div> { this.state.list } </div> : <Tool.LoadingElement />;
   }
 });
 

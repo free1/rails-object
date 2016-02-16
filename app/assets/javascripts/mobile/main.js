@@ -36,7 +36,7 @@ const App = React.createClass({
 
         <NavBar amStyle="primary" title="React Demo" />
 
-        <Container transition={transition}>
+        <Container transition={transition} className="centre-body">
           {React.cloneElement(children, {key: location.key})}
         </Container>
 
