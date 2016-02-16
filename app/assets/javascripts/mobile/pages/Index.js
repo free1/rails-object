@@ -7,9 +7,6 @@ import {
   Slider,
 } from 'amazeui-touch';
 import {
-  Link,
-} from 'react-router';
-import {
   Grid,
   Col,
   Titlebar,
@@ -42,10 +39,6 @@ var IndexPage = React.createClass({
 
     return (
       <View>
-        <NavBar
-          amStyle="primary"
-          title="React Demo"
-        />
           <Grid className="doc-g centre-body">
             <Col md={8} mdOffset={2} >
               <div>

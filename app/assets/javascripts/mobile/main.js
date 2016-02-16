@@ -13,6 +13,7 @@ import {
 import {
   Container,
   TabBar,
+  NavBar,
 } from 'amazeui-touch';
 
 import Index from './pages/Index';
@@ -32,6 +33,8 @@ const App = React.createClass({
 
     return (
       <Container direction="column" id="sk-container">
+
+        <NavBar amStyle="primary" title="React Demo" />
 
         <Container transition={transition}>
           {React.cloneElement(children, {key: location.key})}
