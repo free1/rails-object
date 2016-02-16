@@ -3,6 +3,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 export default {
   BaseUrl: "http://bilibili-service.daoapp.io",
+  //种类排序
+  CategoryList: ['动画', '娱乐', '游戏', '电影', '', '电视剧', '番剧', '科技', '舞蹈', '音乐', '鬼畜'],
 
   // 读条加载组件
   LoadingElement: React.createClass({
@@ -24,6 +26,16 @@ export default {
           </ReactCSSTransitionGroup>
         </div>
       );
+    }
+  }),
+
+  //错误部件
+  ErrorElement: React.createClass({
+    render: function () {
+      return <div className='am-text-center loading-content'>
+        <i className='am-icon-exclamation-circle am-icon-lg'/>
+        <p>加载失败,刷新下吧~</p>
+      </div>;
     }
   }),
 
