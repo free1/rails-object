@@ -1,6 +1,6 @@
 # 基本介绍
 
-因为没有备案，域名[chuangkejiazu](http://chuangkejiazu.com/)无法访问，直接访问[可访问站点](http://115.28.81.86/)即可。
+直接访问[chuangkejiazu](http://chuangkejiazu.com/)。
 
 
 ## 方案
