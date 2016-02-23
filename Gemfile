@@ -13,6 +13,7 @@ gem 'omniauth-qq-connect'
 gem 'omniauth-github'
 gem 'omniauth-douban-oauth2'
 gem 'omniauth-open_wechat', :git => 'https://github.com/free1/omniauth-open_wechat.git'
+gem "omniauth-wechat-oauth2"
 # gem 'weibo_2' #api
 
 # 样式

@@ -256,6 +256,9 @@ GEM
     omniauth-qq-connect (0.2.0)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
+    omniauth-wechat-oauth2 (0.1.0)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
     omniauth-weibo-oauth2 (0.4.0)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
@@ -476,6 +479,7 @@ DEPENDENCIES
   omniauth-github
   omniauth-open_wechat!
   omniauth-qq-connect
+  omniauth-wechat-oauth2
   omniauth-weibo-oauth2 (~> 0.4.0)
   paper_trail (~> 3.0.6)
   pry

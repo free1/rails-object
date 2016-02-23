@@ -13,7 +13,7 @@ const Mine = React.createClass({
           header="Page 2"
           noPadded
         >
-          mine
+          <a href="/auth/wechat">微信登陆 </a>
         </Group>
       </Container>
     );
