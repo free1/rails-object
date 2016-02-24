@@ -67,11 +67,11 @@ every 5.minutes do
 end
 
 # 抓取github上所有用户
-every 3.hours do
-  runner "FollowingUser.execute_task"
-end
+# every 3.hours do
+#   runner "FollowingUser.execute_task"
+# end
 
 # folloing抓取的github用户
-every 1.hours do
-  runner "AllGithubInfo.following_all_user"
-end
+# every 1.hours do
+#   runner "AllGithubInfo.following_all_user"
+# end
