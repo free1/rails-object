@@ -54,7 +54,7 @@ module WeixinTest
 
     # 前端自动化
     # config.browserify_rails.commandline_options = "-t babelify --extension-\".es6\""
-    config.browserify_rails.commandline_options = "-t [ babelify --presets [ es2015 ] ]"
+    # config.browserify_rails.commandline_options = "-t [ babelify --presets [ es2015 ] ]"
 
     # config.action_controller.include_all_helpers = false
   end
