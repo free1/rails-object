@@ -14,6 +14,7 @@ require 'capistrano3/unicorn'
 require "whenever/capistrano"
 require 'capistrano/sidekiq'
 # require 'thinking_sphinx/capistrano'
+require 'capistrano/npm'
 
 
 Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }

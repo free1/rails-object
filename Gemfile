@@ -168,6 +168,7 @@ group :development do
   gem 'capistrano-rbenv', "~> 2.0"
   gem 'capistrano3-unicorn'
   gem 'capistrano-sidekiq'
+  gem 'capistrano-npm'
   # 调试
   gem 'pry'
   gem 'pry-byebug'
