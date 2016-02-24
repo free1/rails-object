@@ -25,4 +25,8 @@ class ToolsController < ApplicationController
     data = JSON.parse(body)
   end
 
+  def valid_public_wechat
+    render json: {echostr: params[:echostr]}
+  end
+
 end

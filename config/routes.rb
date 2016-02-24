@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   match "/send_verify_code", to: 'tools#send_verify_code', via: :post
   # 微信测试删除好友页面
   match "/wechat_deleted_friends", to: 'tools#wechat_deleted_friends', via: :get
+  # 验证微信公众账号
+  match "/valid_public_wechat", to: 'tools#valid_public_wechat', via: :get
 
   resources :users do
     collection do
