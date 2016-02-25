@@ -1,0 +1,11 @@
+javascript:
+  deps:
+    require:
+      - 'react'
+      - 'react-bootstrap'
+      - 'react-router'
+  application:
+    external:
+      - 'react'
+      - 'react-bootstrap'
+      - 'react-router'
