@@ -29,7 +29,7 @@ gem 'turbolinks'
 gem 'net-ssh'
 
 # 前端自动化暂时使用rails作为服务器
-# gem "browserify-rails"
+gem "browserify-rails"
 
 # html文本处理
 gem 'html-pipeline', "~> 1.11.0" # 之前版本有bug
