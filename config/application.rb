@@ -53,6 +53,7 @@ module WeixinTest
     config.exceptions_app = self.routes
 
     # 前端自动化
+    config.browserify_rails.paths << lambda { |p| p.start_with?(Engine.root.join("app").to_s) }
     config.browserify_rails.commandline_options = "-t babelify --extension-\".es6\""
     # config.browserify_rails.commandline_options = "-t [ babelify --presets [ es2015 ] ]"
 
