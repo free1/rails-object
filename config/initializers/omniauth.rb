@@ -4,5 +4,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']
   provider :douban, ENV['DOUBAN_KEY'], ENV['DOUBAN_SECRET']
   provider :open_wechat, ENV['OPEN_WECHAT_KEY'], ENV['OPEN_WECHAT_SECRET'], :scope => 'snsapi_login'
-  provider :wechat, ENV["MOBILE_WECHAT_KEY"], ENV["MOBILE_WECHAT_SECRET"]
+  provider :wechat, ENV["MOBILE_WECHAT_KEY"], ENV["MOBILE_WECHAT_SECRET"], :authorize_params => {:scope => "snsapi_base"}
 end
