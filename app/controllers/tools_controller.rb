@@ -26,7 +26,7 @@ class ToolsController < ApplicationController
   end
 
   def valid_public_wechat
-    render json: {echostr: params[:echostr]}
+    render text: params[:echostr]
   end
 
 end
