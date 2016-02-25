@@ -49,9 +49,10 @@ class FollowingUser < ActiveRecord::Base
   end
 
   def self.execute_task
-    TaskTime.times do |i|
+    # TaskTime.times do |i|
+    loop do
       FollowingUser.get_all_user
-      p  "---------------time: #{i}-----------------------"
+      # p  "---------------time: #{i}-----------------------"
       sleep 0.6
     end
   end
