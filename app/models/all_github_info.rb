@@ -72,6 +72,7 @@ class AllGithubInfo < ActiveRecord::Base
           p "follow #{all_github_info.name} fail"
         end
         all_github_info.update(is_since: true)
+        sleep 0.6
       end
     end
 
