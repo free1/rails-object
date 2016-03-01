@@ -3,3 +3,11 @@
   margin-top: 10px;
   overflow: scroll;
 }
+
+@font-face{
+  font-family: 'test';
+  font-weight: 400;font-style:normal;
+  src: font-url("ratchicons.woff") format("woff"),
+    font-url("ratchicons.ttf") format("truetype"),
+    font-url("ratchicons.svg#svgFontName") format("svg")
+}
