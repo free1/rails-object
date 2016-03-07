@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121015221) do
+ActiveRecord::Schema.define(version: 20160307074015) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -131,6 +131,15 @@ ActiveRecord::Schema.define(version: 20160121015221) do
   add_index "notifications", ["notifiable_type"], name: "index_notifications_on_notifiable_type", length: {"notifiable_type"=>191}, using: :btree
   add_index "notifications", ["receiver_id"], name: "index_notifications_on_receiver_id", using: :btree
   add_index "notifications", ["sender_id"], name: "index_notifications_on_sender_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id",      limit: 4
+    t.string   "number",       limit: 255
+    t.integer  "state",        limit: 4
+    t.decimal  "trans_amount",             precision: 8, scale: 2, default: 0.0
+    t.datetime "created_at",                                                     null: false
+    t.datetime "updated_at",                                                     null: false
+  end
 
   create_table "phones", force: :cascade do |t|
     t.string   "phone_no",    limit: 255

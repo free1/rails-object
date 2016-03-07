@@ -45,9 +45,6 @@ gem 'public_activity', '~> 1.4.2'
 # 实时刷新消息数量
 gem 'message_bus', '~> 1.0.9'  # faye不支持WEBrick
 
-# 跟踪obj状态
-gem 'paper_trail', '~> 3.0.6'
-
 # api
 gem 'grape'
 gem 'grape-entity'
@@ -139,14 +136,17 @@ gem 'rails-observers'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# 生成model注释
-gem 'annotate', '~> 2.6.6'
-
 # 短信
 gem 'china_sms'
 
 # github的api
 gem 'octokit'
+
+# 支付
+gem 'activemerchant', "1.43.3", :require => 'active_merchant'
+gem 'aasm'
+# 跟踪obj状态
+gem 'paper_trail', '~> 3.0.6'
 
 group :assets do
   gem 'sass-rails', '~> 5.0'
