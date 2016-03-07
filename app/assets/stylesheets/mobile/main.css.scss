@@ -5,9 +5,20 @@
 }
 
 @font-face{
-  font-family: 'Test';
+  font-family: 'AmazeuiTouch';
   font-weight: 400;font-style:normal;
   src: font-url("ratchicons.woff") format("woff"),
     font-url("ratchicons.ttf") format("truetype"),
     font-url("ratchicons.svg#svgFontName") format("svg")
+}
+
+@font-face{
+  font-family: 'Amazeui';
+  font-weight: 400;font-style:normal;
+  src: font-url("fontawesome-webfont.eot?v=4.5.0");
+  src: font-url("fontawesome-webfont.eot?#iefix&v=4.5.0") format("embedded-opentype"),
+    font-url("fontawesome-webfont.woff2?v=4.5.0") format("woff2"),
+    font-url("fontawesome-webfont.woff?v=4.5.0") format("woff"),
+    font-url("fontawesome-webfont.ttf?v=4.5.0") format("truetype"),
+    font-url("fontawesome-webfont.svg?v=4.5.0#fontawesomeregular") format("svg")
 }
