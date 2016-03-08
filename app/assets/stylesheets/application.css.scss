@@ -11,7 +11,13 @@
  * file per style scope.
  *
  *= require jquery.atwho
- *= require_tree .
+ *= require_tree ./doc
+ *= require_tree ./api_swagger_ui
+ *= require tool
+ *= require home
+ *= require posts
+ *= require products
+ *= require users
  *= require_self
  */
 @import "bootstrap-sprockets";
