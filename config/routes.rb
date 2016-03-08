@@ -88,6 +88,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # 购买功能
+  resources :orders
+
 
   # 管理员
   draw :admin

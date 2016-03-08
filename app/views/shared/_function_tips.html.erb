@@ -25,5 +25,10 @@
 	<% when "watch" %>
 		<p><%= link_to "返回文章列表", posts_path, class: "btn btn-info btn-block" %></p>
 		<div class="tips_content"><%= watch_count %> 人查看了此文章</div>
+
+	<% when "order" %>
+		<div class="tips_content">购买按钮</div>
+		<%= link_to "下单", new_order_path, class: "btn btn-primary btn-block" %>
+
 	<% end %>
 </div>
