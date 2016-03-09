@@ -61,18 +61,22 @@ class AllGithubInfo < ActiveRecord::Base
 
     # follow所有用户 AllGithubInfo.following_all_user
     def following_all_user
-      since = FollowingUser.not_since.first.id - 1
-      FollowingUser.find_each(start: since, batch_size: 200) do |all_github_info|
-        p "------------AllGithubInfoID:  #{all_github_info.id}--------------------"
-        client = Octokit::Client.new(:login => ENV['github_name'], :password => ENV['github_password'])
-        if client.follow(all_github_info.name)
-          all_github_info.update(is_following: true)
-          p "follow #{all_github_info.name} success"
-        else
-          p "follow #{all_github_info.name} fail"
+      begin
+        since = FollowingUser.not_since.first.id - 1
+        FollowingUser.find_each(start: since, batch_size: 200) do |all_github_info|
+          p "------------AllGithubInfoID:  #{all_github_info.id}--------------------"
+          client = Octokit::Client.new(:login => ENV['github_name'], :password => ENV['github_password'])
+          if client.follow(all_github_info.name)
+            all_github_info.update(is_following: true)
+            p "follow #{all_github_info.name} success"
+          else
+            p "follow #{all_github_info.name} fail"
+          end
+          all_github_info.update(is_since: true)
+          sleep 0.6
         end
-        all_github_info.update(is_since: true)
-        sleep 0.6
+      ensure
+        AllGithubInfo.following_all_user
       end
     end
 
