@@ -1,6 +1,6 @@
 # 基本介绍
 
-直接访问[chuangkejiazu](http://chuangkejiazu.com/)。
+直接访问[chuangkejiazu](http://chuangkejiazu.com/)。[手机版](http://chuangkejiazu.com?mobile=1)
 
 
 ## 方案
