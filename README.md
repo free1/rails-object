@@ -9,7 +9,9 @@
 * Ruby: Ruby 2.1.2
 * 后端框架：Rails 4.2.0
 * 前端框架：bootstrap 3 + jquery + coffeescript + scss
-* API: grape + swagger + entity
+* mobile框架: react + es6 + browserify + amazeui
+* 旧版API: grape + swagger + entity
+* 新版API: rails_metal
 * 数据库：MySQL
 * 计划任务：whenever
 * 抓取网页：nokogiri
@@ -19,17 +21,18 @@
 * 缓存：Memcached + redis
 * 任务队列：sidekiq
 * 服务器和站点监控：New relic + monit + god
-* 部署：Capistrano
+* 部署：Capistrano3
 * 邮件发送：sendcloud
 * 反向代理：Nginx
 * Web容器：unicorn
-* 搜索：sunspot
+* 搜索：elasticsearch, sunspot(废弃)
+* 日志系统: elk
 
 
 ## 功能组件
 
 * 抓取文章，使用nokogiri每天定时抓取三个网站的文章。
-* 搜索系统，使用更强大的sunspot，支持中文分词和定位分析，sphinx(暂时不支持中文分词)停止使用。
+* 搜索系统，使用elasticsearch，支持中文分词和定位分析，sunspot(废弃)，sphinx(暂时不支持中文分词)停止使用。
 * 资源上传，使用[七牛服务](http://www.qiniu.com/)。
 * 发送邮件，使用[sendcloud服务](https://sendcloud.sohu.com/)。
 * 系统监控，使用[newrelic](https://rpm.newrelic.com)。
@@ -37,10 +40,11 @@
 * 基本的运维配置，monit监控进程（邮件报警），whenever+backup自动备份，god监控。
 * 基本的部署配置，capistrano自动一键部署。
 * 系统消息。
-* 各种文章基本操作，评论，赞，收藏等。
+* 各种文章帖子基本操作，评论，赞，收藏等。
 * 性能监控。
 * 换成metal和jbuild作为新api方便升级rails 5
-
+* 日志系统elk(elasticsearch, logstash, kibana)
+* 支付系统(activemerchant)
 
 ## 简单安装(测试运行在 Ubuntu 14.04 64位)
 
@@ -60,6 +64,7 @@
 
 ## 后端next
 
+* 购买功能
 * 手机号验证
 * 用户可以选择所在地(地级市)
 * 线上上传图片报错
