@@ -26,7 +26,7 @@
 * 反向代理：Nginx
 * Web容器：unicorn
 * 搜索：elasticsearch, sunspot(废弃)
-* 日志系统: elk
+* 日志系统: elk，[地址](http://chuangkejiazu.com:5601/)
 
 
 ## 功能组件
