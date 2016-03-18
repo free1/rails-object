@@ -1,0 +1,16 @@
+<tr id="record_<%= resource.id %>">
+  <% display_arr.each do |elem| %>
+    <td id="<%= elem.to_s + '_' + resource.id.to_s %>">
+      <%= render :partial => "admin/shared/pages/record", :locals => {:resource => resource, :elem => elem} %>
+    </td>
+  <% end %>
+  <td>
+    <%= render :partial => "admin/shared/pages/basic_operation", :locals => {:resource => resource }%>
+    <% begin %>
+      <br/>
+      <%= render :partial => "index_extra_operations", :locals => {:resource => resource }%>
+    <% rescue %>
+    <% end %>
+    
+  </td>
+</tr>

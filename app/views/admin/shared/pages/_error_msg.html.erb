@@ -1,0 +1,12 @@
+<% if resource.errors.any? %>
+  <div class="alert alert-danger alert-dismissible error_msgs" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <ul class="list">
+    <% resource.errors.each do |key, msg| %>
+      <li>
+        <%= i18n_attribute_name(collection, key) %><%= msg %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

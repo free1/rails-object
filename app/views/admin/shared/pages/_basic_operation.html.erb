@@ -1,0 +1,11 @@
+<% unless current_page?(resource_path(resource)) %>
+  <%= link_to raw('<i class="fa fa-info"></i>显示'), resource_path(resource) %>
+  |
+  <% end %>
+  <%= link_to raw('<i class="fa fa-pencil"></i>编辑'), edit_resource_path(resource) %>
+  |
+  <%= link_to raw('<i class="fa fa-times"></i>删除'), resource_url(resource), method: :delete, data: { confirm: '确定吗?' } %>  
+  <% begin %>
+    <%= render :partial => "extra_operations", :locals => {:resource => resource} %>
+  <% rescue %>
+  <% end %>

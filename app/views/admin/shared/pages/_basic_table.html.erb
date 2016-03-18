@@ -1,0 +1,16 @@
+<div class="panel-body">
+  <% display_arr.each_slice(grid).each do |slice| %>
+    <div class="row show-grid">
+      <% slice.each do |elem| %>
+        <div class="col-md-3">
+          <dt>
+          <span class="label label-primary"><%= i18n_attribute_name_by_resource(resource, elem) %>：</span>
+          </dt>
+          <dd>
+            <%= render :partial => "admin/shared/pages/record", :locals => {:resource => resource, :elem => elem} %>
+          </dd>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

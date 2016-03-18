@@ -148,6 +148,9 @@ gem 'aasm'
 # 跟踪obj状态
 gem 'paper_trail', '~> 3.0.6'
 
+# admin
+gem 'inherited_resources'
+
 group :assets do
   gem 'sass-rails', '~> 5.0'
   gem 'uglifier', '>= 1.3.0'

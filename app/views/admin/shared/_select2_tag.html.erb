@@ -1,0 +1,31 @@
+<% content_for :tail do %>
+  <script type="text/javascript">
+  $(".tag_list_input").select2({
+    multiple: true
+  });
+  $(".tag_list_input_for_source").select2({
+    multiple: true
+  })
+  $(".add_new_tag").click(function(){
+    var new_tag = $("#new_tag").val();
+    $("#new_tag").val('');
+    var select = $('.tag_list_input');
+    var option = $('<option></option>').
+     attr('selected', true).text(new_tag).val(new_tag);
+    option.appendTo(select);
+    select.trigger('change');
+    return false;
+  });
+
+  $(".add_new_tag_for_source").click(function(){
+    var new_tag = $("#new_tag_for_source").val();
+    $("#new_tag_for_source").val('');
+    var select = $('.tag_list_input_for_source');
+    var option = $('<option></option>').
+     attr('selected', true).text(new_tag).val(new_tag);
+    option.appendTo(select);
+    select.trigger('change');
+    return false;
+  });
+  </script>
+<% end %>

@@ -1,0 +1,40 @@
+<div class="modal fade" id="file_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">上传图片(请一次插入一张图片)</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for Picture.new, :url => admin_pictures_path, html: { multipart: true } do |f| %>
+          <%= f.file_field :image, multiple: true %>
+        <% end %>
+        <br/>
+        <div class="row thumbnail">
+
+        </div>
+
+        <script id="template-upload" type="text/x-tmpl">
+          <table class="ui basic collapsing table upload">
+            <tbody>
+              <tr>
+                <td>{%=o.name%}</td>
+                <td width="300px;">
+                  <div class="progress">
+                    <div class="progress-bar bar progress-bar-success" role="progressbar"
+                    aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </script>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary insert_images">插入</button>
+      </div>
+    </div>
+  </div>
+</div>

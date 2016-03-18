@@ -1,0 +1,15 @@
+<% if resource.send(elem).class == ActiveSupport::TimeWithZone %>
+  <%= long_format_time resource.send(elem) %>
+<% elsif resource.send(elem).class.to_s.include?('Uploader') %>
+  <%= image_tag resource.send(elem), width: '100'%>
+<% else %>
+  <% if resource.send(elem).is_a?(String) %>
+    <% if action_name == "index" %>
+      <%= truncate(resource.send(elem), length: 20) %>
+    <% else %>
+      <%= raw resource.send(elem) %>
+    <% end %>
+  <% else %>
+    <%= resource.send(elem) %>
+  <% end %>
+<% end %>
