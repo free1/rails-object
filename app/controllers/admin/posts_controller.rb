@@ -19,7 +19,7 @@ class Admin::PostsController < Admin::BaseController
 
     protected
       def collection
-        @expresses ||= end_of_association_chain.paginate(page: params[:page], per_page: 20)
+        @expresses ||= end_of_association_chain.order(id: :desc).paginate(page: params[:page], per_page: 20)
       end
   
     private
