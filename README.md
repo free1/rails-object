@@ -60,10 +60,12 @@
 * 本地执行 `cap production deploy` 。
 * 填写服务器配置，参考example。
 * `sudo ln -nfs /home/deploy/apps/weixin_test/current/config/nginx.conf /etc/nginx/sites-enabled/weixin_test`
+* 安装[elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html)，[安装logstash](https://www.elastic.co/guide/en/logstash/current/package-repositories.html)，[安装kibana](https://www.elastic.co/guide/en/kibana/4.4/setup.html)
 
 
 ## 后端next
 
+* 使用shield(或其它)给elk日志系统加上权限认证
 * 购买功能
 * 手机号验证
 * 用户可以选择所在地(地级市)
