@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308013119) do
+ActiveRecord::Schema.define(version: 20160318032605) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -204,6 +204,7 @@ ActiveRecord::Schema.define(version: 20160308013119) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.integer  "weight",     limit: 4,   default: 0
+    t.string   "title",      limit: 255
   end
 
   create_table "tags", force: :cascade do |t|
