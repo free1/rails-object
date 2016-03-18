@@ -5,6 +5,7 @@
 <table class="table table-bordered table-striped table-condensed">
     <tr>
     <th>ID</th>
+    <th>题目</th>
     <th>图片</th>
     <th>权重</th>
     <th></th>
@@ -14,6 +15,9 @@
     <tr>
     <td>
       <%= roll_nav_info.id %>
+    </td>
+    <td>
+      <%= roll_nav_info.title %>
     </td>
     <td>
       <%= image_tag roll_nav_info.cover_path, size: '100x100' %>

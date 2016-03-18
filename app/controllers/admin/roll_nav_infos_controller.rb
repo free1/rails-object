@@ -39,7 +39,7 @@ module Admin
 		private
 
 			def roll_nav_info_params
-				params.require(:roll_nav_info).permit(:cover_path, :weight)
+				params.require(:roll_nav_info).permit(:cover_path, :weight, :title)
 			end
 
 			def find_roll_nav_info
