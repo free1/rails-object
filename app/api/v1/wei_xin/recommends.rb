@@ -6,7 +6,7 @@ module V1
 
       desc '推荐滚动内容'
       params do
-      	optional :num, type: Integer, desc: '需要几个图片'
+      	optional :num, type: Integer, desc: '需要几个图片', default: 6
       end
       get '/roll_nav_infos' do
       	roll_nav_infos = RollNavInfo.order(:weight).last(params[:num])
