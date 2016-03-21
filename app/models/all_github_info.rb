@@ -62,7 +62,7 @@ class AllGithubInfo < ActiveRecord::Base
     # follow所有用户 AllGithubInfo.following_all_user
     def following_all_user
       begin
-        since = FollowingUser.not_since.first.id - 1
+        since = FollowingUser.not_since.last.id - 1
         FollowingUser.find_each(start: since, batch_size: 200) do |all_github_info|
           p "------------AllGithubInfoID:  #{all_github_info.id}--------------------"
           client = Octokit::Client.new(:login => ENV['github_name'], :password => ENV['github_password'])
