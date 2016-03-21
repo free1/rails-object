@@ -38,10 +38,12 @@ const Mine = React.createClass({
       url: Tool.TmpUrl + "/sessions",
       type: 'post',
       data: {session: {name: userinfo.uname, password: userinfo.pwd}}
-    }).done(function(){
-      console.log(userinfo);
+    }).done(function(data){
+      document.cookie = "remember_token=" + data;
+      window.location.href = "/";
     }).fail(function(){
       console.log("error");
+      alert("登录失败");
     });
   },
 

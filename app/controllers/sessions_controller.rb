@@ -8,7 +8,10 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:session][:name])
     if user && user.authenticate(params[:session][:password])
       sign_in user
-      redirect_back_or root_path
+      respond_to do |format|
+        format.html { redirect_back_or root_path }
+        format.mobile { render json: user.remember_token }
+      end
     else
       flash.now[:danger] = '无效的用户名/密码!'
       render 'new'
