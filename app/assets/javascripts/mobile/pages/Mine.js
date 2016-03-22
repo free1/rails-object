@@ -9,6 +9,21 @@ import {
 } from 'amazeui-touch';
 import Tool from '../Tool';
 
+const LoginFrom = React.createClass({
+  render() {
+    return (
+      <Group header="登录">
+        <form className="form-set" ref="form" onSubmit={e => {this.handleSubmit(e)}} >
+          <Field placeholder="用户名" ref="uname" />
+          <Field placeholder="密码" type="password" ref="pwd" />
+          <Button amStyle="primary" block>提交</Button>
+        </form>
+        <a href="/auth/wechat">微信登陆 </a>
+      </Group>
+    );
+  }
+});
+
 const Mine = React.createClass({
 
   // 点击提交按钮
@@ -51,18 +66,7 @@ const Mine = React.createClass({
     return (
       <Container {...this.props}>
 
-        <Group
-          header="登录"
-        >
-          <form className="form-set" ref="form" onSubmit={e => {this.handleSubmit(e)}} >
-            <Field placeholder="用户名" ref="uname" />
-            <Field placeholder="密码" type="password" ref="pwd" />
-            <Button amStyle="primary" block>提交</Button>
-          </form>
-
-        </Group>
-
-        <a href="/auth/wechat">微信登陆 </a>
+        <LoginFrom />
       </Container>
     );
   },
