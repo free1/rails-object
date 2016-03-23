@@ -85,6 +85,16 @@ module V1
           end
         end
 
+        desc '通过token查询用户'
+        params do
+          requires :token, type: String
+        end
+        get '/current_user' do
+          remember_token = User.encrypt(params[:token])
+          current_user ||= User.find_by(remember_token: remember_token)
+          present current_user, with: V1::Entities::User::Users
+        end
+
         desc '第三方登录'
         params do
           requires :access_token, type: String
