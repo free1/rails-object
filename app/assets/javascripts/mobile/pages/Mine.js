@@ -9,7 +9,17 @@ import {
 } from 'amazeui-touch';
 import Tool from '../Tool';
 
-const LoginFrom = React.createClass({
+// 登陆表单
+var LoginFrom = React.createClass({
+  // 点击提交按钮
+  handleSubmit(e) {
+    e.preventDefault();
+    const uname = ReactDom.findDOMNode(this.refs.uname).value.trim();
+    const pwd = ReactDom.findDOMNode(this.refs.pwd).value.trim();
+    const form = ReactDom.findDOMNode(this.refs.form);
+    this.props.onUserSubmit({uname, pwd});
+    form.reset();
+  },
   render() {
     return (
       <Group header="登录">
@@ -25,17 +35,6 @@ const LoginFrom = React.createClass({
 });
 
 const Mine = React.createClass({
-
-  // 点击提交按钮
-  handleSubmit(e) {
-    e.preventDefault();
-    const uname = ReactDom.findDOMNode(this.refs.uname).value.trim();
-    const pwd = ReactDom.findDOMNode(this.refs.pwd).value.trim();
-    const form = ReactDom.findDOMNode(this.refs.form);
-    this.onSubmitUserInfo({uname, pwd});
-    form.reset();
-  },
-
   // rails CSRF
   allowCSRF() {
     $.ajaxSetup({
@@ -54,7 +53,7 @@ const Mine = React.createClass({
       type: 'post',
       data: {session: {name: userinfo.uname, password: userinfo.pwd}}
     }).done(function(data){
-      document.cookie = "remember_token=" + data;
+      // document.cookie = "remember_token=" + data;
       window.location.href = "/";
     }).fail(function(){
       console.log("error");
@@ -62,11 +61,51 @@ const Mine = React.createClass({
     });
   },
 
+  // 获取cookie
+  getCookie(key) {
+    var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+    return keyValue ? keyValue[2] : null;
+  },
+  
+  // 获取用户信息
+  getLoginInfo() {
+    var token = this.getCookie('remember_token');
+    if (token == null) {
+      console.log("没有token");
+      return false;
+    }
+    token = token.trim();
+    var jqXHR = $.ajax({
+      url: Tool.TmpUrl + "/api/v1/users/current_user",
+      type: 'get',
+      context: this,
+      // todo 同步才可以获取内部数据
+      async: false,
+      data: {token: token}
+    }).done(function(data){
+      // console.log(data);
+    }).fail(function(){
+      console.log("error");
+    });
+    return jqXHR.responseText;
+  },
+
   render() {
+    var MineContent;
+    var user = JSON.parse(this.getLoginInfo()).user
+    console.log(user);
+    if (user == null) {
+      MineContent = <LoginFrom onUserSubmit={this.onSubmitUserInfo} />
+    } else {
+      MineContent = <div>
+                                  <h1>{user.name}</h1>
+                                  <h1>{user.email}</h1>
+                                  <h1>{user.avatar_path}</h1>
+                              </div>
+    }
     return (
       <Container {...this.props}>
-
-        <LoginFrom />
+        {MineContent}
       </Container>
     );
   },

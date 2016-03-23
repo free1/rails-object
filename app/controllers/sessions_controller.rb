@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       sign_in user
       respond_to do |format|
         format.html { redirect_back_or root_path }
-        format.mobile { render json: user.remember_token }
+        format.mobile { render nothing: true }
       end
     else
       flash.now[:danger] = '无效的用户名/密码!'
