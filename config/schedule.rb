@@ -66,6 +66,11 @@ every 5.minutes do
 	runner "Post.sum_watch_count"
 end
 
+# 定时清理日志
+every 1.day do
+  rake "log:clear"
+end
+
 # 抓取github上所有用户
 # every 3.hours do
 #   runner "FollowingUser.execute_task"
