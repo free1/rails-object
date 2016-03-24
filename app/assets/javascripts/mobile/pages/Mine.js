@@ -49,7 +49,7 @@ const Mine = React.createClass({
     this.allowCSRF();
     // 提交服务器
     $.ajax({
-      url: Tool.TmpUrl + "/sessions",
+      url: Tool.ProductUrl + "/sessions",
       type: 'post',
       data: {session: {name: userinfo.uname, password: userinfo.pwd}}
     }).done(function(data){
@@ -76,7 +76,7 @@ const Mine = React.createClass({
     }
     token = token.trim();
     var jqXHR = $.ajax({
-      url: Tool.TmpUrl + "/api/v1/users/current_user",
+      url: Tool.ProductUrl + "/api/v1/users/current_user",
       type: 'get',
       context: this,
       // todo 同步才可以获取内部数据
