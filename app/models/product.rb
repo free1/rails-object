@@ -16,6 +16,9 @@ class Product < ActiveRecord::Base
 	# include Obfuscate
 	include Commentable
 
+	# 保存之前
+	before_create :rand_watch_count
+
 	# 发布人
 	belongs_to :user
 	# 收藏
@@ -40,5 +43,10 @@ class Product < ActiveRecord::Base
 	# def to_param
  #    encrypt id
  #  end
+
+ 	private
+ 		def rand_watch_count
+ 			self.watch_count = rand(3..30)
+ 		end
 	
 end
