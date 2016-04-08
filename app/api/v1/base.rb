@@ -4,6 +4,7 @@ module V1
     prefix :api
 
     mount V1::WeiXin::Posts
+    mount V1::WeiXin::Products
     mount V1::WeiXin::Users
     mount V1::WeiXin::Articles
     mount V1::WeiXin::ArticleLists
