@@ -31,7 +31,7 @@ class Product < ActiveRecord::Base
 	# 验证
 	validates_presence_of :user, :cover_path
 	validates :title, presence: true, length: { maximum: 30 }
-	validates :describe, presence: true, length: 300..8000
+	validates :describe, presence: true, length: 10..8000
 	
 	# 排序
 	scope :category_for, ->(category_name) { joins(:categories).where("categories.name = ?", category_name)}
