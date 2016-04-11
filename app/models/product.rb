@@ -44,13 +44,20 @@ class Product < ActiveRecord::Base
   # 商品状态(Product.statuses)
   enum status: { deleted: 0, active: 1 }
 
+  # 图片尺寸
   def cover_path_with_size(width, height)
     "#{self.cover_path}?imageView2/1/w/#{width}/h/#{height}"
+  end
+  def cover_path_with_width(width)
+    "#{self.cover_path}?imageView2/1/w/#{width}"
+  end
+  def cover_path_with_height(height)
+    "#{self.cover_path}?imageView2/1/h/#{height}"
   end
 
   def list_json(opt={})
     opt = as_json(only: [:id, :title, :watch_count])
-    opt['cover_path'] = cover_path_with_size(320, 200)
+    opt['cover_path'] = cover_path_with_height(200)
     opt
   end
 
