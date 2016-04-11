@@ -15,6 +15,7 @@ var imageUpload = function() {
 				uptoken_url: '<%= QiniuUptokenUrl %>'
 			}, {
 				'FileUploaded': function (up, file, info) {
+					console.log('<%= QiniuUploadUrl %>');
 					var cover_path = '<%= QiniuUploadUrl %>' + $.parseJSON(info).image_path;
 					input_url.val(cover_path);
 					show_element.attr('src', cover_path);
