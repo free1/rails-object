@@ -12,6 +12,7 @@
 #  user_collect_products_count :integer          default(0)
 #  watch_count                 :integer          default(0)
 #  status                      :integer          default(1)
+#  is_hot                      :boolean          default(FALSE)
 #
 
 require 'test_helper'

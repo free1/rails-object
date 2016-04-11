@@ -12,6 +12,7 @@
 #  user_collect_products_count :integer          default(0)
 #  watch_count                 :integer          default(0)
 #  status                      :integer          default(1)
+#  is_hot                      :boolean          default(FALSE)
 #
 
 class Product < ActiveRecord::Base
@@ -37,8 +38,10 @@ class Product < ActiveRecord::Base
 
   # 排序
   scope :category_for, ->(category_name) { joins(:categories).where("categories.name = ?", category_name)}
+  scope :published, -> { where("status = ?", 1) }
+  scope :hot, -> { where(is_hot: true) }
 
-  # 商品状态
+  # 商品状态(Product.statuses)
   enum status: { deleted: 0, active: 1 }
 
   def cover_path_with_size(width, height)
