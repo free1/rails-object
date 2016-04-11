@@ -20,20 +20,20 @@ var IndexPage = React.createClass({
   render() {
     var data = this.props.data;
     // 顶部滚动
-    var banners = data.banners;
+    var banners = data.roll_nav_infos;
     var bannerInsert = [];
     for (var i = 0; i < banners.length; i++) {
-      bannerInsert.push({img: banners[i].img, desc: banners[i].title, aid: banners[i].aid});
+      bannerInsert.push({img: banners[i].cover_path, desc: banners[i].title});
     }
     // 热门推荐橱窗
-    var recommands = data.recommends;
+    var recommands = data.hot_products;
     var videosInsert = [];
     for (var j = 0; j < recommands.length; j++) {
       videosInsert.push({
-        img: recommands[j].pic,
+        img: recommands[j].cover_path,
         link: '#',
         title: recommands[j].title,
-        desc: '点击:' + recommands[j].play + '||弹幕:' + recommands[j].video_review
+        desc: '点击:' + recommands[j].watch_count
       });
     }
 
@@ -75,12 +75,13 @@ export default React.createClass({
   loadingStartData: function() {
     $.ajax({
       method: 'get',
-      url: Tool.BaseUrl + '/indexinfo',
+      // url: Tool.BaseUrl + '/indexinfo',
+      url: Tool.TmpUrl + '/new_api/v2/home',
       context: this,
       success: function(data) {
-        if (data.code == 0) {
-          console.log(data)
-          this.setState({load: true, data: data.result});
+        if (data.success == 1) {
+          console.log(data.data)
+          this.setState({load: true, data: data.data});
         } else {
           console.log("error")
           this.setState({error: true, load: true});
