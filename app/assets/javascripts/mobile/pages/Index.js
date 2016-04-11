@@ -76,7 +76,7 @@ export default React.createClass({
     $.ajax({
       method: 'get',
       // url: Tool.BaseUrl + '/indexinfo',
-      url: Tool.TmpUrl + '/new_api/v2/home',
+      url: Tool.ProductUrl + '/new_api/v2/home',
       context: this,
       success: function(data) {
         if (data.success == 1) {
