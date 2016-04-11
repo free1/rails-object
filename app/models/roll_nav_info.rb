@@ -11,4 +11,10 @@
 #
 
 class RollNavInfo < ActiveRecord::Base
+
+  def list_json(opt={})
+    opt = as_json(only: [:id, :title, :cover_path])
+    opt
+  end
+
 end

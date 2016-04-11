@@ -48,6 +48,12 @@ class Product < ActiveRecord::Base
     "#{self.cover_path}?imageView2/1/w/#{width}/h/#{height}"
   end
 
+  def list_json(opt={})
+    opt = as_json(only: [:id, :title, :watch_count])
+    opt['cover_path'] = cover_path_with_size(320, 200)
+    opt
+  end
+
   # def to_param
  #    encrypt id
  #  end
