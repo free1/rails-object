@@ -1,7 +1,7 @@
 class NewApi::V2::HomeController < NewApi::V2::BaseController
 
   def index
-    # success("test")
+    success("test")
   end
 
 end

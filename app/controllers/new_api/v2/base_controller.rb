@@ -33,7 +33,8 @@ class NewApi::V2::BaseController < ActionController::Metal
   layout 'new_api/v2/layouts/json_layout'
 
   helper_method :passport
-  helper 'new_api/v2/base'
+  include NewApi::V2::BaseHelper
+  # helper 'new_api/v2/base'
 
   if Rails.env.production?
     rescue_from Exception, with: :error_occurred
