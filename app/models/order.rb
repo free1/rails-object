@@ -5,10 +5,12 @@
 #  id           :integer          not null, primary key
 #  user_id      :integer
 #  number       :string(255)
-#  state        :string(255)
+#  state        :integer
 #  trans_amount :decimal(8, 2)    default(0.0)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  product_id   :integer
+#  quantity     :integer          default(1)
 #
 
 class Order < ActiveRecord::Base

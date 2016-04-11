@@ -10,43 +10,48 @@
 #  updated_at                  :datetime
 #  user_id                     :integer
 #  user_collect_products_count :integer          default(0)
+#  watch_count                 :integer          default(0)
+#  status                      :integer          default(1)
 #
 
 class Product < ActiveRecord::Base
-	# include Obfuscate
-	include Commentable
+  # include Obfuscate
+  include Commentable
 
-	# 保存之前
-	before_create :rand_watch_count
+  # 保存之前
+  before_create :rand_watch_count
 
-	# 发布人
-	belongs_to :user
-	# 收藏
-	has_many :user_collect_products, dependent: :destroy
-	# has_many :collected_user, through: :user_collect_products, source: :user
-	# 分类
-	has_many :product_category_ships, dependent: :destroy
-	has_many :categories, through: :product_category_ships
+  # 发布人
+  belongs_to :user
+  # 收藏
+  has_many :user_collect_products, dependent: :destroy
+  # has_many :collected_user, through: :user_collect_products, source: :user
+  # 分类
+  has_many :product_category_ships, dependent: :destroy
+  has_many :categories, through: :product_category_ships
 
-	# 验证
-	validates_presence_of :user, :cover_path
-	validates :title, presence: true, length: { maximum: 30 }
-	validates :describe, presence: true, length: 10..8000
-	
-	# 排序
-	scope :category_for, ->(category_name) { joins(:categories).where("categories.name = ?", category_name)}
+  # 验证
+  validates_presence_of :user, :cover_path
+  validates :title, presence: true, length: { maximum: 30 }
+  validates :describe, presence: true, length: 10..8000
 
-	def cover_path_with_size(width, height)
-		"#{self.cover_path}?imageView2/1/w/#{width}/h/#{height}"
-	end
+  # 排序
+  scope :category_for, ->(category_name) { joins(:categories).where("categories.name = ?", category_name)}
 
-	# def to_param
+  # 商品状态
+  enum status: { deleted: 0, active: 1 }
+
+  def cover_path_with_size(width, height)
+    "#{self.cover_path}?imageView2/1/w/#{width}/h/#{height}"
+  end
+
+  # def to_param
  #    encrypt id
  #  end
 
- 	private
- 		def rand_watch_count
- 			self.watch_count = rand(3..30)
- 		end
-	
+  private
+    def rand_watch_count
+      self.watch_count = rand(3..30)
+    end
+  
 end

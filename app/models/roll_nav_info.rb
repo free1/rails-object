@@ -7,6 +7,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  weight     :integer          default(0)
+#  title      :string(255)
 #
 
 class RollNavInfo < ActiveRecord::Base

@@ -10,6 +10,8 @@
 #  updated_at                  :datetime
 #  user_id                     :integer
 #  user_collect_products_count :integer          default(0)
+#  watch_count                 :integer          default(0)
+#  status                      :integer          default(1)
 #
 
 require 'test_helper'
