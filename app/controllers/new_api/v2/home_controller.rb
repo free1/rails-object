@@ -1,12 +1,7 @@
 class NewApi::V2::HomeController < NewApi::V2::BaseController
 
   def index
-    @hello = "hello world"
-    render "home/index"
+    # success("test")
   end
 
-  def show
-    @hello = "world"
-    render json: @hello
-  end
 end

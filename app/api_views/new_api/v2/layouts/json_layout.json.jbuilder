@@ -1,4 +1,4 @@
-json.result 'success'
+json.success 1
 
 r = JSON.parse(yield)
 r.each{|k,v|

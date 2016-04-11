@@ -1,6 +1,7 @@
 module V1
   module Entities
     class Products < Grape::Entity
+      root 'products'
       expose :title, :cover_path, :watch_count
     end
 
