@@ -48,12 +48,13 @@ class FollowingUser < ActiveRecord::Base
     end
   end
 
+  # 抓取所有用户: FollowingUser.execute_task
   def self.execute_task
-    # TaskTime.times do |i|
-    loop do
+    begin
       FollowingUser.get_all_user
-      # p  "---------------time: #{i}-----------------------"
-      sleep 0.6
+      sleep 0.3
+    ensure
+      FollowingUser.get_all_user
     end
   end
 
