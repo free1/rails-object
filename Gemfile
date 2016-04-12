@@ -115,6 +115,9 @@ gem 'will_paginate', '~> 3.0.6'
 
 # 加密链接id
 # gem "obfuscate_id"
+gem 'friendly_id', '~> 5.1.0'
+# 汉字转换拼音
+gem 'ruby-pinyin'
 # 加密api
 gem 'jwt', '~> 1.4.1'
 
