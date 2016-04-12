@@ -11,7 +11,7 @@
 
 class UserTagShip < ActiveRecord::Base
 
-	belongs_to :user
-	belongs_to :tag
+  belongs_to :user
+  belongs_to :tag
 
 end

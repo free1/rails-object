@@ -16,55 +16,55 @@
 #
 require 'free_spider'
 class Post < ActiveRecord::Base
-	include Redis::Objects
-	include Commentable
-	include Searchable
-	counter :show_count
-	set :score_post, global: true
+  include Redis::Objects
+  include Commentable
+  include Searchable
+  counter :show_count
+  set :score_post, global: true
 
-	belongs_to :user
-	validates :title, presence: true, uniqueness: true, on: :create
-	validates :content, presence: true
+  belongs_to :user
+  validates :title, presence: true, uniqueness: true, on: :create
+  validates :content, presence: true
 
-	# 搜索sunspot
-	# searchable do
-	# 	text :title, :content
+  # 搜索sunspot
+  # searchable do
+  #   text :title, :content
 
-	# 	integer :id
-	# end
-	# 搜索es
-	# def as_indexed_json(options={})
-	# end
-	settings index: { number_of_shards: 1, number_of_replicas: 0 }  do
-		mapping do
-			indexes :title,      analyzer: 'snowball'
-			indexes :id
-			indexes :content
-		end
-	end
+  #   integer :id
+  # end
+  # 搜索es
+  # def as_indexed_json(options={})
+  # end
+  settings index: { number_of_shards: 1, number_of_replicas: 0 }  do
+    mapping do
+      indexes :title,      analyzer: 'snowball'
+      indexes :id
+      indexes :content
+    end
+  end
 
-	class << self
+  class << self
 
-		# 计算查看数量
-		def add_watch_count(id)
-			post = Post.find(id)
-			post.show_count.incr
-			score_post << id
-		end
-		def sum_watch_count
-			score_post.each do |post_id|
-				post = Post.find(post_id)
-				# post.watch_count = post.show_count
-				if post.update(watch_count: post.watch_count + post.show_count.to_i)
-					score_post.delete(post_id)
-					post.show_count.reset
-					# post.show_count.decr
-				else
-					p post.errors
-				end
-			end
-		end
+    # 计算查看数量
+    def add_watch_count(id)
+      post = Post.find(id)
+      post.show_count.incr
+      score_post << id
+    end
+    def sum_watch_count
+      score_post.each do |post_id|
+        post = Post.find(post_id)
+        # post.watch_count = post.show_count
+        if post.update(watch_count: post.watch_count + post.show_count.to_i)
+          score_post.delete(post_id)
+          post.show_count.reset
+          # post.show_count.decr
+        else
+          p post.errors
+        end
+      end
+    end
 
-	end
-	
+  end
+  
 end
