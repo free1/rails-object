@@ -33,7 +33,7 @@ var IndexPage = React.createClass({
         img: recommands[j].cover_path,
         link: '#',
         title: recommands[j].title,
-        desc: '点击:' + recommands[j].watch_count
+        desc: '点击:' + recommands[j].watch_count + " || 价格" + recommands[j].price
       });
     }
 

@@ -31,7 +31,7 @@ const Discover = React.createClass({
                 img: list[j].cover_path,
                 link: '#',
                 title: list[j].title,
-                desc: "点击: " + list[j].watch_count
+                desc: "点击: " + list[j].watch_count + " || 价格" + recommands[j].price
               });
             }
             renderResult.push(<div key={ sortName }><AMUIReact.Divider />

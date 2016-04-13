@@ -58,6 +58,7 @@ class Product < ActiveRecord::Base
   def list_json(opt={})
     opt = as_json(only: [:id, :title, :watch_count])
     opt['cover_path'] = cover_path_with_height(200)
+    opt['price'] = price.to_f
     opt
   end
 
