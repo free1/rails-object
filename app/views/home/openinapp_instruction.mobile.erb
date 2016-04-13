@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="react demo, modern mobile web apps.">
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="icon" type="image/png" href="i/favicon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Web Starter Kit">
+  <link rel="icon" sizes="192x192" href="i/touch/chrome-touch-icon-192x192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title"
+        content="react demo">
+  <link rel="apple-touch-icon" href="i/touch/apple-touch-icon.png">
+  <meta name="msapplication-TileImage"
+        content="i/touch/ms-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#0e90d2">
+  <title><%= full_title(yield(:title)) %></title>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <style type="text/css">
+    .openinapp-instruction-page {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #efeff4;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    .inner {
+      width: 235px;
+      margin: 0 auto;
+      margin-bottom: 37px;
+      margin-top: -122px;
+      position: relative;
+      top: 50%;
+    }
+    .instruction-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 35px;
+    }
+    .instr-left {
+      float: left;
+    }
+    .instr-right {
+      float: right;
+    }
+    .icon-middle {
+      margin-top: 25px;
+      margin-left: 10px;
+    }
+    .clearfix:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .icon-instruction {
+      margin-bottom: 20px;
+    }
+    .step-content {
+      font-size: 12px;
+      color: #666;
+    }
+    .step {
+      font-size: 16px;
+      font-weight: 700;
+      color: #666;
+      margin-bottom: 10px;
+    }
+  </style>
+
+</head>
+  <body>
+    <div class="openinapp-instruction-page">
+      <div class="inner">
+
+        <p class="instruction-title">
+         请按照下面的示意图操作打开
+         <br/>
+         xxx App
+        </p>
+
+        <div class="instructions clearfix">
+          <div class="instr-left">
+            <img src="http://www.zhihu.com/static/img/openinapp_instruction/android_more.png" class="icon-instruction" width="72" height="72">
+            <p class="step">
+              第 1 步
+            </p>
+            <p class="step-content">
+              点击该页右上角<br>的「更多」按钮
+            </p>
+          </div>
+
+          <img src="http://www.zhihu.com/static/img/openinapp_instruction/android_arrow.png" class="icon-middle" width="11" height="18">
+
+          <div class="instr-right">
+            <img src="http://www.zhihu.com/static/img/openinapp_instruction/android_web.png" class="icon-instruction" width="72" height="72">
+            <p class="step">
+              第 2 步
+            </p>
+            <p class="step-content">
+              选择在浏览器中打开
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>  
+    
+  </body>
+</html>
