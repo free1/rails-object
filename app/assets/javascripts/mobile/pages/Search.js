@@ -5,12 +5,12 @@ import {
 } from 'amazeui-touch';
 import Tool from '../Tool'
 
-const Product = React.createClass({
+const Search = React.createClass({
   render: function() {
     return (
-      <h1>test Product</h1>
+      <h1>test Search</h1>
     );
   },
 });
 
-export default Product;
+export default Search;

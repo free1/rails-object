@@ -21,6 +21,7 @@ import Home from './pages/Home';
 import Discover from './pages/Discover';
 import Mine from './pages/Mine';
 import Product from './pages/Product';
+import Search from './pages/Search';
 
 const App = React.createClass({
   render() {
@@ -58,6 +59,13 @@ const App = React.createClass({
           />
           <TabBar.Item
             component={Link}
+            icon="search"
+            title="搜索"
+            selected={params.page === 'search'}
+            to="/search"
+          />
+          <TabBar.Item
+            component={Link}
             icon="person"
             title="我的"
             badge="1"
@@ -76,6 +84,7 @@ const routes = (
       <IndexRoute component={Index} />
       <Route path="/discover" component={Discover} />
       <Route path="/mine" component={Mine} />
+      <Route path="/search" component={Search}/>
       <Route path="/product/:id" component={Product}/>
     </Route>
   </Router>
