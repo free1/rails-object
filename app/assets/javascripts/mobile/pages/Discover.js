@@ -14,46 +14,50 @@ const Discover = React.createClass({
   refreshApp: function() {
     $.ajax({
       method: 'get',
-      url: Tool.BaseUrl + '/topinfo',
+      // url: Tool.BaseUrl + '/topinfo',
+      url: Tool.TmpUrl + '/new_api/v2/categories',
       context: this,
       success: function(data) {
-        // console.log(Object.keys(data).length)
-
-        var renderResult = [];
-        for (var i = 0; i < Tool.CategoryList.length; i++) {
-          var sortName = Tool.CategoryList[i];
-          if (data.hasOwnProperty(sortName)) {
-            var list = data[sortName];
+        if (data.success == 1) {
+          var data = data.data
+          var renderResult = [];
+          for (var i = 0; i < data.length; i++) {
+            // console.log(data[i]);
+            var sortName = data[i].name;
+            var list = data[i].products;
             var renderList = [];
-            for (var j = 0; j < list.length - 1; j++) {
+            for (var j = 0; j < list.length; j++) {
               renderList.push({
-                img: list[j].pic,
+                img: list[j].cover_path,
                 link: '#',
                 title: list[j].title,
-                desc: list[j].create
+                desc: list[j].watch_count
               });
             }
             renderResult.push(<div key={ sortName }><AMUIReact.Divider />
               <AMUIReact.Titlebar theme='cols' title={ sortName }/>
               <AMUIReact.Gallery theme='bordered' data={ renderList }/></div>);
           }
-        }
 
-        var loadClear = function() {
-          if (this.isMounted()) {
-            this.setState({
-              list: renderResult,
-              isLoad: true
-            });
-          }
-        }.bind(this);
+          var loadClear = function() {
+            if (this.isMounted()) {
+              this.setState({
+                list: renderResult,
+                isLoad: true
+              });
+            }
+          }.bind(this);
 
-        if (!window.load) {
-          setTimeout(function () {
+          if (!window.load) {
+            setTimeout(function () {
+              loadClear();
+            }.bind(this), 500);
+          } else {
             loadClear();
-          }.bind(this), 500);
+          }
         } else {
-          loadClear();
+          console.log("error");
+          this.setState({isError: true});
         }
       },
       error: function() {
