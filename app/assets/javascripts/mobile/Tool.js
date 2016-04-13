@@ -5,8 +5,6 @@ export default {
   BaseUrl: "http://bilibili-service.daoapp.io",
   TmpUrl: "http://localhost:5000",
   ProductUrl: "http://chuangkejiazu.com",
-  //种类排序
-  CategoryList: ['动画', '娱乐', '游戏', '电影', '', '电视剧', '番剧', '科技', '舞蹈', '音乐', '鬼畜'],
 
   // header设置
 

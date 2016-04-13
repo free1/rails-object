@@ -15,7 +15,7 @@ const Discover = React.createClass({
     $.ajax({
       method: 'get',
       // url: Tool.BaseUrl + '/topinfo',
-      url: Tool.TmpUrl + '/new_api/v2/categories',
+      url: Tool.ProductUrl + '/new_api/v2/categories',
       context: this,
       success: function(data) {
         if (data.success == 1) {
@@ -31,7 +31,7 @@ const Discover = React.createClass({
                 img: list[j].cover_path,
                 link: '#',
                 title: list[j].title,
-                desc: list[j].watch_count
+                desc: "点击: " + list[j].watch_count
               });
             }
             renderResult.push(<div key={ sortName }><AMUIReact.Divider />
