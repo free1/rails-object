@@ -16,6 +16,7 @@ class Category < ActiveRecord::Base
 
   validates :name, presence: true
 
+  default_scope { order(weight: :desc) }
   scope :created_time, -> { order(id: :desc) }
 
 end
