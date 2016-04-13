@@ -20,6 +20,7 @@ import Index from './pages/Index';
 import Home from './pages/Home';
 import Discover from './pages/Discover';
 import Mine from './pages/Mine';
+import Product from './pages/Product';
 
 const App = React.createClass({
   render() {
@@ -75,6 +76,7 @@ const routes = (
       <IndexRoute component={Index} />
       <Route path="/discover" component={Discover} />
       <Route path="/mine" component={Mine} />
+      <Route path="/product/:id" component={Product}/>
     </Route>
   </Router>
 );

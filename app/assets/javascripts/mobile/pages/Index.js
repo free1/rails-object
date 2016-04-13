@@ -31,7 +31,7 @@ var IndexPage = React.createClass({
     for (var j = 0; j < recommands.length; j++) {
       videosInsert.push({
         img: recommands[j].cover_path,
-        link: '#',
+        link: '#/product/' + recommands[j].id,
         title: recommands[j].title,
         desc: '点击:' + recommands[j].watch_count + " || 价格" + recommands[j].price
       });
@@ -80,7 +80,7 @@ export default React.createClass({
       context: this,
       success: function(data) {
         if (data.success == 1) {
-          console.log(data.data)
+          // console.log(data.data)
           this.setState({load: true, data: data.data});
         } else {
           console.log("error")

@@ -29,7 +29,7 @@ const Discover = React.createClass({
             for (var j = 0; j < list.length; j++) {
               renderList.push({
                 img: list[j].cover_path,
-                link: '#',
+                link: '#/product/' + list[j].id,
                 title: list[j].title,
                 desc: "点击: " + list[j].watch_count + " || 价格" + list[j].price
               });
