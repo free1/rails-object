@@ -9,9 +9,9 @@
 * Ruby: Ruby 2.1.2
 * 后端框架：Rails 4.2.0
 * 前端框架：bootstrap 3 + jquery + coffeescript + scss
-* mobile框架: react + es6 + browserify + amazeui
+* mobile框架: react + es6 + browserify + amazeui + jquery
 * 旧版API: grape + swagger + entity
-* 新版API: rails_metal
+* 新版API: rails_metal + jbuilder
 * 数据库：MySQL
 * 计划任务：whenever
 * 抓取网页：nokogiri
@@ -23,6 +23,7 @@
 * 服务器和站点监控：New relic + monit + god
 * 部署：Capistrano3
 * 邮件发送：sendcloud
+* 短信发送:   云片
 * 反向代理：Nginx
 * Web容器：unicorn
 * 搜索：elasticsearch, sunspot(废弃)
@@ -39,12 +40,13 @@
 * 用户系统，支持用户名邮箱登录，支持第三方(qq, weibo, github, douban, weixin)登录。
 * 基本的运维配置，monit监控进程（邮件报警），whenever+backup自动备份，god监控。
 * 基本的部署配置，capistrano自动一键部署。
-* 系统消息。
+* 系统消息实时刷新。
 * 各种文章帖子基本操作，评论，赞，收藏等。
 * 性能监控。
-* 换成metal和jbuild作为新api方便升级rails 5
-* 日志系统elk(elasticsearch, logstash, kibana)
-* 支付系统(activemerchant)
+* 换成metal和jbuild作为新api方便升级rails 5。
+* 日志系统elk(elasticsearch, logstash, kibana)。
+* 支付系统(activemerchant)。
+* 第三方支持微信jssdk等。
 
 ## 简单安装(测试运行在 Ubuntu 14.04 64位)
 
@@ -65,30 +67,20 @@
 
 ## 后端next
 
+* 可以上传视频并转码支持移动端
 * 使用shield(或其它)给elk日志系统加上权限认证
 * 购买功能
-* 手机号验证
 * 用户可以选择所在地(地级市)
-* 线上上传图片报错
-* rack层面加密api
 * 设置i18n可以中英文切换
 * 给mysql做主从
 * nginx两台服务器配置(负载均衡，页面缓存等)
 * cap链接nginx.conf
+* 缓存机制
 
 ## 前端next
 
 * 评论列表显示
 
+## mobile next
 
-## 创客家族NEXT
-
-* 可以上传视频并转码支持移动端
-* 缓存抓取到的文章
-* 通过log解决抓取中断情况
-* mrwu站点屏蔽了服务器ip
-* 优化抓取(不再爬取已经爬去过的内容)
-
-
-## 趣聊NEXT
-
+* 将b站api换成本地api

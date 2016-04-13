@@ -12,8 +12,8 @@
 
 
 # 七牛
-qiniu_access_key: 'NpVxdN7zm-hoatMifRwaa2CdLs1GGCiUmLIKdGa-'
-qiniu_secret_key: '_qPG5XozUdN3WU7k-4Lc--VShmdk7dm22BODqu6N'
+qiniu_access_key: 'qiniu_access_key'
+qiniu_secret_key: 'qiniu_secret_key'
 qiniu_scope: "free"
 qiniu_expires_in: qiniu_expires_in
 qiniu_uptoken_url: "/upload/qiniu/image_up_token"
@@ -21,8 +21,8 @@ qiniu_upload_url: "http://7vznrs.com1.z0.glb.clouddn.com/"
 
 # 发邮件sendcloud
 address: "http://sendcloud.sohu.com/webapi/mail.send.json"
-api_user: "chuangke"
-api_key: "DLrx7guT2BPMzbDg"
+api_user: "api_user"
+api_key: "api_key"
 from_email: "747549945@qq.com"
 from_name: 'free'
 # domain_from_email: 
@@ -34,6 +34,10 @@ admin: "747549945@qq.com"
 redis_host: localhost
 redis_port: 6379
 #redis_password: ''
+
+# github
+github_name: 'github_name'
+github_password: 'github_password'
 
 # 第三方登录
 GITHUB_KEY: GITHUB_KEY
