@@ -1,14 +1,21 @@
 import React from 'react';
 import {
   Container,
-  Group,
+  Field,
+  Icon,
+  Button,
 } from 'amazeui-touch';
-import Tool from '../Tool'
+import Tool from '../Tool';
 
 const Search = React.createClass({
   render: function() {
     return (
-      <h1>test Search</h1>
+      <Container>
+        <Field
+          placeholder="搜索"
+          btnAfter={<Button><Icon name="search" /></Button>}
+        />
+      </Container>
     );
   },
 });

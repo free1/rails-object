@@ -13,7 +13,7 @@ export default {
     render: function () {
       return <div className='am-text-center loading-content'>
         <i className='am-icon-refresh am-icon-spin am-icon-lg'/>
-        <p>读条中</p>
+        <p>努力加载中</p>
       </div>;
     }
   }),
