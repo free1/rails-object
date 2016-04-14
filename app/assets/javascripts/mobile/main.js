@@ -26,7 +26,6 @@ import Search from './pages/Search';
 const App = React.createClass({
   render() {
     const {
-      location,
       params,
       children,
       ...props,
@@ -39,7 +38,7 @@ const App = React.createClass({
         <NavBar amStyle="primary" title="React Demo" />
 
         <Container transition={transition} className="centre-body">
-          {React.cloneElement(children, {key: location.key})}
+          {this.props.children}
         </Container>
 
         <TabBar amStyle="primary" >
