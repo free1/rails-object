@@ -10,6 +10,11 @@ module TextCheck
   end
 
   module ClassMethods
+
+    def sanitize_text(text)
+      ActionController::Base.helpers.sanitize(text, tags: %w(li br)).gsub(/(<[^>]+>|&nbsp;|\r)/,"\n") 
+    end
+
   end
 
 end

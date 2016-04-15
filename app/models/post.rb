@@ -19,6 +19,7 @@ class Post < ActiveRecord::Base
   include Redis::Objects
   include Commentable
   include Searchable
+  include TextCheck
   counter :show_count
   set :score_post, global: true
 

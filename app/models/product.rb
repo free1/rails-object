@@ -18,6 +18,22 @@
 class Product < ActiveRecord::Base
   # include Obfuscate
   include Commentable
+  include Searchable
+  include TextCheck
+
+  # elasticsearch
+  settings index: { number_of_shards: 1, number_of_replicas: 0 }  do
+    mapping do
+      indexes :title,      analyzer: 'snowball'
+      indexes :describe
+    end
+  end
+  def as_indexed_json(options={})
+    self.as_json(
+      only: [:id, :status, :title],
+      methods: [:sanitize_describe]
+      )
+  end
 
   # 保存之前
   before_create :rand_watch_count
@@ -60,6 +76,10 @@ class Product < ActiveRecord::Base
     opt['cover_path'] = cover_path_with_height(200)
     opt['price'] = price.to_f
     opt
+  end
+
+  def sanitize_describe
+    Product.sanitize_text(self.describe)
   end
 
   # def to_param
