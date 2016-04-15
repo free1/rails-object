@@ -58,5 +58,7 @@ module WeixinTest
     # config.browserify_rails.commandline_options = "-t [ babelify --presets [ es2015 ] ]"
 
     # config.action_controller.include_all_helpers = false
+    # future新版本rails
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end
