@@ -22,10 +22,10 @@ class Product < ActiveRecord::Base
   include TextCheck
 
   # elasticsearch
-  settings index: { number_of_shards: 1, number_of_replicas: 0 }  do
+  settings do
     mapping do
       indexes :title,      analyzer: 'snowball'
-      indexes :describe
+      indexes :sanitize_describe
     end
   end
   def as_indexed_json(options={})

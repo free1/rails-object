@@ -17,6 +17,16 @@ module Searchable
         })
       end
 
+      def product_search(q)
+        search(
+          query: {
+            multi_match: {
+              fields: ['title', 'sanitize_describe'],
+              query: q
+            }
+        })
+      end
+
       def location_search(query)
         search(
           filter: {
