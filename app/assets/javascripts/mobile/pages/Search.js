@@ -11,7 +11,20 @@ import Tool from '../Tool';
 const Search = React.createClass({
 
   handleSubmit(e) {
-    console.log("ss")
+    const query = this.refs.query.getValue().trim();
+    this.onSearchQuery(query);
+  },
+
+  onSearchQuery(query) {
+    $.ajax({
+      url: Tool.TmpUrl + "/products/search",
+      type: "get",
+      data: {query: query}
+    }).done(function(data){
+
+    }).fail(function(){
+      console.log("error");
+    });
   },
 
   render: function() {
@@ -20,7 +33,8 @@ const Search = React.createClass({
         <Col md={8} mdOffset={2} >
           <Field
             placeholder="搜索"
-            btnAfter={<Button onSubmit={e => {this.handleSubmit(e)}}><Icon name="search" /></Button>}
+            ref="query"
+            btnAfter={<Button onClick={this.handleSubmit}><Icon name="search" /></Button>}
           />
         </Col>
       </Container>
