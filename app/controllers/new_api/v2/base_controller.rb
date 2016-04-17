@@ -25,12 +25,12 @@ class NewApi::V2::BaseController < ActionController::Metal
 
   include Rails.application.routes.url_helpers
 
-  append_view_path "#{Rails.root}/app/api_views"
+  append_view_path "#{Rails.root}/app/api_views/new_api/v2"
   wrap_parameters format: [:json]
 
   protect_from_forgery with: :null_session
 
-  layout 'new_api/v2/layouts/json_layout'
+  layout 'layouts/json_layout'
 
   helper_method :passport
   include NewApi::V2::BaseHelper
