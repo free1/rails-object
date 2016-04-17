@@ -17,7 +17,7 @@ const Search = React.createClass({
 
   onSearchQuery(query) {
     $.ajax({
-      url: Tool.TmpUrl + "/products/search",
+      url: Tool.TmpUrl + "/new_api/v2/search/product_search",
       type: "get",
       data: {query: query}
     }).done(function(data){
