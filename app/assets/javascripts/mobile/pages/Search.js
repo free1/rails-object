@@ -30,6 +30,9 @@ const ContentList = React.createClass({
             );
           })}
         </List>
+        <Tool.LoadingButton block clickHandler={this.props.handler} loadingText='正在加载...' key='load-btn'>
+          加载更多
+        </Tool.LoadingButton>
       </div>
     );
   },
@@ -42,28 +45,35 @@ const Search = React.createClass({
       error: false,
       loading: false,
       isFirstVisit: false,
+      page: 1,
+      totalPages: 1,
       data: []
     }
   },
 
   handleSubmit(e) {
     const query = this.refs.query.getValue().trim();
-    this.onSearchQuery(query);
+    this.onSearchQuery(query, 1);
     this.setState({loading: true});
   },
 
-  onSearchQuery(query) {
+  pageAdd: function () {
+    this.getSearch(this.state.page + 1);
+  },
+
+  onSearchQuery(query, page) {
     $.ajax({
-      url: Tool.ProductUrl + "/new_api/v2/search/product_search",
+      url: Tool.TmpUrl + "/new_api/v2/search/product_search",
       type: "get",
       context: this,
-      data: {query: query}
+      data: {query: query, per_page: 5}
     }).done(function(data){
       if (data.success == 1) {
         this.setState({
           error: false,
           loading: false,
           isFirstVisit: true,
+          totalPages: data.data.meta.total_pages,
           data: data.data
         });
       } else {
@@ -89,7 +99,8 @@ const Search = React.createClass({
           {
             (this.state.error ? (<Tool.ErrorElement />) :
               (this.state.loading ? <Tool.LoadingElement /> :
-                (this.state.isFirstVisit) ? <div><ContentList data={ this.state.data } /></div> :
+                (this.state.isFirstVisit) ? <div><ContentList page={ this.state.page }
+                  handler={ this.pageAdd } totalPages={ this.state.totalPages} data={ this.state.data } /></div> :
                 <div></div>))
           }
         </Col>
