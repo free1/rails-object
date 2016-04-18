@@ -25,7 +25,10 @@ class NewApi::V2::BaseController < ActionController::Metal
 
   include Rails.application.routes.url_helpers
 
+  # 加入api的view
   append_view_path "#{Rails.root}/app/api_views/new_api/v2"
+  # 默认api的view
+  prepend_view_path "#{Rails.root}/app/api_views/"
   wrap_parameters format: [:json]
 
   protect_from_forgery with: :null_session
