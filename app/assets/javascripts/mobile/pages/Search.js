@@ -23,9 +23,8 @@ const ContentList = React.createClass({
             return (
               <List.Item
                 {...album}
-                target = "_blank"
                 media = {coverPath80}
-                href = {i === 0 ? null : album.href}
+                href = {'#/product/' + album.id}
                 key = {i}
               />
             );
@@ -50,6 +49,7 @@ const Search = React.createClass({
   handleSubmit(e) {
     const query = this.refs.query.getValue().trim();
     this.onSearchQuery(query);
+    this.setState({loading: true});
   },
 
   onSearchQuery(query) {

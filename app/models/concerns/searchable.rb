@@ -25,6 +25,31 @@ module Searchable
               query: q
             }
         })
+        #        query_option = Product.es_option(option)
+        #        data = search(
+        #          query: {
+        #              filtered: {
+        #                query: {
+        #                  multi_match: {
+        #                    fields: ['title', 'sanitize_describe'],
+        #                    query: option[:q]
+        #                  }
+        #                },
+        #                filter: {
+        #                  bool: {
+        #                    must: query_option
+        #                  }
+        #                }
+        #              }
+        #          },
+        #          filter: {
+        #              exists: { field: "" }
+        #          },
+        #
+        #          sort: [
+        #            Product.es_sort(option[:sort]) || {}
+        #          ]
+        #        )
       end
 
       def location_search(query)
