@@ -18,6 +18,16 @@ export default {
     }
   }),
 
+  // 错误部件
+  ErrorElement: React.createClass({
+    render: function () {
+      return <div className='am-text-center loading-content'>
+        <i className='am-icon-exclamation-circle am-icon-lg'/>
+        <p>加载失败,刷新下吧~</p>
+      </div>;
+    }
+  }),
+
   // 启动界面
   StartElement: React.createClass({
     render: function () {
@@ -28,16 +38,6 @@ export default {
           </ReactCSSTransitionGroup>
         </div>
       );
-    }
-  }),
-
-  //错误部件
-  ErrorElement: React.createClass({
-    render: function () {
-      return <div className='am-text-center loading-content'>
-        <i className='am-icon-exclamation-circle am-icon-lg'/>
-        <p>加载失败,刷新下吧~</p>
-      </div>;
     }
   }),
 
