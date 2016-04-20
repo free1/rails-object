@@ -47,6 +47,7 @@ const Search = React.createClass({
       isFirstVisit: false,
       page: 1,
       totalPages: 1,
+      query: null,
       data: []
     }
   },
@@ -58,10 +59,11 @@ const Search = React.createClass({
   },
 
   pageAdd: function () {
-    this.getSearch(this.state.page + 1);
+    this.onSearchQuery(this.state.query, this.state.page + 1);
   },
 
   onSearchQuery(query, page) {
+    console.log("sss")
     $.ajax({
       url: Tool.TmpUrl + "/new_api/v2/search/product_search",
       type: "get",
@@ -74,6 +76,7 @@ const Search = React.createClass({
           loading: false,
           isFirstVisit: true,
           totalPages: data.data.meta.total_pages,
+          query: query,
           data: data.data
         });
       } else {

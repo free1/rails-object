@@ -5,6 +5,9 @@ module Searchable
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
 
+    index_name    "weixin_test-#{Rails.env}"
+    document_type "product"
+
     # todo 合并
     class << self
       def simple_search(q)
