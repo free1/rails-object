@@ -15,7 +15,7 @@
 # github all user
 class FollowingUser < ActiveRecord::Base
   UsersApi = 'https://api.github.com/users'.freeze
-  AccessToken = 'ab6483f138fc31feea38d46cc8f78f260085ce4f'.freeze
+  AccessToken = 'xxx'.freeze
   PerPage = 5000
   TaskTime = 10000
 
