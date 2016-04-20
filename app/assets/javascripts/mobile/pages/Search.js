@@ -12,27 +12,35 @@ import Tool from '../Tool';
 const ContentList = React.createClass({
   render() {
     var data = this.props.data;
-    var resultProducts = data.products;
+    var resultProducts = data.data.products;
     // console.log(data);
-    return(
-      <div>
-        <List>
-          {resultProducts.map((album, i) => {
-            // console.log(album);
-            var coverPath80 = <img width="80" src={album.cover_path} />
-            return (
-              <List.Item
-                {...album}
-                media = {coverPath80}
-                href = {'#/product/' + album.id}
-                key = {i}
-              />
-            );
-          })}
-        </List>
+    var rendList = [];
+    rendList.push(
+      <List>
+        {resultProducts.map((album, i) => {
+          // console.log(album);
+          var coverPath80 = <img width="80" src={album.cover_path} />
+          return (
+            <List.Item
+              {...album}
+              media = {coverPath80}
+              href = {'#/product/' + album.id}
+              key = {album.id}
+            />
+          );
+        })}
+      </List>
+    )
+    if (this.props.totalPages > this.props.page) {
+      rendList.push(
         <Tool.LoadingButton block clickHandler={this.props.handler} loadingText='正在加载...' key='load-btn'>
           加载更多
         </Tool.LoadingButton>
+      )
+    }
+    return(
+      <div>
+        {rendList}
       </div>
     );
   },
@@ -63,21 +71,27 @@ const Search = React.createClass({
   },
 
   onSearchQuery(query, page) {
-    console.log("sss")
     $.ajax({
       url: Tool.TmpUrl + "/new_api/v2/search/product_search",
       type: "get",
       context: this,
-      data: {query: query, per_page: 5}
+      data: {query: query, per_page: 1, page: page}
     }).done(function(data){
       if (data.success == 1) {
+        var allData = this.state.data;        
+        if (page == 1) {
+          allData = data;
+        } else {
+          allData.data.products = allData.data.products.concat(data.data.products);
+        }
         this.setState({
           error: false,
           loading: false,
           isFirstVisit: true,
           totalPages: data.data.meta.total_pages,
           query: query,
-          data: data.data
+          page: page,
+          data: allData
         });
       } else {
         this.setState({error: true});
