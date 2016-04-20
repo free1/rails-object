@@ -72,10 +72,10 @@ const Search = React.createClass({
 
   onSearchQuery(query, page) {
     $.ajax({
-      url: Tool.TmpUrl + "/new_api/v2/search/product_search",
+      url: Tool.ProductUrl + "/new_api/v2/search/product_search",
       type: "get",
       context: this,
-      data: {query: query, per_page: 1, page: page}
+      data: {query: query, per_page: 5, page: page}
     }).done(function(data){
       if (data.success == 1) {
         var allData = this.state.data;        
