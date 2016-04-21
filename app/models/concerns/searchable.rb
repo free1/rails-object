@@ -64,25 +64,23 @@ module Searchable
         search_query_option = []
         if option[:query].present?
           query = option[:query].strip
-          search_query_option << { multi_match: 
-            {fields: [:_all],
-              boost: 0.8, query: query} }
+          search_query_option << { multi_match: {fields: [:_all], boost: 0.8, query: query} }
           search_query_option << {
             multi_match: {
-              fields: ["xxx"], 
+              fields: ["xxx"],
               boost: 3.0,
               query: query
             }
           }
         end
-        search_query_option << { match_all: {}} if search_query_option.empty?
+        search_query_option << { match_all: {} } if search_query_option.empty?
         search_query_option
       end
 
       # 拼接es筛选项匹配
       def es_filter_option(option)
         search_filter_option = []
-        # 品牌
+        # 筛选项
         if option[:filters].present?
           filters = option[:filters].split
           filters_dsl = { or: { filters: [{ terms: { "filters.xx": filters }}, { terms: { "filters": filters } }] } }
