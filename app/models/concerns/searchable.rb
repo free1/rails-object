@@ -8,7 +8,6 @@ module Searchable
     index_name    "weixin_test-#{Rails.env}"
     document_type "product"
 
-    # todo 合并
     class << self
       def simple_search(q)
         search(
@@ -28,33 +27,93 @@ module Searchable
               query: q
             }
         })
-        #        query_option = Product.es_option(option)
-        #        data = search(
-        #          query: {
-        #              filtered: {
-        #                query: {
-        #                  multi_match: {
-        #                    fields: ['title', 'sanitize_describe'],
-        #                    query: option[:q]
-        #                  }
-        #                },
-        #                filter: {
-        #                  bool: {
-        #                    must: query_option
-        #                  }
-        #                }
-        #              }
-        #          },
-        #          filter: {
-        #              exists: { field: "" }
-        #          },
-        #
-        #          sort: [
-        #            Product.es_sort(option[:sort]) || {}
-        #          ]
-        #        )
       end
 
+      # 复杂筛选查询
+      def filter_search(option={})
+        filter_option_result = Product.es_filter_option(option)
+        query_option_result = Product.es_query_option(option)
+        data = search(
+          query: {
+            filtered: {
+              query: {
+                bool: {
+                  should: query_option_result
+                }
+              },
+             filter: {
+               bool: {
+                 must: filter_option_result
+               }
+             }
+            }
+          },
+          filter: {
+            and: [
+              { exists: { field: "cover_path" }},
+              { range: { status: {to: 2, from: 0, include_lower: true} }},
+            ]
+          },
+          sort: [
+           Product.es_sort(option[:sort]) || {}
+          ]
+        )
+      end
+      # 拼接es query匹配
+      def es_query_option(option)
+        search_query_option = []
+        if option[:query].present?
+          query = option[:query].strip
+          search_query_option << { multi_match: 
+            {fields: [:_all],
+              boost: 0.8, query: query} }
+          search_query_option << {
+            multi_match: {
+              fields: ["xxx"], 
+              boost: 3.0,
+              query: query
+            }
+          }
+        end
+        search_query_option << { match_all: {}} if search_query_option.empty?
+        search_query_option
+      end
+
+      # 拼接es筛选项匹配
+      def es_filter_option(option)
+        search_filter_option = []
+        # 品牌
+        if option[:filters].present?
+          filters = option[:filters].split
+          filters_dsl = { or: { filters: [{ terms: { "filters.xx": filters }}, { terms: { "filters": filters } }] } }
+          search_filter_option << filters_dsl
+        end
+        # 价格区间
+        min_price = option[:min_price] || 2
+        max_price = option[:max_price] || 1000000
+        search_filter_option << {
+          range: {
+            'price':  {
+              gte: min_price.to_f,
+              lte: max_price.to_f
+            }
+          }
+        }
+        search_filter_option
+      end
+      # es排序
+      def es_sort(rule)
+        case rule
+        when "hot"
+          {watch_count: "desc"}
+        when "price_desc"
+          {"price": 'desc'}
+        when "price"
+          {"price": 'asc'}
+        end
+      end
+
+      # 地理位置
       def location_search(query)
         search(
           filter: {
@@ -68,114 +127,8 @@ module Searchable
           }
         )
       end
+
     end
 
   end
 end
-
-
-
-# # Customize the index name
-#     index_name [Rails.application.engine_name, Rails.env].join('_')
-
-#     # Set up index configuration and mapping
-#     #
-#     settings index: { number_of_shards: 1, number_of_replicas: 0 } do
-#       mapping dynamic: false do
-#           indexes :id
-#           indexes :title, analyzer: 'snowball'
-#           indexes :category, index: 'not_analyzed'
-#           indexes :category_constant, index: 'not_analyzed'
-#           indexes :skier_ability, index: 'not_analyzed'
-#           indexes :snow_conditions, index: 'not_analyzed'
-#           indexes :turning_radius, index: 'not_analyzed'
-#           indexes :rocker_type, index: 'not_analyzed'
-#           indexes :width_desc, index: 'not_analyzed'
-#           indexes :board_style, index: 'not_analyzed'
-#           indexes :price, type: 'double'
-#       end
-#     end
-
-#     class << self
-
-#       def simple_search(query)
-#         search(
-#           query: {
-#             multi_match: {
-#               fields: ['title', 'category', 'category_description', 'detail', 'brand.name'],
-#               query: query
-#             }
-#           }
-#         )
-#       end
-
-#       def filter_search(option={})
-#         query_option = Product.es_option(option)
-#         logger.info "--------------search_option--------------------"
-#         logger.info query_option
-#         search(
-#           query: {
-#             filtered: {
-#               query: {
-#                 multi_match: {
-#                   fields:  ['title', 'category', 'category_description', 'detail', 'brand.name'],
-#                   query: option[:query]
-#                 }
-#               },
-#               filter: {
-#                bool: {
-#                   must: query_option
-#                 }
-#               }
-#             }
-#           }
-#          )
-#       end
-
-#       # todo
-#       def es_option(option)
-#         search_option = []
-#         if option[:category].present?
-#           category = option[:category]
-#           category = { term: { "category": category } }
-#           search_option << category
-#         end
-#         if option[:category_constant].present?
-#           category_constant = option[:category_constant].split(",")
-#           category_constant = { terms: { "category_constant": category_constant } }
-#           search_option << category_constant
-#         end
-#         if option[:skier_ability].present?
-#           skier_ability = option[:skier_ability]
-#           skier_ability = { term: { "skier_ability": category_constant } }
-#           search_option << skier_ability
-#         end
-#         if option[:snow_conditions].present?
-#           snow_conditions = option[:snow_conditions]
-#           snow_conditions = { term: { "snow_conditions": snow_conditions } }
-#           search_option << snow_conditions
-#         end
-#         if option[:turning_radius].present?
-#           turning_radius = option[:turning_radius]
-#           turning_radius = { term: { "turning_radius": turning_radius } }
-#           search_option << turning_radius
-#         end
-#         if option[:rocker_type].present?
-#           rocker_type = option[:rocker_type]
-#           rocker_type = { term: { "rocker_type": rocker_type } }
-#           search_option << rocker_type
-#         end
-#         if option[:width_desc].present?
-#           width_desc = option[:width_desc]
-#           width_desc = { term: { "width_desc": width_desc } }
-#           search_option << width_desc
-#         end
-#         if option[:board_style].present?
-#           board_style = option[:board_style]
-#           board_style = { term: { "board_style": board_style } }
-#           search_option << board_style
-#         end
-#         search_option
-#       end
-
-#     end
