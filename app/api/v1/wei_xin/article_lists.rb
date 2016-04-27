@@ -4,7 +4,7 @@ module V1
     class ArticleLists < Grape::API
       version 'v1', using: :path
 
- 			helpers do
+      helpers do
         params :pagination do
           optional :page, type: Integer, default: 1, desc: '第几页'
           optional :per_page, type: Integer, default: 10, desc: '分几页'
@@ -15,7 +15,7 @@ module V1
 
         desc '栏目下文章列表'
         params do
-        	requires :article_id, type: Integer, desc: '栏目id'
+          requires :article_id, type: Integer, desc: '栏目id'
           use :pagination
         end
         get do
@@ -26,8 +26,8 @@ module V1
         route_param :id do
           desc '栏目下文章详情'
           get do
-          	article_list = ArticleList.find(params[:id])
-          	present article_list, with: V1::Entities::Article::ArticleListDetails
+            article_list = ArticleList.find(params[:id])
+            present article_list, with: V1::Entities::Article::ArticleListDetails
           end
 
           desc '创建评论'

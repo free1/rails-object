@@ -39,17 +39,18 @@ module V1
         params do
           requires :name, type: String
           requires :password, type: String
+          optional :email, type: String
           optional :longitude, type: String, desc: '经度'
           optional :latitude, type: String, desc: '纬度'
         end
         post '/signup' do
           remember_token = User.new_remember_token
-          user = User.new(name: params[:name], password: params[:password], remember_token: User.encrypt(remember_token))
+          user = User.new(name: params[:name], password: params[:password], remember_token: User.encrypt(remember_token), email: params[:email])
           if user.save
             user.update_location(params[:latitude], params[:longitude])
             present user, with: V1::Entities::User::Users
           else
-            error!('validates errors', 409)
+            error!(user.errors, 409)
           end
         end
 

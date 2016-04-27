@@ -29,6 +29,7 @@ var LoginFrom = React.createClass({
           <Button amStyle="primary" block>提交</Button>
         </form>
         <a href="/auth/wechat">微信登陆 </a>
+        <a href="#/signup">注册 </a>
       </Group>
     );
   }

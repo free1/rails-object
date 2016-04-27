@@ -20,6 +20,7 @@ import Index from './pages/Index';
 import Home from './pages/Home';
 import Discover from './pages/Discover';
 import Mine from './pages/Mine';
+import Signup from './pages/Signup';
 import Product from './pages/Product';
 import Search from './pages/Search';
 
@@ -85,6 +86,7 @@ const routes = (
       <Route path="/mine" component={Mine} />
       <Route path="/search" component={Search}/>
       <Route path="/product/:id" component={Product}/>
+      <Route path="/signup" component={Signup}/>
     </Route>
   </Router>
 );
