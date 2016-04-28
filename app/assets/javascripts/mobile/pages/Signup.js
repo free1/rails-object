@@ -23,7 +23,7 @@ const Signup = React.createClass({
   onSignupSubmit(userinfo) {
     console.log(userinfo);
     $.ajax({
-      url: Tool.TmpUrl + "/api/v1/users/signup",
+      url: Tool.ProductUrl + "/api/v1/users/signup",
       type: "post",
       context: this,
       data: {name: userinfo.uname, email: userinfo.email, password: userinfo.password}
@@ -48,6 +48,7 @@ const Signup = React.createClass({
           <Field placeholder="确认密码" type="password" ref="pwd_conf" />
           <Button amStyle="primary" block>提交</Button>
         </form>
+        <a href="#/mine">登录 </a>
       </Group>
     );
   },
