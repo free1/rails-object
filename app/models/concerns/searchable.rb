@@ -29,7 +29,7 @@ module Searchable
         })
       end
 
-      # 复杂筛选查询
+      # 复杂筛选查询(输出统计结果: Product.filter_search(option).aggregations)
       def filter_search(option={})
         filter_option_result = Product.es_filter_option(option)
         query_option_result = Product.es_query_option(option)
@@ -56,7 +56,19 @@ module Searchable
           },
           sort: [
            Product.es_sort(option[:sort]) || {}
-          ]
+          ],
+          aggs: { 
+            titles: { 
+              terms: { 
+                field: 'title' 
+              }
+            },
+            brands: { 
+              terms: { 
+                field: 'brand.name' 
+              }
+            }
+          }
         )
       end
       # 拼接es query匹配
