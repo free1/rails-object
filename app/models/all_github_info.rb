@@ -80,6 +80,26 @@ class AllGithubInfo < ActiveRecord::Base
       end
     end
 
+    # AllGithubInfo.unfollow_free1_users
+    def unfollow_free1_users
+      begin
+        since = FollowingUser.not_since.first.id - 1
+        FollowingUser.find_each(start: since, batch_size: 200) do |all_github_info|
+          p "------------AllGithubInfoID:  #{all_github_info.id}--------------------"
+          client = Octokit::Client.new(:login => ENV['github_name'], :password => ENV['github_password'])
+          if client.unfollow(all_github_info.name)
+            all_github_info.update_column(:is_following, false)
+            p "unfollow #{all_github_info.name} success"
+          else
+            p "unfollow #{all_github_info.name} fail"
+          end
+          all_github_info.update_column(:is_since, true)
+        end
+      ensure
+        AllGithubInfo.unfollow_free1_users
+      end
+    end
+
   end
 
 end
