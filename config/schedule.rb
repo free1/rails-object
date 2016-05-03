@@ -80,3 +80,7 @@ end
 # every 1.hours do
 #   runner "AllGithubInfo.following_all_user"
 # end
+
+every 1.hours do
+  runner "AllGithubInfo.unfollow_free1_users"
+end
